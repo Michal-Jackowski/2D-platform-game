@@ -9,3 +9,10 @@ The 2D platform game is inspired by Limbo made by PlayDead.
   - Cinematic
   - Atmospheric
   - Monochromatic
+  
+### Schedule
+- [ ] Build prototype
+- [ ] Collect all assets
+- [ ] Correct game design document
+- [ ] Start level design
+- [ ] Build early version of game
