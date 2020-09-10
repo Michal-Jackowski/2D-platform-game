@@ -4,11 +4,13 @@
 
 The 2D platform game is inspired by Limbo made by PlayDead.
 
-  - Puzzle platform game
-  - Aesthetics
+  - Aesthetic
   - Cinematic
   - Atmospheric
   - Monochromatic
+  - Minimalistic
+  - Linear
+  - Short
   
 ### Schedule
 - [ ] Build prototype
