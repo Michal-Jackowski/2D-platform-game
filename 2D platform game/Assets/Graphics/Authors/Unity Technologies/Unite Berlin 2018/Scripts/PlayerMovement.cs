@@ -200,7 +200,7 @@ public class PlayerMovement : MonoBehaviour
 
 		//If the jump key is pressed AND the player isn't already jumping AND EITHER
 		//the player is on the ground or within the coyote time window...
-		if (input.jumpPressed && !isJumping && (isOnGround || coyoteTime > Time.time))
+		if (input.jumpPressed && !isJumping && !isCrouching && (isOnGround || coyoteTime > Time.time))
 		{
 			//...check to see if crouching AND not blocked. If so...
 			if (isCrouching && !isHeadBlocked)
