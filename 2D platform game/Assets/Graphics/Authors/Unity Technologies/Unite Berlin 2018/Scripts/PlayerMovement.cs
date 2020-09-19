@@ -176,7 +176,7 @@ public class PlayerMovement : MonoBehaviour
 		if (isHanging)
 		{
 			//If crouch is pressed...
-			if (input.crouchPressed)
+			if (input.crouchHeld)
 			{
 				//...let go...
 				isHanging = false;
@@ -203,12 +203,15 @@ public class PlayerMovement : MonoBehaviour
 		if (input.jumpPressed && !isJumping && !isCrouching && (isOnGround || coyoteTime > Time.time))
 		{
 			//...check to see if crouching AND not blocked. If so...
-			if (isCrouching && !isHeadBlocked)
-			{
+			//if (isCrouching && !isHeadBlocked)
+			//{
 				//...stand up and apply a crouching jump boost
-				StandUp();
-				rigidBody.AddForce(new Vector2(0f, crouchJumpBoost), ForceMode2D.Impulse);
-			}
+				//StandUp();
+				//rigidBody.AddForce(new Vector2(0f, crouchJumpBoost), ForceMode2D.Impulse);
+			//}
+
+			//...add the jump force to the rigidbody...
+			rigidBody.AddForce(new Vector2(0f, jumpForce*1.75f), ForceMode2D.Impulse);
 
 			//...The player is no longer on the groud and is jumping...
 			isOnGround = false;
@@ -217,9 +220,6 @@ public class PlayerMovement : MonoBehaviour
 			//...record the time the player will stop being able to boost their jump...
 			jumpTime = Time.time + jumpHoldDuration;
 
-			//...add the jump force to the rigidbody...
-			rigidBody.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
-
 			//...and tell the Audio Manager to play the jump audio
 			AudioManager.PlayJumpAudio();
 		}
@@ -227,8 +227,8 @@ public class PlayerMovement : MonoBehaviour
 		else if (isJumping)
 		{
 			//...and the jump button is held, apply an incremental force to the rigidbody...
-			if (input.jumpHeld)
-				rigidBody.AddForce(new Vector2(0f, jumpHoldForce), ForceMode2D.Impulse);
+			//if (input.jumpHeld)
+				//rigidBody.AddForce(new Vector2(0f, jumpHoldForce), ForceMode2D.Impulse);
 
 			//...and if jump time is past, set isJumping to false
 			if (jumpTime <= Time.time)
