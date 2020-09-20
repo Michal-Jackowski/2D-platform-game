@@ -34,6 +34,7 @@ public class PlayerMovement : MonoBehaviour
 	public bool isHanging;					//Is player hanging?
 	public bool isCrouching;				//Is player crouching?
 	public bool isHeadBlocked;
+	public bool isClimbing;					//Is player climbing?
 
 	PlayerInput input;						//The current inputs for the player
 	BoxCollider2D bodyCollider;				//The collider component
@@ -91,6 +92,7 @@ public class PlayerMovement : MonoBehaviour
 		//Start by assuming the player isn't on the ground and the head isn't blocked
 		isOnGround = false;
 		isHeadBlocked = false;
+		isClimbing = false;
 
 		//Cast rays for the left and right foot
 		RaycastHit2D leftCheck = Raycast(new Vector2(-footOffset, 0f), Vector2.down, groundDistance);
@@ -190,6 +192,7 @@ public class PlayerMovement : MonoBehaviour
 			{
 				//...let go...
 				isHanging = false;
+				isClimbing = true;
 				//...set the rigidbody to dynamic and apply a jump force...
 				rigidBody.bodyType = RigidbodyType2D.Dynamic;
 				rigidBody.AddForce(new Vector2(0f, hangingJumpForce), ForceMode2D.Impulse);
