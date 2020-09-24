@@ -192,7 +192,7 @@ public class PlayerMovement : MonoBehaviour
 			{
 				//...let go...
 				isHanging = false;
-				isClimbing = true;
+				//isClimbing = true;
 				//...set the rigidbody to dynamic and apply a jump force...
 				rigidBody.bodyType = RigidbodyType2D.Dynamic;
 				rigidBody.AddForce(new Vector2(0f, hangingJumpForce), ForceMode2D.Impulse);
