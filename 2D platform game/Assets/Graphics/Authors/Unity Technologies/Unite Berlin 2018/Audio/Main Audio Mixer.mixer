@@ -81,7 +81,17 @@ AudioMixerController:
   m_SuspendThreshold: -80
   m_EnableSuspend: 1
   m_UpdateMode: 0
-  m_ExposedParameters: []
+  m_ExposedParameters:
+  - guid: 318af80b122e7054fb3ea7c68e32b60e
+    name: ambient volume
+  - guid: a165ce1985ac9904989ecad29bbf19dc
+    name: music volume
+  - guid: a858c842315ac45459fdc497d3fc3aaa
+    name: player volume
+  - guid: 3177f5ffa4c746f498b3313bd210f72a
+    name: sting volume
+  - guid: 67b233693aa72ee42a7d95e14f9d74ab
+    name: voice volume
   m_AudioMixerGroupViews:
   - guids:
     - fd9ee885df184744991c917ba64a1584
@@ -142,10 +152,10 @@ AudioMixerSnapshotController:
   m_SnapshotID: 27ec04e0e0e73134fb29065442da928d
   m_FloatValues:
     a858c842315ac45459fdc497d3fc3aaa: 0.13552584
-    a165ce1985ac9904989ecad29bbf19dc: -6.133707
+    a165ce1985ac9904989ecad29bbf19dc: 0.1355254
     67b233693aa72ee42a7d95e14f9d74ab: 0
-    318af80b122e7054fb3ea7c68e32b60e: -7.8940816
-    b7deb17c9d0aa8346869abddf53eb844: -0.7045173
+    318af80b122e7054fb3ea7c68e32b60e: -0.08374829
+    b7deb17c9d0aa8346869abddf53eb844: -0.025776558
     3177f5ffa4c746f498b3313bd210f72a: 0.44032478
   m_TransitionOverrides: {}
 --- !u!244 &1939576460390829436
