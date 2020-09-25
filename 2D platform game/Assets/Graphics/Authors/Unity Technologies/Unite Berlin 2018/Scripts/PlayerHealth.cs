@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
-	public GameObject deathVFXPrefab;	//The visual effects for player death
+	//public GameObject deathVFXPrefab;	//The visual effects for player death
 
 	bool isAlive = true;				//Stores the player's "alive" state
 	int trapsLayer;						//The layer the traps are on
@@ -28,7 +28,7 @@ public class PlayerHealth : MonoBehaviour
 		isAlive = false;
 
 		//Instantiate the death particle effects prefab at player's location
-		Instantiate(deathVFXPrefab, transform.position, transform.rotation);
+		//Instantiate(deathVFXPrefab, transform.position, transform.rotation);
 
 		//Disable player game object
 		gameObject.SetActive(false);
