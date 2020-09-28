@@ -205,8 +205,9 @@ public class PlayerMovement : MonoBehaviour
 			//If jump is pressed...
 			if (input.jumpPressed)
 			{
+				isClimbing = true;
 				isHanging = false;
-				
+
 				Vector3 pos = transform.position;
 				pos.y += climbingVerticalMove;
 
@@ -218,17 +219,15 @@ public class PlayerMovement : MonoBehaviour
 				{
 					pos.x -= climbingHorizontalMove;
 				}
-
+				
 				transform.position = pos;
 				rigidBody.bodyType = RigidbodyType2D.Dynamic;	
-				isClimbing = true;
-				return;
 			}
 		}
 
 		//If the jump key is pressed AND the player isn't already jumping AND EITHER
 		//the player is on the ground or within the coyote time window...
-		if (input.jumpPressed && !isJumping && !isCrouching && (isOnGround || coyoteTime > Time.time))
+		if (input.jumpPressed && !isJumping && !isCrouching && !isClimbing && (isOnGround || coyoteTime > Time.time))
 		{
 			//...check to see if crouching AND not blocked. If so...
 			//if (isCrouching && !isHeadBlocked)
