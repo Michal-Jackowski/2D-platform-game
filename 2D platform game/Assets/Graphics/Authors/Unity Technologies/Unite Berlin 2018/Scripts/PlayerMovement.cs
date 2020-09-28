@@ -47,6 +47,9 @@ public class PlayerMovement : MonoBehaviour
 	float originalXScale;					//Original scale on X axis
 	int direction = 1;						//Direction player is facing
 
+	float climbingHorizontalMove = 0.9f;	//Amount used for climbing x position
+	float climbingVerticalMove = 1.9f;		//Amount used for climbing y position
+
 	Vector2 colliderStandSize;				//Size of the standing collider
 	Vector2 colliderStandOffset;			//Offset of the standing collider
 	Vector2 colliderCrouchSize;				//Size of the crouching collider
@@ -187,16 +190,38 @@ public class PlayerMovement : MonoBehaviour
 				return;
 			}
 
-			//If jump is pressed...
-			if (input.jumpPressed)
+			//If jump is pressed and left or right button...
+			if (input.jumpPressed && input.horizontal != 0)
 			{
 				//...let go...
 				isHanging = false;
-				//isClimbing = true;
 				//...set the rigidbody to dynamic and apply a jump force...
 				rigidBody.bodyType = RigidbodyType2D.Dynamic;
 				rigidBody.AddForce(new Vector2(0f, hangingJumpForce), ForceMode2D.Impulse);
 				//...and exit
+				return;
+			}
+
+			//If jump is pressed...
+			if (input.jumpPressed)
+			{
+				isHanging = false;
+				
+				Vector3 pos = transform.position;
+				pos.y += climbingVerticalMove;
+
+				if(direction == 1)
+				{
+					pos.x += climbingHorizontalMove;
+				}
+				else
+				{
+					pos.x -= climbingHorizontalMove;
+				}
+
+				transform.position = pos;
+				rigidBody.bodyType = RigidbodyType2D.Dynamic;	
+				isClimbing = true;
 				return;
 			}
 		}

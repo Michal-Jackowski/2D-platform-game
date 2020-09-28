@@ -8,8 +8,7 @@ public class ChangeScene : MonoBehaviour
     public GameObject introMenuUI;
     public GameObject startMenuUI;
     
-    // Update is called once per frame
-    void Update()
+    void Start()
     {
         if (Input.anyKey)
         {

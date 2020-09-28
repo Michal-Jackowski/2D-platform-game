@@ -17,6 +17,7 @@ public class PlayerAnimations : MonoBehaviour
 	int crouchParamID;			//ID of the isCrouching parameter
 	int speedParamID;			//ID of the speed parameter
 	int fallParamID;			//ID of the verticalVelocity parameter
+	int climbingParamID;		//ID of the isClimbing parameter
 
 
 	void Start()
@@ -28,6 +29,7 @@ public class PlayerAnimations : MonoBehaviour
 		crouchParamID = Animator.StringToHash("isCrouching");
 		speedParamID = Animator.StringToHash("speed");
 		fallParamID = Animator.StringToHash("verticalVelocity");
+		climbingParamID = Animator.StringToHash("isClimbing");
 
 		//Grab a reference to this object's parent transform
 		Transform parent = transform.parent;
@@ -53,6 +55,7 @@ public class PlayerAnimations : MonoBehaviour
 		anim.SetBool(hangingParamID, movement.isHanging);
 		anim.SetBool(groundParamID, movement.isOnGround);
 		anim.SetBool(crouchParamID, movement.isCrouching);
+		anim.SetBool(climbingParamID, movement.isClimbing);
 		anim.SetFloat(fallParamID, rigidBody.velocity.y);
 
 		//Use the absolute value of speed so that we only pass in positive numbers
