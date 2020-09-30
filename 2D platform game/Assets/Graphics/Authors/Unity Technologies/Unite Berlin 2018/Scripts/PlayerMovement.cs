@@ -220,8 +220,8 @@ public class PlayerMovement : MonoBehaviour
 					pos.x -= climbingHorizontalMove;
 				}
 				
-				transform.position = pos;
-				rigidBody.bodyType = RigidbodyType2D.Dynamic;	
+				//transform.position = pos;
+				//rigidBody.bodyType = RigidbodyType2D.Dynamic;	
 			}
 		}
 
