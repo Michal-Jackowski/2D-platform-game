@@ -34,12 +34,14 @@ public class PlayerMovement : MonoBehaviour
 	public bool isHanging;					//Is player hanging?
 	public bool isCrouching;				//Is player crouching?
 	public bool isHeadBlocked;
-	public bool isClimbing;					//Is player climbing?
+	//public bool isClimbing;					//Is player climbing?
+
+	public bool isSliding;
 
 	PlayerInput input;						//The current inputs for the player
 	BoxCollider2D bodyCollider;				//The collider component
 	Rigidbody2D rigidBody;					//The rigidbody component
-	
+
 	float jumpTime;							//Variable to hold jump duration
 	float coyoteTime;						//Variable to hold coyote duration
 	float playerHeight;						//Height of the player
@@ -47,16 +49,12 @@ public class PlayerMovement : MonoBehaviour
 	float originalXScale;					//Original scale on X axis
 	int direction = 1;						//Direction player is facing
 
-	float climbingHorizontalMove = 0.9f;	//Amount used for climbing x position
-	float climbingVerticalMove = 1.9f;		//Amount used for climbing y position
-
 	Vector2 colliderStandSize;				//Size of the standing collider
 	Vector2 colliderStandOffset;			//Offset of the standing collider
 	Vector2 colliderCrouchSize;				//Size of the crouching collider
 	Vector2 colliderCrouchOffset;			//Offset of the crouching collider
 
 	const float smallAmount = .05f;			//A small amount used for hanging position
-
 
 	void Start ()
 	{
@@ -95,7 +93,7 @@ public class PlayerMovement : MonoBehaviour
 		//Start by assuming the player isn't on the ground and the head isn't blocked
 		isOnGround = false;
 		isHeadBlocked = false;
-		isClimbing = false;
+		//isSliding = false;
 
 		//Cast rays for the left and right foot
 		RaycastHit2D leftCheck = Raycast(new Vector2(-footOffset, 0f), Vector2.down, groundDistance);
@@ -142,9 +140,13 @@ public class PlayerMovement : MonoBehaviour
 
 	void GroundMovement()
 	{
-		//If currently hanging, the player can't move to exit
 		if (isHanging)
 			return;
+
+		if (isOnGround && !isCrouching && input.horizontal == 0.0f && rigidBody.velocity.y < 0)
+			Slide();
+		else if (!isOnGround || isCrouching || input.horizontal != 0.0f)
+			isSliding = false;
 
 		//Handle crouching input. If holding the crouch button but not crouching, crouch
 		if (input.crouchHeld && !isCrouching && isOnGround)
@@ -155,7 +157,7 @@ public class PlayerMovement : MonoBehaviour
 		//Otherwise, if crouching and no longer on the ground, stand up
 		else if (!isOnGround && isCrouching)
 			StandUp();
-
+		
 		//Calculate the desired velocity based on inputs
 		float xVelocity = speed * input.horizontal;
 
@@ -166,7 +168,7 @@ public class PlayerMovement : MonoBehaviour
 		//If the player is crouching, reduce the velocity
 		if (isCrouching)
 			xVelocity /= crouchSpeedDivisor;
-
+		
 		//Apply the desired velocity 
 		rigidBody.velocity = new Vector2(xVelocity, rigidBody.velocity.y);
 
@@ -191,7 +193,8 @@ public class PlayerMovement : MonoBehaviour
 			}
 
 			//If jump is pressed and left or right button...
-			if (input.jumpPressed && input.horizontal != 0)
+			//if (input.jumpPressed && input.horizontal != 0)
+			if (input.jumpPressed)
 			{
 				//...let go...
 				isHanging = false;
@@ -201,33 +204,11 @@ public class PlayerMovement : MonoBehaviour
 				//...and exit
 				return;
 			}
-
-			//If jump is pressed...
-			if (input.jumpPressed)
-			{
-				isClimbing = true;
-				isHanging = false;
-
-				Vector3 pos = transform.position;
-				pos.y += climbingVerticalMove;
-
-				if(direction == 1)
-				{
-					pos.x += climbingHorizontalMove;
-				}
-				else
-				{
-					pos.x -= climbingHorizontalMove;
-				}
-				
-				//transform.position = pos;
-				//rigidBody.bodyType = RigidbodyType2D.Dynamic;	
-			}
 		}
 
 		//If the jump key is pressed AND the player isn't already jumping AND EITHER
 		//the player is on the ground or within the coyote time window...
-		if (input.jumpPressed && !isJumping && !isCrouching && !isClimbing && (isOnGround || coyoteTime > Time.time))
+		if (input.jumpPressed && !isJumping && !isCrouching && (isOnGround || coyoteTime > Time.time))
 		{
 			//...check to see if crouching AND not blocked. If so...
 			//if (isCrouching && !isHeadBlocked)
@@ -306,6 +287,13 @@ public class PlayerMovement : MonoBehaviour
 		bodyCollider.offset = colliderStandOffset;
 	}
 
+	void Slide()
+	{
+		isSliding = true;
+
+		bodyCollider.size = colliderCrouchSize;
+		bodyCollider.offset = colliderCrouchOffset;
+	}
 
 	//These two Raycast methods wrap the Physics2D.Raycast() and provide some extra
 	//functionality
