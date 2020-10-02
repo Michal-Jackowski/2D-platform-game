@@ -34,9 +34,6 @@ public class PlayerMovement : MonoBehaviour
 	public bool isHanging;					//Is player hanging?
 	public bool isCrouching;				//Is player crouching?
 	public bool isHeadBlocked;
-	//public bool isClimbing;					//Is player climbing?
-
-	public bool isSliding;
 
 	PlayerInput input;						//The current inputs for the player
 	BoxCollider2D bodyCollider;				//The collider component
@@ -93,7 +90,6 @@ public class PlayerMovement : MonoBehaviour
 		//Start by assuming the player isn't on the ground and the head isn't blocked
 		isOnGround = false;
 		isHeadBlocked = false;
-		//isSliding = false;
 
 		//Cast rays for the left and right foot
 		RaycastHit2D leftCheck = Raycast(new Vector2(-footOffset, 0f), Vector2.down, groundDistance);
@@ -101,7 +97,9 @@ public class PlayerMovement : MonoBehaviour
 
 		//If either ray hit the ground, the player is on the ground
 		if (leftCheck || rightCheck)
+		{
 			isOnGround = true;
+		}
 
 		//Cast the ray to check above the player's head
 		RaycastHit2D headCheck = Raycast(new Vector2(0f, bodyCollider.size.y), Vector2.up, headClearance);
@@ -142,11 +140,6 @@ public class PlayerMovement : MonoBehaviour
 	{
 		if (isHanging)
 			return;
-
-		if (isOnGround && !isCrouching && input.horizontal == 0.0f && rigidBody.velocity.y < 0)
-			Slide();
-		else if (!isOnGround || isCrouching || input.horizontal != 0.0f)
-			isSliding = false;
 
 		//Handle crouching input. If holding the crouch button but not crouching, crouch
 		if (input.crouchHeld && !isCrouching && isOnGround)
@@ -193,7 +186,6 @@ public class PlayerMovement : MonoBehaviour
 			}
 
 			//If jump is pressed and left or right button...
-			//if (input.jumpPressed && input.horizontal != 0)
 			if (input.jumpPressed)
 			{
 				//...let go...
@@ -217,7 +209,6 @@ public class PlayerMovement : MonoBehaviour
 				//StandUp();
 				//rigidBody.AddForce(new Vector2(0f, crouchJumpBoost), ForceMode2D.Impulse);
 			//}
-
 			//...add the jump force to the rigidbody...
 			rigidBody.AddForce(new Vector2(0f, jumpForce*1.75f), ForceMode2D.Impulse);
 
@@ -285,14 +276,6 @@ public class PlayerMovement : MonoBehaviour
 		//Apply the standing collider size and offset
 		bodyCollider.size = colliderStandSize;
 		bodyCollider.offset = colliderStandOffset;
-	}
-
-	void Slide()
-	{
-		isSliding = true;
-
-		bodyCollider.size = colliderCrouchSize;
-		bodyCollider.offset = colliderCrouchOffset;
 	}
 
 	//These two Raycast methods wrap the Physics2D.Raycast() and provide some extra
