@@ -10,7 +10,7 @@ public class PlayerMovement : MonoBehaviour
 	public float speed = 8f;				//Player speed
 	public float crouchSpeedDivisor = 3f;	//Speed reduction when crouching
 	public float coyoteDuration = .05f;		//How long the player can jump after falling
-	public float maxFallSpeed = -25f;		//Max speed player can fall
+	public float maxFallSpeed = -30f;		//Max speed player can fall
 
 	[Header("Jump Properties")]
 	public float jumpForce = 6.3f;			//Initial force of jump
@@ -52,6 +52,7 @@ public class PlayerMovement : MonoBehaviour
 	Vector2 colliderCrouchOffset;			//Offset of the crouching collider
 
 	const float smallAmount = .05f;			//A small amount used for hanging position
+	bool isAlive = true;
 
 	void Start ()
 	{
@@ -87,6 +88,11 @@ public class PlayerMovement : MonoBehaviour
 
 	void PhysicsCheck()
 	{
+		Debug.Log(rigidBody.velocity.y);
+		if (rigidBody.velocity.y < -26)
+		{
+			isAlive = false;
+		}
 		//Start by assuming the player isn't on the ground and the head isn't blocked
 		isOnGround = false;
 		isHeadBlocked = false;
@@ -99,6 +105,18 @@ public class PlayerMovement : MonoBehaviour
 		if (leftCheck || rightCheck)
 		{
 			isOnGround = true;
+		}
+
+		if (isOnGround && !isAlive)
+		{
+			//Disable player game object
+			gameObject.SetActive(false);
+
+			//Tell the Game Manager that the player died and tell the Audio Manager to play
+			//the death audio
+			GameManager.PlayerDied();
+			AudioManager.PlayDeathAudio();
+			isAlive = true;
 		}
 
 		//Cast the ray to check above the player's head

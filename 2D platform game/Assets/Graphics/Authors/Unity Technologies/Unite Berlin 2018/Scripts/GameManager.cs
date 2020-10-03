@@ -127,8 +127,8 @@ public class GameManager : MonoBehaviour
 			return;
 
 		//Increment the number of player deaths and tell the UIManager
-		current.numberOfDeaths++;
-		UIManager.UpdateDeathUI(current.numberOfDeaths);
+		//current.numberOfDeaths++;
+		//UIManager.UpdateDeathUI(current.numberOfDeaths);
 
 		//If we have a scene fader, tell it to fade the scene out
 		if(current.sceneFader != null)
