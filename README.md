@@ -13,7 +13,7 @@ The 2D platform game is inspired by Limbo made by PlayDead.
   - Short
   
 ### Schedule
-- [ ] Build prototype
+- [x] Build prototype
 - [x] Build UI
 - [x] Collect all assets
 - [x] Correct game design document
