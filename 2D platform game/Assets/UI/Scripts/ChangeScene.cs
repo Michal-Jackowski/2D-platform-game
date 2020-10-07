@@ -5,16 +5,15 @@ using UnityEngine.SceneManagement;
 
 public class ChangeScene : MonoBehaviour
 {
-    public GameObject introMenuUI;
-    public GameObject startMenuUI;
+    public GameObject firstScene;
+    public GameObject secondScene;
     
-    void Start()
+    void Update()
     {
         if (Input.anyKey)
         {
-            //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-            startMenuUI.SetActive(true);
-            introMenuUI.SetActive(false);
+            firstScene.SetActive(true);
+            secondScene.SetActive(false);
         }
     }
 }

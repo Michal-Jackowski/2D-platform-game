@@ -267,6 +267,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CreditsMenu
       objectReference: {fileID: 0}
+    - target: {fileID: 2090130197319654808, guid: f8f0ad089ada090478551c3410447d50, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2090130197319654811, guid: f8f0ad089ada090478551c3410447d50, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -5219,7 +5223,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 224007094427124870, guid: 0d667d2dcffcc3f46ab368c8054e2e6f, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -25.3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224007094427124870, guid: 0d667d2dcffcc3f46ab368c8054e2e6f, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -5227,7 +5231,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 224007094427124870, guid: 0d667d2dcffcc3f46ab368c8054e2e6f, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 0.00012207031
       objectReference: {fileID: 0}
     - target: {fileID: 224007094427124870, guid: 0d667d2dcffcc3f46ab368c8054e2e6f, type: 3}
       propertyPath: m_SizeDelta.y
@@ -21874,6 +21878,10 @@ PrefabInstance:
     - target: {fileID: 4306185587716666507, guid: a36bad6e777035f4ab9b07288e0ab2e4, type: 3}
       propertyPath: m_Name
       value: ControlsMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 4306185587716666507, guid: a36bad6e777035f4ab9b07288e0ab2e4, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4306185588855923129, guid: a36bad6e777035f4ab9b07288e0ab2e4, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
