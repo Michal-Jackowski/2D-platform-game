@@ -107,10 +107,10 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 5153663444847962060}
+  - {fileID: 5153663446519289649}
   - {fileID: 3776986855479737364}
   - {fileID: 5153663446085790259}
   - {fileID: 5153663446374520394}
-  - {fileID: 5153663446519289649}
   - {fileID: 5153663445713974233}
   - {fileID: 5153663445453124365}
   - {fileID: 5153663445132990122}
@@ -233,7 +233,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5153663445208410357}
-  m_RootOrder: 4
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -569,7 +569,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5586694992730519785, guid: f66c80c0d9821094296508d1ee949497, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5586694992730519785, guid: f66c80c0d9821094296508d1ee949497, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1418,6 +1418,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: IntroMenu
       objectReference: {fileID: 0}
+    - target: {fileID: 8092403600953247772, guid: 686ad5172716737488242532ae7bdb65, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8092403600953247773, guid: 686ad5172716737488242532ae7bdb65, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1448,7 +1452,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8092403600953247773, guid: 686ad5172716737488242532ae7bdb65, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8092403600953247773, guid: 686ad5172716737488242532ae7bdb65, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1681,7 +1685,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1450052923968440648, guid: b0a8b88e75a863840b5264c272f5b416, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1450052923968440648, guid: b0a8b88e75a863840b5264c272f5b416, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1738,6 +1742,10 @@ PrefabInstance:
     - target: {fileID: 1450052923968440649, guid: b0a8b88e75a863840b5264c272f5b416, type: 3}
       propertyPath: m_Name
       value: SettingsMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 1450052923968440649, guid: b0a8b88e75a863840b5264c272f5b416, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1450052924096187144, guid: b0a8b88e75a863840b5264c272f5b416, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -1896,6 +1904,10 @@ PrefabInstance:
     - target: {fileID: 3594495161558776108, guid: a287110f8b4e9494c9a06b47a39d29f0, type: 3}
       propertyPath: m_Name
       value: GraphicMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 3594495161558776108, guid: a287110f8b4e9494c9a06b47a39d29f0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3594495161558776275, guid: a287110f8b4e9494c9a06b47a39d29f0, type: 3}
       propertyPath: m_LocalPosition.x
