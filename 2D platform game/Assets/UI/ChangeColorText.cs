@@ -9,6 +9,10 @@ public class ChangeColorText : MonoBehaviour
     //Menu scenes
     public GameObject settingMenu;
     public GameObject mainMenu;
+
+    //Menu firstSelectedObjects
+    public GameObject settingMenuFirstSelectedButton; 
+    public GameObject mainMenuFirstSelectedButton;
     
     //MainMenu buttons
     public TextMeshProUGUI PlayButtonText;
@@ -21,9 +25,12 @@ public class ChangeColorText : MonoBehaviour
     public TextMeshProUGUI GraphicButton;
     public TextMeshProUGUI SoundButton;
     public TextMeshProUGUI CreditsButton;
+
     GameObject currentSelected;
-    bool begin = false;
-    //EventSystem m_EventSystem;
+
+    bool settingMenuBegin = false;
+    bool mainMenuBegin = false;
+    bool firstSelectedGameObjectReady = false;
     
     // Update is called once per frame
     void Update()
@@ -31,28 +38,39 @@ public class ChangeColorText : MonoBehaviour
         //MainMenu
         if (mainMenu.activeSelf == true)
         {
-            currentSelected = EventSystem.current.currentSelectedGameObject;
-            //Debug.Log(currentSelected);
+            settingMenuBegin = false;
+
+            if (!mainMenuBegin)
+            {
+                ChangeFirstSelectedObject();
+                EventSystem.current.SetSelectedGameObject(EventSystem.current.GetComponent<EventSystem>().firstSelectedGameObject);
+                mainMenuBegin = true;
+                firstSelectedGameObjectReady = true;
+            }
+            else if (mainMenuBegin && firstSelectedGameObjectReady)
+            {
+                currentSelected = EventSystem.current.currentSelectedGameObject;
+            }
             
-            if(currentSelected.name == "PlayButton")
+            if(firstSelectedGameObjectReady && currentSelected.name == "PlayButton")
             {
                 PlayButtonText.color = new Color32(255, 255, 255, 255);
                 LoadChapterButtonText.color = new Color32(100, 100, 100, 255);
                 ExitButtonText.color = new Color32(100, 100, 100, 255);
             }
-            else if(currentSelected.name == "LoadChapterButton")
+            else if(firstSelectedGameObjectReady && currentSelected.name == "LoadChapterButton")
             {
                 LoadChapterButtonText.color = new Color32(255, 255, 255, 255);
                 PlayButtonText.color = new Color32(100, 100, 100, 255);
                 SettingsButtonText.color = new Color32(100, 100, 100, 255);
             }
-            else if(currentSelected.name == "SettingsButton")
+            else if(firstSelectedGameObjectReady && currentSelected.name == "SettingsButton")
             {
                 SettingsButtonText.color = new Color32(255, 255, 255, 255);
                 LoadChapterButtonText.color = new Color32(100, 100, 100, 255);
                 ExitButtonText.color = new Color32(100, 100, 100, 255);
             }
-            else if(currentSelected.name == "ExitButton")
+            else if(firstSelectedGameObjectReady && currentSelected.name == "ExitButton")
             {
                 ExitButtonText.color = new Color32(255, 255, 255, 255);
                 PlayButtonText.color = new Color32(100, 100, 100, 255);
@@ -66,16 +84,18 @@ public class ChangeColorText : MonoBehaviour
         //SettingsMenu
         else if (settingMenu.activeSelf == true)
         {
-            if (!begin)
+            mainMenuBegin = false;
+
+            if (!settingMenuBegin)
             {
+                ChangeFirstSelectedObject();
                 EventSystem.current.SetSelectedGameObject(EventSystem.current.GetComponent<EventSystem>().firstSelectedGameObject);
-                begin = true;
+                settingMenuBegin = true;
             }
             else
             {
                 currentSelected = EventSystem.current.currentSelectedGameObject;
             }
-            //Debug.Log(currentSelected);
             
             if(currentSelected.name == "ControlsButton")
             {
@@ -105,6 +125,18 @@ public class ChangeColorText : MonoBehaviour
             {
                 Debug.Log("Another state settingMenu");
             }
+        }
+    }
+
+    void ChangeFirstSelectedObject()
+    {
+        if (mainMenu.activeSelf == true)
+        {
+            EventSystem.current.GetComponent<EventSystem>().firstSelectedGameObject = mainMenuFirstSelectedButton;
+        }
+        else if (settingMenu.activeSelf == true)
+        {
+            EventSystem.current.GetComponent<EventSystem>().firstSelectedGameObject = settingMenuFirstSelectedButton;
         }
     }
 }
