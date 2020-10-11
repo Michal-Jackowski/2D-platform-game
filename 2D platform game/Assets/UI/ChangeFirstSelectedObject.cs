@@ -15,12 +15,10 @@ public class ChangeFirstSelectedObject : MonoBehaviour
     {
         if (mainMenu.activeSelf == true)
         {
-            //Debug.Log("FirstSelectedButton = playButton");
             EventSystem.current.GetComponent<EventSystem>().firstSelectedGameObject = mainMenuFirstSelectedButton;
         }
         else if (settingMenu.activeSelf == true)
         {
-            //Debug.Log("FirstSelectedButton = controlsButton");
             EventSystem.current.GetComponent<EventSystem>().firstSelectedGameObject = settingMenuFirstSelectedButton;
         }
     }

@@ -32,7 +32,6 @@ public class ChangeColorText : MonoBehaviour
     bool mainMenuBegin = false;
     bool firstSelectedGameObjectReady = false;
     
-    // Update is called once per frame
     void Update()
     {
         //MainMenu
