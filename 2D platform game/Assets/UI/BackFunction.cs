@@ -7,7 +7,6 @@ public class BackFunction : MonoBehaviour
     public GameObject mainMenu;
     public GameObject settingsMenu;
     
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
