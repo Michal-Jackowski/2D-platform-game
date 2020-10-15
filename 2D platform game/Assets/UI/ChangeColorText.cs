@@ -23,6 +23,13 @@ public class ChangeColorText : MonoBehaviour
     public GameObject SettingsButton;
     public GameObject ExitButton;
 
+
+    [Header("Setting Menu Buttons")]
+    public GameObject ControlsButton;
+    public GameObject GraphicButton;
+    public GameObject SoundButton;
+    public GameObject CreditsButton;
+
     
     [Header("Main Menu Buttons Text")]
     public TextMeshProUGUI PlayButtonText;
@@ -32,17 +39,19 @@ public class ChangeColorText : MonoBehaviour
 
     
     [Header("Settings Menu Buttons Text")]
-    public TextMeshProUGUI ControlsButton;
-    public TextMeshProUGUI GraphicButton;
-    public TextMeshProUGUI SoundButton;
-    public TextMeshProUGUI CreditsButton;
+    public TextMeshProUGUI ControlsButtonText;
+    public TextMeshProUGUI GraphicButtonText;
+    public TextMeshProUGUI SoundButtonText;
+    public TextMeshProUGUI CreditsButtonText;
 
 
     GameObject currentSelected;
+    GameObject settingMenuSelected;
 
 
     bool mainMenuBegin = false;
     bool settingMenuBegin = false;
+    bool backFromSettings = false;
 
 
     void Update()
@@ -51,12 +60,16 @@ public class ChangeColorText : MonoBehaviour
         {
             if (mainMenu.activeSelf == true)
             {
-/*                 if(settingMenuBegin)
+                if(settingMenuBegin)
                 {
-                    EventSystem.current.SetSelectedGameObject(EventSystem.current.GetComponent<EventSystem>().currentSelectedGameObject);
-                } */
+                    EventSystem.current.GetComponent<EventSystem>().firstSelectedGameObject = SettingsButton;
+                    EventSystem.current.SetSelectedGameObject(EventSystem.current.GetComponent<EventSystem>().firstSelectedGameObject);
+                    settingMenuBegin = false;
+                    backFromSettings = true;
+                    mainMenuBegin = true;
+                }
                 
-                if (!mainMenuBegin)
+                if (!mainMenuBegin && !backFromSettings)
                 {
                     ChangeAndSetFirstSelectedObject();
                     mainMenuBegin = true;
@@ -94,56 +107,58 @@ public class ChangeColorText : MonoBehaviour
                     SettingsButtonText.color = new Color32(100, 100, 100, 255);
                     ExitButtonText.color = new Color32(255, 255, 255, 255);
                 }
-                else
-                {
-                    Debug.Log("Another state mainMenu");
-                }
             }
             else if (settingMenu.activeSelf == true)
             {
+                if(backFromSettings)
+                {
+                    EventSystem.current.GetComponent<EventSystem>().firstSelectedGameObject = settingMenuSelected;
+                    EventSystem.current.SetSelectedGameObject(EventSystem.current.GetComponent<EventSystem>().firstSelectedGameObject);
+                    settingMenuBegin = true;
+                    backFromSettings = false;
+                }
+                
                 mainMenuBegin = false;
 
-                if (!settingMenuBegin)
+                if (!settingMenuBegin && !backFromSettings)
                 {
                     ChangeAndSetFirstSelectedObject();
                     settingMenuBegin = true;
                 }
-                else
+                else if (settingMenuBegin)
                 {
                     currentSelected = EventSystem.current.currentSelectedGameObject;
+                    settingMenuSelected = currentSelected;
+                    //Debug.Log("Stuck");
                 }
             
                 if(currentSelected.name == "ControlsButton")
                 {
-                    ControlsButton.color = new Color32(255, 255, 255, 255);
-                    GraphicButton.color = new Color32(100, 100, 100, 255);
-                    SoundButton.color = new Color32(100, 100, 100, 255);
-                    CreditsButton.color = new Color32(100, 100, 100, 255);
+                    ControlsButtonText.color = new Color32(255, 255, 255, 255);
+                    GraphicButtonText.color = new Color32(100, 100, 100, 255);
+                    SoundButtonText.color = new Color32(100, 100, 100, 255);
+                    CreditsButtonText.color = new Color32(100, 100, 100, 255);
                 }
                 else if(currentSelected.name == "GraphicButton")
                 {
-                    ControlsButton.color = new Color32(100, 100, 100, 255);
-                    GraphicButton.color = new Color32(255, 255, 255, 255);
-                    SoundButton.color = new Color32(100, 100, 100, 255);
-                    CreditsButton.color = new Color32(100, 100, 100, 255);
+                    ControlsButtonText.color = new Color32(100, 100, 100, 255);
+                    GraphicButtonText.color = new Color32(255, 255, 255, 255);
+                    SoundButtonText.color = new Color32(100, 100, 100, 255);
+                    CreditsButtonText.color = new Color32(100, 100, 100, 255);
                 }
                 else if(currentSelected.name == "SoundButton")
                 {
-                    ControlsButton.color = new Color32(100, 100, 100, 255);
-                    GraphicButton.color = new Color32(100, 100, 100, 255);
-                    SoundButton.color = new Color32(255, 255, 255, 255);
-                    CreditsButton.color = new Color32(100, 100, 100, 255);
+                    ControlsButtonText.color = new Color32(100, 100, 100, 255);
+                    GraphicButtonText.color = new Color32(100, 100, 100, 255);
+                    SoundButtonText.color = new Color32(255, 255, 255, 255);
+                    CreditsButtonText.color = new Color32(100, 100, 100, 255);
                 }
                 else if(currentSelected.name == "CreditsButton")
                 {
-                    ControlsButton.color = new Color32(100, 100, 100, 255);
-                    GraphicButton.color = new Color32(100, 100, 100, 255);
-                    SoundButton.color = new Color32(100, 100, 100, 255);
-                    CreditsButton.color = new Color32(255, 255, 255, 255);
-                }
-                else
-                {
-                    Debug.Log("Another state settingMenu");
+                    ControlsButtonText.color = new Color32(100, 100, 100, 255);
+                    GraphicButtonText.color = new Color32(100, 100, 100, 255);
+                    SoundButtonText.color = new Color32(100, 100, 100, 255);
+                    CreditsButtonText.color = new Color32(255, 255, 255, 255);
                 }
             }
         }
