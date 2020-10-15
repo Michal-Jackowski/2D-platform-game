@@ -12,11 +12,7 @@ public class ChangeColorText : MonoBehaviour
     public GameObject mainMenu;
     public GameObject graphicMenu;
     public GameObject soundMenu;
-    public GameObject loadChapterMenu0;
-    public GameObject loadChapterMenu1;
-    public GameObject loadChapterMenu2;
-    public GameObject loadChapterMenu3;
-    public GameObject loadChapterMenu4;
+    public GameObject loadChapterMenu;
     
 
 
@@ -25,11 +21,8 @@ public class ChangeColorText : MonoBehaviour
     public GameObject mainMenuFirstSelectedButton;
     public GameObject graphicMenuFirstSelectedButton;
     public GameObject soundMenuFirstSelectedButton;
-    public GameObject loadChapterMenu0FirstSelectedButton;
-    public GameObject loadChapterMenu1FirstSelectedButton;
-    public GameObject loadChapterMenu2FirstSelectedButton;
-    public GameObject loadChapterMenu3FirstSelectedButton;
-    public GameObject loadChapterMenu4FirstSelectedButton;
+    public GameObject loadChapterMenuFirstSelectedButton;
+
 
 
     [Header("Main Menu Buttons")]
@@ -58,6 +51,14 @@ public class ChangeColorText : MonoBehaviour
     public GameObject StingVolumeSlider;
     public GameObject VoiceVolumeSlider;
     public GameObject PlayerVolumeSlider;
+
+
+    [Header("Load Chapter Menu Images")]
+    public GameObject PrototypeLevelImage;
+    public GameObject LevelOneImage;
+    public GameObject LevelTwoImage;
+    public GameObject LevelThreeImage;
+    public GameObject LevelFourImage;
 
     
     [Header("Main Menu Buttons Text")]
@@ -307,7 +308,7 @@ public class ChangeColorText : MonoBehaviour
                     PlayerVolumeSliderText.color = new Color32(255, 255, 255, 255);
                 }
             }
-            else if (loadChapterMenu0.activeSelf == true || loadChapterMenu1.activeSelf == true || loadChapterMenu2.activeSelf == true || loadChapterMenu3.activeSelf == true || loadChapterMenu4.activeSelf == true)
+            else if (loadChapterMenu.activeSelf == true)
             {
                 if (!loadChapterMenuBegin)
                 {
@@ -321,53 +322,48 @@ public class ChangeColorText : MonoBehaviour
 
                 if(currentSelected.name == "PrototypeLevel" && loadChapterMenuBegin)
                 {
-                    loadChapterMenu0.SetActive(true);
-                    loadChapterMenu1.SetActive(false);
-                    loadChapterMenu2.SetActive(false);
-                    loadChapterMenu3.SetActive(false);
-                    loadChapterMenu4.SetActive(false);
-                    //loadChapterMenuBegin = false;
-                    Debug.Log("PrototypeLevel IF");
+                    PrototypeLevelImage.SetActive(true);
+                    LevelOneImage.SetActive(false);
+                    LevelTwoImage.SetActive(false);
+                    LevelThreeImage.SetActive(false);
+                    LevelFourImage.SetActive(false);
+                    //Debug.Log("PrototypeLevel IF");
                 }
                 if(currentSelected.name == "LevelOne" && loadChapterMenuBegin)
                 {
-                    loadChapterMenu1.SetActive(true);
-                    loadChapterMenu0.SetActive(false);
-                    loadChapterMenu2.SetActive(false);
-                    loadChapterMenu3.SetActive(false);
-                    loadChapterMenu4.SetActive(false);
-                    //loadChapterMenuBegin = false;
-                    Debug.Log("LevelOne IF");
+                    PrototypeLevelImage.SetActive(false);
+                    LevelOneImage.SetActive(true);
+                    LevelTwoImage.SetActive(false);
+                    LevelThreeImage.SetActive(false);
+                    LevelFourImage.SetActive(false);
+                    //Debug.Log("LevelOne IF");
                 }
                 if(currentSelected.name == "LevelTwo" && loadChapterMenuBegin)
                 {
-                    loadChapterMenu2.SetActive(true);
-                    loadChapterMenu0.SetActive(false);
-                    loadChapterMenu1.SetActive(false);
-                    loadChapterMenu3.SetActive(false);
-                    loadChapterMenu4.SetActive(false);
-                    //loadChapterMenuBegin = false;
-                    Debug.Log("LevelTwo IF");
+                    PrototypeLevelImage.SetActive(false);
+                    LevelOneImage.SetActive(false);
+                    LevelTwoImage.SetActive(true);
+                    LevelThreeImage.SetActive(false);
+                    LevelFourImage.SetActive(false);
+                    //Debug.Log("LevelTwo IF");
                 }
                 if(currentSelected.name == "LevelThree" && loadChapterMenuBegin)
                 {
-                    loadChapterMenu3.SetActive(true);
-                    loadChapterMenu0.SetActive(false);
-                    loadChapterMenu1.SetActive(false);
-                    loadChapterMenu2.SetActive(false);
-                    loadChapterMenu4.SetActive(false);
-                    //loadChapterMenuBegin = false;
-                    Debug.Log("LevelThree IF");
+                    PrototypeLevelImage.SetActive(false);
+                    LevelOneImage.SetActive(false);
+                    LevelTwoImage.SetActive(false);
+                    LevelThreeImage.SetActive(true);
+                    LevelFourImage.SetActive(false);
+                    //Debug.Log("LevelThree IF");
                 }
                 if(currentSelected.name == "LevelFour" && loadChapterMenuBegin)
                 {
-                    loadChapterMenu4.SetActive(true);
-                    loadChapterMenu0.SetActive(false);
-                    loadChapterMenu1.SetActive(false);
-                    loadChapterMenu2.SetActive(false);
-                    loadChapterMenu3.SetActive(false);
-                    //loadChapterMenuBegin = false;
-                    Debug.Log("LevelFour IF");
+                    PrototypeLevelImage.SetActive(false);
+                    LevelOneImage.SetActive(false);
+                    LevelTwoImage.SetActive(false);
+                    LevelThreeImage.SetActive(false);
+                    LevelFourImage.SetActive(true);
+                    //Debug.Log("LevelFour IF");
                 }
             }
         }
@@ -392,25 +388,9 @@ public class ChangeColorText : MonoBehaviour
         {
             EventSystem.current.GetComponent<EventSystem>().firstSelectedGameObject = soundMenuFirstSelectedButton;
         }
-        else if (loadChapterMenu0.activeSelf == true)
+        else if (loadChapterMenu.activeSelf == true)
         {
-            EventSystem.current.GetComponent<EventSystem>().firstSelectedGameObject = loadChapterMenu0FirstSelectedButton;
-        }
-        else if (loadChapterMenu1.activeSelf == true)
-        {
-            EventSystem.current.GetComponent<EventSystem>().firstSelectedGameObject = loadChapterMenu1FirstSelectedButton;
-        }
-        else if (loadChapterMenu2.activeSelf == true)
-        {
-            EventSystem.current.GetComponent<EventSystem>().firstSelectedGameObject = loadChapterMenu2FirstSelectedButton;
-        }
-        else if (loadChapterMenu3.activeSelf == true)
-        {
-            EventSystem.current.GetComponent<EventSystem>().firstSelectedGameObject = loadChapterMenu3FirstSelectedButton;
-        }
-        else if (loadChapterMenu4.activeSelf == true)
-        {
-            EventSystem.current.GetComponent<EventSystem>().firstSelectedGameObject = loadChapterMenu4FirstSelectedButton;
+            EventSystem.current.GetComponent<EventSystem>().firstSelectedGameObject = loadChapterMenuFirstSelectedButton;
         }
         EventSystem.current.SetSelectedGameObject(EventSystem.current.GetComponent<EventSystem>().firstSelectedGameObject);
     }
