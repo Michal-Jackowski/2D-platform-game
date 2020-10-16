@@ -20,6 +20,7 @@ public class ChangeScene : MonoBehaviour
             {
                 firstScene.SetActive(true);
                 secondScene.SetActive(false);
+                AudioManager.PlaySelectMenuNavigationAudio();
             }
         }
     }

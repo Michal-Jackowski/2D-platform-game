@@ -22,6 +22,13 @@ public class AudioManager : MonoBehaviour
 	public AudioClip winStingClip;		//The sting played when the player wins
 	public AudioClip orbStingClip;      //The sting played when an orb is collected
 	public AudioClip doorOpenStingClip; //The sting played when the door opens
+	
+
+	[Header("UI sounds")]
+	public AudioClip upDownNavigationClip; //The sting played when player use up_key or down_key in menu
+	public AudioClip selectNavigationClip; //The sting played when player use up_key or down_key in menu
+	public AudioClip leftRightNavigationClip;	//The sting played when player use left_key or right_key in menu
+	public AudioClip BackFromMenuNavigationClip;	//The sting played when player use esc_key in menu
 
 	[Header("Robbie Audio")]
     public AudioClip[] walkStepClips;	//The footstep sound effects
@@ -40,12 +47,14 @@ public class AudioManager : MonoBehaviour
 	public AudioMixerGroup stingGroup;  //The sting mixer group
 	public AudioMixerGroup playerGroup; //The player mixer group
 	public AudioMixerGroup voiceGroup;  //The voice mixer group
+	public AudioMixerGroup uiGroup;  //The voice mixer group
 
 	AudioSource ambientSource;			//Reference to the generated ambient Audio Source
     AudioSource musicSource;            //Reference to the generated music Audio Source
 	AudioSource stingSource;            //Reference to the generated sting Audio Source
 	AudioSource playerSource;           //Reference to the generated player Audio Source
 	AudioSource voiceSource;            //Reference to the generated voice Audio Source
+	AudioSource uiSource;				//Reference to the generated UI Audio Source
 
 
 	void Awake()
@@ -68,6 +77,7 @@ public class AudioManager : MonoBehaviour
         stingSource		= gameObject.AddComponent<AudioSource>() as AudioSource;
         playerSource	= gameObject.AddComponent<AudioSource>() as AudioSource;
         voiceSource		= gameObject.AddComponent<AudioSource>() as AudioSource;
+		uiSource		= gameObject.AddComponent<AudioSource>() as AudioSource;
 
 		//Assign each audio source to its respective mixer group so that it is
 		//routed and controlled by the audio mixer
@@ -76,6 +86,7 @@ public class AudioManager : MonoBehaviour
 		stingSource.outputAudioMixerGroup	= stingGroup;
 		playerSource.outputAudioMixerGroup	= playerGroup;
 		voiceSource.outputAudioMixerGroup	= voiceGroup;
+		uiSource.outputAudioMixerGroup	= uiGroup;
 
 		//Being playing the game audio
         StartLevelAudio();
@@ -216,4 +227,48 @@ public class AudioManager : MonoBehaviour
 		current.stingSource.clip = current.winStingClip;
         current.stingSource.Play();
     }
+
+	public static void PlayUpDownMenuNavigationAudio()
+	{
+		//If there is no current AudioManager, exit
+		if (current == null)
+			return;
+
+		//Set the door open sting clip and tell the source to play
+		current.uiSource.clip = current.upDownNavigationClip;
+		current.uiSource.Play();
+	}
+
+	public static void PlaySelectMenuNavigationAudio()
+	{
+		//If there is no current AudioManager, exit
+		if (current == null)
+			return;
+
+		//Set the door open sting clip and tell the source to play
+		current.uiSource.clip = current.selectNavigationClip;
+		current.uiSource.Play();
+	}
+
+	public static void PlayLeftRightMenuNavigationAudio()
+	{
+		//If there is no current AudioManager, exit
+		if (current == null)
+			return;
+
+		//Set the door open sting clip and tell the source to play
+		current.uiSource.clip = current.leftRightNavigationClip;
+		current.uiSource.Play();
+	}
+
+	public static void PlayBackFromMenuNavigationAudio()
+	{
+		//If there is no current AudioManager, exit
+		if (current == null)
+			return;
+
+		//Set the door open sting clip and tell the source to play
+		current.uiSource.clip = current.BackFromMenuNavigationClip;
+		current.uiSource.Play();
+	}
 }

@@ -29,6 +29,7 @@ public class BackFunction : MonoBehaviour
             {
                 mainMenu.SetActive(true);
                 settingsMenu.SetActive(false);
+                AudioManager.PlayBackFromMenuNavigationAudio();
             }
 
             //Settings Options
@@ -36,21 +37,25 @@ public class BackFunction : MonoBehaviour
             {
                 settingsMenu.SetActive(true);
                 controlsMenu.SetActive(false);
+                AudioManager.PlayBackFromMenuNavigationAudio();
             }
             if (graphicMenu.activeSelf == true)
             {
                 settingsMenu.SetActive(true);
                 graphicMenu.SetActive(false);
+                AudioManager.PlayBackFromMenuNavigationAudio();
             }
             if (soundMenu.activeSelf == true)
             {
                 settingsMenu.SetActive(true);
                 soundMenu.SetActive(false);
+                AudioManager.PlayBackFromMenuNavigationAudio();
             }
             if (creditsMenu.activeSelf == true)
             {
                 settingsMenu.SetActive(true);
                 creditsMenu.SetActive(false);
+                AudioManager.PlayBackFromMenuNavigationAudio();
             }
             
             //LoadChapterMenuScenes
@@ -58,6 +63,7 @@ public class BackFunction : MonoBehaviour
             {
                 mainMenu.SetActive(true);
                 loadChapterMenu.SetActive(false);
+                AudioManager.PlayBackFromMenuNavigationAudio();
             }
         }
     }

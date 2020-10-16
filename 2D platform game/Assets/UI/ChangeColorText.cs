@@ -102,12 +102,27 @@ public class ChangeColorText : MonoBehaviour
     bool soundMenuBegin = false;
     bool loadChapterMenuBegin = false;
 
-
+    
     bool backFromSettings = false;
     bool backFromGraphic = false;
     bool backFromLoadChapter = false;
     bool backFromSound = false;
 
+
+    bool maimMenuInitialNavigationPosition = true;
+    bool loadChapterMenuInitialNavigationPosition = true;
+
+    bool PB_PlayedOnce = false;
+    bool LCB_PlayedOnce = false;
+    bool SB_PlayedOnce = false;
+    bool EB_PlayedOnce = false;
+
+
+    bool PL_PlayedOnce = true;
+    bool LO_PlayedOnce = false;
+    bool LT_PlayedOnce = false;
+    bool LTH_PlayedOnce = false;
+    bool LF_PlayedOnce = false;
 
     void Update()
     {
@@ -150,6 +165,15 @@ public class ChangeColorText : MonoBehaviour
                     LoadChapterButtonText.color = new Color32(100, 100, 100, 255);
                     SettingsButtonText.color = new Color32(100, 100, 100, 255);
                     ExitButtonText.color = new Color32(100, 100, 100, 255);
+                    //Play only when you changed navigation in menu
+                    if(!maimMenuInitialNavigationPosition && !PB_PlayedOnce) 
+                    {
+                        AudioManager.PlayUpDownMenuNavigationAudio();
+                        PB_PlayedOnce = true;
+                    }
+                    LCB_PlayedOnce = false;
+                    SB_PlayedOnce = false;
+                    EB_PlayedOnce = false;
                 }
                 else if(currentSelected.name == "LoadChapterButton")
                 {
@@ -157,6 +181,17 @@ public class ChangeColorText : MonoBehaviour
                     LoadChapterButtonText.color = new Color32(255, 255, 255, 255);
                     SettingsButtonText.color = new Color32(100, 100, 100, 255);
                     ExitButtonText.color = new Color32(100, 100, 100, 255);
+                    //Navigation was changed
+                    maimMenuInitialNavigationPosition = false;
+                    //Play audio only once
+                    if(!LCB_PlayedOnce)
+                    {
+                        AudioManager.PlayUpDownMenuNavigationAudio();
+                        LCB_PlayedOnce = true;
+                    }
+                    PB_PlayedOnce = false;  
+                    SB_PlayedOnce = false;
+                    EB_PlayedOnce = false;
                 }
                 else if(currentSelected.name == "SettingsButton")
                 {
@@ -164,6 +199,16 @@ public class ChangeColorText : MonoBehaviour
                     LoadChapterButtonText.color = new Color32(100, 100, 100, 255);
                     SettingsButtonText.color = new Color32(255, 255, 255, 255);
                     ExitButtonText.color = new Color32(100, 100, 100, 255);
+                    //Navigation was changed
+                    maimMenuInitialNavigationPosition = false;
+                    if(!SB_PlayedOnce)
+                    {
+                        AudioManager.PlayUpDownMenuNavigationAudio();  
+                        SB_PlayedOnce = true;
+                    }
+                    PB_PlayedOnce = false;
+                    LCB_PlayedOnce = false;
+                    EB_PlayedOnce = false;  
                 }
                 else if(currentSelected.name == "ExitButton")
                 {
@@ -171,6 +216,16 @@ public class ChangeColorText : MonoBehaviour
                     LoadChapterButtonText.color = new Color32(100, 100, 100, 255);
                     SettingsButtonText.color = new Color32(100, 100, 100, 255);
                     ExitButtonText.color = new Color32(255, 255, 255, 255);
+                    //Navigation was changed
+                    maimMenuInitialNavigationPosition = false;
+                    if(!EB_PlayedOnce)
+                    {
+                        AudioManager.PlayUpDownMenuNavigationAudio();  
+                        EB_PlayedOnce = true;
+                    }
+                    PB_PlayedOnce = false;
+                    LCB_PlayedOnce = false;
+                    SB_PlayedOnce = false;
                 }
             }
             else if (settingMenu.activeSelf == true)
@@ -367,6 +422,18 @@ public class ChangeColorText : MonoBehaviour
                     LevelTwoImage.SetActive(false);
                     LevelThreeImage.SetActive(false);
                     LevelFourImage.SetActive(false);
+                    
+                    //Play audio only once
+                    if(!loadChapterMenuInitialNavigationPosition && !PL_PlayedOnce)
+                    {
+                        AudioManager.PlayLeftRightMenuNavigationAudio();
+                        PL_PlayedOnce = true;
+                    }
+
+                    LO_PlayedOnce = false;
+                    LT_PlayedOnce = false;
+                    LTH_PlayedOnce = false;
+                    LF_PlayedOnce = false;
                 }
                 if(currentSelected.name == "LevelOne" && loadChapterMenuBegin)
                 {
@@ -375,6 +442,20 @@ public class ChangeColorText : MonoBehaviour
                     LevelTwoImage.SetActive(false);
                     LevelThreeImage.SetActive(false);
                     LevelFourImage.SetActive(false);
+                    
+                    //Navigation was changed
+                    loadChapterMenuInitialNavigationPosition = false;
+
+                    if(!LO_PlayedOnce)
+                    {
+                        AudioManager.PlayLeftRightMenuNavigationAudio();
+                        LO_PlayedOnce = true;
+                    }
+
+                    PL_PlayedOnce = false;
+                    LT_PlayedOnce = false;
+                    LTH_PlayedOnce = false;
+                    LF_PlayedOnce = false;
                 }
                 if(currentSelected.name == "LevelTwo" && loadChapterMenuBegin)
                 {
@@ -383,6 +464,20 @@ public class ChangeColorText : MonoBehaviour
                     LevelTwoImage.SetActive(true);
                     LevelThreeImage.SetActive(false);
                     LevelFourImage.SetActive(false);
+                    
+                    //Navigation was changed
+                    loadChapterMenuInitialNavigationPosition = false;
+
+                    if(!LT_PlayedOnce)
+                    {
+                        AudioManager.PlayLeftRightMenuNavigationAudio();
+                        LT_PlayedOnce = true;
+                    }
+
+                    PL_PlayedOnce = false;
+                    LO_PlayedOnce = false;
+                    LTH_PlayedOnce = false;
+                    LF_PlayedOnce = false;
                 }
                 if(currentSelected.name == "LevelThree" && loadChapterMenuBegin)
                 {
@@ -391,6 +486,20 @@ public class ChangeColorText : MonoBehaviour
                     LevelTwoImage.SetActive(false);
                     LevelThreeImage.SetActive(true);
                     LevelFourImage.SetActive(false);
+                    
+                    //Navigation was changed
+                    loadChapterMenuInitialNavigationPosition = false;
+
+                    if(!LTH_PlayedOnce)
+                    {
+                        AudioManager.PlayLeftRightMenuNavigationAudio();
+                        LTH_PlayedOnce = true;
+                    }
+
+                    PL_PlayedOnce = false;
+                    LO_PlayedOnce = false;
+                    LT_PlayedOnce = false;
+                    LF_PlayedOnce = false;
                 }
                 if(currentSelected.name == "LevelFour" && loadChapterMenuBegin)
                 {
@@ -399,6 +508,20 @@ public class ChangeColorText : MonoBehaviour
                     LevelTwoImage.SetActive(false);
                     LevelThreeImage.SetActive(false);
                     LevelFourImage.SetActive(true);
+                    
+                    //Navigation was changed
+                    loadChapterMenuInitialNavigationPosition = false;
+
+                    if(!LF_PlayedOnce)
+                    {
+                        AudioManager.PlayLeftRightMenuNavigationAudio();
+                        LF_PlayedOnce = true;
+                    }
+
+                    PL_PlayedOnce = false;
+                    LO_PlayedOnce = false;
+                    LT_PlayedOnce = false;
+                    LTH_PlayedOnce = false;
                 }
             }
         }
