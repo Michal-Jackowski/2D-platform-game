@@ -12,8 +12,15 @@ public class ChangeScene : MonoBehaviour
     {
         if (Input.anyKey)
         {
-            firstScene.SetActive(true);
-            secondScene.SetActive(false);
+            if (Input.GetKey(KeyCode.Mouse0) || Input.GetKey(KeyCode.Mouse1))
+            {
+                return;
+            }
+            else
+            {
+                firstScene.SetActive(true);
+                secondScene.SetActive(false);
+            }
         }
     }
 }

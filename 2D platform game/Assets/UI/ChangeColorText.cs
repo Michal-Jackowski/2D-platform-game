@@ -92,6 +92,8 @@ public class ChangeColorText : MonoBehaviour
     GameObject currentSelected;
     GameObject settingMenuSelected;
     GameObject graphicMenuSelected;
+    GameObject loadChapterSelected;
+    GameObject soundMenuSelected;
 
 
     bool mainMenuBegin = false;
@@ -103,6 +105,9 @@ public class ChangeColorText : MonoBehaviour
 
     bool backFromSettings = false;
     bool backFromGraphic = false;
+    bool backFromLoadChapter = false;
+    bool backFromSound = false;
+
 
     void Update()
     {
@@ -112,10 +117,20 @@ public class ChangeColorText : MonoBehaviour
             {
                 if(settingMenuBegin)
                 {
-                    EventSystem.current.GetComponent<EventSystem>().firstSelectedGameObject = SettingsButton;
-                    EventSystem.current.SetSelectedGameObject(EventSystem.current.GetComponent<EventSystem>().firstSelectedGameObject);
+                    if(loadChapterMenuBegin)
+                    {
+                        EventSystem.current.GetComponent<EventSystem>().firstSelectedGameObject = LoadChapterButton;
+                        EventSystem.current.SetSelectedGameObject(EventSystem.current.GetComponent<EventSystem>().firstSelectedGameObject);
+                        backFromLoadChapter = true;
+                        loadChapterMenuBegin = false;
+                    }
+                    else
+                    {
+                        EventSystem.current.GetComponent<EventSystem>().firstSelectedGameObject = SettingsButton;
+                        EventSystem.current.SetSelectedGameObject(EventSystem.current.GetComponent<EventSystem>().firstSelectedGameObject);
+                        backFromSettings = true;
+                    }
                     settingMenuBegin = false;
-                    backFromSettings = true;
                     mainMenuBegin = true;
                 }
                 
@@ -169,6 +184,10 @@ public class ChangeColorText : MonoBehaviour
                     if(graphicMenuBegin)
                     {
                         backFromGraphic = true;
+                    }
+                    if(soundMenuBegin)
+                    {
+                        backFromSound = true;
                     }
                 }
 
@@ -233,7 +252,6 @@ public class ChangeColorText : MonoBehaviour
                 {
                     currentSelected = EventSystem.current.currentSelectedGameObject;
                     graphicMenuSelected = currentSelected;
-                    Debug.Log("TEST...");
                 }
             
                 if(currentSelected.name == "QualityDropdown")
@@ -257,6 +275,16 @@ public class ChangeColorText : MonoBehaviour
             }
             else if (soundMenu.activeSelf == true)
             {
+                if(backFromSound)
+                {
+                    EventSystem.current.GetComponent<EventSystem>().firstSelectedGameObject = soundMenuSelected;
+                    EventSystem.current.SetSelectedGameObject(EventSystem.current.GetComponent<EventSystem>().firstSelectedGameObject);
+                    backFromSound = false;
+                    soundMenuBegin = true;
+                }
+                
+                backFromSettings = true; //Reset Navigation For Setting Menu
+                
                 if (!soundMenuBegin)
                 {
                     ChangeAndSetFirstSelectedObject();
@@ -265,6 +293,7 @@ public class ChangeColorText : MonoBehaviour
                 else if (soundMenuBegin)
                 {
                     currentSelected = EventSystem.current.currentSelectedGameObject;
+                    soundMenuSelected = currentSelected;
                 }
                 
                 if(currentSelected.name == "MusicVolumeSlider")
@@ -310,6 +339,16 @@ public class ChangeColorText : MonoBehaviour
             }
             else if (loadChapterMenu.activeSelf == true)
             {
+                if(backFromLoadChapter)
+                {
+                    EventSystem.current.GetComponent<EventSystem>().firstSelectedGameObject = loadChapterSelected;
+                    EventSystem.current.SetSelectedGameObject(EventSystem.current.GetComponent<EventSystem>().firstSelectedGameObject);
+                    backFromLoadChapter = false;
+                    loadChapterMenuBegin = true;
+                }
+                
+                settingMenuBegin = true;
+
                 if (!loadChapterMenuBegin)
                 {
                     ChangeAndSetFirstSelectedObject();
@@ -318,6 +357,7 @@ public class ChangeColorText : MonoBehaviour
                 else if (loadChapterMenuBegin)
                 {
                     currentSelected = EventSystem.current.currentSelectedGameObject;
+                    loadChapterSelected = currentSelected;
                 }
 
                 if(currentSelected.name == "PrototypeLevel" && loadChapterMenuBegin)
@@ -327,7 +367,6 @@ public class ChangeColorText : MonoBehaviour
                     LevelTwoImage.SetActive(false);
                     LevelThreeImage.SetActive(false);
                     LevelFourImage.SetActive(false);
-                    //Debug.Log("PrototypeLevel IF");
                 }
                 if(currentSelected.name == "LevelOne" && loadChapterMenuBegin)
                 {
@@ -336,7 +375,6 @@ public class ChangeColorText : MonoBehaviour
                     LevelTwoImage.SetActive(false);
                     LevelThreeImage.SetActive(false);
                     LevelFourImage.SetActive(false);
-                    //Debug.Log("LevelOne IF");
                 }
                 if(currentSelected.name == "LevelTwo" && loadChapterMenuBegin)
                 {
@@ -345,7 +383,6 @@ public class ChangeColorText : MonoBehaviour
                     LevelTwoImage.SetActive(true);
                     LevelThreeImage.SetActive(false);
                     LevelFourImage.SetActive(false);
-                    //Debug.Log("LevelTwo IF");
                 }
                 if(currentSelected.name == "LevelThree" && loadChapterMenuBegin)
                 {
@@ -354,7 +391,6 @@ public class ChangeColorText : MonoBehaviour
                     LevelTwoImage.SetActive(false);
                     LevelThreeImage.SetActive(true);
                     LevelFourImage.SetActive(false);
-                    //Debug.Log("LevelThree IF");
                 }
                 if(currentSelected.name == "LevelFour" && loadChapterMenuBegin)
                 {
@@ -363,7 +399,6 @@ public class ChangeColorText : MonoBehaviour
                     LevelTwoImage.SetActive(false);
                     LevelThreeImage.SetActive(false);
                     LevelFourImage.SetActive(true);
-                    //Debug.Log("LevelFour IF");
                 }
             }
         }

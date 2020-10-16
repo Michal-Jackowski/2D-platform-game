@@ -17,11 +17,9 @@ public class BackFunction : MonoBehaviour
 
 
     [Header("Load Chapter Menu Scenes")]
-    public GameObject loadChapterMenu0;
-    public GameObject loadChapterMenu1;
-    public GameObject loadChapterMenu2;
-    public GameObject loadChapterMenu3;
-    public GameObject loadChapterMenu4;
+    public GameObject loadChapterMenu;
+
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -56,30 +54,10 @@ public class BackFunction : MonoBehaviour
             }
             
             //LoadChapterMenuScenes
-            if (loadChapterMenu0.activeSelf == true)
+            if (loadChapterMenu.activeSelf == true)
             {
                 mainMenu.SetActive(true);
-                loadChapterMenu0.SetActive(false);
-            }
-            if (loadChapterMenu1.activeSelf == true)
-            {
-                mainMenu.SetActive(true);
-                loadChapterMenu1.SetActive(false);
-            }
-            if (loadChapterMenu2.activeSelf == true)
-            {
-                mainMenu.SetActive(true);
-                loadChapterMenu2.SetActive(false);
-            }
-            if (loadChapterMenu3.activeSelf == true)
-            {
-                mainMenu.SetActive(true);
-                loadChapterMenu3.SetActive(false);
-            }
-            if (loadChapterMenu4.activeSelf == true)
-            {
-                mainMenu.SetActive(true);
-                loadChapterMenu4.SetActive(false);
+                loadChapterMenu.SetActive(false);
             }
         }
     }
