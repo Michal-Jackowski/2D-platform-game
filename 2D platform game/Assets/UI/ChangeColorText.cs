@@ -111,18 +111,27 @@ public class ChangeColorText : MonoBehaviour
 
     bool maimMenuInitialNavigationPosition = true;
     bool loadChapterMenuInitialNavigationPosition = true;
+    bool settingsMenuInitialNavigationPosition = true;
 
-    bool PB_PlayedOnce = false;
-    bool LCB_PlayedOnce = false;
-    bool SB_PlayedOnce = false;
-    bool EB_PlayedOnce = false;
+    //Main Menu
+    bool PlayButtonPlayedOnce = false;
+    bool LoadChapterButtonPlayedOnce = false;
+    bool SettingsButtonPlayedOnce = false;
+    bool ExitButtonPlayedOnce = false;
 
+    //Load Chapter Menu
+    bool PrototypeLevelPlayedOnce = true;
+    bool LevelOnePlayedOnce = false;
+    bool LevelTwoPlayedOnce = false;
+    bool LevelThreePlayedOnce = false;
+    bool LevelFourPlayedOnce = false;
 
-    bool PL_PlayedOnce = true;
-    bool LO_PlayedOnce = false;
-    bool LT_PlayedOnce = false;
-    bool LTH_PlayedOnce = false;
-    bool LF_PlayedOnce = false;
+    //Settings Menu
+    bool ControlsButtonPlayedOnce = false;
+    bool GraphicButtonPlayedOnce = false;
+    bool SoundButtonPlayedOnce = false;
+    bool CreditsButtonPlayedOnce = false;
+
 
     void Update()
     {
@@ -166,14 +175,14 @@ public class ChangeColorText : MonoBehaviour
                     SettingsButtonText.color = new Color32(100, 100, 100, 255);
                     ExitButtonText.color = new Color32(100, 100, 100, 255);
                     //Play only when you changed navigation in menu
-                    if(!maimMenuInitialNavigationPosition && !PB_PlayedOnce) 
+                    if(!maimMenuInitialNavigationPosition && !PlayButtonPlayedOnce) 
                     {
                         AudioManager.PlayUpDownMenuNavigationAudio();
-                        PB_PlayedOnce = true;
+                        PlayButtonPlayedOnce = true;
                     }
-                    LCB_PlayedOnce = false;
-                    SB_PlayedOnce = false;
-                    EB_PlayedOnce = false;
+                    LoadChapterButtonPlayedOnce = false;
+                    SoundButtonPlayedOnce = false;
+                    ExitButtonPlayedOnce = false;
                 }
                 else if(currentSelected.name == "LoadChapterButton")
                 {
@@ -184,14 +193,14 @@ public class ChangeColorText : MonoBehaviour
                     //Navigation was changed
                     maimMenuInitialNavigationPosition = false;
                     //Play audio only once
-                    if(!LCB_PlayedOnce)
+                    if(!LoadChapterButtonPlayedOnce)
                     {
                         AudioManager.PlayUpDownMenuNavigationAudio();
-                        LCB_PlayedOnce = true;
+                        LoadChapterButtonPlayedOnce = true;
                     }
-                    PB_PlayedOnce = false;  
-                    SB_PlayedOnce = false;
-                    EB_PlayedOnce = false;
+                    PlayButtonPlayedOnce = false;  
+                    SoundButtonPlayedOnce = false;
+                    ExitButtonPlayedOnce = false;
                 }
                 else if(currentSelected.name == "SettingsButton")
                 {
@@ -201,14 +210,14 @@ public class ChangeColorText : MonoBehaviour
                     ExitButtonText.color = new Color32(100, 100, 100, 255);
                     //Navigation was changed
                     maimMenuInitialNavigationPosition = false;
-                    if(!SB_PlayedOnce)
+                    if(!SoundButtonPlayedOnce)
                     {
                         AudioManager.PlayUpDownMenuNavigationAudio();  
-                        SB_PlayedOnce = true;
+                        SoundButtonPlayedOnce = true;
                     }
-                    PB_PlayedOnce = false;
-                    LCB_PlayedOnce = false;
-                    EB_PlayedOnce = false;  
+                    PlayButtonPlayedOnce = false;
+                    LoadChapterButtonPlayedOnce = false;
+                    ExitButtonPlayedOnce = false;  
                 }
                 else if(currentSelected.name == "ExitButton")
                 {
@@ -218,14 +227,14 @@ public class ChangeColorText : MonoBehaviour
                     ExitButtonText.color = new Color32(255, 255, 255, 255);
                     //Navigation was changed
                     maimMenuInitialNavigationPosition = false;
-                    if(!EB_PlayedOnce)
+                    if(!ExitButtonPlayedOnce)
                     {
                         AudioManager.PlayUpDownMenuNavigationAudio();  
-                        EB_PlayedOnce = true;
+                        ExitButtonPlayedOnce = true;
                     }
-                    PB_PlayedOnce = false;
-                    LCB_PlayedOnce = false;
-                    SB_PlayedOnce = false;
+                    PlayButtonPlayedOnce = false;
+                    LoadChapterButtonPlayedOnce = false;
+                    SoundButtonPlayedOnce = false;
                 }
             }
             else if (settingMenu.activeSelf == true)
@@ -263,6 +272,15 @@ public class ChangeColorText : MonoBehaviour
                     GraphicButtonText.color = new Color32(100, 100, 100, 255);
                     SoundButtonText.color = new Color32(100, 100, 100, 255);
                     CreditsButtonText.color = new Color32(100, 100, 100, 255);
+                    //Play only when you changed navigation in menu
+                    if(!settingsMenuInitialNavigationPosition && !ControlsButtonPlayedOnce) 
+                    {
+                        AudioManager.PlayUpDownMenuNavigationAudio();
+                        ControlsButtonPlayedOnce = true;
+                    }
+                    GraphicButtonPlayedOnce = false;
+                    SoundButtonPlayedOnce = false;
+                    CreditsButtonPlayedOnce = false;
                 }
                 else if(currentSelected.name == "GraphicButton")
                 {
@@ -270,6 +288,15 @@ public class ChangeColorText : MonoBehaviour
                     GraphicButtonText.color = new Color32(255, 255, 255, 255);
                     SoundButtonText.color = new Color32(100, 100, 100, 255);
                     CreditsButtonText.color = new Color32(100, 100, 100, 255);
+                    settingsMenuInitialNavigationPosition = false;
+                    if(!settingsMenuInitialNavigationPosition && !GraphicButtonPlayedOnce) 
+                    {
+                        AudioManager.PlayUpDownMenuNavigationAudio();
+                        GraphicButtonPlayedOnce = true;
+                    }
+                    ControlsButtonPlayedOnce = false;
+                    SoundButtonPlayedOnce = false;
+                    CreditsButtonPlayedOnce = false;
                 }
                 else if(currentSelected.name == "SoundButton")
                 {
@@ -277,6 +304,15 @@ public class ChangeColorText : MonoBehaviour
                     GraphicButtonText.color = new Color32(100, 100, 100, 255);
                     SoundButtonText.color = new Color32(255, 255, 255, 255);
                     CreditsButtonText.color = new Color32(100, 100, 100, 255);
+                    settingsMenuInitialNavigationPosition = false;
+                    if(!settingsMenuInitialNavigationPosition && !SoundButtonPlayedOnce) 
+                    {
+                        AudioManager.PlayUpDownMenuNavigationAudio();
+                        SoundButtonPlayedOnce = true;
+                    }
+                    ControlsButtonPlayedOnce = false;
+                    GraphicButtonPlayedOnce = false;
+                    CreditsButtonPlayedOnce = false;
                 }
                 else if(currentSelected.name == "CreditsButton")
                 {
@@ -284,6 +320,15 @@ public class ChangeColorText : MonoBehaviour
                     GraphicButtonText.color = new Color32(100, 100, 100, 255);
                     SoundButtonText.color = new Color32(100, 100, 100, 255);
                     CreditsButtonText.color = new Color32(255, 255, 255, 255);
+                    settingsMenuInitialNavigationPosition = false;
+                    if(!settingsMenuInitialNavigationPosition && !CreditsButtonPlayedOnce) 
+                    {
+                        AudioManager.PlayUpDownMenuNavigationAudio();
+                        CreditsButtonPlayedOnce = true;
+                    }
+                    ControlsButtonPlayedOnce = false;
+                    GraphicButtonPlayedOnce = false;
+                    SoundButtonPlayedOnce = false;
                 }
             }
             else if (graphicMenu.activeSelf == true)
@@ -424,16 +469,16 @@ public class ChangeColorText : MonoBehaviour
                     LevelFourImage.SetActive(false);
                     
                     //Play audio only once
-                    if(!loadChapterMenuInitialNavigationPosition && !PL_PlayedOnce)
+                    if(!loadChapterMenuInitialNavigationPosition && !PrototypeLevelPlayedOnce)
                     {
                         AudioManager.PlayLeftRightMenuNavigationAudio();
-                        PL_PlayedOnce = true;
+                        PrototypeLevelPlayedOnce = true;
                     }
 
-                    LO_PlayedOnce = false;
-                    LT_PlayedOnce = false;
-                    LTH_PlayedOnce = false;
-                    LF_PlayedOnce = false;
+                    LevelOnePlayedOnce = false;
+                    LevelTwoPlayedOnce = false;
+                    LevelThreePlayedOnce = false;
+                    LevelFourPlayedOnce = false;
                 }
                 if(currentSelected.name == "LevelOne" && loadChapterMenuBegin)
                 {
@@ -446,16 +491,16 @@ public class ChangeColorText : MonoBehaviour
                     //Navigation was changed
                     loadChapterMenuInitialNavigationPosition = false;
 
-                    if(!LO_PlayedOnce)
+                    if(!LevelOnePlayedOnce)
                     {
                         AudioManager.PlayLeftRightMenuNavigationAudio();
-                        LO_PlayedOnce = true;
+                        LevelOnePlayedOnce = true;
                     }
 
-                    PL_PlayedOnce = false;
-                    LT_PlayedOnce = false;
-                    LTH_PlayedOnce = false;
-                    LF_PlayedOnce = false;
+                    PrototypeLevelPlayedOnce = false;
+                    LevelTwoPlayedOnce = false;
+                    LevelThreePlayedOnce = false;
+                    LevelFourPlayedOnce = false;
                 }
                 if(currentSelected.name == "LevelTwo" && loadChapterMenuBegin)
                 {
@@ -468,16 +513,16 @@ public class ChangeColorText : MonoBehaviour
                     //Navigation was changed
                     loadChapterMenuInitialNavigationPosition = false;
 
-                    if(!LT_PlayedOnce)
+                    if(!LevelTwoPlayedOnce)
                     {
                         AudioManager.PlayLeftRightMenuNavigationAudio();
-                        LT_PlayedOnce = true;
+                        LevelTwoPlayedOnce = true;
                     }
 
-                    PL_PlayedOnce = false;
-                    LO_PlayedOnce = false;
-                    LTH_PlayedOnce = false;
-                    LF_PlayedOnce = false;
+                    PrototypeLevelPlayedOnce = false;
+                    LevelOnePlayedOnce = false;
+                    LevelThreePlayedOnce = false;
+                    LevelFourPlayedOnce = false;
                 }
                 if(currentSelected.name == "LevelThree" && loadChapterMenuBegin)
                 {
@@ -490,16 +535,16 @@ public class ChangeColorText : MonoBehaviour
                     //Navigation was changed
                     loadChapterMenuInitialNavigationPosition = false;
 
-                    if(!LTH_PlayedOnce)
+                    if(!LevelThreePlayedOnce)
                     {
                         AudioManager.PlayLeftRightMenuNavigationAudio();
-                        LTH_PlayedOnce = true;
+                        LevelThreePlayedOnce = true;
                     }
 
-                    PL_PlayedOnce = false;
-                    LO_PlayedOnce = false;
-                    LT_PlayedOnce = false;
-                    LF_PlayedOnce = false;
+                    PrototypeLevelPlayedOnce = false;
+                    LevelOnePlayedOnce = false;
+                    LevelTwoPlayedOnce = false;
+                    LevelFourPlayedOnce = false;
                 }
                 if(currentSelected.name == "LevelFour" && loadChapterMenuBegin)
                 {
@@ -512,16 +557,16 @@ public class ChangeColorText : MonoBehaviour
                     //Navigation was changed
                     loadChapterMenuInitialNavigationPosition = false;
 
-                    if(!LF_PlayedOnce)
+                    if(!LevelFourPlayedOnce)
                     {
                         AudioManager.PlayLeftRightMenuNavigationAudio();
-                        LF_PlayedOnce = true;
+                        LevelFourPlayedOnce = true;
                     }
 
-                    PL_PlayedOnce = false;
-                    LO_PlayedOnce = false;
-                    LT_PlayedOnce = false;
-                    LTH_PlayedOnce = false;
+                    PrototypeLevelPlayedOnce = false;
+                    LevelOnePlayedOnce = false;
+                    LevelTwoPlayedOnce = false;
+                    LevelThreePlayedOnce = false;
                 }
             }
         }
