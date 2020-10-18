@@ -157,6 +157,8 @@ public class MenuController : MonoBehaviour
     //Allow Select Sound
     bool allowSelectSound = true;
     bool backFromSelect = false;
+    bool graphicOptionsSelected = false;
+
 
     void Update()
     {
@@ -235,6 +237,7 @@ public class MenuController : MonoBehaviour
 
                     //Navigation was changed
                     maimMenuInitialNavigationPosition = false;
+                    //Play audio only once
                     if(!settingsButtonPlayedOnce)
                     {
                         AudioManager.PlayUpDownMenuNavigationAudio();  
@@ -251,6 +254,7 @@ public class MenuController : MonoBehaviour
 
                     //Navigation was changed
                     maimMenuInitialNavigationPosition = false;
+                    //Play audio only once
                     if(!exitButtonPlayedOnce)
                     {
                         AudioManager.PlayUpDownMenuNavigationAudio();  
@@ -363,6 +367,8 @@ public class MenuController : MonoBehaviour
             }
             else if (graphicMenu.activeSelf == true)
             {
+                graphicOptionsSelected = false;
+
                 if(!allowSelectSound)
                 {
                     AudioManager.PlaySelectMenuNavigationAudio();
@@ -393,6 +399,11 @@ public class MenuController : MonoBehaviour
             
                 if(currentSelected.name == "QualityDropdown")
                 {
+                    if(Input.GetKeyDown(KeyCode.Return) && !graphicOptionsSelected)
+                    {
+                        AudioManager.PlaySelectMenuNavigationAudio();
+                        graphicOptionsSelected = true;
+                    }
                     SetDefaultColor();
                     SetHightlightColor(qualityDropdownText);
 
@@ -407,6 +418,11 @@ public class MenuController : MonoBehaviour
                 }
                 else if(currentSelected.name == "ResolutionDropdown")
                 {
+                    if(Input.GetKeyDown(KeyCode.Return) && !graphicOptionsSelected)
+                    {
+                        AudioManager.PlaySelectMenuNavigationAudio();
+                        graphicOptionsSelected = true;
+                    }
                     SetDefaultColor();
                     SetHightlightColor(resolutionDropdownText);
 
@@ -421,6 +437,11 @@ public class MenuController : MonoBehaviour
                 }
                 else if(currentSelected.name == "FullScreenToggle")
                 {
+                    if(Input.GetKeyDown(KeyCode.Return) && !graphicOptionsSelected)
+                    {
+                        AudioManager.PlaySelectMenuNavigationAudio();
+                        graphicOptionsSelected = true;
+                    }
                     SetDefaultColor();
                     SetHightlightColor(fullScreenToggleText);
 
@@ -440,8 +461,8 @@ public class MenuController : MonoBehaviour
                 {
                     AudioManager.PlaySelectMenuNavigationAudio();
                     allowSelectSound = true;
+                    backFromSelect = true;
                 }
-                
                 if(backFromSound)
                 {
                     EventSystem.current.GetComponent<EventSystem>().firstSelectedGameObject = soundMenuSelected;
@@ -551,7 +572,6 @@ public class MenuController : MonoBehaviour
                     AudioManager.PlaySelectMenuNavigationAudio();
                     allowSelectSound = false;
                 }
-                
                 if(backFromLoadChapter)
                 {
                     EventSystem.current.GetComponent<EventSystem>().firstSelectedGameObject = loadChapterSelected;
@@ -559,7 +579,6 @@ public class MenuController : MonoBehaviour
                     backFromLoadChapter = false;
                     loadChapterMenuBegin = true;
                 }
-                
                 settingMenuBegin = true;
 
                 if (!loadChapterMenuBegin)
@@ -575,11 +594,8 @@ public class MenuController : MonoBehaviour
 
                 if(currentSelected.name == "PrototypeLevel" && loadChapterMenuBegin)
                 {
-                    prototypeLevelImage.SetActive(true);
-                    levelOneImage.SetActive(false);
-                    levelTwoImage.SetActive(false);
-                    levelThreeImage.SetActive(false);
-                    levelFourImage.SetActive(false);
+                    DisableAllImages();
+                    EnableImage(prototypeLevelImage);
                     
                     //Play audio only once
                     if(!loadChapterMenuInitialNavigationPosition && !prototypeLevelPlayedOnce)
@@ -587,7 +603,6 @@ public class MenuController : MonoBehaviour
                         AudioManager.PlayLeftRightMenuNavigationAudio();
                         prototypeLevelPlayedOnce = true;
                     }
-
                     levelOnePlayedOnce = false;
                     levelTwoPlayedOnce = false;
                     levelThreePlayedOnce = false;
@@ -595,11 +610,8 @@ public class MenuController : MonoBehaviour
                 }
                 if(currentSelected.name == "LevelOne" && loadChapterMenuBegin)
                 {
-                    prototypeLevelImage.SetActive(false);
-                    levelOneImage.SetActive(true);
-                    levelTwoImage.SetActive(false);
-                    levelThreeImage.SetActive(false);
-                    levelFourImage.SetActive(false);
+                    DisableAllImages();
+                    EnableImage(levelOneImage);
                     
                     //Navigation was changed
                     loadChapterMenuInitialNavigationPosition = false;
@@ -609,7 +621,6 @@ public class MenuController : MonoBehaviour
                         AudioManager.PlayLeftRightMenuNavigationAudio();
                         levelOnePlayedOnce = true;
                     }
-
                     prototypeLevelPlayedOnce = false;
                     levelTwoPlayedOnce = false;
                     levelThreePlayedOnce = false;
@@ -617,11 +628,8 @@ public class MenuController : MonoBehaviour
                 }
                 if(currentSelected.name == "LevelTwo" && loadChapterMenuBegin)
                 {
-                    prototypeLevelImage.SetActive(false);
-                    levelOneImage.SetActive(false);
-                    levelTwoImage.SetActive(true);
-                    levelThreeImage.SetActive(false);
-                    levelFourImage.SetActive(false);
+                    DisableAllImages();
+                    EnableImage(levelTwoImage);
                     
                     //Navigation was changed
                     loadChapterMenuInitialNavigationPosition = false;
@@ -631,7 +639,6 @@ public class MenuController : MonoBehaviour
                         AudioManager.PlayLeftRightMenuNavigationAudio();
                         levelTwoPlayedOnce = true;
                     }
-
                     prototypeLevelPlayedOnce = false;
                     levelOnePlayedOnce = false;
                     levelThreePlayedOnce = false;
@@ -639,11 +646,8 @@ public class MenuController : MonoBehaviour
                 }
                 if(currentSelected.name == "LevelThree" && loadChapterMenuBegin)
                 {
-                    prototypeLevelImage.SetActive(false);
-                    levelOneImage.SetActive(false);
-                    levelTwoImage.SetActive(false);
-                    levelThreeImage.SetActive(true);
-                    levelFourImage.SetActive(false);
+                    DisableAllImages();
+                    EnableImage(levelThreeImage);
                     
                     //Navigation was changed
                     loadChapterMenuInitialNavigationPosition = false;
@@ -653,7 +657,6 @@ public class MenuController : MonoBehaviour
                         AudioManager.PlayLeftRightMenuNavigationAudio();
                         levelThreePlayedOnce = true;
                     }
-
                     prototypeLevelPlayedOnce = false;
                     levelOnePlayedOnce = false;
                     levelTwoPlayedOnce = false;
@@ -661,11 +664,8 @@ public class MenuController : MonoBehaviour
                 }
                 if(currentSelected.name == "LevelFour" && loadChapterMenuBegin)
                 {
-                    prototypeLevelImage.SetActive(false);
-                    levelOneImage.SetActive(false);
-                    levelTwoImage.SetActive(false);
-                    levelThreeImage.SetActive(false);
-                    levelFourImage.SetActive(true);
+                    DisableAllImages();
+                    EnableImage(levelFourImage);
                     
                     //Navigation was changed
                     loadChapterMenuInitialNavigationPosition = false;
@@ -675,7 +675,6 @@ public class MenuController : MonoBehaviour
                         AudioManager.PlayLeftRightMenuNavigationAudio();
                         levelFourPlayedOnce = true;
                     }
-
                     prototypeLevelPlayedOnce = false;
                     levelOnePlayedOnce = false;
                     levelTwoPlayedOnce = false;
@@ -690,11 +689,9 @@ public class MenuController : MonoBehaviour
                     allowSelectSound = true;
                     backFromSelect = true;
                 }
-                
                 if (!loadChapterMenuBegin)
                 {
                     SetNewSelectedGameObject();
-                    loadChapterMenuBegin = true;
                 }
             }
             else if (creditsMenu.activeSelf)
@@ -705,11 +702,9 @@ public class MenuController : MonoBehaviour
                     allowSelectSound = true;
                     backFromSelect = true;
                 }
-                
                 if (!loadChapterMenuBegin)
                 {
                     SetNewSelectedGameObject();
-                    loadChapterMenuBegin = true;
                 }
             }
         }
@@ -737,6 +732,14 @@ public class MenuController : MonoBehaviour
         else if (loadChapterMenu.activeSelf)
         {
             EventSystem.current.GetComponent<EventSystem>().firstSelectedGameObject = loadChapterMenuFirstSelectedButton;
+        }
+        else if(controlsMenu.activeSelf)
+        {
+            EventSystem.current.GetComponent<EventSystem>().firstSelectedGameObject = controlsButton;
+        }
+        else if(creditsMenu.activeSelf)
+        {
+            EventSystem.current.GetComponent<EventSystem>().firstSelectedGameObject = creditsButton;
         }
         EventSystem.current.SetSelectedGameObject(EventSystem.current.GetComponent<EventSystem>().firstSelectedGameObject);
     }
@@ -776,5 +779,19 @@ public class MenuController : MonoBehaviour
     void SetHightlightColor(TextMeshProUGUI objectToHighlight)
     {
         objectToHighlight.color = new Color32(255, 255, 255, 255);
+    }
+
+    void DisableAllImages()
+    {
+        prototypeLevelImage.SetActive(false);
+        levelOneImage.SetActive(false);
+        levelTwoImage.SetActive(false);
+        levelThreeImage.SetActive(false);
+        levelFourImage.SetActive(false);
+    }
+
+    void EnableImage(GameObject image)
+    {
+        image.SetActive(true);
     }
 }
