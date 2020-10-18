@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using TMPro;
 using UnityEngine.EventSystems;
 using System;
@@ -13,12 +11,11 @@ public class MenuController : MonoBehaviour
     public GameObject graphicMenu;
     public GameObject soundMenu;
     public GameObject loadChapterMenu;
-    public GameObject ControlsMenu;
-    public GameObject CreditsMenu;
+    public GameObject controlsMenu;
+    public GameObject creditsMenu;
     
 
-
-    [Header("Menu FirstSelectedObjects")]
+    [Header("Menu First Selected Objects")]
     public GameObject settingMenuFirstSelectedButton; 
     public GameObject mainMenuFirstSelectedButton;
     public GameObject graphicMenuFirstSelectedButton;
@@ -26,71 +23,71 @@ public class MenuController : MonoBehaviour
     public GameObject loadChapterMenuFirstSelectedButton;
 
 
-
     [Header("Main Menu Buttons")]
-    public GameObject PlayButton;
-    public GameObject LoadChapterButton;
-    public GameObject SettingsButton;
-    public GameObject ExitButton;
+    public GameObject playButton;
+    public GameObject loadChapterButton;
+    public GameObject settingsButton;
+    public GameObject exitButton;
 
 
     [Header("Setting Menu Buttons")]
-    public GameObject ControlsButton;
-    public GameObject GraphicButton;
-    public GameObject SoundButton;
-    public GameObject CreditsButton;
+    public GameObject controlsButton;
+    public GameObject graphicButton;
+    public GameObject soundButton;
+    public GameObject creditsButton;
 
 
     [Header("Graphic Menu Objects")]
-    public GameObject QualityDropdown;
-    public GameObject ResolutionDropdown;
-    public GameObject FullScreenToggle;
+    public GameObject qualityDropdown;
+    public GameObject resolutionDropdown;
+    public GameObject fullScreenToggle;
 
 
     [Header("Sound Menu Objects")]
-    public GameObject MusicVolumeSlider;
-    public GameObject AmbientVolumeSlider;
-    public GameObject StingVolumeSlider;
-    public GameObject VoiceVolumeSlider;
-    public GameObject PlayerVolumeSlider;
+    public GameObject musicVolumeSlider;
+    public GameObject ambientVolumeSlider;
+    public GameObject stingVolumeSlider;
+    public GameObject voiceVolumeSlider;
+    public GameObject playerVolumeSlider;
 
 
     [Header("Load Chapter Menu Images")]
-    public GameObject PrototypeLevelImage;
-    public GameObject LevelOneImage;
-    public GameObject LevelTwoImage;
-    public GameObject LevelThreeImage;
-    public GameObject LevelFourImage;
+    public GameObject prototypeLevelImage;
+    public GameObject levelOneImage;
+    public GameObject levelTwoImage;
+    public GameObject levelThreeImage;
+    public GameObject levelFourImage;
 
     
     [Header("Main Menu Buttons Text")]
-    public TextMeshProUGUI PlayButtonText;
-    public TextMeshProUGUI LoadChapterButtonText;
-    public TextMeshProUGUI SettingsButtonText;
-    public TextMeshProUGUI ExitButtonText;
+    public TextMeshProUGUI playButtonText;
+    public TextMeshProUGUI loadChapterButtonText;
+    public TextMeshProUGUI settingsButtonText;
+    public TextMeshProUGUI exitButtonText;
 
     
     [Header("Settings Menu Buttons Text")]
-    public TextMeshProUGUI ControlsButtonText;
-    public TextMeshProUGUI GraphicButtonText;
-    public TextMeshProUGUI SoundButtonText;
-    public TextMeshProUGUI CreditsButtonText;
+    public TextMeshProUGUI controlsButtonText;
+    public TextMeshProUGUI graphicButtonText;
+    public TextMeshProUGUI soundButtonText;
+    public TextMeshProUGUI creditsButtonText;
 
 
-    [Header("Graphic Menu Object Text")]
-    public TextMeshProUGUI QualityDropdownText;
-    public TextMeshProUGUI ResolutionDropdownText;
-    public TextMeshProUGUI FullScreenToggleText;
+    [Header("Graphic Menu Objects Text")]
+    public TextMeshProUGUI qualityDropdownText;
+    public TextMeshProUGUI resolutionDropdownText;
+    public TextMeshProUGUI fullScreenToggleText;
 
 
-    [Header("Sound Menu Object Text")]
-    public TextMeshProUGUI MusicVolumeSliderText;
-    public TextMeshProUGUI AmbientVolumeSliderText;
-    public TextMeshProUGUI StingVolumeSliderText;
-    public TextMeshProUGUI VoiceVolumeSliderText;
-    public TextMeshProUGUI PlayerVolumeSliderText;
+    [Header("Sound Menu Objects Text")]
+    public TextMeshProUGUI musicVolumeSliderText;
+    public TextMeshProUGUI ambientVolumeSliderText;
+    public TextMeshProUGUI stingVolumeSliderText;
+    public TextMeshProUGUI voiceVolumeSliderText;
+    public TextMeshProUGUI playerVolumeSliderText;
 
-
+    
+    //Current Selected Object
     GameObject currentSelected;
     GameObject settingMenuSelected;
     GameObject graphicMenuSelected;
@@ -98,6 +95,7 @@ public class MenuController : MonoBehaviour
     GameObject soundMenuSelected;
 
 
+    //Checking If Menu Is On Start Position
     bool mainMenuBegin = false;
     bool settingMenuBegin = false;
     bool graphicMenuBegin = false;
@@ -105,51 +103,59 @@ public class MenuController : MonoBehaviour
     bool loadChapterMenuBegin = false;
 
     
+    //Checking If We Back From Menu
     bool backFromSettings = false;
     bool backFromGraphic = false;
     bool backFromLoadChapter = false;
     bool backFromSound = false;
 
-    //InitialNavigation For Menus
+
+    //Initial Navigation For Menu
     bool maimMenuInitialNavigationPosition = true;
     bool loadChapterMenuInitialNavigationPosition = true;
     bool settingsMenuInitialNavigationPosition = true;
     bool graphicMenuInitialNavigationPosition = true;
     bool soundMenuInitialNavigationPosition = true;
 
-    //Main Menu
-    bool PlayButtonPlayedOnce = false;
-    bool LoadChapterButtonPlayedOnce = false;
-    bool SettingsButtonPlayedOnce = false;
-    bool ExitButtonPlayedOnce = false;
 
-    //Load Chapter Menu
-    bool PrototypeLevelPlayedOnce = true;
-    bool LevelOnePlayedOnce = false;
-    bool LevelTwoPlayedOnce = false;
-    bool LevelThreePlayedOnce = false;
-    bool LevelFourPlayedOnce = false;
+    //Checking If We Played Sound Once In Main Menu
+    bool playButtonPlayedOnce = false;
+    bool loadChapterButtonPlayedOnce = false;
+    bool settingsButtonPlayedOnce = false;
+    bool exitButtonPlayedOnce = false;
 
-    //Settings Menu
-    bool ControlsButtonPlayedOnce = false;
-    bool GraphicButtonPlayedOnce = false;
-    bool SoundButtonPlayedOnce = false;
-    bool CreditsButtonPlayedOnce = false;
 
-    //Graphic Menu
-    bool QualityDropdownPlayedOnce = false;
-    bool ResolutionDropdownPlayedOnce = false;
-    bool FullScreenTogglePlayedOnce = false;
+    //Checking If We Played Sound Once In Load Chapter Menu
+    bool prototypeLevelPlayedOnce = true;
+    bool levelOnePlayedOnce = false;
+    bool levelTwoPlayedOnce = false;
+    bool levelThreePlayedOnce = false;
+    bool levelFourPlayedOnce = false;
 
-    //Sound Menu
-    bool MusicVolumeSliderPlayedOnce = false;
-    bool AmbientVolumeSliderPlayedOnce = false;
-    bool StingVolumeSliderPlayedOnce = false;
-    bool VoiceVolumeSliderPlayedOnce = false;
-    bool PlayerVolumeSliderPlayedOnce = false;
 
-    //Sound Allow
-    bool selectSoundAllow = true;
+    //Checking If We Played Sound Once In Settings Menu
+    bool controlsButtonPlayedOnce = false;
+    bool graphicButtonPlayedOnce = false;
+    bool soundButtonPlayedOnce = false;
+    bool creditsButtonPlayedOnce = false;
+
+
+    //Checking If We Played Sound Once In Graphic Menu
+    bool qualityDropdownPlayedOnce = false;
+    bool resolutionDropdownPlayedOnce = false;
+    bool fullScreenTogglePlayedOnce = false;
+
+
+    //Checking If We Played Sound Once In Sound Menu
+    bool musicVolumeSliderPlayedOnce = false;
+    bool ambientVolumeSliderPlayedOnce = false;
+    bool stingVolumeSliderPlayedOnce = false;
+    bool voiceVolumeSliderPlayedOnce = false;
+    bool playerVolumeSliderPlayedOnce = false;
+
+
+    //Allow Select Sound
+    bool allowSelectSound = true;
     bool backFromSelect = false;
 
     void Update()
@@ -158,20 +164,21 @@ public class MenuController : MonoBehaviour
         {
             if (mainMenu.activeSelf == true)
             {
-                selectSoundAllow = true;
+                allowSelectSound = true;
+                backFromSelect = false;
                 
                 if(settingMenuBegin)
                 {
                     if(loadChapterMenuBegin)
                     {
-                        EventSystem.current.GetComponent<EventSystem>().firstSelectedGameObject = LoadChapterButton;
+                        EventSystem.current.GetComponent<EventSystem>().firstSelectedGameObject = loadChapterButton;
                         EventSystem.current.SetSelectedGameObject(EventSystem.current.GetComponent<EventSystem>().firstSelectedGameObject);
                         backFromLoadChapter = true;
                         loadChapterMenuBegin = false;
                     }
                     else
                     {
-                        EventSystem.current.GetComponent<EventSystem>().firstSelectedGameObject = SettingsButton;
+                        EventSystem.current.GetComponent<EventSystem>().firstSelectedGameObject = settingsButton;
                         EventSystem.current.SetSelectedGameObject(EventSystem.current.GetComponent<EventSystem>().firstSelectedGameObject);
                         backFromSettings = true;
                     }
@@ -181,7 +188,7 @@ public class MenuController : MonoBehaviour
                 
                 if (!mainMenuBegin && !backFromSettings)
                 {
-                    ChangeAndSetFirstSelectedObject();
+                    SetNewSelectedGameObject();
                     mainMenuBegin = true;
                 }
                 else if (mainMenuBegin)
@@ -191,79 +198,79 @@ public class MenuController : MonoBehaviour
 
                 if(currentSelected.name == "PlayButton")
                 {
-                    PlayButtonText.color = new Color32(255, 255, 255, 255);
-                    LoadChapterButtonText.color = new Color32(100, 100, 100, 255);
-                    SettingsButtonText.color = new Color32(100, 100, 100, 255);
-                    ExitButtonText.color = new Color32(100, 100, 100, 255);
+                    SetDefaultColor();
+                    SetHightlightColor(playButtonText);
+                    
                     //Play only when you changed navigation in menu
-                    if(!maimMenuInitialNavigationPosition && !PlayButtonPlayedOnce) 
+                    if(!maimMenuInitialNavigationPosition && !playButtonPlayedOnce) 
                     {
                         AudioManager.PlayUpDownMenuNavigationAudio();
-                        PlayButtonPlayedOnce = true;
+                        playButtonPlayedOnce = true;
                     }
-                    LoadChapterButtonPlayedOnce = false;
-                    SettingsButtonPlayedOnce = false;
-                    ExitButtonPlayedOnce = false;
+                    loadChapterButtonPlayedOnce = false;
+                    settingsButtonPlayedOnce = false;
+                    exitButtonPlayedOnce = false;
                 }
                 else if(currentSelected.name == "LoadChapterButton")
                 {
-                    PlayButtonText.color = new Color32(100, 100, 100, 255);
-                    LoadChapterButtonText.color = new Color32(255, 255, 255, 255);
-                    SettingsButtonText.color = new Color32(100, 100, 100, 255);
-                    ExitButtonText.color = new Color32(100, 100, 100, 255);
+                    SetDefaultColor();
+                    SetHightlightColor(loadChapterButtonText);
+
                     //Navigation was changed
                     maimMenuInitialNavigationPosition = false;
                     //Play audio only once
-                    if(!LoadChapterButtonPlayedOnce)
+                    if(!loadChapterButtonPlayedOnce)
                     {
                         AudioManager.PlayUpDownMenuNavigationAudio();
-                        LoadChapterButtonPlayedOnce = true;
+                        loadChapterButtonPlayedOnce = true;
                     }
-                    PlayButtonPlayedOnce = false;  
-                    SettingsButtonPlayedOnce = false;
-                    ExitButtonPlayedOnce = false;
+                    playButtonPlayedOnce = false;  
+                    settingsButtonPlayedOnce = false;
+                    exitButtonPlayedOnce = false;
                 }
                 else if(currentSelected.name == "SettingsButton")
                 {
-                    PlayButtonText.color = new Color32(100, 100, 100, 255);
-                    LoadChapterButtonText.color = new Color32(100, 100, 100, 255);
-                    SettingsButtonText.color = new Color32(255, 255, 255, 255);
-                    ExitButtonText.color = new Color32(100, 100, 100, 255);
+                    SetDefaultColor();
+                    SetHightlightColor(settingsButtonText);
+
                     //Navigation was changed
                     maimMenuInitialNavigationPosition = false;
-                    if(!SettingsButtonPlayedOnce)
+                    if(!settingsButtonPlayedOnce)
                     {
                         AudioManager.PlayUpDownMenuNavigationAudio();  
-                        SettingsButtonPlayedOnce = true;
+                        settingsButtonPlayedOnce = true;
                     }
-                    PlayButtonPlayedOnce = false;
-                    LoadChapterButtonPlayedOnce = false;
-                    ExitButtonPlayedOnce = false;  
+                    playButtonPlayedOnce = false;
+                    loadChapterButtonPlayedOnce = false;
+                    exitButtonPlayedOnce = false;  
                 }
                 else if(currentSelected.name == "ExitButton")
                 {
-                    PlayButtonText.color = new Color32(100, 100, 100, 255);
-                    LoadChapterButtonText.color = new Color32(100, 100, 100, 255);
-                    SettingsButtonText.color = new Color32(100, 100, 100, 255);
-                    ExitButtonText.color = new Color32(255, 255, 255, 255);
+                    SetDefaultColor();
+                    SetHightlightColor(exitButtonText);
+
                     //Navigation was changed
                     maimMenuInitialNavigationPosition = false;
-                    if(!ExitButtonPlayedOnce)
+                    if(!exitButtonPlayedOnce)
                     {
                         AudioManager.PlayUpDownMenuNavigationAudio();  
-                        ExitButtonPlayedOnce = true;
+                        exitButtonPlayedOnce = true;
                     }
-                    PlayButtonPlayedOnce = false;
-                    LoadChapterButtonPlayedOnce = false;
-                    SettingsButtonPlayedOnce = false;
+                    playButtonPlayedOnce = false;
+                    loadChapterButtonPlayedOnce = false;
+                    settingsButtonPlayedOnce = false;
                 }
             }
             else if (settingMenu.activeSelf == true)
             {
-                if(selectSoundAllow && !backFromSelect)
+                if(allowSelectSound && !backFromSelect)
                 {
                     AudioManager.PlaySelectMenuNavigationAudio();
-                    selectSoundAllow = false;
+                    allowSelectSound = false;
+                }
+                else if(backFromSelect)
+                {
+                    allowSelectSound = false;
                 }
                 
                 if(backFromSettings)
@@ -284,7 +291,7 @@ public class MenuController : MonoBehaviour
 
                 if (!settingMenuBegin && !backFromSettings)
                 {
-                    ChangeAndSetFirstSelectedObject();
+                    SetNewSelectedGameObject();
                     settingMenuBegin = true;
                 }
                 else if (settingMenuBegin)
@@ -295,75 +302,71 @@ public class MenuController : MonoBehaviour
             
                 if(currentSelected.name == "ControlsButton")
                 {
-                    ControlsButtonText.color = new Color32(255, 255, 255, 255);
-                    GraphicButtonText.color = new Color32(100, 100, 100, 255);
-                    SoundButtonText.color = new Color32(100, 100, 100, 255);
-                    CreditsButtonText.color = new Color32(100, 100, 100, 255);
+                    SetDefaultColor();
+                    SetHightlightColor(controlsButtonText);
+
                     //Play only when you changed navigation in menu
-                    if(!settingsMenuInitialNavigationPosition && !ControlsButtonPlayedOnce) 
+                    if(!settingsMenuInitialNavigationPosition && !controlsButtonPlayedOnce) 
                     {
                         AudioManager.PlayUpDownMenuNavigationAudio();
-                        ControlsButtonPlayedOnce = true;
+                        controlsButtonPlayedOnce = true;
                     }
-                    GraphicButtonPlayedOnce = false;
-                    SoundButtonPlayedOnce = false;
-                    CreditsButtonPlayedOnce = false;
+                    graphicButtonPlayedOnce = false;
+                    soundButtonPlayedOnce = false;
+                    creditsButtonPlayedOnce = false;
                 }
                 else if(currentSelected.name == "GraphicButton")
                 {
-                    ControlsButtonText.color = new Color32(100, 100, 100, 255);
-                    GraphicButtonText.color = new Color32(255, 255, 255, 255);
-                    SoundButtonText.color = new Color32(100, 100, 100, 255);
-                    CreditsButtonText.color = new Color32(100, 100, 100, 255);
+                    SetDefaultColor();
+                    SetHightlightColor(graphicButtonText);
+
                     settingsMenuInitialNavigationPosition = false;
-                    if(!settingsMenuInitialNavigationPosition && !GraphicButtonPlayedOnce) 
+                    if(!settingsMenuInitialNavigationPosition && !graphicButtonPlayedOnce) 
                     {
                         AudioManager.PlayUpDownMenuNavigationAudio();
-                        GraphicButtonPlayedOnce = true;
+                        graphicButtonPlayedOnce = true;
                     }
-                    ControlsButtonPlayedOnce = false;
-                    SoundButtonPlayedOnce = false;
-                    CreditsButtonPlayedOnce = false;
+                    controlsButtonPlayedOnce = false;
+                    soundButtonPlayedOnce = false;
+                    creditsButtonPlayedOnce = false;
                 }
                 else if(currentSelected.name == "SoundButton")
                 {
-                    ControlsButtonText.color = new Color32(100, 100, 100, 255);
-                    GraphicButtonText.color = new Color32(100, 100, 100, 255);
-                    SoundButtonText.color = new Color32(255, 255, 255, 255);
-                    CreditsButtonText.color = new Color32(100, 100, 100, 255);
+                    SetDefaultColor();
+                    SetHightlightColor(soundButtonText);
+
                     settingsMenuInitialNavigationPosition = false;
-                    if(!settingsMenuInitialNavigationPosition && !SoundButtonPlayedOnce) 
+                    if(!settingsMenuInitialNavigationPosition && !soundButtonPlayedOnce) 
                     {
                         AudioManager.PlayUpDownMenuNavigationAudio();
-                        SoundButtonPlayedOnce = true;
+                        soundButtonPlayedOnce = true;
                     }
-                    ControlsButtonPlayedOnce = false;
-                    GraphicButtonPlayedOnce = false;
-                    CreditsButtonPlayedOnce = false;
+                    controlsButtonPlayedOnce = false;
+                    graphicButtonPlayedOnce = false;
+                    creditsButtonPlayedOnce = false;
                 }
                 else if(currentSelected.name == "CreditsButton")
                 {
-                    ControlsButtonText.color = new Color32(100, 100, 100, 255);
-                    GraphicButtonText.color = new Color32(100, 100, 100, 255);
-                    SoundButtonText.color = new Color32(100, 100, 100, 255);
-                    CreditsButtonText.color = new Color32(255, 255, 255, 255);
+                    SetDefaultColor();
+                    SetHightlightColor(creditsButtonText);
+
                     settingsMenuInitialNavigationPosition = false;
-                    if(!settingsMenuInitialNavigationPosition && !CreditsButtonPlayedOnce) 
+                    if(!settingsMenuInitialNavigationPosition && !creditsButtonPlayedOnce) 
                     {
                         AudioManager.PlayUpDownMenuNavigationAudio();
-                        CreditsButtonPlayedOnce = true;
+                        creditsButtonPlayedOnce = true;
                     }
-                    ControlsButtonPlayedOnce = false;
-                    GraphicButtonPlayedOnce = false;
-                    SoundButtonPlayedOnce = false;
+                    controlsButtonPlayedOnce = false;
+                    graphicButtonPlayedOnce = false;
+                    soundButtonPlayedOnce = false;
                 }
             }
             else if (graphicMenu.activeSelf == true)
             {
-                if(!selectSoundAllow)
+                if(!allowSelectSound)
                 {
                     AudioManager.PlaySelectMenuNavigationAudio();
-                    selectSoundAllow = true;
+                    allowSelectSound = true;
                     backFromSelect = true;
                 }
                 
@@ -379,7 +382,7 @@ public class MenuController : MonoBehaviour
                 
                 if (!graphicMenuBegin)
                 {
-                    ChangeAndSetFirstSelectedObject();
+                    SetNewSelectedGameObject();
                     graphicMenuBegin = true;
                 }
                 else if (graphicMenuBegin)
@@ -390,53 +393,53 @@ public class MenuController : MonoBehaviour
             
                 if(currentSelected.name == "QualityDropdown")
                 {
-                    QualityDropdownText.color = new Color32(255, 255, 255, 255);
-                    ResolutionDropdownText.color = new Color32(100, 100, 100, 255);
-                    FullScreenToggleText.color = new Color32(100, 100, 100, 255);
+                    SetDefaultColor();
+                    SetHightlightColor(qualityDropdownText);
+
                     //Play only when you changed navigation in menu
-                    if(!graphicMenuInitialNavigationPosition && !QualityDropdownPlayedOnce) 
+                    if(!graphicMenuInitialNavigationPosition && !qualityDropdownPlayedOnce) 
                     {
                         AudioManager.PlayUpDownMenuNavigationAudio();
-                        QualityDropdownPlayedOnce = true;
+                        qualityDropdownPlayedOnce = true;
                     }
-                    ResolutionDropdownPlayedOnce = false;
-                    FullScreenTogglePlayedOnce = false;
+                    resolutionDropdownPlayedOnce = false;
+                    fullScreenTogglePlayedOnce = false;
                 }
                 else if(currentSelected.name == "ResolutionDropdown")
                 {
-                    QualityDropdownText.color = new Color32(100, 100, 100, 255);
-                    ResolutionDropdownText.color = new Color32(255, 255, 255, 255);
-                    FullScreenToggleText.color = new Color32(100, 100, 100, 255);
+                    SetDefaultColor();
+                    SetHightlightColor(resolutionDropdownText);
+
                     graphicMenuInitialNavigationPosition = false;
-                    if(!graphicMenuInitialNavigationPosition && !ResolutionDropdownPlayedOnce) 
+                    if(!graphicMenuInitialNavigationPosition && !resolutionDropdownPlayedOnce) 
                     {
                         AudioManager.PlayUpDownMenuNavigationAudio();
-                        ResolutionDropdownPlayedOnce = true;
+                        resolutionDropdownPlayedOnce = true;
                     }
-                    QualityDropdownPlayedOnce = false;
-                    FullScreenTogglePlayedOnce = false;
+                    qualityDropdownPlayedOnce = false;
+                    fullScreenTogglePlayedOnce = false;
                 }
                 else if(currentSelected.name == "FullScreenToggle")
                 {
-                    QualityDropdownText.color = new Color32(100, 100, 100, 255);
-                    ResolutionDropdownText.color = new Color32(100, 100, 100, 255);
-                    FullScreenToggleText.color = new Color32(255, 255, 255, 255);
+                    SetDefaultColor();
+                    SetHightlightColor(fullScreenToggleText);
+
                     graphicMenuInitialNavigationPosition = false;
-                    if(!graphicMenuInitialNavigationPosition && !FullScreenTogglePlayedOnce) 
+                    if(!graphicMenuInitialNavigationPosition && !fullScreenTogglePlayedOnce) 
                     {
                         AudioManager.PlayUpDownMenuNavigationAudio();
-                        FullScreenTogglePlayedOnce = true;
+                        fullScreenTogglePlayedOnce = true;
                     }
-                    QualityDropdownPlayedOnce = false;
-                    ResolutionDropdownPlayedOnce = false;
+                    qualityDropdownPlayedOnce = false;
+                    resolutionDropdownPlayedOnce = false;
                 }
             }
             else if (soundMenu.activeSelf == true)
             {
-                if(!selectSoundAllow)
+                if(!allowSelectSound)
                 {
                     AudioManager.PlaySelectMenuNavigationAudio();
-                    selectSoundAllow = true;
+                    allowSelectSound = true;
                 }
                 
                 if(backFromSound)
@@ -451,7 +454,7 @@ public class MenuController : MonoBehaviour
                 
                 if (!soundMenuBegin)
                 {
-                    ChangeAndSetFirstSelectedObject();
+                    SetNewSelectedGameObject();
                     soundMenuBegin = true;
                 }
                 else if (soundMenuBegin)
@@ -462,101 +465,91 @@ public class MenuController : MonoBehaviour
                 
                 if(currentSelected.name == "MusicVolumeSlider")
                 {
-                    MusicVolumeSliderText.color = new Color32(255, 255, 255, 255);
-                    AmbientVolumeSliderText.color = new Color32(100, 100, 100, 255);
-                    StingVolumeSliderText.color = new Color32(100, 100, 100, 255);
-                    VoiceVolumeSliderText.color = new Color32(100, 100, 100, 255);
-                    PlayerVolumeSliderText.color = new Color32(100, 100, 100, 255);
+                    SetDefaultColor();
+                    SetHightlightColor(musicVolumeSliderText);
+
                     //Play only when you changed navigation in menu
-                    if(!soundMenuInitialNavigationPosition && !MusicVolumeSliderPlayedOnce) 
+                    if(!soundMenuInitialNavigationPosition && !musicVolumeSliderPlayedOnce) 
                     {
                         AudioManager.PlayUpDownMenuNavigationAudio();
-                        MusicVolumeSliderPlayedOnce = true;
+                        musicVolumeSliderPlayedOnce = true;
                     }
-                    AmbientVolumeSliderPlayedOnce = false;
-                    StingVolumeSliderPlayedOnce = false;
-                    VoiceVolumeSliderPlayedOnce = false;
-                    PlayerVolumeSliderPlayedOnce = false;
+                    ambientVolumeSliderPlayedOnce = false;
+                    stingVolumeSliderPlayedOnce = false;
+                    voiceVolumeSliderPlayedOnce = false;
+                    playerVolumeSliderPlayedOnce = false;
                 }
                 else if(currentSelected.name == "AmbientVolumeSlider")
                 {
-                    MusicVolumeSliderText.color = new Color32(100, 100, 100, 255);
-                    AmbientVolumeSliderText.color = new Color32(255, 255, 255, 255);
-                    StingVolumeSliderText.color = new Color32(100, 100, 100, 255);
-                    VoiceVolumeSliderText.color = new Color32(100, 100, 100, 255);
-                    PlayerVolumeSliderText.color = new Color32(100, 100, 100, 255);
+                    SetDefaultColor();
+                    SetHightlightColor(ambientVolumeSliderText);
+
                     soundMenuInitialNavigationPosition = false;
-                    if(!soundMenuInitialNavigationPosition && !AmbientVolumeSliderPlayedOnce) 
+                    if(!soundMenuInitialNavigationPosition && !ambientVolumeSliderPlayedOnce) 
                     {
                         AudioManager.PlayUpDownMenuNavigationAudio();
-                        AmbientVolumeSliderPlayedOnce = true;
+                        ambientVolumeSliderPlayedOnce = true;
                     }
-                    MusicVolumeSliderPlayedOnce = false;
-                    StingVolumeSliderPlayedOnce = false;
-                    VoiceVolumeSliderPlayedOnce = false;
-                    PlayerVolumeSliderPlayedOnce = false;
+                    musicVolumeSliderPlayedOnce = false;
+                    stingVolumeSliderPlayedOnce = false;
+                    voiceVolumeSliderPlayedOnce = false;
+                    playerVolumeSliderPlayedOnce = false;
                 }
                 else if(currentSelected.name == "StingVolumeSlider")
                 {
-                    MusicVolumeSliderText.color = new Color32(100, 100, 100, 255);
-                    AmbientVolumeSliderText.color = new Color32(100, 100, 100, 255);
-                    StingVolumeSliderText.color = new Color32(255, 255, 255, 255);
-                    VoiceVolumeSliderText.color = new Color32(100, 100, 100, 255);
-                    PlayerVolumeSliderText.color = new Color32(100, 100, 100, 255);
+                    SetDefaultColor();
+                    SetHightlightColor(stingVolumeSliderText);
+
                     soundMenuInitialNavigationPosition = false;
-                    if(!soundMenuInitialNavigationPosition && !StingVolumeSliderPlayedOnce) 
+                    if(!soundMenuInitialNavigationPosition && !stingVolumeSliderPlayedOnce) 
                     {
                         AudioManager.PlayUpDownMenuNavigationAudio();
-                        StingVolumeSliderPlayedOnce = true;
+                        stingVolumeSliderPlayedOnce = true;
                     }
-                    MusicVolumeSliderPlayedOnce = false;
-                    AmbientVolumeSliderPlayedOnce = false;
-                    VoiceVolumeSliderPlayedOnce = false;
-                    PlayerVolumeSliderPlayedOnce = false;
+                    musicVolumeSliderPlayedOnce = false;
+                    ambientVolumeSliderPlayedOnce = false;
+                    voiceVolumeSliderPlayedOnce = false;
+                    playerVolumeSliderPlayedOnce = false;
                 }
                 else if(currentSelected.name == "VoiceVolumeSlider")
                 {
-                    MusicVolumeSliderText.color = new Color32(100, 100, 100, 255);
-                    AmbientVolumeSliderText.color = new Color32(100, 100, 100, 255);
-                    StingVolumeSliderText.color = new Color32(100, 100, 100, 255);
-                    VoiceVolumeSliderText.color = new Color32(255, 255, 255, 255);
-                    PlayerVolumeSliderText.color = new Color32(100, 100, 100, 255);
+                    SetDefaultColor();
+                    SetHightlightColor(voiceVolumeSliderText);
+
                     soundMenuInitialNavigationPosition = false;
-                    if(!soundMenuInitialNavigationPosition && !VoiceVolumeSliderPlayedOnce) 
+                    if(!soundMenuInitialNavigationPosition && !voiceVolumeSliderPlayedOnce) 
                     {
                         AudioManager.PlayUpDownMenuNavigationAudio();
-                        VoiceVolumeSliderPlayedOnce = true;
+                        voiceVolumeSliderPlayedOnce = true;
                     }
-                    MusicVolumeSliderPlayedOnce = false;
-                    AmbientVolumeSliderPlayedOnce = false;
-                    StingVolumeSliderPlayedOnce = false;
-                    PlayerVolumeSliderPlayedOnce = false;
+                    musicVolumeSliderPlayedOnce = false;
+                    ambientVolumeSliderPlayedOnce = false;
+                    stingVolumeSliderPlayedOnce = false;
+                    playerVolumeSliderPlayedOnce = false;
                 }
                 else if(currentSelected.name == "PlayerVolumeSlider")
                 {
-                    MusicVolumeSliderText.color = new Color32(100, 100, 100, 255);
-                    AmbientVolumeSliderText.color = new Color32(100, 100, 100, 255);
-                    StingVolumeSliderText.color = new Color32(100, 100, 100, 255);
-                    VoiceVolumeSliderText.color = new Color32(100, 100, 100, 255);
-                    PlayerVolumeSliderText.color = new Color32(255, 255, 255, 255);
+                    SetDefaultColor();
+                    SetHightlightColor(playerVolumeSliderText);
+
                     soundMenuInitialNavigationPosition = false;
-                    if(!soundMenuInitialNavigationPosition && !PlayerVolumeSliderPlayedOnce) 
+                    if(!soundMenuInitialNavigationPosition && !playerVolumeSliderPlayedOnce) 
                     {
                         AudioManager.PlayUpDownMenuNavigationAudio();
-                        PlayerVolumeSliderPlayedOnce = true;
+                        playerVolumeSliderPlayedOnce = true;
                     }
-                    MusicVolumeSliderPlayedOnce = false;
-                    AmbientVolumeSliderPlayedOnce = false;
-                    StingVolumeSliderPlayedOnce = false;
-                    VoiceVolumeSliderPlayedOnce = false;
+                    musicVolumeSliderPlayedOnce = false;
+                    ambientVolumeSliderPlayedOnce = false;
+                    stingVolumeSliderPlayedOnce = false;
+                    voiceVolumeSliderPlayedOnce = false;
                 }
             }
             else if (loadChapterMenu.activeSelf == true)
             {
-                if(selectSoundAllow)
+                if(allowSelectSound)
                 {
                     AudioManager.PlaySelectMenuNavigationAudio();
-                    selectSoundAllow = false;
+                    allowSelectSound = false;
                 }
                 
                 if(backFromLoadChapter)
@@ -571,7 +564,7 @@ public class MenuController : MonoBehaviour
 
                 if (!loadChapterMenuBegin)
                 {
-                    ChangeAndSetFirstSelectedObject();
+                    SetNewSelectedGameObject();
                     loadChapterMenuBegin = true;
                 }
                 else if (loadChapterMenuBegin)
@@ -582,126 +575,140 @@ public class MenuController : MonoBehaviour
 
                 if(currentSelected.name == "PrototypeLevel" && loadChapterMenuBegin)
                 {
-                    PrototypeLevelImage.SetActive(true);
-                    LevelOneImage.SetActive(false);
-                    LevelTwoImage.SetActive(false);
-                    LevelThreeImage.SetActive(false);
-                    LevelFourImage.SetActive(false);
+                    prototypeLevelImage.SetActive(true);
+                    levelOneImage.SetActive(false);
+                    levelTwoImage.SetActive(false);
+                    levelThreeImage.SetActive(false);
+                    levelFourImage.SetActive(false);
                     
                     //Play audio only once
-                    if(!loadChapterMenuInitialNavigationPosition && !PrototypeLevelPlayedOnce)
+                    if(!loadChapterMenuInitialNavigationPosition && !prototypeLevelPlayedOnce)
                     {
                         AudioManager.PlayLeftRightMenuNavigationAudio();
-                        PrototypeLevelPlayedOnce = true;
+                        prototypeLevelPlayedOnce = true;
                     }
 
-                    LevelOnePlayedOnce = false;
-                    LevelTwoPlayedOnce = false;
-                    LevelThreePlayedOnce = false;
-                    LevelFourPlayedOnce = false;
+                    levelOnePlayedOnce = false;
+                    levelTwoPlayedOnce = false;
+                    levelThreePlayedOnce = false;
+                    levelFourPlayedOnce = false;
                 }
                 if(currentSelected.name == "LevelOne" && loadChapterMenuBegin)
                 {
-                    PrototypeLevelImage.SetActive(false);
-                    LevelOneImage.SetActive(true);
-                    LevelTwoImage.SetActive(false);
-                    LevelThreeImage.SetActive(false);
-                    LevelFourImage.SetActive(false);
+                    prototypeLevelImage.SetActive(false);
+                    levelOneImage.SetActive(true);
+                    levelTwoImage.SetActive(false);
+                    levelThreeImage.SetActive(false);
+                    levelFourImage.SetActive(false);
                     
                     //Navigation was changed
                     loadChapterMenuInitialNavigationPosition = false;
 
-                    if(!LevelOnePlayedOnce)
+                    if(!levelOnePlayedOnce)
                     {
                         AudioManager.PlayLeftRightMenuNavigationAudio();
-                        LevelOnePlayedOnce = true;
+                        levelOnePlayedOnce = true;
                     }
 
-                    PrototypeLevelPlayedOnce = false;
-                    LevelTwoPlayedOnce = false;
-                    LevelThreePlayedOnce = false;
-                    LevelFourPlayedOnce = false;
+                    prototypeLevelPlayedOnce = false;
+                    levelTwoPlayedOnce = false;
+                    levelThreePlayedOnce = false;
+                    levelFourPlayedOnce = false;
                 }
                 if(currentSelected.name == "LevelTwo" && loadChapterMenuBegin)
                 {
-                    PrototypeLevelImage.SetActive(false);
-                    LevelOneImage.SetActive(false);
-                    LevelTwoImage.SetActive(true);
-                    LevelThreeImage.SetActive(false);
-                    LevelFourImage.SetActive(false);
+                    prototypeLevelImage.SetActive(false);
+                    levelOneImage.SetActive(false);
+                    levelTwoImage.SetActive(true);
+                    levelThreeImage.SetActive(false);
+                    levelFourImage.SetActive(false);
                     
                     //Navigation was changed
                     loadChapterMenuInitialNavigationPosition = false;
 
-                    if(!LevelTwoPlayedOnce)
+                    if(!levelTwoPlayedOnce)
                     {
                         AudioManager.PlayLeftRightMenuNavigationAudio();
-                        LevelTwoPlayedOnce = true;
+                        levelTwoPlayedOnce = true;
                     }
 
-                    PrototypeLevelPlayedOnce = false;
-                    LevelOnePlayedOnce = false;
-                    LevelThreePlayedOnce = false;
-                    LevelFourPlayedOnce = false;
+                    prototypeLevelPlayedOnce = false;
+                    levelOnePlayedOnce = false;
+                    levelThreePlayedOnce = false;
+                    levelFourPlayedOnce = false;
                 }
                 if(currentSelected.name == "LevelThree" && loadChapterMenuBegin)
                 {
-                    PrototypeLevelImage.SetActive(false);
-                    LevelOneImage.SetActive(false);
-                    LevelTwoImage.SetActive(false);
-                    LevelThreeImage.SetActive(true);
-                    LevelFourImage.SetActive(false);
+                    prototypeLevelImage.SetActive(false);
+                    levelOneImage.SetActive(false);
+                    levelTwoImage.SetActive(false);
+                    levelThreeImage.SetActive(true);
+                    levelFourImage.SetActive(false);
                     
                     //Navigation was changed
                     loadChapterMenuInitialNavigationPosition = false;
 
-                    if(!LevelThreePlayedOnce)
+                    if(!levelThreePlayedOnce)
                     {
                         AudioManager.PlayLeftRightMenuNavigationAudio();
-                        LevelThreePlayedOnce = true;
+                        levelThreePlayedOnce = true;
                     }
 
-                    PrototypeLevelPlayedOnce = false;
-                    LevelOnePlayedOnce = false;
-                    LevelTwoPlayedOnce = false;
-                    LevelFourPlayedOnce = false;
+                    prototypeLevelPlayedOnce = false;
+                    levelOnePlayedOnce = false;
+                    levelTwoPlayedOnce = false;
+                    levelFourPlayedOnce = false;
                 }
                 if(currentSelected.name == "LevelFour" && loadChapterMenuBegin)
                 {
-                    PrototypeLevelImage.SetActive(false);
-                    LevelOneImage.SetActive(false);
-                    LevelTwoImage.SetActive(false);
-                    LevelThreeImage.SetActive(false);
-                    LevelFourImage.SetActive(true);
+                    prototypeLevelImage.SetActive(false);
+                    levelOneImage.SetActive(false);
+                    levelTwoImage.SetActive(false);
+                    levelThreeImage.SetActive(false);
+                    levelFourImage.SetActive(true);
                     
                     //Navigation was changed
                     loadChapterMenuInitialNavigationPosition = false;
 
-                    if(!LevelFourPlayedOnce)
+                    if(!levelFourPlayedOnce)
                     {
                         AudioManager.PlayLeftRightMenuNavigationAudio();
-                        LevelFourPlayedOnce = true;
+                        levelFourPlayedOnce = true;
                     }
 
-                    PrototypeLevelPlayedOnce = false;
-                    LevelOnePlayedOnce = false;
-                    LevelTwoPlayedOnce = false;
-                    LevelThreePlayedOnce = false;
+                    prototypeLevelPlayedOnce = false;
+                    levelOnePlayedOnce = false;
+                    levelTwoPlayedOnce = false;
+                    levelThreePlayedOnce = false;
                 }
             }
-            else if (ControlsMenu.activeSelf)
+            else if (controlsMenu.activeSelf)
             {
+                if(!allowSelectSound)
+                {
+                    AudioManager.PlaySelectMenuNavigationAudio();
+                    allowSelectSound = true;
+                    backFromSelect = true;
+                }
+                
                 if (!loadChapterMenuBegin)
                 {
-                    ChangeAndSetFirstSelectedObject();
+                    SetNewSelectedGameObject();
                     loadChapterMenuBegin = true;
                 }
             }
-            else if (CreditsMenu.activeSelf)
+            else if (creditsMenu.activeSelf)
             {
+                if(!allowSelectSound)
+                {
+                    AudioManager.PlaySelectMenuNavigationAudio();
+                    allowSelectSound = true;
+                    backFromSelect = true;
+                }
+                
                 if (!loadChapterMenuBegin)
                 {
-                    ChangeAndSetFirstSelectedObject();
+                    SetNewSelectedGameObject();
                     loadChapterMenuBegin = true;
                 }
             }
@@ -709,28 +716,65 @@ public class MenuController : MonoBehaviour
         catch (NullReferenceException) {}
     }
 
-    void ChangeAndSetFirstSelectedObject()
+    void SetNewSelectedGameObject()
     {
-        if (mainMenu.activeSelf == true)
+        if (mainMenu.activeSelf)
         {
             EventSystem.current.GetComponent<EventSystem>().firstSelectedGameObject = mainMenuFirstSelectedButton;
         }
-        else if (settingMenu.activeSelf == true)
+        else if (settingMenu.activeSelf)
         {
             EventSystem.current.GetComponent<EventSystem>().firstSelectedGameObject = settingMenuFirstSelectedButton;
         }
-        else if (graphicMenu.activeSelf == true)
+        else if (graphicMenu.activeSelf)
         {
             EventSystem.current.GetComponent<EventSystem>().firstSelectedGameObject = graphicMenuFirstSelectedButton;
         }
-        else if (soundMenu.activeSelf == true)
+        else if (soundMenu.activeSelf)
         {
             EventSystem.current.GetComponent<EventSystem>().firstSelectedGameObject = soundMenuFirstSelectedButton;
         }
-        else if (loadChapterMenu.activeSelf == true)
+        else if (loadChapterMenu.activeSelf)
         {
             EventSystem.current.GetComponent<EventSystem>().firstSelectedGameObject = loadChapterMenuFirstSelectedButton;
         }
         EventSystem.current.SetSelectedGameObject(EventSystem.current.GetComponent<EventSystem>().firstSelectedGameObject);
+    }
+
+    void SetDefaultColor()
+    {
+        if(mainMenu.activeSelf)
+        {
+            playButtonText.color = new Color32(100, 100, 100, 255);
+            loadChapterButtonText.color = new Color32(100, 100, 100, 255);
+            settingsButtonText.color = new Color32(100, 100, 100, 255);
+            exitButtonText.color = new Color32(100, 100, 100, 255);
+        }
+        else if(settingMenu.activeSelf)
+        {
+            controlsButtonText.color = new Color32(100, 100, 100, 255);
+            graphicButtonText.color = new Color32(100, 100, 100, 255);
+            soundButtonText.color = new Color32(100, 100, 100, 255);
+            creditsButtonText.color = new Color32(100, 100, 100, 255);
+        }
+        else if(graphicMenu.activeSelf)
+        {
+            qualityDropdownText.color = new Color32(100, 100, 100, 255);
+            resolutionDropdownText.color = new Color32(100, 100, 100, 255);
+            fullScreenToggleText.color = new Color32(100, 100, 100, 255);
+        }
+        else if(soundMenu.activeSelf)
+        {
+            musicVolumeSliderText.color = new Color32(100, 100, 100, 255);
+            ambientVolumeSliderText.color = new Color32(100, 100, 100, 255);
+            stingVolumeSliderText.color = new Color32(100, 100, 100, 255);
+            voiceVolumeSliderText.color = new Color32(100, 100, 100, 255);
+            playerVolumeSliderText.color = new Color32(100, 100, 100, 255);
+        }
+    }
+
+    void SetHightlightColor(TextMeshProUGUI objectToHighlight)
+    {
+        objectToHighlight.color = new Color32(255, 255, 255, 255);
     }
 }
