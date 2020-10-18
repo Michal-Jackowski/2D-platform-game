@@ -5,7 +5,7 @@ using TMPro;
 using UnityEngine.EventSystems;
 using System;
 
-public class ChangeColorText : MonoBehaviour
+public class MenuController : MonoBehaviour
 {
     [Header("Menu Scenes")]
     public GameObject settingMenu;
@@ -13,6 +13,8 @@ public class ChangeColorText : MonoBehaviour
     public GameObject graphicMenu;
     public GameObject soundMenu;
     public GameObject loadChapterMenu;
+    public GameObject ControlsMenu;
+    public GameObject CreditsMenu;
     
 
 
@@ -108,10 +110,12 @@ public class ChangeColorText : MonoBehaviour
     bool backFromLoadChapter = false;
     bool backFromSound = false;
 
-
+    //InitialNavigation For Menus
     bool maimMenuInitialNavigationPosition = true;
     bool loadChapterMenuInitialNavigationPosition = true;
     bool settingsMenuInitialNavigationPosition = true;
+    bool graphicMenuInitialNavigationPosition = true;
+    bool soundMenuInitialNavigationPosition = true;
 
     //Main Menu
     bool PlayButtonPlayedOnce = false;
@@ -132,6 +136,21 @@ public class ChangeColorText : MonoBehaviour
     bool SoundButtonPlayedOnce = false;
     bool CreditsButtonPlayedOnce = false;
 
+    //Graphic Menu
+    bool QualityDropdownPlayedOnce = false;
+    bool ResolutionDropdownPlayedOnce = false;
+    bool FullScreenTogglePlayedOnce = false;
+
+    //Sound Menu
+    bool MusicVolumeSliderPlayedOnce = false;
+    bool AmbientVolumeSliderPlayedOnce = false;
+    bool StingVolumeSliderPlayedOnce = false;
+    bool VoiceVolumeSliderPlayedOnce = false;
+    bool PlayerVolumeSliderPlayedOnce = false;
+
+    //Sound Allow
+    bool selectSoundAllow = true;
+    bool backFromSelect = false;
 
     void Update()
     {
@@ -139,6 +158,8 @@ public class ChangeColorText : MonoBehaviour
         {
             if (mainMenu.activeSelf == true)
             {
+                selectSoundAllow = true;
+                
                 if(settingMenuBegin)
                 {
                     if(loadChapterMenuBegin)
@@ -181,7 +202,7 @@ public class ChangeColorText : MonoBehaviour
                         PlayButtonPlayedOnce = true;
                     }
                     LoadChapterButtonPlayedOnce = false;
-                    SoundButtonPlayedOnce = false;
+                    SettingsButtonPlayedOnce = false;
                     ExitButtonPlayedOnce = false;
                 }
                 else if(currentSelected.name == "LoadChapterButton")
@@ -199,7 +220,7 @@ public class ChangeColorText : MonoBehaviour
                         LoadChapterButtonPlayedOnce = true;
                     }
                     PlayButtonPlayedOnce = false;  
-                    SoundButtonPlayedOnce = false;
+                    SettingsButtonPlayedOnce = false;
                     ExitButtonPlayedOnce = false;
                 }
                 else if(currentSelected.name == "SettingsButton")
@@ -210,10 +231,10 @@ public class ChangeColorText : MonoBehaviour
                     ExitButtonText.color = new Color32(100, 100, 100, 255);
                     //Navigation was changed
                     maimMenuInitialNavigationPosition = false;
-                    if(!SoundButtonPlayedOnce)
+                    if(!SettingsButtonPlayedOnce)
                     {
                         AudioManager.PlayUpDownMenuNavigationAudio();  
-                        SoundButtonPlayedOnce = true;
+                        SettingsButtonPlayedOnce = true;
                     }
                     PlayButtonPlayedOnce = false;
                     LoadChapterButtonPlayedOnce = false;
@@ -234,11 +255,17 @@ public class ChangeColorText : MonoBehaviour
                     }
                     PlayButtonPlayedOnce = false;
                     LoadChapterButtonPlayedOnce = false;
-                    SoundButtonPlayedOnce = false;
+                    SettingsButtonPlayedOnce = false;
                 }
             }
             else if (settingMenu.activeSelf == true)
             {
+                if(selectSoundAllow && !backFromSelect)
+                {
+                    AudioManager.PlaySelectMenuNavigationAudio();
+                    selectSoundAllow = false;
+                }
+                
                 if(backFromSettings)
                 {
                     EventSystem.current.GetComponent<EventSystem>().firstSelectedGameObject = settingMenuSelected;
@@ -333,6 +360,13 @@ public class ChangeColorText : MonoBehaviour
             }
             else if (graphicMenu.activeSelf == true)
             {
+                if(!selectSoundAllow)
+                {
+                    AudioManager.PlaySelectMenuNavigationAudio();
+                    selectSoundAllow = true;
+                    backFromSelect = true;
+                }
+                
                 if(backFromGraphic)
                 {
                     EventSystem.current.GetComponent<EventSystem>().firstSelectedGameObject = graphicMenuSelected;
@@ -359,22 +393,52 @@ public class ChangeColorText : MonoBehaviour
                     QualityDropdownText.color = new Color32(255, 255, 255, 255);
                     ResolutionDropdownText.color = new Color32(100, 100, 100, 255);
                     FullScreenToggleText.color = new Color32(100, 100, 100, 255);
+                    //Play only when you changed navigation in menu
+                    if(!graphicMenuInitialNavigationPosition && !QualityDropdownPlayedOnce) 
+                    {
+                        AudioManager.PlayUpDownMenuNavigationAudio();
+                        QualityDropdownPlayedOnce = true;
+                    }
+                    ResolutionDropdownPlayedOnce = false;
+                    FullScreenTogglePlayedOnce = false;
                 }
                 else if(currentSelected.name == "ResolutionDropdown")
                 {
                     QualityDropdownText.color = new Color32(100, 100, 100, 255);
                     ResolutionDropdownText.color = new Color32(255, 255, 255, 255);
                     FullScreenToggleText.color = new Color32(100, 100, 100, 255);
+                    graphicMenuInitialNavigationPosition = false;
+                    if(!graphicMenuInitialNavigationPosition && !ResolutionDropdownPlayedOnce) 
+                    {
+                        AudioManager.PlayUpDownMenuNavigationAudio();
+                        ResolutionDropdownPlayedOnce = true;
+                    }
+                    QualityDropdownPlayedOnce = false;
+                    FullScreenTogglePlayedOnce = false;
                 }
                 else if(currentSelected.name == "FullScreenToggle")
                 {
                     QualityDropdownText.color = new Color32(100, 100, 100, 255);
                     ResolutionDropdownText.color = new Color32(100, 100, 100, 255);
                     FullScreenToggleText.color = new Color32(255, 255, 255, 255);
+                    graphicMenuInitialNavigationPosition = false;
+                    if(!graphicMenuInitialNavigationPosition && !FullScreenTogglePlayedOnce) 
+                    {
+                        AudioManager.PlayUpDownMenuNavigationAudio();
+                        FullScreenTogglePlayedOnce = true;
+                    }
+                    QualityDropdownPlayedOnce = false;
+                    ResolutionDropdownPlayedOnce = false;
                 }
             }
             else if (soundMenu.activeSelf == true)
             {
+                if(!selectSoundAllow)
+                {
+                    AudioManager.PlaySelectMenuNavigationAudio();
+                    selectSoundAllow = true;
+                }
+                
                 if(backFromSound)
                 {
                     EventSystem.current.GetComponent<EventSystem>().firstSelectedGameObject = soundMenuSelected;
@@ -403,6 +467,16 @@ public class ChangeColorText : MonoBehaviour
                     StingVolumeSliderText.color = new Color32(100, 100, 100, 255);
                     VoiceVolumeSliderText.color = new Color32(100, 100, 100, 255);
                     PlayerVolumeSliderText.color = new Color32(100, 100, 100, 255);
+                    //Play only when you changed navigation in menu
+                    if(!soundMenuInitialNavigationPosition && !MusicVolumeSliderPlayedOnce) 
+                    {
+                        AudioManager.PlayUpDownMenuNavigationAudio();
+                        MusicVolumeSliderPlayedOnce = true;
+                    }
+                    AmbientVolumeSliderPlayedOnce = false;
+                    StingVolumeSliderPlayedOnce = false;
+                    VoiceVolumeSliderPlayedOnce = false;
+                    PlayerVolumeSliderPlayedOnce = false;
                 }
                 else if(currentSelected.name == "AmbientVolumeSlider")
                 {
@@ -411,6 +485,16 @@ public class ChangeColorText : MonoBehaviour
                     StingVolumeSliderText.color = new Color32(100, 100, 100, 255);
                     VoiceVolumeSliderText.color = new Color32(100, 100, 100, 255);
                     PlayerVolumeSliderText.color = new Color32(100, 100, 100, 255);
+                    soundMenuInitialNavigationPosition = false;
+                    if(!soundMenuInitialNavigationPosition && !AmbientVolumeSliderPlayedOnce) 
+                    {
+                        AudioManager.PlayUpDownMenuNavigationAudio();
+                        AmbientVolumeSliderPlayedOnce = true;
+                    }
+                    MusicVolumeSliderPlayedOnce = false;
+                    StingVolumeSliderPlayedOnce = false;
+                    VoiceVolumeSliderPlayedOnce = false;
+                    PlayerVolumeSliderPlayedOnce = false;
                 }
                 else if(currentSelected.name == "StingVolumeSlider")
                 {
@@ -419,6 +503,16 @@ public class ChangeColorText : MonoBehaviour
                     StingVolumeSliderText.color = new Color32(255, 255, 255, 255);
                     VoiceVolumeSliderText.color = new Color32(100, 100, 100, 255);
                     PlayerVolumeSliderText.color = new Color32(100, 100, 100, 255);
+                    soundMenuInitialNavigationPosition = false;
+                    if(!soundMenuInitialNavigationPosition && !StingVolumeSliderPlayedOnce) 
+                    {
+                        AudioManager.PlayUpDownMenuNavigationAudio();
+                        StingVolumeSliderPlayedOnce = true;
+                    }
+                    MusicVolumeSliderPlayedOnce = false;
+                    AmbientVolumeSliderPlayedOnce = false;
+                    VoiceVolumeSliderPlayedOnce = false;
+                    PlayerVolumeSliderPlayedOnce = false;
                 }
                 else if(currentSelected.name == "VoiceVolumeSlider")
                 {
@@ -427,6 +521,16 @@ public class ChangeColorText : MonoBehaviour
                     StingVolumeSliderText.color = new Color32(100, 100, 100, 255);
                     VoiceVolumeSliderText.color = new Color32(255, 255, 255, 255);
                     PlayerVolumeSliderText.color = new Color32(100, 100, 100, 255);
+                    soundMenuInitialNavigationPosition = false;
+                    if(!soundMenuInitialNavigationPosition && !VoiceVolumeSliderPlayedOnce) 
+                    {
+                        AudioManager.PlayUpDownMenuNavigationAudio();
+                        VoiceVolumeSliderPlayedOnce = true;
+                    }
+                    MusicVolumeSliderPlayedOnce = false;
+                    AmbientVolumeSliderPlayedOnce = false;
+                    StingVolumeSliderPlayedOnce = false;
+                    PlayerVolumeSliderPlayedOnce = false;
                 }
                 else if(currentSelected.name == "PlayerVolumeSlider")
                 {
@@ -435,10 +539,26 @@ public class ChangeColorText : MonoBehaviour
                     StingVolumeSliderText.color = new Color32(100, 100, 100, 255);
                     VoiceVolumeSliderText.color = new Color32(100, 100, 100, 255);
                     PlayerVolumeSliderText.color = new Color32(255, 255, 255, 255);
+                    soundMenuInitialNavigationPosition = false;
+                    if(!soundMenuInitialNavigationPosition && !PlayerVolumeSliderPlayedOnce) 
+                    {
+                        AudioManager.PlayUpDownMenuNavigationAudio();
+                        PlayerVolumeSliderPlayedOnce = true;
+                    }
+                    MusicVolumeSliderPlayedOnce = false;
+                    AmbientVolumeSliderPlayedOnce = false;
+                    StingVolumeSliderPlayedOnce = false;
+                    VoiceVolumeSliderPlayedOnce = false;
                 }
             }
             else if (loadChapterMenu.activeSelf == true)
             {
+                if(selectSoundAllow)
+                {
+                    AudioManager.PlaySelectMenuNavigationAudio();
+                    selectSoundAllow = false;
+                }
+                
                 if(backFromLoadChapter)
                 {
                     EventSystem.current.GetComponent<EventSystem>().firstSelectedGameObject = loadChapterSelected;
@@ -567,6 +687,22 @@ public class ChangeColorText : MonoBehaviour
                     LevelOnePlayedOnce = false;
                     LevelTwoPlayedOnce = false;
                     LevelThreePlayedOnce = false;
+                }
+            }
+            else if (ControlsMenu.activeSelf)
+            {
+                if (!loadChapterMenuBegin)
+                {
+                    ChangeAndSetFirstSelectedObject();
+                    loadChapterMenuBegin = true;
+                }
+            }
+            else if (CreditsMenu.activeSelf)
+            {
+                if (!loadChapterMenuBegin)
+                {
+                    ChangeAndSetFirstSelectedObject();
+                    loadChapterMenuBegin = true;
                 }
             }
         }
