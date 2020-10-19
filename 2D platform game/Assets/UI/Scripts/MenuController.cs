@@ -2,10 +2,12 @@
 using TMPro;
 using UnityEngine.EventSystems;
 using System;
+using UnityEngine.SceneManagement;
 
 public class MenuController : MonoBehaviour
 {
     [Header("Menu Scenes")]
+    public GameObject introScene;
     public GameObject settingMenu;
     public GameObject mainMenu;
     public GameObject graphicMenu;
@@ -160,10 +162,27 @@ public class MenuController : MonoBehaviour
     bool graphicOptionsSelected = false;
 
 
+    //Disable Mouse
+    GameObject lastselect;
+
+
+    //Load Level
+    GameObject currentSelectedLevel;
+
+    void Start()
+    {
+        lastselect = new GameObject();
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+    }
+
     void Update()
     {
         try
         {
+            DisableMouse();
+            ChangeIntroScene();
+            
             if (mainMenu.activeSelf == true)
             {
                 allowSelectSound = true;
@@ -267,6 +286,8 @@ public class MenuController : MonoBehaviour
             }
             else if (settingMenu.activeSelf == true)
             {
+                PlayBackSound();
+                
                 if(allowSelectSound && !backFromSelect)
                 {
                     AudioManager.PlaySelectMenuNavigationAudio();
@@ -367,6 +388,7 @@ public class MenuController : MonoBehaviour
             }
             else if (graphicMenu.activeSelf == true)
             {
+                PlayBackSound();
                 graphicOptionsSelected = false;
 
                 if(!allowSelectSound)
@@ -457,6 +479,8 @@ public class MenuController : MonoBehaviour
             }
             else if (soundMenu.activeSelf == true)
             {
+                PlayBackSound();
+                
                 if(!allowSelectSound)
                 {
                     AudioManager.PlaySelectMenuNavigationAudio();
@@ -567,6 +591,9 @@ public class MenuController : MonoBehaviour
             }
             else if (loadChapterMenu.activeSelf == true)
             {
+                PlayBackSound();
+                LoadLevel();
+                
                 if(allowSelectSound)
                 {
                     AudioManager.PlaySelectMenuNavigationAudio();
@@ -683,6 +710,8 @@ public class MenuController : MonoBehaviour
             }
             else if (controlsMenu.activeSelf)
             {
+                PlayBackSound();
+                
                 if(!allowSelectSound)
                 {
                     AudioManager.PlaySelectMenuNavigationAudio();
@@ -696,13 +725,15 @@ public class MenuController : MonoBehaviour
             }
             else if (creditsMenu.activeSelf)
             {
+                PlayBackSound();
+                
                 if(!allowSelectSound)
                 {
                     AudioManager.PlaySelectMenuNavigationAudio();
                     allowSelectSound = true;
                     backFromSelect = true;
                 }
-                if (!loadChapterMenuBegin)
+                if (loadChapterMenuBegin)
                 {
                     SetNewSelectedGameObject();
                 }
@@ -793,5 +824,125 @@ public class MenuController : MonoBehaviour
     void EnableImage(GameObject image)
     {
         image.SetActive(true);
+    }
+
+    void PlayBackSound()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            //Main Menu
+            if (settingMenu.activeSelf == true)
+            {
+                mainMenu.SetActive(true);
+                settingMenu.SetActive(false);
+                AudioManager.PlayBackFromMenuNavigationAudio();
+            }
+
+            //Settings Options
+            if (controlsMenu.activeSelf == true)
+            {
+                settingMenu.SetActive(true);
+                controlsMenu.SetActive(false);
+                AudioManager.PlayBackFromMenuNavigationAudio();
+            }
+            if (graphicMenu.activeSelf == true)
+            {
+                settingMenu.SetActive(true);
+                graphicMenu.SetActive(false);
+                AudioManager.PlayBackFromMenuNavigationAudio();
+            }
+            if (soundMenu.activeSelf == true)
+            {
+                settingMenu.SetActive(true);
+                soundMenu.SetActive(false);
+                AudioManager.PlayBackFromMenuNavigationAudio();
+            }
+            if (creditsMenu.activeSelf == true)
+            {
+                settingMenu.SetActive(true);
+                creditsMenu.SetActive(false);
+                AudioManager.PlayBackFromMenuNavigationAudio();
+            }
+            
+            //LoadChapterMenuScenes
+            if (loadChapterMenu.activeSelf == true)
+            {
+                mainMenu.SetActive(true);
+                loadChapterMenu.SetActive(false);
+                AudioManager.PlayBackFromMenuNavigationAudio();
+            }
+        }
+    }
+
+    void DisableMouse()
+    {
+        if (EventSystem.current.currentSelectedGameObject == null)
+        {
+            EventSystem.current.SetSelectedGameObject(lastselect);
+        }
+        else
+        {
+            lastselect = EventSystem.current.currentSelectedGameObject;
+        }
+    }
+
+    void ChangeIntroScene()
+    {
+        if(introScene.activeSelf)
+        {
+            if (Input.anyKey)
+            {
+                if (Input.GetKey(KeyCode.Mouse0) || Input.GetKey(KeyCode.Mouse1))
+                {
+                    return;
+                }
+                else
+                {
+                    mainMenu.SetActive(true);
+                    introScene.SetActive(false);
+                    AudioManager.PlaySelectMenuNavigationAudio();
+                }
+            }
+        }
+    }
+
+    public void PlayGame()
+    {
+        Debug.Log("PLAY GAME!");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+
+    public void QuitGame()
+    {
+        Debug.Log("QUIT!");
+        Application.Quit();
+    }
+
+    void LoadLevel()
+    {
+        if (Input.GetKeyDown("return"))
+        {
+            currentSelectedLevel = EventSystem.current.currentSelectedGameObject;
+            if(currentSelectedLevel.name == "PrototypeLevel")
+            {
+                SceneManager.LoadScene("PrototypeScene");
+            }
+            else if(currentSelectedLevel.name == "LevelOne")
+            {
+                Debug.Log("Load Level One...");
+            }
+            else if(currentSelectedLevel.name == "LevelTwo")
+            {
+                Debug.Log("Load Level Two...");
+            }
+            else if(currentSelectedLevel.name == "LevelThree")
+            {
+                Debug.Log("Load Level Three...");
+            }
+            else if(currentSelectedLevel.name == "LevelFour")
+            {
+                Debug.Log("Load Level Four...");
+            }
+        }
     }
 }
