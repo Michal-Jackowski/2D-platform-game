@@ -43,6 +43,8 @@ public class MenuController : MonoBehaviour
     public GameObject qualityDropdown;
     public GameObject resolutionDropdown;
     public GameObject fullScreenToggle;
+    public GameObject PostProcessingToggle;
+    public GameObject BrightnessVolumeSlider;
 
 
     [Header("Sound Menu Objects")]
@@ -79,6 +81,8 @@ public class MenuController : MonoBehaviour
     public TextMeshProUGUI qualityDropdownText;
     public TextMeshProUGUI resolutionDropdownText;
     public TextMeshProUGUI fullScreenToggleText;
+    public TextMeshProUGUI PostProcessingText;
+    public TextMeshProUGUI BrightnessText;
 
 
     [Header("Sound Menu Objects Text")]
@@ -88,7 +92,11 @@ public class MenuController : MonoBehaviour
     public TextMeshProUGUI voiceVolumeSliderText;
     public TextMeshProUGUI playerVolumeSliderText;
 
-    
+
+    [Header("On/Off")]
+    public GameObject postProcessingManager;
+
+
     //Current Selected Object
     GameObject currentSelected;
     GameObject settingMenuSelected;
@@ -146,6 +154,8 @@ public class MenuController : MonoBehaviour
     bool qualityDropdownPlayedOnce = false;
     bool resolutionDropdownPlayedOnce = false;
     bool fullScreenTogglePlayedOnce = false;
+    bool PostProcessingTogglePlayedOnce = false;
+    bool BrightnessVolumeSliderPlayedOnce = false;
 
 
     //Checking If We Played Sound Once In Sound Menu
@@ -168,6 +178,10 @@ public class MenuController : MonoBehaviour
 
     //Load Level
     GameObject currentSelectedLevel;
+
+
+    //Post Processing
+    bool postProcessingEnabled = true;
 
     void Start()
     {
@@ -437,6 +451,8 @@ public class MenuController : MonoBehaviour
                     }
                     resolutionDropdownPlayedOnce = false;
                     fullScreenTogglePlayedOnce = false;
+                    PostProcessingTogglePlayedOnce = false;
+                    BrightnessVolumeSliderPlayedOnce = false;
                 }
                 else if(currentSelected.name == "ResolutionDropdown")
                 {
@@ -456,6 +472,8 @@ public class MenuController : MonoBehaviour
                     }
                     qualityDropdownPlayedOnce = false;
                     fullScreenTogglePlayedOnce = false;
+                    PostProcessingTogglePlayedOnce = false;
+                    BrightnessVolumeSliderPlayedOnce = false;
                 }
                 else if(currentSelected.name == "FullScreenToggle")
                 {
@@ -475,6 +493,59 @@ public class MenuController : MonoBehaviour
                     }
                     qualityDropdownPlayedOnce = false;
                     resolutionDropdownPlayedOnce = false;
+                    PostProcessingTogglePlayedOnce = false;
+                    BrightnessVolumeSliderPlayedOnce = false;
+                }
+                else if(currentSelected.name == "PostProcessingToggle")
+                {
+                    if(Input.GetKeyDown(KeyCode.Return) && !graphicOptionsSelected)
+                    {
+                        AudioManager.PlaySelectMenuNavigationAudio();
+                        graphicOptionsSelected = true;
+                    }
+                    SetDefaultColor();
+                    SetHightlightColor(PostProcessingText);
+
+                    graphicMenuInitialNavigationPosition = false;
+                    if(!graphicMenuInitialNavigationPosition && !PostProcessingTogglePlayedOnce) 
+                    {
+                        AudioManager.PlayUpDownMenuNavigationAudio();
+                        PostProcessingTogglePlayedOnce = true;
+                    }
+                    qualityDropdownPlayedOnce = false;
+                    resolutionDropdownPlayedOnce = false;
+                    fullScreenTogglePlayedOnce = false;
+                    BrightnessVolumeSliderPlayedOnce = false;
+
+                    if(Input.GetKeyDown(KeyCode.Return) && postProcessingEnabled)
+                    {
+                        SetPostProcessing(false);
+                    }
+                    else if(Input.GetKeyDown(KeyCode.Return) && !postProcessingEnabled)
+                    {
+                        SetPostProcessing(true);
+                    }
+                }
+                else if(currentSelected.name == "BrightnessVolumeSlider")
+                {
+                    if(Input.GetKeyDown(KeyCode.Return) && !graphicOptionsSelected)
+                    {
+                        AudioManager.PlaySelectMenuNavigationAudio();
+                        graphicOptionsSelected = true;
+                    }
+                    SetDefaultColor();
+                    SetHightlightColor(BrightnessText);
+
+                    graphicMenuInitialNavigationPosition = false;
+                    if(!graphicMenuInitialNavigationPosition && !BrightnessVolumeSliderPlayedOnce) 
+                    {
+                        AudioManager.PlayUpDownMenuNavigationAudio();
+                        BrightnessVolumeSliderPlayedOnce = true;
+                    }
+                    qualityDropdownPlayedOnce = false;
+                    resolutionDropdownPlayedOnce = false;
+                    fullScreenTogglePlayedOnce = false;
+                    PostProcessingTogglePlayedOnce = false;
                 }
             }
             else if (soundMenu.activeSelf == true)
@@ -796,6 +867,8 @@ public class MenuController : MonoBehaviour
             qualityDropdownText.color = new Color32(100, 100, 100, 255);
             resolutionDropdownText.color = new Color32(100, 100, 100, 255);
             fullScreenToggleText.color = new Color32(100, 100, 100, 255);
+            PostProcessingText.color = new Color32(100, 100, 100, 255);
+            BrightnessText.color = new Color32(100, 100, 100, 255);
         }
         else if(soundMenu.activeSelf)
         {
@@ -944,5 +1017,16 @@ public class MenuController : MonoBehaviour
                 Debug.Log("Load Level Four...");
             }
         }
+    }
+
+    public void SetPostProcessing (bool isTurnedOn)
+    {
+        postProcessingManager.SetActive(isTurnedOn);
+        postProcessingEnabled = isTurnedOn;
+    }
+
+    public void SetBrightness(float value)
+    {
+        //Implementation
     }
 }

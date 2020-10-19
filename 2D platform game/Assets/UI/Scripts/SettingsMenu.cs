@@ -92,7 +92,8 @@ public class SettingsMenu : MonoBehaviour
         Screen.fullScreen = isFullScreen;
     }
 
-    public void SetPostProcessing(bool enabled)
+    //turn off only
+    public void SetPostProcessing(bool enabled) 
     {
         bloom.enabled.value = enabled;
         vignette.enabled.value = enabled;

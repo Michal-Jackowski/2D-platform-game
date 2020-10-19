@@ -10,6 +10,7 @@ public PostProcessVolume volume;
 public float bloomValue;
 public GameObject introMenu;
 
+
     void Update()
     {
         Bloom bloom;
@@ -19,15 +20,15 @@ public GameObject introMenu;
             if (volume.profile.TryGetSettings<Bloom>(out bloom))
             {
                 bloom.intensity.value = bloomValue;
-                //Debug.Log("ActiveScene...");
             }
         }
         else
         {
             if (volume.profile.TryGetSettings<Bloom>(out bloom))
             {
-                bloom.intensity.value = 0.8f; //default value
-                //Debug.Log("Scene is not active...");
+                //default value
+                bloom.intensity.value = 0.8f; 
+                //postProcessingManager.SetActive(false);
                 return;
             }
         }
