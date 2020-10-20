@@ -3,8 +3,9 @@ using TMPro;
 using UnityEngine.EventSystems;
 using System;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
-public class MenuController : MonoBehaviour
+public class MenuManager : MonoBehaviour
 {
     [Header("Menu Scenes")]
     public GameObject introScene;
@@ -182,6 +183,7 @@ public class MenuController : MonoBehaviour
 
     //Post Processing
     bool postProcessingEnabled = true;
+
 
     void Start()
     {
@@ -528,6 +530,11 @@ public class MenuController : MonoBehaviour
                 }
                 else if(currentSelected.name == "BrightnessVolumeSlider")
                 {
+                    if(Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.RightArrow))
+                    {
+                        AudioManager.PlayLeftRightMenuNavigationAudio();
+                    }
+                    
                     if(Input.GetKeyDown(KeyCode.Return) && !graphicOptionsSelected)
                     {
                         AudioManager.PlaySelectMenuNavigationAudio();
@@ -581,6 +588,11 @@ public class MenuController : MonoBehaviour
                 
                 if(currentSelected.name == "MusicVolumeSlider")
                 {
+                    if(Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.RightArrow))
+                    {
+                        AudioManager.PlayLeftRightMenuNavigationAudio();
+                    }
+                    
                     SetDefaultColor();
                     SetHightlightColor(musicVolumeSliderText);
 
@@ -597,6 +609,11 @@ public class MenuController : MonoBehaviour
                 }
                 else if(currentSelected.name == "AmbientVolumeSlider")
                 {
+                    if(Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.RightArrow))
+                    {
+                        AudioManager.PlayLeftRightMenuNavigationAudio();
+                    }
+                    
                     SetDefaultColor();
                     SetHightlightColor(ambientVolumeSliderText);
 
@@ -613,6 +630,11 @@ public class MenuController : MonoBehaviour
                 }
                 else if(currentSelected.name == "StingVolumeSlider")
                 {
+                    if(Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.RightArrow))
+                    {
+                        AudioManager.PlayLeftRightMenuNavigationAudio();
+                    }
+                    
                     SetDefaultColor();
                     SetHightlightColor(stingVolumeSliderText);
 
@@ -629,6 +651,11 @@ public class MenuController : MonoBehaviour
                 }
                 else if(currentSelected.name == "VoiceVolumeSlider")
                 {
+                    if(Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.RightArrow))
+                    {
+                        AudioManager.PlayLeftRightMenuNavigationAudio();
+                    }
+                    
                     SetDefaultColor();
                     SetHightlightColor(voiceVolumeSliderText);
 
@@ -645,6 +672,11 @@ public class MenuController : MonoBehaviour
                 }
                 else if(currentSelected.name == "PlayerVolumeSlider")
                 {
+                    if(Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.RightArrow))
+                    {
+                        AudioManager.PlayLeftRightMenuNavigationAudio();
+                    }
+                    
                     SetDefaultColor();
                     SetHightlightColor(playerVolumeSliderText);
 
@@ -1023,10 +1055,5 @@ public class MenuController : MonoBehaviour
     {
         postProcessingManager.SetActive(isTurnedOn);
         postProcessingEnabled = isTurnedOn;
-    }
-
-    public void SetBrightness(float value)
-    {
-        //Implementation
     }
 }
