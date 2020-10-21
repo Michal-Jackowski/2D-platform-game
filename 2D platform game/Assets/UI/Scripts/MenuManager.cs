@@ -92,6 +92,7 @@ public class MenuManager : MonoBehaviour
     public TextMeshProUGUI stingVolumeSliderText;
     public TextMeshProUGUI voiceVolumeSliderText;
     public TextMeshProUGUI playerVolumeSliderText;
+    public TextMeshProUGUI UIVolumeSliderText;
 
 
     [Header("On/Off")]
@@ -165,6 +166,7 @@ public class MenuManager : MonoBehaviour
     bool stingVolumeSliderPlayedOnce = false;
     bool voiceVolumeSliderPlayedOnce = false;
     bool playerVolumeSliderPlayedOnce = false;
+    bool UIVolumeSliderPlayedOnce = false;
 
 
     //Allow Select Sound
@@ -183,6 +185,85 @@ public class MenuManager : MonoBehaviour
 
     //Post Processing
     bool postProcessingEnabled = true;
+
+
+    //Slider
+    [Header("Brigtness Slider Objects")]
+    public Image sliderBrigtnessBackgroundImage;
+    public Image sliderBrigtnessFillAreaImage;
+    public Image sliderBrigtnessHandleImage;
+
+
+    [Header("FullScreenToggle Objects")]
+    public Image fullScreenToggleBackgroundImage;
+    public Image fullScreenToggleCheckmarkImage;
+    
+    
+    [Header("PostProcessingToggle Objects")]
+    public Image postProcessingToggleBackgroundImage;
+    public Image postProcessingToggleCheckmarkImage;
+
+
+    [Header("QualityDropdown Objects")]
+    public Image QualityDropdownImage;
+
+
+    [Header("ResolutionDropdown Objects")]
+    public Image ResolutionDropdownImage;
+
+
+    //Sliders and variables used to turn off the sound in extreme positions
+    public Slider brightnessSlider;
+    public Slider musicVolumeSliderReference;
+    public Slider ambientVolumeSliderReference;
+    public Slider stingVolumeSliderReference;
+    public Slider playerVolumeSliderReference;
+    public Slider voiceVolumeSliderReference;
+    public Slider UIVolumeSliderReference;
+    bool sliderBrightnessExtremeValueLeftPlayedOnce = false;
+    bool sliderBrightnessExtremeValueRightPlayedOnce = false;
+    bool sliderMusicVolumeExtremeValueLeftPlayedOnce = false;
+    bool sliderMusicVolumeExtremeValueRightPlayedOnce = false;
+    bool sliderAmbientVolumeExtremeValueLeftPlayedOnce = false;
+    bool sliderAmbientVolumeExtremeValueRightPlayedOnce = false;
+    bool sliderStingVolumeExtremeValueLeftPlayedOnce = false;
+    bool sliderStingVolumeExtremeValueRightPlayedOnce = false;
+    bool sliderPlayerVolumeExtremeValueLeftPlayedOnce = false;
+    bool sliderPlayerVolumeExtremeValueRightPlayedOnce = false;
+    bool sliderVoiceVolumeExtremeValueLeftPlayedOnce = false;
+    bool sliderVoiceVolumeExtremeValueRightPlayedOnce = false;
+    bool sliderUIVolumeExtremeValueLeftPlayedOnce = false;
+    bool sliderUIVolumeExtremeValueRightPlayedOnce = false;
+
+
+    [Header("Music Volume Slider Objects")]
+    public Image sliderMusicVolumeBackgroundImage;
+    public Image sliderMusicVolumeHandleImage;
+
+
+    [Header("Ambient Volume Slider Objects")]
+    public Image sliderAmbientVolumeBackgroundImage;
+    public Image sliderAmbientVolumeHandleImage;
+
+
+    [Header("Sting Volume Slider Objects")]
+    public Image sliderStingVolumeBackgroundImage;
+    public Image sliderStingVolumeHandleImage;
+
+
+    [Header("Player Volume Slider Objects")]
+    public Image sliderPlayerVolumeBackgroundImage;
+    public Image sliderPlayerVolumeHandleImage;
+
+
+    [Header("Voice Volume Slider Objects")]
+    public Image sliderVoiceVolumeBackgroundImage;
+    public Image sliderVoiceVolumeHandleImage;
+
+
+    [Header("UI Volume Slider Objects")]
+    public Image sliderUIVolumeBackgroundImage;
+    public Image sliderUIVolumeHandleImage;
 
 
     void Start()
@@ -235,7 +316,7 @@ public class MenuManager : MonoBehaviour
 
                 if(currentSelected.name == "PlayButton")
                 {
-                    SetDefaultColor();
+                    SetDefaultColorForText();
                     SetHightlightColor(playButtonText);
                     
                     //Play only when you changed navigation in menu
@@ -250,7 +331,7 @@ public class MenuManager : MonoBehaviour
                 }
                 else if(currentSelected.name == "LoadChapterButton")
                 {
-                    SetDefaultColor();
+                    SetDefaultColorForText();
                     SetHightlightColor(loadChapterButtonText);
 
                     //Navigation was changed
@@ -267,7 +348,7 @@ public class MenuManager : MonoBehaviour
                 }
                 else if(currentSelected.name == "SettingsButton")
                 {
-                    SetDefaultColor();
+                    SetDefaultColorForText();
                     SetHightlightColor(settingsButtonText);
 
                     //Navigation was changed
@@ -284,7 +365,7 @@ public class MenuManager : MonoBehaviour
                 }
                 else if(currentSelected.name == "ExitButton")
                 {
-                    SetDefaultColor();
+                    SetDefaultColorForText();
                     SetHightlightColor(exitButtonText);
 
                     //Navigation was changed
@@ -343,7 +424,7 @@ public class MenuManager : MonoBehaviour
             
                 if(currentSelected.name == "ControlsButton")
                 {
-                    SetDefaultColor();
+                    SetDefaultColorForText();
                     SetHightlightColor(controlsButtonText);
 
                     //Play only when you changed navigation in menu
@@ -358,7 +439,7 @@ public class MenuManager : MonoBehaviour
                 }
                 else if(currentSelected.name == "GraphicButton")
                 {
-                    SetDefaultColor();
+                    SetDefaultColorForText();
                     SetHightlightColor(graphicButtonText);
 
                     settingsMenuInitialNavigationPosition = false;
@@ -373,7 +454,7 @@ public class MenuManager : MonoBehaviour
                 }
                 else if(currentSelected.name == "SoundButton")
                 {
-                    SetDefaultColor();
+                    SetDefaultColorForText();
                     SetHightlightColor(soundButtonText);
 
                     settingsMenuInitialNavigationPosition = false;
@@ -388,7 +469,7 @@ public class MenuManager : MonoBehaviour
                 }
                 else if(currentSelected.name == "CreditsButton")
                 {
-                    SetDefaultColor();
+                    SetDefaultColorForText();
                     SetHightlightColor(creditsButtonText);
 
                     settingsMenuInitialNavigationPosition = false;
@@ -442,8 +523,12 @@ public class MenuManager : MonoBehaviour
                         AudioManager.PlaySelectMenuNavigationAudio();
                         graphicOptionsSelected = true;
                     }
-                    SetDefaultColor();
+                    SetDefaultColorForText();
                     SetHightlightColor(qualityDropdownText);
+                    SetDefaultColorForImage();
+                    SetDefaultColorForToggle();
+                    SetDefaultColorForDropdown();
+                    ChangeQualityDropdownColor();
 
                     //Play only when you changed navigation in menu
                     if(!graphicMenuInitialNavigationPosition && !qualityDropdownPlayedOnce) 
@@ -463,8 +548,12 @@ public class MenuManager : MonoBehaviour
                         AudioManager.PlaySelectMenuNavigationAudio();
                         graphicOptionsSelected = true;
                     }
-                    SetDefaultColor();
+                    SetDefaultColorForText();
                     SetHightlightColor(resolutionDropdownText);
+                    SetDefaultColorForImage();
+                    SetDefaultColorForToggle();
+                    SetDefaultColorForDropdown();
+                    ChangeResolutionDropdownColor();
 
                     graphicMenuInitialNavigationPosition = false;
                     if(!graphicMenuInitialNavigationPosition && !resolutionDropdownPlayedOnce) 
@@ -484,8 +573,12 @@ public class MenuManager : MonoBehaviour
                         AudioManager.PlaySelectMenuNavigationAudio();
                         graphicOptionsSelected = true;
                     }
-                    SetDefaultColor();
+                    SetDefaultColorForText();
                     SetHightlightColor(fullScreenToggleText);
+                    SetDefaultColorForImage();
+                    SetDefaultColorForToggle();
+                    ChangeFullScreenToggleColor();
+                    SetDefaultColorForDropdown();
 
                     graphicMenuInitialNavigationPosition = false;
                     if(!graphicMenuInitialNavigationPosition && !fullScreenTogglePlayedOnce) 
@@ -505,8 +598,12 @@ public class MenuManager : MonoBehaviour
                         AudioManager.PlaySelectMenuNavigationAudio();
                         graphicOptionsSelected = true;
                     }
-                    SetDefaultColor();
+                    SetDefaultColorForText();
                     SetHightlightColor(PostProcessingText);
+                    SetDefaultColorForImage();
+                    SetDefaultColorForToggle();
+                    ChangePostProcessingToggleColor();
+                    SetDefaultColorForDropdown();
 
                     graphicMenuInitialNavigationPosition = false;
                     if(!graphicMenuInitialNavigationPosition && !PostProcessingTogglePlayedOnce) 
@@ -530,9 +627,16 @@ public class MenuManager : MonoBehaviour
                 }
                 else if(currentSelected.name == "BrightnessVolumeSlider")
                 {
-                    if(Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.RightArrow))
+                    sliderBrightnessExtremeValueLeftPlayedOnce = CheckExtremeLeftPosition(brightnessSlider, sliderBrightnessExtremeValueLeftPlayedOnce);
+                    sliderBrightnessExtremeValueRightPlayedOnce = CheckExtremeRightPosition(brightnessSlider, sliderBrightnessExtremeValueRightPlayedOnce);
+                    
+                    if(sliderBrightnessExtremeValueLeftPlayedOnce && Input.GetKeyDown(KeyCode.RightArrow))
                     {
-                        AudioManager.PlayLeftRightMenuNavigationAudio();
+                        sliderBrightnessExtremeValueLeftPlayedOnce = false;
+                    }
+                    else if(sliderBrightnessExtremeValueRightPlayedOnce && Input.GetKeyDown(KeyCode.LeftArrow))
+                    {
+                        sliderBrightnessExtremeValueRightPlayedOnce = false;
                     }
                     
                     if(Input.GetKeyDown(KeyCode.Return) && !graphicOptionsSelected)
@@ -540,8 +644,11 @@ public class MenuManager : MonoBehaviour
                         AudioManager.PlaySelectMenuNavigationAudio();
                         graphicOptionsSelected = true;
                     }
-                    SetDefaultColor();
+                    SetDefaultColorForText();
                     SetHightlightColor(BrightnessText);
+                    ChangeBrightnessSliderColor();
+                    SetDefaultColorForToggle();
+                    SetDefaultColorForDropdown();
 
                     graphicMenuInitialNavigationPosition = false;
                     if(!graphicMenuInitialNavigationPosition && !BrightnessVolumeSliderPlayedOnce) 
@@ -588,13 +695,22 @@ public class MenuManager : MonoBehaviour
                 
                 if(currentSelected.name == "MusicVolumeSlider")
                 {
-                    if(Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.RightArrow))
-                    {
-                        AudioManager.PlayLeftRightMenuNavigationAudio();
-                    }
+                    sliderMusicVolumeExtremeValueLeftPlayedOnce = CheckExtremeLeftPosition(musicVolumeSliderReference, sliderMusicVolumeExtremeValueLeftPlayedOnce);
+                    sliderMusicVolumeExtremeValueRightPlayedOnce = CheckExtremeRightPosition(musicVolumeSliderReference, sliderMusicVolumeExtremeValueRightPlayedOnce);
                     
-                    SetDefaultColor();
+                    if(sliderMusicVolumeExtremeValueLeftPlayedOnce && Input.GetKeyDown(KeyCode.RightArrow))
+                    {
+                        sliderMusicVolumeExtremeValueLeftPlayedOnce = false;
+                    }
+                    else if(sliderMusicVolumeExtremeValueRightPlayedOnce && Input.GetKeyDown(KeyCode.LeftArrow))
+                    {
+                        sliderMusicVolumeExtremeValueRightPlayedOnce = false;
+                    }
+
+                    SetDefaultColorForText();
                     SetHightlightColor(musicVolumeSliderText);
+                    SetDefaultColorForSlider();
+                    ChangeMusicVolumeSliderColor();
 
                     //Play only when you changed navigation in menu
                     if(!soundMenuInitialNavigationPosition && !musicVolumeSliderPlayedOnce) 
@@ -606,16 +722,26 @@ public class MenuManager : MonoBehaviour
                     stingVolumeSliderPlayedOnce = false;
                     voiceVolumeSliderPlayedOnce = false;
                     playerVolumeSliderPlayedOnce = false;
+                    UIVolumeSliderPlayedOnce = false;
                 }
                 else if(currentSelected.name == "AmbientVolumeSlider")
                 {
-                    if(Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.RightArrow))
-                    {
-                        AudioManager.PlayLeftRightMenuNavigationAudio();
-                    }
+                    sliderAmbientVolumeExtremeValueLeftPlayedOnce = CheckExtremeLeftPosition(ambientVolumeSliderReference, sliderAmbientVolumeExtremeValueLeftPlayedOnce);
+                    sliderAmbientVolumeExtremeValueRightPlayedOnce = CheckExtremeRightPosition(ambientVolumeSliderReference, sliderAmbientVolumeExtremeValueRightPlayedOnce);
                     
-                    SetDefaultColor();
+                    if(sliderAmbientVolumeExtremeValueLeftPlayedOnce && Input.GetKeyDown(KeyCode.RightArrow))
+                    {
+                        sliderAmbientVolumeExtremeValueLeftPlayedOnce = false;
+                    }
+                    else if(sliderAmbientVolumeExtremeValueRightPlayedOnce && Input.GetKeyDown(KeyCode.LeftArrow))
+                    {
+                        sliderAmbientVolumeExtremeValueRightPlayedOnce = false;
+                    }
+
+                    SetDefaultColorForText();
                     SetHightlightColor(ambientVolumeSliderText);
+                    SetDefaultColorForSlider();
+                    ChangeAmbientVolumeSliderColor();
 
                     soundMenuInitialNavigationPosition = false;
                     if(!soundMenuInitialNavigationPosition && !ambientVolumeSliderPlayedOnce) 
@@ -627,16 +753,26 @@ public class MenuManager : MonoBehaviour
                     stingVolumeSliderPlayedOnce = false;
                     voiceVolumeSliderPlayedOnce = false;
                     playerVolumeSliderPlayedOnce = false;
+                    UIVolumeSliderPlayedOnce = false;
                 }
                 else if(currentSelected.name == "StingVolumeSlider")
                 {
-                    if(Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.RightArrow))
-                    {
-                        AudioManager.PlayLeftRightMenuNavigationAudio();
-                    }
+                    sliderStingVolumeExtremeValueLeftPlayedOnce = CheckExtremeLeftPosition(stingVolumeSliderReference, sliderStingVolumeExtremeValueLeftPlayedOnce);
+                    sliderStingVolumeExtremeValueRightPlayedOnce = CheckExtremeRightPosition(stingVolumeSliderReference, sliderStingVolumeExtremeValueRightPlayedOnce);
                     
-                    SetDefaultColor();
+                    if(sliderStingVolumeExtremeValueLeftPlayedOnce && Input.GetKeyDown(KeyCode.RightArrow))
+                    {
+                        sliderStingVolumeExtremeValueLeftPlayedOnce = false;
+                    }
+                    else if(sliderStingVolumeExtremeValueRightPlayedOnce && Input.GetKeyDown(KeyCode.LeftArrow))
+                    {
+                        sliderStingVolumeExtremeValueRightPlayedOnce = false;
+                    }
+
+                    SetDefaultColorForText();
                     SetHightlightColor(stingVolumeSliderText);
+                    SetDefaultColorForSlider();
+                    ChangeStingVolumeSliderColor();
 
                     soundMenuInitialNavigationPosition = false;
                     if(!soundMenuInitialNavigationPosition && !stingVolumeSliderPlayedOnce) 
@@ -648,16 +784,26 @@ public class MenuManager : MonoBehaviour
                     ambientVolumeSliderPlayedOnce = false;
                     voiceVolumeSliderPlayedOnce = false;
                     playerVolumeSliderPlayedOnce = false;
+                    UIVolumeSliderPlayedOnce = false;
                 }
                 else if(currentSelected.name == "VoiceVolumeSlider")
                 {
-                    if(Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.RightArrow))
-                    {
-                        AudioManager.PlayLeftRightMenuNavigationAudio();
-                    }
+                    sliderVoiceVolumeExtremeValueLeftPlayedOnce = CheckExtremeLeftPosition(voiceVolumeSliderReference, sliderVoiceVolumeExtremeValueLeftPlayedOnce);
+                    sliderVoiceVolumeExtremeValueRightPlayedOnce = CheckExtremeRightPosition(voiceVolumeSliderReference, sliderVoiceVolumeExtremeValueRightPlayedOnce);
                     
-                    SetDefaultColor();
+                    if(sliderVoiceVolumeExtremeValueLeftPlayedOnce && Input.GetKeyDown(KeyCode.RightArrow))
+                    {
+                        sliderVoiceVolumeExtremeValueLeftPlayedOnce = false;
+                    }
+                    else if(sliderVoiceVolumeExtremeValueRightPlayedOnce && Input.GetKeyDown(KeyCode.LeftArrow))
+                    {
+                        sliderVoiceVolumeExtremeValueRightPlayedOnce = false;
+                    }
+
+                    SetDefaultColorForText();
                     SetHightlightColor(voiceVolumeSliderText);
+                    SetDefaultColorForSlider();
+                    ChangeVoiceVolumeSliderColor();
 
                     soundMenuInitialNavigationPosition = false;
                     if(!soundMenuInitialNavigationPosition && !voiceVolumeSliderPlayedOnce) 
@@ -669,16 +815,26 @@ public class MenuManager : MonoBehaviour
                     ambientVolumeSliderPlayedOnce = false;
                     stingVolumeSliderPlayedOnce = false;
                     playerVolumeSliderPlayedOnce = false;
+                    UIVolumeSliderPlayedOnce = false;
                 }
                 else if(currentSelected.name == "PlayerVolumeSlider")
                 {
-                    if(Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.RightArrow))
-                    {
-                        AudioManager.PlayLeftRightMenuNavigationAudio();
-                    }
+                    sliderPlayerVolumeExtremeValueLeftPlayedOnce = CheckExtremeLeftPosition(playerVolumeSliderReference, sliderPlayerVolumeExtremeValueLeftPlayedOnce);
+                    sliderPlayerVolumeExtremeValueRightPlayedOnce = CheckExtremeRightPosition(playerVolumeSliderReference, sliderPlayerVolumeExtremeValueRightPlayedOnce);
                     
-                    SetDefaultColor();
+                    if(sliderPlayerVolumeExtremeValueLeftPlayedOnce && Input.GetKeyDown(KeyCode.RightArrow))
+                    {
+                        sliderPlayerVolumeExtremeValueLeftPlayedOnce = false;
+                    }
+                    else if(sliderPlayerVolumeExtremeValueRightPlayedOnce && Input.GetKeyDown(KeyCode.LeftArrow))
+                    {
+                        sliderPlayerVolumeExtremeValueRightPlayedOnce = false;
+                    }
+
+                    SetDefaultColorForText();
                     SetHightlightColor(playerVolumeSliderText);
+                    SetDefaultColorForSlider();
+                    ChangePlayerVolumeSliderColor();
 
                     soundMenuInitialNavigationPosition = false;
                     if(!soundMenuInitialNavigationPosition && !playerVolumeSliderPlayedOnce) 
@@ -690,6 +846,38 @@ public class MenuManager : MonoBehaviour
                     ambientVolumeSliderPlayedOnce = false;
                     stingVolumeSliderPlayedOnce = false;
                     voiceVolumeSliderPlayedOnce = false;
+                    UIVolumeSliderPlayedOnce = false;
+                }
+                else if(currentSelected.name == "UIVolumeSlider")
+                {
+                    sliderUIVolumeExtremeValueLeftPlayedOnce = CheckExtremeLeftPosition(UIVolumeSliderReference, sliderUIVolumeExtremeValueLeftPlayedOnce);
+                    sliderUIVolumeExtremeValueRightPlayedOnce = CheckExtremeRightPosition(UIVolumeSliderReference, sliderUIVolumeExtremeValueRightPlayedOnce);
+                    
+                    if(sliderUIVolumeExtremeValueLeftPlayedOnce && Input.GetKeyDown(KeyCode.RightArrow))
+                    {
+                        sliderUIVolumeExtremeValueLeftPlayedOnce = false;
+                    }
+                    else if(sliderUIVolumeExtremeValueRightPlayedOnce && Input.GetKeyDown(KeyCode.LeftArrow))
+                    {
+                        sliderUIVolumeExtremeValueRightPlayedOnce = false;
+                    }
+
+                    SetDefaultColorForText();
+                    SetHightlightColor(UIVolumeSliderText);
+                    SetDefaultColorForSlider();
+                    ChangeUIVolumeSliderColor();
+
+                    soundMenuInitialNavigationPosition = false;
+                    if(!soundMenuInitialNavigationPosition && !UIVolumeSliderPlayedOnce) 
+                    {
+                        AudioManager.PlayUpDownMenuNavigationAudio();
+                        UIVolumeSliderPlayedOnce = true;
+                    }
+                    musicVolumeSliderPlayedOnce = false;
+                    ambientVolumeSliderPlayedOnce = false;
+                    stingVolumeSliderPlayedOnce = false;
+                    voiceVolumeSliderPlayedOnce = false;
+                    playerVolumeSliderPlayedOnce = false;
                 }
             }
             else if (loadChapterMenu.activeSelf == true)
@@ -878,7 +1066,7 @@ public class MenuManager : MonoBehaviour
         EventSystem.current.SetSelectedGameObject(EventSystem.current.GetComponent<EventSystem>().firstSelectedGameObject);
     }
 
-    void SetDefaultColor()
+    void SetDefaultColorForText()
     {
         if(mainMenu.activeSelf)
         {
@@ -909,6 +1097,7 @@ public class MenuManager : MonoBehaviour
             stingVolumeSliderText.color = new Color32(100, 100, 100, 255);
             voiceVolumeSliderText.color = new Color32(100, 100, 100, 255);
             playerVolumeSliderText.color = new Color32(100, 100, 100, 255);
+            UIVolumeSliderText.color = new Color32(100, 100, 100, 255);
         }
     }
 
@@ -1055,5 +1244,147 @@ public class MenuManager : MonoBehaviour
     {
         postProcessingManager.SetActive(isTurnedOn);
         postProcessingEnabled = isTurnedOn;
+    }
+
+    public void ChangeBrightnessSliderColor()
+    {
+        sliderBrigtnessBackgroundImage.color = new Color32(255, 255, 255, 255);
+        sliderBrigtnessFillAreaImage.color = new Color32(255, 255, 255, 255);
+        sliderBrigtnessHandleImage.color = new Color32(255, 255, 255, 255);
+    }
+
+    public void SetDefaultColorForImage()
+    {
+        sliderBrigtnessBackgroundImage.color = new Color32(100, 100, 100, 255);
+        sliderBrigtnessFillAreaImage.color = new Color32(100, 100, 100, 255);
+        sliderBrigtnessHandleImage.color = new Color32(100, 100, 100, 255);
+    }
+
+    public void ChangeFullScreenToggleColor()
+    {
+        fullScreenToggleBackgroundImage.color = new Color32(255, 255, 255, 255);
+        fullScreenToggleCheckmarkImage.color = new Color32(255, 255, 255, 255);
+    }
+
+    public void ChangePostProcessingToggleColor()
+    {
+        postProcessingToggleBackgroundImage.color = new Color32(255, 255, 255, 255);
+        postProcessingToggleCheckmarkImage.color = new Color32(255, 255, 255, 255);
+    }
+
+    public void SetDefaultColorForToggle()
+    {
+        postProcessingToggleBackgroundImage.color = new Color32(100, 100, 100, 255);
+        postProcessingToggleCheckmarkImage.color = new Color32(100, 100, 100, 255);
+        fullScreenToggleBackgroundImage.color = new Color32(100, 100, 100, 255);
+        fullScreenToggleCheckmarkImage.color = new Color32(100, 100, 100, 255);
+    }
+
+    public void ChangeQualityDropdownColor()
+    {
+        QualityDropdownImage.color = new Color32(255, 255, 255, 255);
+    }
+
+    public void ChangeResolutionDropdownColor()
+    {
+        ResolutionDropdownImage.color = new Color32(255, 255, 255, 255);
+    }
+
+    public void SetDefaultColorForDropdown()
+    {
+        QualityDropdownImage.color = new Color32(100, 100, 100, 255);
+        ResolutionDropdownImage.color = new Color32(100, 100, 100, 255);
+    }
+
+    public void ChangeMusicVolumeSliderColor()
+    {
+        sliderMusicVolumeBackgroundImage.color = new Color32(255, 255, 255, 255);
+        sliderMusicVolumeHandleImage.color = new Color32(255, 255, 255, 255);
+    }
+
+    public void ChangeAmbientVolumeSliderColor()
+    {
+        sliderAmbientVolumeBackgroundImage.color = new Color32(255, 255, 255, 255);
+        sliderAmbientVolumeHandleImage.color = new Color32(255, 255, 255, 255);
+    }
+
+    public void ChangeStingVolumeSliderColor()
+    {
+        sliderStingVolumeBackgroundImage.color = new Color32(255, 255, 255, 255);
+        sliderStingVolumeHandleImage.color = new Color32(255, 255, 255, 255);
+    }
+
+    public void ChangePlayerVolumeSliderColor()
+    {
+        sliderPlayerVolumeBackgroundImage.color = new Color32(255, 255, 255, 255);
+        sliderPlayerVolumeHandleImage.color = new Color32(255, 255, 255, 255);
+    }
+
+    public void ChangeVoiceVolumeSliderColor()
+    {
+        sliderVoiceVolumeBackgroundImage.color = new Color32(255, 255, 255, 255);
+        sliderVoiceVolumeHandleImage.color = new Color32(255, 255, 255, 255);
+    }
+
+    public void ChangeUIVolumeSliderColor()
+    {
+        sliderUIVolumeBackgroundImage.color = new Color32(255, 255, 255, 255);
+        sliderUIVolumeHandleImage.color = new Color32(255, 255, 255, 255);
+    }
+
+    public void SetDefaultColorForSlider()
+    {
+        sliderMusicVolumeBackgroundImage.color = new Color32(100, 100, 100, 255);
+        sliderMusicVolumeHandleImage.color = new Color32(100, 100, 100, 255);
+        sliderAmbientVolumeBackgroundImage.color = new Color32(100, 100, 100, 255);
+        sliderAmbientVolumeHandleImage.color = new Color32(100, 100, 100, 255);
+        sliderStingVolumeBackgroundImage.color = new Color32(100, 100, 100, 255);
+        sliderStingVolumeHandleImage.color = new Color32(100, 100, 100, 255);
+        sliderPlayerVolumeBackgroundImage.color = new Color32(100, 100, 100, 255);
+        sliderPlayerVolumeHandleImage.color = new Color32(100, 100, 100, 255);
+        sliderVoiceVolumeBackgroundImage.color = new Color32(100, 100, 100, 255);
+        sliderVoiceVolumeHandleImage.color = new Color32(100, 100, 100, 255);
+        sliderUIVolumeBackgroundImage.color = new Color32(100, 100, 100, 255);
+        sliderUIVolumeHandleImage.color = new Color32(100, 100, 100, 255);
+    }
+
+    public bool CheckExtremeLeftPosition(Slider referenceToSlider, bool leftExtreme)
+    {
+        if(Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            if(referenceToSlider.value >= referenceToSlider.minValue)
+            {
+                if(referenceToSlider.value == referenceToSlider.minValue && !leftExtreme)
+                {
+                    AudioManager.PlayLeftRightMenuNavigationAudio();
+                    leftExtreme = true;
+                }
+                else if(!leftExtreme)
+                {
+                    AudioManager.PlayLeftRightMenuNavigationAudio();
+                }
+            }
+        }
+        return leftExtreme;
+    }
+
+    public bool CheckExtremeRightPosition(Slider referenceToSlider, bool rightExtreme)
+    {
+        if(Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            if(referenceToSlider.value <= referenceToSlider.maxValue)
+            {
+                if(referenceToSlider.value == referenceToSlider.maxValue && !rightExtreme)
+                {
+                    AudioManager.PlayLeftRightMenuNavigationAudio();
+                    rightExtreme = true;
+                }
+                else if(!rightExtreme)
+                {
+                    AudioManager.PlayLeftRightMenuNavigationAudio();
+                }
+            }
+        }
+        return rightExtreme;
     }
 }

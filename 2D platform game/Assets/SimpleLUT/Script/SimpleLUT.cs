@@ -240,7 +240,7 @@ namespace DigitalRuby.SimpleLUT
             //Will be called when Slider changes
             public void sliderCallBack(float value)
             {
-                Brightness = value;
+                Brightness = value/11;
             }
 
             void OnDisable()

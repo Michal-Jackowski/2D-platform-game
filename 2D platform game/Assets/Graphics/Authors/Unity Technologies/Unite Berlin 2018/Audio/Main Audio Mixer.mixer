@@ -15,7 +15,7 @@ AudioMixerGroupController:
   m_Send: 00000000000000000000000000000000
   m_Effects:
   - {fileID: -1228404742005778940}
-  m_UserColorIndex: 0
+  m_UserColorIndex: 5
   m_Mute: 0
   m_Solo: 0
   m_BypassEffects: 0
@@ -34,7 +34,7 @@ AudioMixerGroupController:
   m_Send: 00000000000000000000000000000000
   m_Effects:
   - {fileID: 7832417857464722829}
-  m_UserColorIndex: 0
+  m_UserColorIndex: 1
   m_Mute: 0
   m_Solo: 0
   m_BypassEffects: 0
@@ -67,7 +67,7 @@ AudioMixerGroupController:
   m_Send: 00000000000000000000000000000000
   m_Effects:
   - {fileID: 6778179594521286139}
-  m_UserColorIndex: 0
+  m_UserColorIndex: 3
   m_Mute: 0
   m_Solo: 0
   m_BypassEffects: 0
@@ -123,13 +123,15 @@ AudioMixerController:
     name: player volume
   - guid: 3177f5ffa4c746f498b3313bd210f72a
     name: sting volume
+  - guid: 432d7139b1782cd4b8719415e391efc4
+    name: ui volume
   - guid: 67b233693aa72ee42a7d95e14f9d74ab
     name: voice volume
   m_AudioMixerGroupViews:
   - guids:
     - fd9ee885df184744991c917ba64a1584
-    - 71892f357cd0f3a44a51643477df184f
     - d8932284e942a3c48a65e94ad75e2a08
+    - 71892f357cd0f3a44a51643477df184f
     - feb34464778d7c5498af95f6330fa5f5
     - 5ab949e3456e1ee4eabc99c438680fa4
     - 8cb23fc9e939577429194945846c6233
@@ -222,7 +224,7 @@ AudioMixerGroupController:
   m_Send: 00000000000000000000000000000000
   m_Effects:
   - {fileID: -6407252834969568238}
-  m_UserColorIndex: 0
+  m_UserColorIndex: 1
   m_Mute: 0
   m_Solo: 0
   m_BypassEffects: 0
@@ -241,7 +243,7 @@ AudioMixerGroupController:
   m_Send: 00000000000000000000000000000000
   m_Effects:
   - {fileID: -1217979409525786929}
-  m_UserColorIndex: 0
+  m_UserColorIndex: 3
   m_Mute: 0
   m_Solo: 0
   m_BypassEffects: 0
@@ -260,7 +262,7 @@ AudioMixerGroupController:
   m_Send: 00000000000000000000000000000000
   m_Effects:
   - {fileID: 1939576460390829436}
-  m_UserColorIndex: 0
+  m_UserColorIndex: 3
   m_Mute: 0
   m_Solo: 0
   m_BypassEffects: 0

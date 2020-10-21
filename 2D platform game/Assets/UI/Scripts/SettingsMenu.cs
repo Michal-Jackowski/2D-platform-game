@@ -20,6 +20,13 @@ public class SettingsMenu : MonoBehaviour
     private ColorGrading colorGrading = null;
     private void Start()
     {
+        audioMixer.SetFloat("music volume", -40);
+        audioMixer.SetFloat("ambient volume", -40);
+        audioMixer.SetFloat("sting volume", -40);
+        audioMixer.SetFloat("player volume", -40);
+        audioMixer.SetFloat("voice volume", -40);
+        audioMixer.SetFloat("ui volume", -40);
+        
         volume.profile.TryGetSettings(out bloom);
         volume.profile.TryGetSettings(out vignette);
         volume.profile.TryGetSettings(out chromaticAberration);
@@ -59,27 +66,32 @@ public class SettingsMenu : MonoBehaviour
 
     public void SetMusicVolume(float volume)
     {
-        audioMixer.SetFloat("music volume", volume);
+        audioMixer.SetFloat("music volume", volume*4);
     }
 
     public void SetAmbientVolume(float volume)
     {
-        audioMixer.SetFloat("ambient volume", volume);
+        audioMixer.SetFloat("ambient volume", volume*4);
     }
 
     public void SetStingVolume(float volume)
     {
-        audioMixer.SetFloat("sting volume", volume);
+        audioMixer.SetFloat("sting volume", volume*4);
     }
 
     public void SetPlayerVolume(float volume)
     {
-        audioMixer.SetFloat("player volume", volume);
+        audioMixer.SetFloat("player volume", volume*4);
     }
 
     public void SetVoiceVolume(float volume)
     {
-        audioMixer.SetFloat("voice volume", volume);
+        audioMixer.SetFloat("voice volume", volume*4);
+    }
+
+    public void SetUIVolume(float volume)
+    {
+        audioMixer.SetFloat("ui volume", volume*4);
     }
 
     public void SetQuality(int qualityIndex)
