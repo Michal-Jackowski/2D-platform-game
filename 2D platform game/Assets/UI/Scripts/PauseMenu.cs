@@ -12,26 +12,18 @@ public class PauseMenu : MonoBehaviour
     public GameObject graphicMenuUI;
     public GameObject soundMenuUI;
     public GameObject creditsMenuUI;
-    public GameObject LoadChapterMenu0UI;
-    public GameObject LoadChapterMenu1UI;
-    public GameObject LoadChapterMenu2UI;
-    public GameObject LoadChapterMenu3UI;
-    public GameObject LoadChapterMenu4UI;
+    public GameObject LoadChapterMenuUI;
 
 
-    // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && !pauseMenuUI.activeSelf)
         {
-            if (GameIsPaused)
-            {
-                Resume();
-            }
-            else
-            {
-                Pause();
-            }
+            Pause();
+        }
+        else if(Input.GetKeyDown(KeyCode.Escape) && pauseMenuUI.activeSelf && GameIsPaused)
+        {
+            Resume();
         }
     }
 
@@ -43,11 +35,7 @@ public class PauseMenu : MonoBehaviour
         graphicMenuUI.SetActive(false);
         soundMenuUI.SetActive(false);
         creditsMenuUI.SetActive(false);
-        LoadChapterMenu0UI.SetActive(false);
-        LoadChapterMenu1UI.SetActive(false);
-        LoadChapterMenu2UI.SetActive(false);
-        LoadChapterMenu3UI.SetActive(false);
-        LoadChapterMenu4UI.SetActive(false);
+        LoadChapterMenuUI.SetActive(false);
         Time.timeScale = 1f;
         GameIsPaused = false;
     }

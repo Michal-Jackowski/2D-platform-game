@@ -8,16 +8,11 @@ using UnityEngine.Rendering.PostProcessing;
 
 public class SettingsMenu : MonoBehaviour
 {
+    public GameObject GraphicMenu;
     public AudioMixer audioMixer;
     Resolution[] resolutions;
     public TMP_Dropdown ResolutionDropdown;
-    public PostProcessVolume volume;
 
-    private Bloom bloom = null;
-    private Vignette vignette = null;
-    private ChromaticAberration chromaticAberration = null;
-    private AmbientOcclusion ambientOcclusion = null;
-    private ColorGrading colorGrading = null;
     private void Start()
     {
         audioMixer.SetFloat("music volume", -40);
@@ -26,36 +21,34 @@ public class SettingsMenu : MonoBehaviour
         audioMixer.SetFloat("player volume", -40);
         audioMixer.SetFloat("voice volume", -40);
         audioMixer.SetFloat("ui volume", -40);
-        
-        volume.profile.TryGetSettings(out bloom);
-        volume.profile.TryGetSettings(out vignette);
-        volume.profile.TryGetSettings(out chromaticAberration);
-        volume.profile.TryGetSettings(out ambientOcclusion);
-        volume.profile.TryGetSettings(out colorGrading);
-        
-        //Get resolutions
-        int CurrentResolutionIndex = 0;
-        resolutions = Screen.resolutions;
-
-        ResolutionDropdown.ClearOptions();
-
-        List<string> options = new List<string>();
-
-        for (int i = 0; i < resolutions.Length; i++)
+         
+        if(GraphicMenu.activeSelf)
         {
-            string Option = resolutions[i].width + " x " + resolutions[i].height;
-            options.Add(Option);
+            //Get resolutions
+            int CurrentResolutionIndex = 0;
+            resolutions = Screen.resolutions;
 
-            if(resolutions[i].width == Screen.currentResolution.width &&
-                resolutions[i].height == Screen.currentResolution.height)
+            ResolutionDropdown.ClearOptions();
+
+            List<string> options = new List<string>();
+
+            for (int i = 0; i < resolutions.Length; i++)
             {
-                CurrentResolutionIndex = i;
+                string Option = resolutions[i].width + " x " + resolutions[i].height;
+                options.Add(Option);
+
+                if(resolutions[i].width == Screen.currentResolution.width &&
+                    resolutions[i].height == Screen.currentResolution.height)
+                {
+                    CurrentResolutionIndex = i;
+                }
             }
+
+            ResolutionDropdown.AddOptions(options);
+            ResolutionDropdown.value = CurrentResolutionIndex;
+            ResolutionDropdown.RefreshShownValue();
         }
 
-        ResolutionDropdown.AddOptions(options);
-        ResolutionDropdown.value = CurrentResolutionIndex;
-        ResolutionDropdown.RefreshShownValue();
     }
 
     public void SetResolution(int ResolutionIndex)
@@ -102,15 +95,5 @@ public class SettingsMenu : MonoBehaviour
     public void SetFullScreen (bool isFullScreen)
     {
         Screen.fullScreen = isFullScreen;
-    }
-
-    //turn off only
-    public void SetPostProcessing(bool enabled) 
-    {
-        bloom.enabled.value = enabled;
-        vignette.enabled.value = enabled;
-        chromaticAberration.enabled.value = enabled;
-        ambientOcclusion.enabled.value = enabled;
-        colorGrading.enabled.value = enabled;
     }
 }

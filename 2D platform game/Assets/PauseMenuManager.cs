@@ -5,12 +5,12 @@ using System;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class MenuManager : MonoBehaviour
+public class PauseMenuManager : MonoBehaviour
 {
     [Header("Menu Scenes")]
     public GameObject introScene;
     public GameObject settingMenu;
-    public GameObject mainMenu;
+    public GameObject pauseMenu;
     public GameObject graphicMenu;
     public GameObject soundMenu;
     public GameObject loadChapterMenu;
@@ -20,7 +20,7 @@ public class MenuManager : MonoBehaviour
 
     [Header("Menu First Selected Objects")]
     public GameObject settingMenuFirstSelectedButton; 
-    public GameObject mainMenuFirstSelectedButton;
+    public GameObject pauseMenuFirstSelectedButton;
     public GameObject graphicMenuFirstSelectedButton;
     public GameObject soundMenuFirstSelectedButton;
     public GameObject loadChapterMenuFirstSelectedButton;
@@ -64,8 +64,9 @@ public class MenuManager : MonoBehaviour
     public GameObject levelFourImage;
 
     
-    [Header("Main Menu Buttons Text")]
-    public TextMeshProUGUI playButtonText;
+    [Header("Pause Menu Buttons Text")]
+    public TextMeshProUGUI resumeButtonText;
+    public TextMeshProUGUI startNewGameButtonText;
     public TextMeshProUGUI loadChapterButtonText;
     public TextMeshProUGUI settingsButtonText;
     public TextMeshProUGUI exitButtonText;
@@ -131,7 +132,8 @@ public class MenuManager : MonoBehaviour
 
 
     //Checking If We Played Sound Once In Main Menu
-    bool playButtonPlayedOnce = false;
+    bool resumeButtonPlayedOnce = false;
+    bool startNewGameButtonPlayedOnce = false;
     bool loadChapterButtonPlayedOnce = false;
     bool settingsButtonPlayedOnce = false;
     bool exitButtonPlayedOnce = false;
@@ -280,7 +282,7 @@ public class MenuManager : MonoBehaviour
             DisableMouse();
             ChangeIntroScene();
             
-            if (mainMenu.activeSelf == true)
+            if (pauseMenu.activeSelf == true)
             {
                 allowSelectSound = true;
                 backFromSelect = false;
@@ -314,17 +316,34 @@ public class MenuManager : MonoBehaviour
                     currentSelected = EventSystem.current.currentSelectedGameObject;
                 }
 
-                if(currentSelected.name == "PlayButton")
+                if(currentSelected.name == "ResumeButton")
                 {
                     SetDefaultColorForText();
-                    SetHightlightColor(playButtonText);
+                    SetHightlightColor(resumeButtonText);
                     
                     //Play only when you changed navigation in menu
-                    if(!maimMenuInitialNavigationPosition && !playButtonPlayedOnce) 
+                    if(!maimMenuInitialNavigationPosition && !resumeButtonPlayedOnce) 
                     {
                         AudioManager.PlayUpDownMenuNavigationAudio();
-                        playButtonPlayedOnce = true;
+                        resumeButtonPlayedOnce = true;
                     }
+                    startNewGameButtonPlayedOnce = false;
+                    loadChapterButtonPlayedOnce = false;
+                    settingsButtonPlayedOnce = false;
+                    exitButtonPlayedOnce = false;
+                }
+                else if(currentSelected.name == "StartNewGameButton")
+                {
+                    SetDefaultColorForText();
+                    SetHightlightColor(startNewGameButtonText);
+                    
+                    //Play only when you changed navigation in menu
+                    if(!maimMenuInitialNavigationPosition && !startNewGameButtonPlayedOnce) 
+                    {
+                        AudioManager.PlayUpDownMenuNavigationAudio();
+                        startNewGameButtonPlayedOnce = true;
+                    }
+                    resumeButtonPlayedOnce = false;
                     loadChapterButtonPlayedOnce = false;
                     settingsButtonPlayedOnce = false;
                     exitButtonPlayedOnce = false;
@@ -342,7 +361,8 @@ public class MenuManager : MonoBehaviour
                         AudioManager.PlayUpDownMenuNavigationAudio();
                         loadChapterButtonPlayedOnce = true;
                     }
-                    playButtonPlayedOnce = false;  
+                    resumeButtonPlayedOnce = false;  
+                    startNewGameButtonPlayedOnce = false;
                     settingsButtonPlayedOnce = false;
                     exitButtonPlayedOnce = false;
                 }
@@ -359,7 +379,8 @@ public class MenuManager : MonoBehaviour
                         AudioManager.PlayUpDownMenuNavigationAudio();  
                         settingsButtonPlayedOnce = true;
                     }
-                    playButtonPlayedOnce = false;
+                    resumeButtonPlayedOnce = false;
+                    startNewGameButtonPlayedOnce = false;
                     loadChapterButtonPlayedOnce = false;
                     exitButtonPlayedOnce = false;  
                 }
@@ -376,7 +397,8 @@ public class MenuManager : MonoBehaviour
                         AudioManager.PlayUpDownMenuNavigationAudio();  
                         exitButtonPlayedOnce = true;
                     }
-                    playButtonPlayedOnce = false;
+                    resumeButtonPlayedOnce = false;
+                    startNewGameButtonPlayedOnce = false;
                     loadChapterButtonPlayedOnce = false;
                     settingsButtonPlayedOnce = false;
                 }
@@ -1035,9 +1057,9 @@ public class MenuManager : MonoBehaviour
 
     void SetNewSelectedGameObject()
     {
-        if (mainMenu.activeSelf)
+        if (pauseMenu.activeSelf)
         {
-            EventSystem.current.GetComponent<EventSystem>().firstSelectedGameObject = mainMenuFirstSelectedButton;
+            EventSystem.current.GetComponent<EventSystem>().firstSelectedGameObject = pauseMenuFirstSelectedButton;
         }
         else if (settingMenu.activeSelf)
         {
@@ -1068,9 +1090,10 @@ public class MenuManager : MonoBehaviour
 
     void SetDefaultColorForText()
     {
-        if(mainMenu.activeSelf)
+        if(pauseMenu.activeSelf)
         {
-            playButtonText.color = new Color32(100, 100, 100, 255);
+            resumeButtonText.color = new Color32(100, 100, 100, 255);
+            startNewGameButtonText.color = new Color32(100, 100, 100, 255);
             loadChapterButtonText.color = new Color32(100, 100, 100, 255);
             settingsButtonText.color = new Color32(100, 100, 100, 255);
             exitButtonText.color = new Color32(100, 100, 100, 255);
@@ -1127,7 +1150,7 @@ public class MenuManager : MonoBehaviour
             //Main Menu
             if (settingMenu.activeSelf == true)
             {
-                mainMenu.SetActive(true);
+                pauseMenu.SetActive(true);
                 settingMenu.SetActive(false);
                 AudioManager.PlayBackFromMenuNavigationAudio();
             }
@@ -1161,7 +1184,7 @@ public class MenuManager : MonoBehaviour
             //LoadChapterMenuScenes
             if (loadChapterMenu.activeSelf == true)
             {
-                mainMenu.SetActive(true);
+                pauseMenu.SetActive(true);
                 loadChapterMenu.SetActive(false);
                 AudioManager.PlayBackFromMenuNavigationAudio();
             }
@@ -1192,7 +1215,7 @@ public class MenuManager : MonoBehaviour
                 }
                 else
                 {
-                    mainMenu.SetActive(true);
+                    pauseMenu.SetActive(true);
                     introScene.SetActive(false);
                     AudioManager.PlaySelectMenuNavigationAudio();
                 }
