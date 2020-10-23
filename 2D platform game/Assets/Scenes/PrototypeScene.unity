@@ -1080,17 +1080,17 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 2124689745}
         m_TargetAssemblyTypeName: SettingsMenu, Assembly-CSharp
         m_MethodName: SetFullScreen
-        m_Mode: 0
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
+          m_BoolArgument: 1
         m_CallState: 2
   m_IsOn: 1
 --- !u!224 &125331409
@@ -6743,6 +6743,22 @@ PrefabInstance:
       propertyPath: uiGroup
       value: 
       objectReference: {fileID: -7255066703950523728, guid: f60cd92e0c9be794bb15f3e47ac0d003, type: 2}
+    - target: {fileID: 114568543676866764, guid: 78a1eecdd4dc0cc48b8432057628c528, type: 3}
+      propertyPath: upDownNavigationClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 931b41f154d79c84c83b453017651b2f, type: 3}
+    - target: {fileID: 114568543676866764, guid: 78a1eecdd4dc0cc48b8432057628c528, type: 3}
+      propertyPath: selectNavigationClip
+      value: 
+      objectReference: {fileID: 8300000, guid: c322de7bb602080469bc5e9559baa760, type: 3}
+    - target: {fileID: 114568543676866764, guid: 78a1eecdd4dc0cc48b8432057628c528, type: 3}
+      propertyPath: leftRightNavigationClip
+      value: 
+      objectReference: {fileID: 8300000, guid: c49d9a1a316fdf64e92090e39faeed05, type: 3}
+    - target: {fileID: 114568543676866764, guid: 78a1eecdd4dc0cc48b8432057628c528, type: 3}
+      propertyPath: BackFromMenuNavigationClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 96db81e1d8b29434886da32b110b0e2d, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 78a1eecdd4dc0cc48b8432057628c528, type: 3}
 --- !u!1 &784634899
@@ -14228,7 +14244,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1602637420}
         m_TargetAssemblyTypeName: DigitalRuby.SimpleLUT.SimpleLUT, Assembly-CSharp
         m_MethodName: sliderCallBack
         m_Mode: 0
@@ -15926,6 +15942,33 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4357629085409324, guid: e7abe1ada88c5934bad18c1019a0050e, type: 3}
   m_PrefabInstance: {fileID: 1488096089}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1602637419 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2257397583135161526, guid: 2e34e4a7f79a0ef4aa1269502df764cb, type: 3}
+  m_PrefabInstance: {fileID: 2257397582829955333}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1602637420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1602637419}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab2fd0b11cfb2fb4ca4ed47adfcc3b26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sliderRef: {fileID: 1428308258}
+  Shader: {fileID: 4800000, guid: 9d7e8f87435780644abb4acdfd72a2f0, type: 3}
+  LookupTexture: {fileID: 0}
+  Amount: 1
+  TintColor: {r: 1, g: 1, b: 1, a: 1}
+  Hue: 0
+  Saturation: 0
+  Brightness: 0
+  Contrast: 0
+  Sharpness: 0
 --- !u!1 &1622158711
 GameObject:
   m_ObjectHideFlags: 0
@@ -33324,7 +33367,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 2124689745}
         m_TargetAssemblyTypeName: SettingsMenu, Assembly-CSharp
         m_MethodName: SetQuality
         m_Mode: 0
@@ -34230,7 +34273,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 2124689745}
         m_TargetAssemblyTypeName: SettingsMenu, Assembly-CSharp
         m_MethodName: SetResolution
         m_Mode: 0
