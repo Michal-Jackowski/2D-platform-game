@@ -5,7 +5,7 @@ using System;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class MenuManager : MonoBehaviour
+public class PauseMenuManagerNew : MonoBehaviour
 {
     [Header("Menu Scenes")]
     public GameObject introScene;
@@ -135,6 +135,7 @@ public class MenuManager : MonoBehaviour
     bool loadChapterButtonPlayedOnce = false;
     bool settingsButtonPlayedOnce = false;
     bool exitButtonPlayedOnce = false;
+    bool startNewGamePlayedOnce = false;
 
 
     //Checking If We Played Sound Once In Load Chapter Menu
@@ -278,7 +279,7 @@ public class MenuManager : MonoBehaviour
         try
         {
             DisableMouse();
-            ChangeIntroScene();
+            //ChangeIntroScene();
             
             if (mainMenu.activeSelf == true)
             {
@@ -318,7 +319,7 @@ public class MenuManager : MonoBehaviour
                     //Debug.Log("else if (mainMenuBegin)");
                 }
 
-                if(currentSelected.name == "PlayButton")
+                if(currentSelected.name == "ResumeButton")
                 {
                     SetDefaultColorForText();
                     SetHightlightColor(playButtonText);
@@ -329,8 +330,27 @@ public class MenuManager : MonoBehaviour
                         AudioManager.PlayUpDownMenuNavigationAudio();
                         playButtonPlayedOnce = true;
                     }
+                    startNewGamePlayedOnce = false;
                     loadChapterButtonPlayedOnce = false;
                     settingsButtonPlayedOnce = false;
+                    exitButtonPlayedOnce = false;
+                }
+                else if(currentSelected.name == "StartNewGameButton")
+                {
+                    SetDefaultColorForText();
+                    SetHightlightColor(loadChapterButtonText);
+
+                    //Navigation was changed
+                    maimMenuInitialNavigationPosition = false;
+                    //Play audio only once
+                    if(!startNewGamePlayedOnce)
+                    {
+                        AudioManager.PlayUpDownMenuNavigationAudio();
+                        startNewGamePlayedOnce = true;
+                    }
+                    playButtonPlayedOnce = false;  
+                    settingsButtonPlayedOnce = false;
+                    loadChapterButtonPlayedOnce = false;
                     exitButtonPlayedOnce = false;
                 }
                 else if(currentSelected.name == "LoadChapterButton")
@@ -349,6 +369,7 @@ public class MenuManager : MonoBehaviour
                     playButtonPlayedOnce = false;  
                     settingsButtonPlayedOnce = false;
                     exitButtonPlayedOnce = false;
+                    startNewGamePlayedOnce = false;
                 }
                 else if(currentSelected.name == "SettingsButton")
                 {
@@ -366,6 +387,7 @@ public class MenuManager : MonoBehaviour
                     playButtonPlayedOnce = false;
                     loadChapterButtonPlayedOnce = false;
                     exitButtonPlayedOnce = false;  
+                    startNewGamePlayedOnce = false;
                     //Debug.Log("else if(currentSelected.name == SettingsButton");
                 }
                 else if(currentSelected.name == "ExitButton")
@@ -384,6 +406,7 @@ public class MenuManager : MonoBehaviour
                     playButtonPlayedOnce = false;
                     loadChapterButtonPlayedOnce = false;
                     settingsButtonPlayedOnce = false;
+                    startNewGamePlayedOnce = false;
                 }
             }
             else if (settingMenu.activeSelf == true)

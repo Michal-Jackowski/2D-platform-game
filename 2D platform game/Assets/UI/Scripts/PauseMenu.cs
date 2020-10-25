@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -17,13 +18,23 @@ public class PauseMenu : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) && !pauseMenuUI.activeSelf)
+/*         if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            if(GameIsPaused && pauseMenuUI.activeSelf && PauseMenuManager.canBackToGame)
+            {
+                //Resume();
+                Debug.Log("if(GameIsPaused && pauseMenuUI.activeSelf && PauseMenuManager.canBackToGame)");
+            }
+            else if(!settingsMenuUI.activeSelf && !controlsMenuUI.activeSelf && !graphicMenuUI.activeSelf && !soundMenuUI.activeSelf && !creditsMenuUI.activeSelf && !LoadChapterMenuUI.activeSelf)
+            {
+                Debug.Log("if PAUSE");
+                //Pause();
+            }
+        } */
+
+        if(Input.GetKeyDown(KeyCode.P))
         {
             Pause();
-        }
-        else if(Input.GetKeyDown(KeyCode.Escape) && pauseMenuUI.activeSelf && GameIsPaused)
-        {
-            Resume();
         }
     }
 
@@ -62,6 +73,7 @@ public class PauseMenu : MonoBehaviour
     public void StartNewGame()
     {
         Time.timeScale = 1f;
+        GameIsPaused = false;
         SceneManager.LoadScene("PrototypeScene");
     }
 }

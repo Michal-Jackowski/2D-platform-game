@@ -188,6 +188,10 @@ public class PauseMenuManager : MonoBehaviour
     //Post Processing
     bool postProcessingEnabled = true;
 
+    //Pause Menu
+/*     public bool GameIsPaused = false;
+    public static bool canBackToGame = false; */
+
 
     //Slider
     [Header("Brigtness Slider Objects")]
@@ -279,11 +283,21 @@ public class PauseMenuManager : MonoBehaviour
     {
         try
         {
+/*             if(!PauseMenu.GameIsPaused)
+            {
+                ResetMenuLastStates();
+                canBackToGame = false;
+            } */
+
             DisableMouse();
-            ChangeIntroScene();
-            
+
             if (pauseMenu.activeSelf == true)
             {
+/*                 if(Input.GetKeyDown(KeyCode.Escape))
+                {
+                    canBackToGame = true;
+                } */
+                
                 allowSelectSound = true;
                 backFromSelect = false;
                 
@@ -295,12 +309,14 @@ public class PauseMenuManager : MonoBehaviour
                         EventSystem.current.SetSelectedGameObject(EventSystem.current.GetComponent<EventSystem>().firstSelectedGameObject);
                         backFromLoadChapter = true;
                         loadChapterMenuBegin = false;
+                        Debug.Log("if(settingMenuBegin)");
                     }
                     else
                     {
                         EventSystem.current.GetComponent<EventSystem>().firstSelectedGameObject = settingsButton;
                         EventSystem.current.SetSelectedGameObject(EventSystem.current.GetComponent<EventSystem>().firstSelectedGameObject);
                         backFromSettings = true;
+                        Debug.Log("loadChapterMenuBegin ELSE");
                     }
                     settingMenuBegin = false;
                     mainMenuBegin = true;
@@ -310,10 +326,12 @@ public class PauseMenuManager : MonoBehaviour
                 {
                     SetNewSelectedGameObject();
                     mainMenuBegin = true;
+                    Debug.Log("if (!mainMenuBegin && !backFromSettings)");
                 }
                 else if (mainMenuBegin)
                 {
                     currentSelected = EventSystem.current.currentSelectedGameObject;
+                    Debug.Log("else if (mainMenuBegin)");
                 }
 
                 if(currentSelected.name == "ResumeButton")
@@ -337,8 +355,11 @@ public class PauseMenuManager : MonoBehaviour
                     SetDefaultColorForText();
                     SetHightlightColor(startNewGameButtonText);
                     
+                    //Navigation was changed
+                    maimMenuInitialNavigationPosition = false;
+
                     //Play only when you changed navigation in menu
-                    if(!maimMenuInitialNavigationPosition && !startNewGameButtonPlayedOnce) 
+                    if(!startNewGameButtonPlayedOnce) 
                     {
                         AudioManager.PlayUpDownMenuNavigationAudio();
                         startNewGameButtonPlayedOnce = true;
@@ -383,6 +404,7 @@ public class PauseMenuManager : MonoBehaviour
                     startNewGameButtonPlayedOnce = false;
                     loadChapterButtonPlayedOnce = false;
                     exitButtonPlayedOnce = false;  
+                    Debug.Log("else if(currentSelected.name == SettingsButton");
                 }
                 else if(currentSelected.name == "ExitButton")
                 {
@@ -1055,7 +1077,7 @@ public class PauseMenuManager : MonoBehaviour
         catch (NullReferenceException) {}
     }
 
-    void SetNewSelectedGameObject()
+    public void SetNewSelectedGameObject()
     {
         if (pauseMenu.activeSelf)
         {
@@ -1203,30 +1225,6 @@ public class PauseMenuManager : MonoBehaviour
         }
     }
 
-    void ChangeIntroScene()
-    {
-        if(introScene.activeSelf)
-        {
-            if (Input.anyKey)
-            {
-                if (Input.GetKey(KeyCode.Mouse0) || Input.GetKey(KeyCode.Mouse1))
-                {
-                    return;
-                }
-                else
-                {
-                    pauseMenu.SetActive(true);
-                    introScene.SetActive(false);
-                    AudioManager.PlaySelectMenuNavigationAudio();
-                }
-            }
-        }
-        else
-        {
-            return;
-        }
-    }
-
     public void PlayGame()
     {
         Debug.Log("PLAY GAME!");
@@ -1246,6 +1244,8 @@ public class PauseMenuManager : MonoBehaviour
             currentSelectedLevel = EventSystem.current.currentSelectedGameObject;
             if(currentSelectedLevel.name == "PrototypeLevel")
             {
+                Time.timeScale = 1f;
+                //GameIsPaused = false;
                 SceneManager.LoadScene("PrototypeScene");
             }
             else if(currentSelectedLevel.name == "LevelOne")
@@ -1413,5 +1413,56 @@ public class PauseMenuManager : MonoBehaviour
             }
         }
         return rightExtreme;
+    }
+
+    public void ResetMenuLastStates()
+    {
+        mainMenuBegin = false;
+        settingMenuBegin = false;
+        graphicMenuBegin = false;
+        soundMenuBegin = false;
+        loadChapterMenuBegin = false;
+        backFromSettings = false;
+        backFromGraphic = false;
+        backFromLoadChapter = false;
+        backFromSound = false;
+        maimMenuInitialNavigationPosition = true;
+        loadChapterMenuInitialNavigationPosition = true;
+        settingsMenuInitialNavigationPosition = true;
+        graphicMenuInitialNavigationPosition = true;
+        soundMenuInitialNavigationPosition = true;
+        resumeButtonPlayedOnce = false;
+        startNewGameButtonPlayedOnce = false;
+        loadChapterButtonPlayedOnce = false;
+        settingsButtonPlayedOnce = false;
+        exitButtonPlayedOnce = false;
+        prototypeLevelPlayedOnce = true;
+        levelOnePlayedOnce = false;
+        levelTwoPlayedOnce = false;
+        levelThreePlayedOnce = false;
+        levelFourPlayedOnce = false;
+        controlsButtonPlayedOnce = false;
+        graphicButtonPlayedOnce = false;
+        soundButtonPlayedOnce = false;
+        creditsButtonPlayedOnce = false;
+        qualityDropdownPlayedOnce = false;
+        resolutionDropdownPlayedOnce = false;
+        fullScreenTogglePlayedOnce = false;
+        PostProcessingTogglePlayedOnce = false;
+        BrightnessVolumeSliderPlayedOnce = false;
+        musicVolumeSliderPlayedOnce = false;
+        ambientVolumeSliderPlayedOnce = false;
+        stingVolumeSliderPlayedOnce = false;
+        voiceVolumeSliderPlayedOnce = false;
+        playerVolumeSliderPlayedOnce = false;
+        UIVolumeSliderPlayedOnce = false;
+        allowSelectSound = true;
+        backFromSelect = false;
+        graphicOptionsSelected = false;
+        resumeButtonText.color = new Color32(100, 100, 100, 255);
+        startNewGameButtonText.color = new Color32(100, 100, 100, 255);
+        loadChapterButtonText.color = new Color32(100, 100, 100, 255);
+        settingsButtonText.color = new Color32(100, 100, 100, 255);
+        exitButtonText.color = new Color32(100, 100, 100, 255);
     }
 }
