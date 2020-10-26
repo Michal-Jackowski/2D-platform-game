@@ -8,9 +8,8 @@ using UnityEngine.UI;
 public class PauseMenuManagerNew : MonoBehaviour
 {
     [Header("Menu Scenes")]
-    public GameObject introScene;
     public GameObject settingMenu;
-    public GameObject mainMenu;
+    public GameObject pauseMenu;
     public GameObject graphicMenu;
     public GameObject soundMenu;
     public GameObject loadChapterMenu;
@@ -20,14 +19,15 @@ public class PauseMenuManagerNew : MonoBehaviour
 
     [Header("Menu First Selected Objects")]
     public GameObject settingMenuFirstSelectedButton; 
-    public GameObject mainMenuFirstSelectedButton;
+    public GameObject pauseMenuFirstSelectedButton;
     public GameObject graphicMenuFirstSelectedButton;
     public GameObject soundMenuFirstSelectedButton;
     public GameObject loadChapterMenuFirstSelectedButton;
 
 
-    [Header("Main Menu Buttons")]
-    public GameObject playButton;
+    [Header("Pause Menu Buttons")]
+    public GameObject resumeButton;
+    public GameObject startNewGameButton;
     public GameObject loadChapterButton;
     public GameObject settingsButton;
     public GameObject exitButton;
@@ -64,8 +64,9 @@ public class PauseMenuManagerNew : MonoBehaviour
     public GameObject levelFourImage;
 
     
-    [Header("Main Menu Buttons Text")]
-    public TextMeshProUGUI playButtonText;
+    [Header("Pause Menu Buttons Text")]
+    public TextMeshProUGUI resumeButtonText;
+    public TextMeshProUGUI startNewGameButtonText;
     public TextMeshProUGUI loadChapterButtonText;
     public TextMeshProUGUI settingsButtonText;
     public TextMeshProUGUI exitButtonText;
@@ -108,7 +109,7 @@ public class PauseMenuManagerNew : MonoBehaviour
 
 
     //Checking If Menu Is On Start Position
-    bool mainMenuBegin = false;
+    bool pauseMenuBegin = false;
     bool settingMenuBegin = false;
     bool graphicMenuBegin = false;
     bool soundMenuBegin = false;
@@ -123,7 +124,7 @@ public class PauseMenuManagerNew : MonoBehaviour
 
 
     //Initial Navigation For Menu
-    bool maimMenuInitialNavigationPosition = true;
+    bool pauseMenuInitialNavigationPosition = true;
     bool loadChapterMenuInitialNavigationPosition = true;
     bool settingsMenuInitialNavigationPosition = true;
     bool graphicMenuInitialNavigationPosition = true;
@@ -131,11 +132,11 @@ public class PauseMenuManagerNew : MonoBehaviour
 
 
     //Checking If We Played Sound Once In Main Menu
-    bool playButtonPlayedOnce = false;
+    bool resumeButtonPlayedOnce = false;
+    bool startNewGameButtonPlayedOnce = false;
     bool loadChapterButtonPlayedOnce = false;
     bool settingsButtonPlayedOnce = false;
     bool exitButtonPlayedOnce = false;
-    bool startNewGamePlayedOnce = false;
 
 
     //Checking If We Played Sound Once In Load Chapter Menu
@@ -278,10 +279,15 @@ public class PauseMenuManagerNew : MonoBehaviour
     {
         try
         {
+/*             //Problem here
+            if(!PauseMenu.GameIsPaused)
+            {
+                ResetMenu();
+            } */
+
             DisableMouse();
-            //ChangeIntroScene();
             
-            if (mainMenu.activeSelf == true)
+            if (pauseMenu.activeSelf == true)
             {
                 allowSelectSound = true;
                 backFromSelect = false;
@@ -304,16 +310,16 @@ public class PauseMenuManagerNew : MonoBehaviour
                         //Debug.Log("loadChapterMenuBegin ELSE");
                     }
                     settingMenuBegin = false;
-                    mainMenuBegin = true;
+                    pauseMenuBegin = true;
                 }
                 
-                if (!mainMenuBegin && !backFromSettings)
+                if (!pauseMenuBegin && !backFromSettings)
                 {
                     SetNewSelectedGameObject();
-                    mainMenuBegin = true;
+                    pauseMenuBegin = true;
                     //Debug.Log("if (!mainMenuBegin && !backFromSettings)");
                 }
-                else if (mainMenuBegin)
+                else if (pauseMenuBegin)
                 {
                     currentSelected = EventSystem.current.currentSelectedGameObject;
                     //Debug.Log("else if (mainMenuBegin)");
@@ -322,15 +328,15 @@ public class PauseMenuManagerNew : MonoBehaviour
                 if(currentSelected.name == "ResumeButton")
                 {
                     SetDefaultColorForText();
-                    SetHightlightColor(playButtonText);
+                    SetHightlightColor(resumeButtonText);
                     
                     //Play only when you changed navigation in menu
-                    if(!maimMenuInitialNavigationPosition && !playButtonPlayedOnce) 
+                    if(!pauseMenuInitialNavigationPosition && !resumeButtonPlayedOnce) 
                     {
                         AudioManager.PlayUpDownMenuNavigationAudio();
-                        playButtonPlayedOnce = true;
+                        resumeButtonPlayedOnce = true;
                     }
-                    startNewGamePlayedOnce = false;
+                    startNewGameButtonPlayedOnce = false;
                     loadChapterButtonPlayedOnce = false;
                     settingsButtonPlayedOnce = false;
                     exitButtonPlayedOnce = false;
@@ -338,17 +344,17 @@ public class PauseMenuManagerNew : MonoBehaviour
                 else if(currentSelected.name == "StartNewGameButton")
                 {
                     SetDefaultColorForText();
-                    SetHightlightColor(loadChapterButtonText);
+                    SetHightlightColor(startNewGameButtonText);
 
                     //Navigation was changed
-                    maimMenuInitialNavigationPosition = false;
+                    pauseMenuInitialNavigationPosition = false;
                     //Play audio only once
-                    if(!startNewGamePlayedOnce)
+                    if(!startNewGameButtonPlayedOnce)
                     {
                         AudioManager.PlayUpDownMenuNavigationAudio();
-                        startNewGamePlayedOnce = true;
+                        startNewGameButtonPlayedOnce = true;
                     }
-                    playButtonPlayedOnce = false;  
+                    resumeButtonPlayedOnce = false;  
                     settingsButtonPlayedOnce = false;
                     loadChapterButtonPlayedOnce = false;
                     exitButtonPlayedOnce = false;
@@ -359,17 +365,17 @@ public class PauseMenuManagerNew : MonoBehaviour
                     SetHightlightColor(loadChapterButtonText);
 
                     //Navigation was changed
-                    maimMenuInitialNavigationPosition = false;
+                    pauseMenuInitialNavigationPosition = false;
                     //Play audio only once
                     if(!loadChapterButtonPlayedOnce)
                     {
                         AudioManager.PlayUpDownMenuNavigationAudio();
                         loadChapterButtonPlayedOnce = true;
                     }
-                    playButtonPlayedOnce = false;  
+                    resumeButtonPlayedOnce = false;  
+                    startNewGameButtonPlayedOnce = false;
                     settingsButtonPlayedOnce = false;
                     exitButtonPlayedOnce = false;
-                    startNewGamePlayedOnce = false;
                 }
                 else if(currentSelected.name == "SettingsButton")
                 {
@@ -377,17 +383,17 @@ public class PauseMenuManagerNew : MonoBehaviour
                     SetHightlightColor(settingsButtonText);
 
                     //Navigation was changed
-                    maimMenuInitialNavigationPosition = false;
+                    pauseMenuInitialNavigationPosition = false;
                     //Play audio only once
                     if(!settingsButtonPlayedOnce)
                     {
                         AudioManager.PlayUpDownMenuNavigationAudio();  
                         settingsButtonPlayedOnce = true;
                     }
-                    playButtonPlayedOnce = false;
+                    resumeButtonPlayedOnce = false;
+                    startNewGameButtonPlayedOnce = false;
                     loadChapterButtonPlayedOnce = false;
                     exitButtonPlayedOnce = false;  
-                    startNewGamePlayedOnce = false;
                     //Debug.Log("else if(currentSelected.name == SettingsButton");
                 }
                 else if(currentSelected.name == "ExitButton")
@@ -396,17 +402,17 @@ public class PauseMenuManagerNew : MonoBehaviour
                     SetHightlightColor(exitButtonText);
 
                     //Navigation was changed
-                    maimMenuInitialNavigationPosition = false;
+                    pauseMenuInitialNavigationPosition = false;
                     //Play audio only once
                     if(!exitButtonPlayedOnce)
                     {
                         AudioManager.PlayUpDownMenuNavigationAudio();  
                         exitButtonPlayedOnce = true;
                     }
-                    playButtonPlayedOnce = false;
+                    resumeButtonPlayedOnce = false;
+                    startNewGameButtonPlayedOnce = false;
                     loadChapterButtonPlayedOnce = false;
                     settingsButtonPlayedOnce = false;
-                    startNewGamePlayedOnce = false;
                 }
             }
             else if (settingMenu.activeSelf == true)
@@ -1063,9 +1069,9 @@ public class PauseMenuManagerNew : MonoBehaviour
 
     void SetNewSelectedGameObject()
     {
-        if (mainMenu.activeSelf)
+        if (pauseMenu.activeSelf)
         {
-            EventSystem.current.GetComponent<EventSystem>().firstSelectedGameObject = mainMenuFirstSelectedButton;
+            EventSystem.current.GetComponent<EventSystem>().firstSelectedGameObject = pauseMenuFirstSelectedButton;
         }
         else if (settingMenu.activeSelf)
         {
@@ -1096,9 +1102,10 @@ public class PauseMenuManagerNew : MonoBehaviour
 
     void SetDefaultColorForText()
     {
-        if(mainMenu.activeSelf)
+        if(pauseMenu.activeSelf)
         {
-            playButtonText.color = new Color32(100, 100, 100, 255);
+            resumeButtonText.color = new Color32(100, 100, 100, 255);
+            startNewGameButtonText.color = new Color32(100, 100, 100, 255);
             loadChapterButtonText.color = new Color32(100, 100, 100, 255);
             settingsButtonText.color = new Color32(100, 100, 100, 255);
             exitButtonText.color = new Color32(100, 100, 100, 255);
@@ -1155,7 +1162,7 @@ public class PauseMenuManagerNew : MonoBehaviour
             //Main Menu
             if (settingMenu.activeSelf == true)
             {
-                mainMenu.SetActive(true);
+                pauseMenu.SetActive(true);
                 settingMenu.SetActive(false);
                 AudioManager.PlayBackFromMenuNavigationAudio();
             }
@@ -1189,7 +1196,7 @@ public class PauseMenuManagerNew : MonoBehaviour
             //LoadChapterMenuScenes
             if (loadChapterMenu.activeSelf == true)
             {
-                mainMenu.SetActive(true);
+                pauseMenu.SetActive(true);
                 loadChapterMenu.SetActive(false);
                 AudioManager.PlayBackFromMenuNavigationAudio();
             }
@@ -1205,30 +1212,6 @@ public class PauseMenuManagerNew : MonoBehaviour
         else
         {
             lastselect = EventSystem.current.currentSelectedGameObject;
-        }
-    }
-
-    void ChangeIntroScene()
-    {
-        if(introScene.activeSelf)
-        {
-            if (Input.anyKey)
-            {
-                if (Input.GetKey(KeyCode.Mouse0) || Input.GetKey(KeyCode.Mouse1))
-                {
-                    return;
-                }
-                else
-                {
-                    mainMenu.SetActive(true);
-                    introScene.SetActive(false);
-                    AudioManager.PlaySelectMenuNavigationAudio();
-                }
-            }
-        }
-        else
-        {
-            return;
         }
     }
 
@@ -1251,6 +1234,7 @@ public class PauseMenuManagerNew : MonoBehaviour
             currentSelectedLevel = EventSystem.current.currentSelectedGameObject;
             if(currentSelectedLevel.name == "PrototypeLevel")
             {
+                Time.timeScale = 1f;
                 SceneManager.LoadScene("PrototypeScene");
             }
             else if(currentSelectedLevel.name == "LevelOne")
@@ -1418,5 +1402,56 @@ public class PauseMenuManagerNew : MonoBehaviour
             }
         }
         return rightExtreme;
+    }
+
+    public void ResetMenu()
+    {
+        pauseMenuBegin = false;
+        settingMenuBegin = false;
+        graphicMenuBegin = false;
+        soundMenuBegin = false;
+        loadChapterMenuBegin = false;
+        backFromSettings = false;
+        backFromGraphic = false;
+        backFromLoadChapter = false;
+        backFromSound = false;
+        pauseMenuInitialNavigationPosition = true;
+        loadChapterMenuInitialNavigationPosition = true;
+        settingsMenuInitialNavigationPosition = true;
+        graphicMenuInitialNavigationPosition = true;
+        soundMenuInitialNavigationPosition = true;
+        resumeButtonPlayedOnce = false;
+        startNewGameButtonPlayedOnce = false;
+        loadChapterButtonPlayedOnce = false;
+        settingsButtonPlayedOnce = false;
+        exitButtonPlayedOnce = false;
+        prototypeLevelPlayedOnce = true;
+        levelOnePlayedOnce = false;
+        levelTwoPlayedOnce = false;
+        levelThreePlayedOnce = false;
+        levelFourPlayedOnce = false;
+        controlsButtonPlayedOnce = false;
+        graphicButtonPlayedOnce = false;
+        soundButtonPlayedOnce = false;
+        creditsButtonPlayedOnce = false;
+        qualityDropdownPlayedOnce = false;
+        resolutionDropdownPlayedOnce = false;
+        fullScreenTogglePlayedOnce = false;
+        PostProcessingTogglePlayedOnce = false;
+        BrightnessVolumeSliderPlayedOnce = false;
+        musicVolumeSliderPlayedOnce = false;
+        ambientVolumeSliderPlayedOnce = false;
+        stingVolumeSliderPlayedOnce = false;
+        voiceVolumeSliderPlayedOnce = false;
+        playerVolumeSliderPlayedOnce = false;
+        UIVolumeSliderPlayedOnce = false;
+        allowSelectSound = true;
+        backFromSelect = false;
+        graphicOptionsSelected = false;
+        resumeButtonText.color = new Color32(100, 100, 100, 255);
+        startNewGameButtonText.color = new Color32(100, 100, 100, 255);
+        loadChapterButtonText.color = new Color32(100, 100, 100, 255);
+        settingsButtonText.color = new Color32(100, 100, 100, 255);
+        exitButtonText.color = new Color32(100, 100, 100, 255);
     }
 }

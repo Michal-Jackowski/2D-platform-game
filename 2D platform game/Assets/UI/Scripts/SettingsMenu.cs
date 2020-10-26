@@ -22,8 +22,8 @@ public class SettingsMenu : MonoBehaviour
         audioMixer.SetFloat("voice volume", -40);
         audioMixer.SetFloat("ui volume", -40);
          
-        if(GraphicMenu.activeSelf)
-        {
+        //if(GraphicMenu.activeSelf)
+        //{
             //Get resolutions
             int CurrentResolutionIndex = 0;
             resolutions = Screen.resolutions;
@@ -47,7 +47,7 @@ public class SettingsMenu : MonoBehaviour
             ResolutionDropdown.AddOptions(options);
             ResolutionDropdown.value = CurrentResolutionIndex;
             ResolutionDropdown.RefreshShownValue();
-        }
+        //}
 
     }
 

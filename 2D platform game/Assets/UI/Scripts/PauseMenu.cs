@@ -14,6 +14,7 @@ public class PauseMenu : MonoBehaviour
     public GameObject soundMenuUI;
     public GameObject creditsMenuUI;
     public GameObject LoadChapterMenuUI;
+    bool canBackToGame = false;
 
 
     void Update()
@@ -32,9 +33,21 @@ public class PauseMenu : MonoBehaviour
             }
         } */
 
-        if(Input.GetKeyDown(KeyCode.P))
+        if(Input.GetKeyDown(KeyCode.Escape))
         {
-            Pause();
+            if(GameIsPaused && pauseMenuUI.activeSelf)
+            {
+                if(canBackToGame)
+                {
+                    canBackToGame = false;
+                    Resume();
+                }
+                canBackToGame = true;
+            }
+            else if(!settingsMenuUI.activeSelf && !controlsMenuUI.activeSelf && !graphicMenuUI.activeSelf && !soundMenuUI.activeSelf && !creditsMenuUI.activeSelf && !LoadChapterMenuUI.activeSelf)
+            {
+                Pause();
+            }
         }
     }
 

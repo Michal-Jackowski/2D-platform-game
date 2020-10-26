@@ -5980,7 +5980,7 @@ PrefabInstance:
     - target: {fileID: 114568543676866764, guid: 78a1eecdd4dc0cc48b8432057628c528, type: 3}
       propertyPath: musicClip
       value: 
-      objectReference: {fileID: 8300000, guid: 0e5e5220b21cbb24cb45445289715171, type: 3}
+      objectReference: {fileID: 8300000, guid: e76663dfc4ce3ae439a1642d27ccefe3, type: 3}
     - target: {fileID: 114568543676866764, guid: 78a1eecdd4dc0cc48b8432057628c528, type: 3}
       propertyPath: uiGroup
       value: 
@@ -6001,6 +6001,54 @@ PrefabInstance:
       propertyPath: BackFromMenuNavigationClip
       value: 
       objectReference: {fileID: 8300000, guid: 96db81e1d8b29434886da32b110b0e2d, type: 3}
+    - target: {fileID: 114568543676866764, guid: 78a1eecdd4dc0cc48b8432057628c528, type: 3}
+      propertyPath: levelStingClip
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114568543676866764, guid: 78a1eecdd4dc0cc48b8432057628c528, type: 3}
+      propertyPath: deathStingClip
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114568543676866764, guid: 78a1eecdd4dc0cc48b8432057628c528, type: 3}
+      propertyPath: winStingClip
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114568543676866764, guid: 78a1eecdd4dc0cc48b8432057628c528, type: 3}
+      propertyPath: orbStingClip
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114568543676866764, guid: 78a1eecdd4dc0cc48b8432057628c528, type: 3}
+      propertyPath: doorOpenStingClip
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114568543676866764, guid: 78a1eecdd4dc0cc48b8432057628c528, type: 3}
+      propertyPath: deathClip
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114568543676866764, guid: 78a1eecdd4dc0cc48b8432057628c528, type: 3}
+      propertyPath: jumpClip
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114568543676866764, guid: 78a1eecdd4dc0cc48b8432057628c528, type: 3}
+      propertyPath: jumpVoiceClip
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114568543676866764, guid: 78a1eecdd4dc0cc48b8432057628c528, type: 3}
+      propertyPath: deathVoiceClip
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114568543676866764, guid: 78a1eecdd4dc0cc48b8432057628c528, type: 3}
+      propertyPath: winVoiceClip
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114568543676866764, guid: 78a1eecdd4dc0cc48b8432057628c528, type: 3}
+      propertyPath: orbVoiceClip
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114568543676866764, guid: 78a1eecdd4dc0cc48b8432057628c528, type: 3}
+      propertyPath: ambientClip
+      value: 
+      objectReference: {fileID: 8300000, guid: eada7d54979248c4aa9e47df324ade25, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 78a1eecdd4dc0cc48b8432057628c528, type: 3}
 --- !u!1 &787567253
@@ -14621,7 +14669,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1537467052}
-  - component: {fileID: 1537467051}
+  - component: {fileID: 1537467053}
   m_Layer: 0
   m_Name: Pause Menu Manager
   m_TagString: Untagged
@@ -14629,7 +14677,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1537467051
+--- !u!4 &1537467052
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1537467050}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 719.26355, y: 555.7469, z: -263.37564}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1537467053
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -14638,10 +14700,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1537467050}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f172c618ff09cc44a29285511c35969, type: 3}
+  m_Script: {fileID: 11500000, guid: 2e8059558c36cb04d9c74e6e0cf091da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  introScene: {fileID: 1982861146}
   settingMenu: {fileID: 485993919}
   pauseMenu: {fileID: 1310436402}
   graphicMenu: {fileID: 1876060263}
@@ -14654,10 +14715,11 @@ MonoBehaviour:
   graphicMenuFirstSelectedButton: {fileID: 1269048880}
   soundMenuFirstSelectedButton: {fileID: 431044446}
   loadChapterMenuFirstSelectedButton: {fileID: 1559891941}
-  playButton: {fileID: 1582882683}
-  loadChapterButton: {fileID: 1002256401}
-  settingsButton: {fileID: 1526937545}
-  exitButton: {fileID: 1388851072}
+  resumeButton: {fileID: 1490326766}
+  startNewGameButton: {fileID: 177929893}
+  loadChapterButton: {fileID: 36988011}
+  settingsButton: {fileID: 370281034}
+  exitButton: {fileID: 1368739300}
   controlsButton: {fileID: 1494612246}
   graphicButton: {fileID: 1942755658}
   soundButton: {fileID: 813918459}
@@ -14698,7 +14760,6 @@ MonoBehaviour:
   playerVolumeSliderText: {fileID: 1810823558}
   UIVolumeSliderText: {fileID: 1777264007}
   postProcessingManager: {fileID: 1321082131}
-  GameIsPaused: 0
   sliderBrigtnessBackgroundImage: {fileID: 1718031163}
   sliderBrigtnessFillAreaImage: {fileID: 1568925321}
   sliderBrigtnessHandleImage: {fileID: 1562873884}
@@ -14727,20 +14788,6 @@ MonoBehaviour:
   sliderVoiceVolumeHandleImage: {fileID: 1608287300}
   sliderUIVolumeBackgroundImage: {fileID: 847457973}
   sliderUIVolumeHandleImage: {fileID: 29994897}
---- !u!4 &1537467052
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1537467050}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 719.26355, y: 555.7469, z: -263.37564}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 13
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1539986128
 GameObject:
   m_ObjectHideFlags: 0
