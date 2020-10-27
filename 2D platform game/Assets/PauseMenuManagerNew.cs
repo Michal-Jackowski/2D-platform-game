@@ -279,11 +279,12 @@ public class PauseMenuManagerNew : MonoBehaviour
     {
         try
         {
-/*             //Problem here
+            //Problem here
             if(!PauseMenu.GameIsPaused)
             {
                 ResetMenu();
-            } */
+                Debug.Log("Reset menu!");
+            }
 
             DisableMouse();
             
@@ -417,6 +418,8 @@ public class PauseMenuManagerNew : MonoBehaviour
             }
             else if (settingMenu.activeSelf == true)
             {
+                PauseMenu.canBackToGame = false;
+                
                 PlayBackSound();
                 
                 if(allowSelectSound && !backFromSelect)
@@ -916,6 +919,8 @@ public class PauseMenuManagerNew : MonoBehaviour
             }
             else if (loadChapterMenu.activeSelf == true)
             {
+                PauseMenu.canBackToGame = false;
+                
                 PlayBackSound();
                 LoadLevel();
                 

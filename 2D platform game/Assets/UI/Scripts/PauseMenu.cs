@@ -14,7 +14,7 @@ public class PauseMenu : MonoBehaviour
     public GameObject soundMenuUI;
     public GameObject creditsMenuUI;
     public GameObject LoadChapterMenuUI;
-    bool canBackToGame = false;
+    public static bool canBackToGame = false;
 
 
     void Update()
@@ -42,9 +42,12 @@ public class PauseMenu : MonoBehaviour
                     canBackToGame = false;
                     Resume();
                 }
-                canBackToGame = true;
+                else
+                {
+                    canBackToGame = true;
+                }
             }
-            else if(!settingsMenuUI.activeSelf && !controlsMenuUI.activeSelf && !graphicMenuUI.activeSelf && !soundMenuUI.activeSelf && !creditsMenuUI.activeSelf && !LoadChapterMenuUI.activeSelf)
+            else if(!pauseMenuUI.activeSelf && !settingsMenuUI.activeSelf && !controlsMenuUI.activeSelf && !graphicMenuUI.activeSelf && !soundMenuUI.activeSelf && !creditsMenuUI.activeSelf && !LoadChapterMenuUI.activeSelf)
             {
                 Pause();
             }
