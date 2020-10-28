@@ -176,6 +176,9 @@ public class PauseMenuManagerNew : MonoBehaviour
     bool backFromSelect = false;
     bool graphicOptionsSelected = false;
 
+    //Avoiding double enter for example entering graphics menu and activating post processing effects in the same time
+    bool canSetPostProcessingEffects = false;
+
 
     //Disable Mouse
     GameObject lastselect;
@@ -419,6 +422,7 @@ public class PauseMenuManagerNew : MonoBehaviour
             else if (settingMenu.activeSelf == true)
             {
                 PauseMenu.canBackToGame = false;
+                canSetPostProcessingEffects = false;
                 
                 PlayBackSound();
                 
@@ -521,7 +525,7 @@ public class PauseMenuManagerNew : MonoBehaviour
                 }
             }
             else if (graphicMenu.activeSelf == true)
-            {
+            {                
                 PlayBackSound();
                 graphicOptionsSelected = false;
 
@@ -630,7 +634,7 @@ public class PauseMenuManagerNew : MonoBehaviour
                 }
                 else if(currentSelected.name == "PostProcessingToggle")
                 {
-                    if(Input.GetKeyDown(KeyCode.Return) && !graphicOptionsSelected)
+                    if(Input.GetKeyDown(KeyCode.Return) && !graphicOptionsSelected && canSetPostProcessingEffects)
                     {
                         AudioManager.PlaySelectMenuNavigationAudio();
                         graphicOptionsSelected = true;
@@ -653,11 +657,11 @@ public class PauseMenuManagerNew : MonoBehaviour
                     fullScreenTogglePlayedOnce = false;
                     BrightnessVolumeSliderPlayedOnce = false;
 
-                    if(Input.GetKeyDown(KeyCode.Return) && postProcessingEnabled)
+                    if(Input.GetKeyDown(KeyCode.Return) && postProcessingEnabled && canSetPostProcessingEffects)
                     {
                         SetPostProcessing(false);
                     }
-                    else if(Input.GetKeyDown(KeyCode.Return) && !postProcessingEnabled)
+                    else if(Input.GetKeyDown(KeyCode.Return) && !postProcessingEnabled & canSetPostProcessingEffects)
                     {
                         SetPostProcessing(true);
                     }
@@ -698,6 +702,11 @@ public class PauseMenuManagerNew : MonoBehaviour
                     fullScreenTogglePlayedOnce = false;
                     PostProcessingTogglePlayedOnce = false;
                 }
+            }
+            //Catching enter button to avoid unwated enter to postprocessing option
+            if(Input.GetKeyDown(KeyCode.Return) && !canSetPostProcessingEffects)
+            {
+                canSetPostProcessingEffects = true;
             }
             else if (soundMenu.activeSelf == true)
             {
