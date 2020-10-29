@@ -29,6 +29,7 @@ public class AudioManager : MonoBehaviour
 	public AudioClip selectNavigationClip; //The sting played when player use up_key or down_key in menu
 	public AudioClip leftRightNavigationClip;	//The sting played when player use left_key or right_key in menu
 	public AudioClip BackFromMenuNavigationClip;	//The sting played when player use esc_key in menu
+	public AudioClip enterPauseMenuClip;	//The sting played when player enters pauseMenu using esc
 
 	[Header("Robbie Audio")]
     public AudioClip[] walkStepClips;	//The footstep sound effects
@@ -269,6 +270,17 @@ public class AudioManager : MonoBehaviour
 
 		//Set the door open sting clip and tell the source to play
 		current.uiSource.clip = current.BackFromMenuNavigationClip;
+		current.uiSource.Play();
+	}
+
+	public static void PlayEnterPauseMenuAudio()
+	{
+		//If there is no current AudioManager, exit
+		if (current == null)
+			return;
+
+		//Set the door open sting clip and tell the source to play
+		current.uiSource.clip = current.enterPauseMenuClip;
 		current.uiSource.Play();
 	}
 }

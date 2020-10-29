@@ -286,7 +286,6 @@ public class PauseMenuManagerNew : MonoBehaviour
             if(!PauseMenu.GameIsPaused)
             {
                 ResetMenu();
-                Debug.Log("Reset menu!");
             }
 
             DisableMouse();
@@ -702,11 +701,11 @@ public class PauseMenuManagerNew : MonoBehaviour
                     fullScreenTogglePlayedOnce = false;
                     PostProcessingTogglePlayedOnce = false;
                 }
-            }
-            //Catching enter button to avoid unwated enter to postprocessing option
-            if(Input.GetKeyDown(KeyCode.Return) && !canSetPostProcessingEffects)
-            {
-                canSetPostProcessingEffects = true;
+                //Catching enter button to avoid unwated enter to postprocessing option
+                if(Input.GetKeyDown(KeyCode.Return) && !canSetPostProcessingEffects)
+                {
+                    canSetPostProcessingEffects = true;
+                }
             }
             else if (soundMenu.activeSelf == true)
             {

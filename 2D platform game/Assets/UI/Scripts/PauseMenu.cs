@@ -15,24 +15,11 @@ public class PauseMenu : MonoBehaviour
     public GameObject creditsMenuUI;
     public GameObject LoadChapterMenuUI;
     public static bool canBackToGame = false;
+    public GameObject inputScript;
 
 
     void Update()
     {
-/*         if(Input.GetKeyDown(KeyCode.Escape))
-        {
-            if(GameIsPaused && pauseMenuUI.activeSelf && PauseMenuManager.canBackToGame)
-            {
-                //Resume();
-                Debug.Log("if(GameIsPaused && pauseMenuUI.activeSelf && PauseMenuManager.canBackToGame)");
-            }
-            else if(!settingsMenuUI.activeSelf && !controlsMenuUI.activeSelf && !graphicMenuUI.activeSelf && !soundMenuUI.activeSelf && !creditsMenuUI.activeSelf && !LoadChapterMenuUI.activeSelf)
-            {
-                Debug.Log("if PAUSE");
-                //Pause();
-            }
-        } */
-
         if(Input.GetKeyDown(KeyCode.Escape))
         {
             if(GameIsPaused && pauseMenuUI.activeSelf)
@@ -65,13 +52,16 @@ public class PauseMenu : MonoBehaviour
         LoadChapterMenuUI.SetActive(false);
         Time.timeScale = 1f;
         GameIsPaused = false;
+        inputScript.GetComponent<PlayerInput>().enabled = true;
     }
 
     void Pause()
     {
+        AudioManager.PlayEnterPauseMenuAudio();
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
         GameIsPaused = true;
+        inputScript.GetComponent<PlayerInput>().enabled = false;
     }
 
     public void LoadMenu()
