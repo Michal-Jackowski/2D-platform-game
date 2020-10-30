@@ -303,14 +303,12 @@ public class PauseMenuManagerNew : MonoBehaviour
                         EventSystem.current.SetSelectedGameObject(EventSystem.current.GetComponent<EventSystem>().firstSelectedGameObject);
                         backFromLoadChapter = true;
                         loadChapterMenuBegin = false;
-                        //Debug.Log("if(settingMenuBegin)");
                     }
                     else
                     {
                         EventSystem.current.GetComponent<EventSystem>().firstSelectedGameObject = settingsButton;
                         EventSystem.current.SetSelectedGameObject(EventSystem.current.GetComponent<EventSystem>().firstSelectedGameObject);
                         backFromSettings = true;
-                        //Debug.Log("loadChapterMenuBegin ELSE");
                     }
                     settingMenuBegin = false;
                     pauseMenuBegin = true;
@@ -320,12 +318,10 @@ public class PauseMenuManagerNew : MonoBehaviour
                 {
                     SetNewSelectedGameObject();
                     pauseMenuBegin = true;
-                    //Debug.Log("if (!mainMenuBegin && !backFromSettings)");
                 }
                 else if (pauseMenuBegin)
                 {
                     currentSelected = EventSystem.current.currentSelectedGameObject;
-                    //Debug.Log("else if (mainMenuBegin)");
                 }
 
                 if(currentSelected.name == "ResumeButton")
@@ -397,7 +393,6 @@ public class PauseMenuManagerNew : MonoBehaviour
                     startNewGameButtonPlayedOnce = false;
                     loadChapterButtonPlayedOnce = false;
                     exitButtonPlayedOnce = false;  
-                    //Debug.Log("else if(currentSelected.name == SettingsButton");
                 }
                 else if(currentSelected.name == "ExitButton")
                 {
@@ -1466,5 +1461,6 @@ public class PauseMenuManagerNew : MonoBehaviour
         loadChapterButtonText.color = new Color32(100, 100, 100, 255);
         settingsButtonText.color = new Color32(100, 100, 100, 255);
         exitButtonText.color = new Color32(100, 100, 100, 255);
+        currentSelected = pauseMenuFirstSelectedButton;
     }
 }

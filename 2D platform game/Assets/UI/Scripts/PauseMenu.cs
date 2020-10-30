@@ -14,7 +14,7 @@ public class PauseMenu : MonoBehaviour
     public GameObject soundMenuUI;
     public GameObject creditsMenuUI;
     public GameObject LoadChapterMenuUI;
-    public static bool canBackToGame = false;
+    public static bool canBackToGame = true;
     public GameObject inputScript;
 
 
@@ -57,6 +57,7 @@ public class PauseMenu : MonoBehaviour
 
     void Pause()
     {
+        canBackToGame = true;
         AudioManager.PlayEnterPauseMenuAudio();
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
@@ -78,6 +79,8 @@ public class PauseMenu : MonoBehaviour
 
     public void StartNewGame()
     {
+        //to avoid menuPause restart see by player
+        pauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
         GameIsPaused = false;
         SceneManager.LoadScene("PrototypeScene");

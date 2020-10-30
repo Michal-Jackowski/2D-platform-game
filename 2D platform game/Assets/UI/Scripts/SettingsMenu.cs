@@ -22,32 +22,29 @@ public class SettingsMenu : MonoBehaviour
         audioMixer.SetFloat("voice volume", 0);
         audioMixer.SetFloat("ui volume", 0);
          
-        //if(GraphicMenu.activeSelf)
-        //{
-            //Get resolutions
-            int CurrentResolutionIndex = 0;
-            resolutions = Screen.resolutions;
+        //Get resolutions
+        int CurrentResolutionIndex = 0;
+        resolutions = Screen.resolutions;
 
-            ResolutionDropdown.ClearOptions();
+        ResolutionDropdown.ClearOptions();
 
-            List<string> options = new List<string>();
+        List<string> options = new List<string>();
 
-            for (int i = 0; i < resolutions.Length; i++)
+        for (int i = 0; i < resolutions.Length; i++)
+        {
+            string Option = resolutions[i].width + " x " + resolutions[i].height;
+            options.Add(Option);
+
+            if(resolutions[i].width == Screen.currentResolution.width &&
+                resolutions[i].height == Screen.currentResolution.height)
             {
-                string Option = resolutions[i].width + " x " + resolutions[i].height;
-                options.Add(Option);
-
-                if(resolutions[i].width == Screen.currentResolution.width &&
-                    resolutions[i].height == Screen.currentResolution.height)
-                {
-                    CurrentResolutionIndex = i;
-                }
+                CurrentResolutionIndex = i;
             }
+        }
 
-            ResolutionDropdown.AddOptions(options);
-            ResolutionDropdown.value = CurrentResolutionIndex;
-            ResolutionDropdown.RefreshShownValue();
-        //}
+        ResolutionDropdown.AddOptions(options);
+        ResolutionDropdown.value = CurrentResolutionIndex;
+        ResolutionDropdown.RefreshShownValue();
 
     }
 
