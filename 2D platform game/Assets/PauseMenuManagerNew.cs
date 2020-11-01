@@ -4,6 +4,7 @@ using UnityEngine.EventSystems;
 using System;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using Cinemachine;
 
 public class PauseMenuManagerNew : MonoBehaviour
 {
@@ -270,6 +271,9 @@ public class PauseMenuManagerNew : MonoBehaviour
     public Image sliderUIVolumeBackgroundImage;
     public Image sliderUIVolumeHandleImage;
 
+
+    [Header("Camera Damping")]
+    public GameObject playerFollowCam;
 
     void Start()
     {
@@ -1246,9 +1250,10 @@ public class PauseMenuManagerNew : MonoBehaviour
             }
             else if(currentSelectedLevel.name == "LevelOne")
             {
-                //*move player to new position*
-                LoadPlayerPositionLevelOne();
+                Time.timeScale = 1f;
                 SceneManager.LoadScene("PrototypeScene");
+                LoadPlayerPositionLevelOne();
+                //Problem here
             }
             else if(currentSelectedLevel.name == "LevelTwo")
             {
@@ -1468,6 +1473,10 @@ public class PauseMenuManagerNew : MonoBehaviour
     public void LoadPlayerPositionLevelOne()
     {
         //*Implementation*
+        //GameObject.Find("Robbie").transform.position = new Vector3(22.0f, 5.0f, 0.0f);
+        //test position
+        DisableVirtualPlayerCameraDamping();
+        GameObject.Find("Robbie").transform.position = new Vector3(177.0f, 10.0f, 0.0f);
     }
 
 /*     public void LoadPlayerPositionLevelOne()
@@ -1505,4 +1514,18 @@ public class PauseMenuManagerNew : MonoBehaviour
         position.z = 0.0f;
         transform.position = position;
     } */
+
+    public void DisableVirtualPlayerCameraDamping()
+    {
+        playerFollowCam.GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineFramingTransposer>().m_XDamping = 0;
+        playerFollowCam.GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineFramingTransposer>().m_YDamping = 0;
+        playerFollowCam.GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineFramingTransposer>().m_ZDamping = 0;
+    }
+
+    public void EnableVirtualPlayerCameraDamping()
+    {
+        playerFollowCam.GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineFramingTransposer>().m_XDamping = 1;
+        playerFollowCam.GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineFramingTransposer>().m_YDamping = 1;
+        playerFollowCam.GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineFramingTransposer>().m_ZDamping = 1;
+    }
 }
