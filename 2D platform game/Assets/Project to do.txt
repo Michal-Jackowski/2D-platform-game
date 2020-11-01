@@ -1,0 +1,23 @@
+# Poprawa całego pauseMenu
+	# Ustawienie gracza w odpowiedniej pozycji na scenie podczas loadchapter
+	# Restart poziomu przywraca domyślne ustawienia graficzne/muzyczne co jest błędem
+	# Nowy dzwięk pod wejście do pauseMenu
+	# Nowy przycisk w MainMenu Resume
+	# Próba zmiany brightness w ustawieniach wyłącza fader
+	# W pełni działający SaveLoadSystem
+	# Testy UI
+
+# Dodanie efektu kurzu podczas biegania
+# Możliwość wspinania się dopiero po ukończeniu animacji
+# Uśmiercenie bohatera jeżeli znajduję się w powietrzu powyżej 7.5 sekund
+# Dodanie wysokości skoku w zależności od stopnia wciśniętego przycisku
+# Przejrzenie zeszytu w poszukiwaniu funkcjonalności
+# Podpisanie pułapek na prototypowej scenie
+# Problem z pagórkami
+# Nowa animacja śmierci bohatera + nowa zasłona śmierci bohatera
+# Wykorzystanie w dużym stopniu 2D Physics (pułapki do prototype scene)
+
+# Przygotowanie prefabów
+# Posprzątanie kodu
+# Przeniesie pracy do Trello
+# Start Level Design

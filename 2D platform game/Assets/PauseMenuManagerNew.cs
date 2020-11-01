@@ -271,9 +271,6 @@ public class PauseMenuManagerNew : MonoBehaviour
     public Image sliderUIVolumeHandleImage;
 
 
-    [Header("Player Position")]
-    public Vector3 position;
-
     void Start()
     {
         lastselect = new GameObject();
@@ -1249,21 +1246,21 @@ public class PauseMenuManagerNew : MonoBehaviour
             }
             else if(currentSelectedLevel.name == "LevelOne")
             {
-                //Debug.Log("Load Level One...");
-                //PlayerPosition.
+                //*move player to new position*
+                LoadPlayerPositionLevelOne();
                 SceneManager.LoadScene("PrototypeScene");
             }
             else if(currentSelectedLevel.name == "LevelTwo")
             {
-                Debug.Log("Load Level Two...");
+                //*move player to new position*
             }
             else if(currentSelectedLevel.name == "LevelThree")
             {
-                Debug.Log("Load Level Three...");
+                //*move player to new position*
             }
             else if(currentSelectedLevel.name == "LevelFour")
             {
-                Debug.Log("Load Level Four...");
+                //*move player to new position*
             }
         }
     }
@@ -1470,6 +1467,12 @@ public class PauseMenuManagerNew : MonoBehaviour
 
     public void LoadPlayerPositionLevelOne()
     {
+        //*Implementation*
+    }
+
+/*     public void LoadPlayerPositionLevelOne()
+    {
+        Vector3 position;
         position.x = 22.0f;
         position.y = 5.0f;
         position.z = 0.0f;
@@ -1478,6 +1481,7 @@ public class PauseMenuManagerNew : MonoBehaviour
 
     public void LoadPlayerPositionLevelTwo()
     {
+        Vector3 position;
         position.x = 31.0f;
         position.y = -1.0f;
         position.z = 0.0f;
@@ -1486,6 +1490,7 @@ public class PauseMenuManagerNew : MonoBehaviour
 
     public void LoadPlayerPositionLevelThree()
     {
+        Vector3 position;
         position.x = 95.0f;
         position.y = -2.0f;
         position.z = 0.0f;
@@ -1494,9 +1499,10 @@ public class PauseMenuManagerNew : MonoBehaviour
 
     public void LoadPlayerPositionLevelFour()
     {
+        Vector3 position;
         position.x = 151.0f;
         position.y = 0.0f;
         position.z = 0.0f;
         transform.position = position;
-    }
+    } */
 }
