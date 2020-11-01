@@ -271,6 +271,9 @@ public class PauseMenuManagerNew : MonoBehaviour
     public Image sliderUIVolumeHandleImage;
 
 
+    [Header("Player Position")]
+    public Vector3 position;
+
     void Start()
     {
         lastselect = new GameObject();
@@ -1246,7 +1249,9 @@ public class PauseMenuManagerNew : MonoBehaviour
             }
             else if(currentSelectedLevel.name == "LevelOne")
             {
-                Debug.Log("Load Level One...");
+                //Debug.Log("Load Level One...");
+                //PlayerPosition.
+                SceneManager.LoadScene("PrototypeScene");
             }
             else if(currentSelectedLevel.name == "LevelTwo")
             {
@@ -1461,5 +1466,37 @@ public class PauseMenuManagerNew : MonoBehaviour
         settingsButtonText.color = new Color32(100, 100, 100, 255);
         exitButtonText.color = new Color32(100, 100, 100, 255);
         currentSelected = pauseMenuFirstSelectedButton;
+    }
+
+    public void LoadPlayerPositionLevelOne()
+    {
+        position.x = 22.0f;
+        position.y = 5.0f;
+        position.z = 0.0f;
+        transform.position = position;
+    }
+
+    public void LoadPlayerPositionLevelTwo()
+    {
+        position.x = 31.0f;
+        position.y = -1.0f;
+        position.z = 0.0f;
+        transform.position = position;
+    }
+
+    public void LoadPlayerPositionLevelThree()
+    {
+        position.x = 95.0f;
+        position.y = -2.0f;
+        position.z = 0.0f;
+        transform.position = position;
+    }
+
+    public void LoadPlayerPositionLevelFour()
+    {
+        position.x = 151.0f;
+        position.y = 0.0f;
+        position.z = 0.0f;
+        transform.position = position;
     }
 }

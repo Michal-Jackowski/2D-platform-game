@@ -8330,6 +8330,7 @@ GameObject:
   - component: {fileID: 1078777250}
   - component: {fileID: 1078777249}
   - component: {fileID: 1078777256}
+  - component: {fileID: 1078777255}
   m_Layer: 9
   m_Name: Robbie
   m_TagString: Untagged
@@ -8500,13 +8501,27 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1078777248}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 173.8, y: 11.6, z: 0}
+  m_LocalPosition: {x: 151, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1784045445}
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1078777255
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1078777248}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e53e74e162cb1d1409c5a627f7411fdd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  level: 0
+  health: 0
 --- !u!114 &1078777256
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10096,7 +10111,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1185501751}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 173.8, y: 11.6, z: -10}
+  m_LocalPosition: {x: 151, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 744845236}
@@ -37807,11 +37822,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2257397583135161523, guid: 2e34e4a7f79a0ef4aa1269502df764cb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 173.8
+      value: 151
       objectReference: {fileID: 0}
     - target: {fileID: 2257397583135161523, guid: 2e34e4a7f79a0ef4aa1269502df764cb, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 11.6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2257397583135161523, guid: 2e34e4a7f79a0ef4aa1269502df764cb, type: 3}
       propertyPath: m_LocalPosition.z
