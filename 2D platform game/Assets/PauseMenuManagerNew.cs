@@ -275,11 +275,38 @@ public class PauseMenuManagerNew : MonoBehaviour
     [Header("Camera Damping")]
     public GameObject playerFollowCam;
 
+
     void Start()
     {
         lastselect = new GameObject();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        
+        if(PlayerPrefs.GetInt("loadLevelPrototypePlayerPosition") == 1)
+        {
+            LoadPlayerPositionPrototypeLevel();
+            PlayerPrefs.SetInt("loadLevelPrototypePlayerPosition", 0);
+        }
+        else if(PlayerPrefs.GetInt("loadLevelOnePlayerPosition") == 1)
+        {
+            LoadPlayerPositionLevelOne();
+            PlayerPrefs.SetInt("loadLevelOnePlayerPosition", 0);
+        }
+        else if(PlayerPrefs.GetInt("loadLevelTwoPlayerPosition") == 1)
+        {
+            LoadPlayerPositionLevelTwo();
+            PlayerPrefs.SetInt("loadLevelTwoPlayerPosition", 0);
+        }
+        else if(PlayerPrefs.GetInt("loadLevelThreePlayerPosition") == 1)
+        {
+            LoadPlayerPositionLevelThree();
+            PlayerPrefs.SetInt("loadLevelThreePlayerPosition", 0);
+        }
+        else if(PlayerPrefs.GetInt("loadLevelFourPlayerPosition") == 1)
+        {
+            LoadPlayerPositionLevelFour();
+            PlayerPrefs.SetInt("loadLevelFourPlayerPosition", 0);
+        }
     }
 
     void Update()
@@ -1246,26 +1273,32 @@ public class PauseMenuManagerNew : MonoBehaviour
             if(currentSelectedLevel.name == "PrototypeLevel")
             {
                 Time.timeScale = 1f;
+                PlayerPrefs.SetInt("loadLevelPrototypePlayerPosition", 1);
                 SceneManager.LoadScene("PrototypeScene");
             }
             else if(currentSelectedLevel.name == "LevelOne")
             {
                 Time.timeScale = 1f;
+                PlayerPrefs.SetInt("loadLevelOnePlayerPosition", 1);
                 SceneManager.LoadScene("PrototypeScene");
-                LoadPlayerPositionLevelOne();
-                //Problem here
             }
             else if(currentSelectedLevel.name == "LevelTwo")
             {
-                //*move player to new position*
+                Time.timeScale = 1f;
+                PlayerPrefs.SetInt("loadLevelTwoPlayerPosition", 1);
+                SceneManager.LoadScene("PrototypeScene");
             }
             else if(currentSelectedLevel.name == "LevelThree")
             {
-                //*move player to new position*
+                Time.timeScale = 1f;
+                PlayerPrefs.SetInt("loadLevelThreePlayerPosition", 1);
+                SceneManager.LoadScene("PrototypeScene");
             }
             else if(currentSelectedLevel.name == "LevelFour")
             {
-                //*move player to new position*
+                Time.timeScale = 1f;
+                PlayerPrefs.SetInt("loadLevelFourPlayerPosition", 1);
+                SceneManager.LoadScene("PrototypeScene");
             }
         }
     }
@@ -1470,50 +1503,30 @@ public class PauseMenuManagerNew : MonoBehaviour
         currentSelected = pauseMenuFirstSelectedButton;
     }
 
+    public void LoadPlayerPositionPrototypeLevel()
+    {
+        GameObject.Find("Robbie").transform.position = new Vector3(-2.0f, 0.0f, 0.0f);
+    }
+    
     public void LoadPlayerPositionLevelOne()
     {
-        //*Implementation*
-        //GameObject.Find("Robbie").transform.position = new Vector3(22.0f, 5.0f, 0.0f);
-        //test position
-        DisableVirtualPlayerCameraDamping();
-        GameObject.Find("Robbie").transform.position = new Vector3(177.0f, 10.0f, 0.0f);
+        GameObject.Find("Robbie").transform.position = new Vector3(31.0f, -1.0f, 0.0f);
     }
-
-/*     public void LoadPlayerPositionLevelOne()
-    {
-        Vector3 position;
-        position.x = 22.0f;
-        position.y = 5.0f;
-        position.z = 0.0f;
-        transform.position = position;
-    }
-
+    
     public void LoadPlayerPositionLevelTwo()
     {
-        Vector3 position;
-        position.x = 31.0f;
-        position.y = -1.0f;
-        position.z = 0.0f;
-        transform.position = position;
+        GameObject.Find("Robbie").transform.position = new Vector3(95.0f, -2.0f, 0.0f);
     }
 
     public void LoadPlayerPositionLevelThree()
     {
-        Vector3 position;
-        position.x = 95.0f;
-        position.y = -2.0f;
-        position.z = 0.0f;
-        transform.position = position;
+        GameObject.Find("Robbie").transform.position = new Vector3(151.0f, 0.0f, 0.0f);
     }
 
     public void LoadPlayerPositionLevelFour()
     {
-        Vector3 position;
-        position.x = 151.0f;
-        position.y = 0.0f;
-        position.z = 0.0f;
-        transform.position = position;
-    } */
+        GameObject.Find("Robbie").transform.position = new Vector3(210.0f, -2.0f, 0.0f);
+    }
 
     public void DisableVirtualPlayerCameraDamping()
     {

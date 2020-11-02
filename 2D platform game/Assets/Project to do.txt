@@ -1,5 +1,4 @@
 # Poprawa całego pauseMenu
-	# Ustawienie gracza w odpowiedniej pozycji na scenie podczas loadchapter
 	# Restart poziomu przywraca domyślne ustawienia graficzne/muzyczne co jest błędem
 	# Nowy dzwięk pod wejście do pauseMenu
 	# Nowy przycisk w MainMenu Resume
