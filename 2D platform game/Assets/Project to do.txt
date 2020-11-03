@@ -7,7 +7,6 @@
 	# Testy UI
 
 # Dodanie efektu kurzu podczas biegania
-# Możliwość wspinania się dopiero po ukończeniu animacji
 # Uśmiercenie bohatera jeżeli znajduję się w powietrzu powyżej 7.5 sekund
 # Dodanie wysokości skoku w zależności od stopnia wciśniętego przycisku
 # Przejrzenie zeszytu w poszukiwaniu funkcjonalności
