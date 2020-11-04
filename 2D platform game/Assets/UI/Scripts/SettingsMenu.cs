@@ -15,12 +15,15 @@ public class SettingsMenu : MonoBehaviour
 
     private void Start()
     {
-        audioMixer.SetFloat("music volume", 0);
-        audioMixer.SetFloat("ambient volume", 0);
-        audioMixer.SetFloat("sting volume", 0);
-        audioMixer.SetFloat("player volume", 0);
-        audioMixer.SetFloat("voice volume", 0);
-        audioMixer.SetFloat("ui volume", 0);
+        //audioMixer.SetFloat("music volume", 0);
+        //audioMixer.SetFloat("ambient volume", 0);
+        //audioMixer.SetFloat("sting volume", 0);
+        //audioMixer.SetFloat("player volume", 0);
+        //audioMixer.SetFloat("voice volume", 0);
+        //audioMixer.SetFloat("ui volume", 0);
+        float musicVolumeLevel;
+        audioMixer.GetFloat("music volume", out musicVolumeLevel);
+        musicVolumeLevel = (int)musicVolumeLevel;
          
         //Get resolutions
         int CurrentResolutionIndex = 0;

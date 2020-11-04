@@ -4,19 +4,19 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 public static class SaveSystem
 {
-    public static void SavePlayerPosition(PlayerPosition playerPosition)
+    public static void SaveSoundVolume(SoundVolumeLevel soundVolumeLevel)
     {
         BinaryFormatter formatter = new BinaryFormatter();
         string path = GetSaveDataName();
         FileStream stream = new FileStream(path, FileMode.Create);
 
-        PlayerPositionData data = new PlayerPositionData(playerPosition);
+        SoundVolumeLevelData data = new SoundVolumeLevelData(soundVolumeLevel);
 
         formatter.Serialize(stream, data);
         stream.Close();
     }
 
-    public static PlayerPositionData LoadPlayerPosition()
+    public static SoundVolumeLevelData LoadSoundVolume()
     {
         string path = GetSaveDataName();
         if(File.Exists(path))
@@ -24,7 +24,7 @@ public static class SaveSystem
             BinaryFormatter formatter = new BinaryFormatter();
             FileStream stream = new FileStream(path, FileMode.Open);
 
-            PlayerPositionData data = formatter.Deserialize(stream) as PlayerPositionData;
+            SoundVolumeLevelData data = formatter.Deserialize(stream) as SoundVolumeLevelData;
             stream.Close();
 
             return data;
