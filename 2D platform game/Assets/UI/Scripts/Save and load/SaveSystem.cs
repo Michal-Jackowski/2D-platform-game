@@ -6,8 +6,8 @@ public static class SaveSystem
 {
     public static void SaveSoundVolume(SoundVolumeLevel soundVolumeLevel)
     {
+        string path = GetPath();
         BinaryFormatter formatter = new BinaryFormatter();
-        string path = GetSaveDataName();
         FileStream stream = new FileStream(path, FileMode.Create);
 
         SoundVolumeLevelData data = new SoundVolumeLevelData(soundVolumeLevel);
@@ -18,7 +18,7 @@ public static class SaveSystem
 
     public static SoundVolumeLevelData LoadSoundVolume()
     {
-        string path = GetSaveDataName();
+        string path = GetPath();
         if(File.Exists(path))
         {
             BinaryFormatter formatter = new BinaryFormatter();
@@ -36,7 +36,7 @@ public static class SaveSystem
         }
     }
 
-    public static string GetSaveDataName()
+    public static string GetPath()
     {
         string path = Application.persistentDataPath + "/GameSave.bin";
         return path;

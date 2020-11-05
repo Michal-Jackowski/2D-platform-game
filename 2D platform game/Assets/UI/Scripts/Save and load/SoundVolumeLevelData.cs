@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public class SoundVolumeLevelData
 {
-    public int musicVolume;
+    public float musicVolumeLevel;
 
     public SoundVolumeLevelData(SoundVolumeLevel soundVolumeLevel)
     {
-        musicVolume = soundVolumeLevel.musicVolume;
+        musicVolumeLevel = soundVolumeLevel.musicVolumeLevel;
     }
 }
