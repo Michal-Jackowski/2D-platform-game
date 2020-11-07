@@ -10,6 +10,8 @@
 
 # Scena prototypowa
 	# Dodanie efektu kurzu podczas biegania
+	# Dodanie warunków pogodowych tj. deszcz
+	# Dodanie wszystkich podstawowych dzwięków
 	# Uśmiercenie bohatera jeżeli znajduję się w powietrzu powyżej 7.5 sekund
 	# Dodanie wysokości skoku w zależności od stopnia wciśniętego przycisku
 	# Przejrzenie zeszytu w poszukiwaniu funkcjonalności
