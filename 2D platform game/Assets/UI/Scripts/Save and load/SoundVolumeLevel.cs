@@ -7,9 +7,23 @@ using System;
 
 public class SoundVolumeLevel : MonoBehaviour
 {
-    [Header("Sound Menu Objects")]
+    [Header("Sound Menu Sliders")]
     public Slider musicVolumeSlider;
+    public Slider ambientVolumeSlider;
+    public Slider stingVolumeSlider;
+    public Slider playerVolumeSlider;
+    public Slider voiceVolumeSlider;
+    public Slider uiVolumeSlider;
+
+    
+    [Header("Sound Menu Sliders Volume Level")]
     public float musicVolumeLevel;
+    public float ambientVolumeLevel;
+    public float stingVolumeLevel;
+    public float playerVolumeLevel;
+    public float voiceVolumeLevel;
+    public float uiVolumeLevel;
+    
 
 
     [Header("Menu Objects")]
