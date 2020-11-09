@@ -18,7 +18,7 @@ public class Settings : MonoBehaviour
 
     [Header("Graphic Menu Objects")]
     public Slider brightnessVolumeSlider;
-    public Toggle isFullScreenToggle;
+    public GameObject isFullScreenToggleCheckmark;
 
     
     [Header("Sound Menu Sliders Volume Level")]
@@ -84,7 +84,8 @@ public class Settings : MonoBehaviour
         SetVolumeLevel();
         SaveSystem.SaveSoundVolume(this);
         SetVolumeLevelSlider();
-        SetGraphics();
+        //GetGraphicsSettings();
+        //SetGraphicsSettings();
     }
 
     public void LoadPlayerSettings()
@@ -99,10 +100,9 @@ public class Settings : MonoBehaviour
             playerVolumeLevel = data.playerVolumeLevel;
             voiceVolumeLevel = data.voiceVolumeLevel;
             uiVolumeLevel = data.uiVolumeLevel;
-            isFullScreen = data.isFullScreen;
-
+            //Screen.fullScreen = data.isFullScreen;
             SetVolumeLevelSlider();
-            SetGraphicsComponent();
+            //SetGraphicsSettings();
         }
         catch (NullReferenceException)
         {
@@ -133,14 +133,13 @@ public class Settings : MonoBehaviour
     }
 
     //Load/Save fullscreen state to fix
-    public void SetGraphics()
+/*     public void GetGraphicsSettings()
     {
         isFullScreen = Screen.fullScreen;
     }
 
-    public void SetGraphicsComponent()
+    public void SetGraphicsSettings()
     {
         Screen.fullScreen = isFullScreen;
-        isFullScreenToggle.enabled = isFullScreen;
-    }
+    } */
 }

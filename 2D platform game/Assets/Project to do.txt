@@ -1,5 +1,7 @@
 [-] Poprawa całego pauseMenu
 	[-] Restart poziomu przywraca domyślne ustawienia graficzne/muzyczne co jest błędem
+	[-] Niewidoczne Powered by Unity w PauseMenu
+	[-] Build uruchamia się w wersji okienkowej a powinien w fullScreen
 	[-] Nowy dzwięk pod wejście do pauseMenu
 	[-] Nowy przycisk w MainMenu Resume
 	[-] Próba zmiany brightness w ustawieniach wyłącza fader

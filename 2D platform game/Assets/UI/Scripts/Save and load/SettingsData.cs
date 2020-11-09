@@ -25,7 +25,7 @@ public class SettingsData
         voiceVolumeLevel = settings.voiceVolumeLevel;
         uiVolumeLevel = settings.uiVolumeLevel;
         brightnessVolumeLevel = settings.brightnessVolumeLevel;
-        isFullScreen = settings.isFullScreen;
-        isPostProcessingOn = settings.isPostProcessingOn;
+        //isFullScreen = settings.isFullScreen;
+        //isPostProcessingOn = settings.isPostProcessingOn;
     }
 }
