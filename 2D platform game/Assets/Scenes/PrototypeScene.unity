@@ -4179,7 +4179,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2124689745}
         m_TargetAssemblyTypeName: SettingsMenu, Assembly-CSharp
-        m_MethodName: SetAmbientVolume
+        m_MethodName: SetPlayerVolume
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -37610,6 +37610,7 @@ GameObject:
   - component: {fileID: 2124689745}
   - component: {fileID: 2124689746}
   - component: {fileID: 2124689747}
+  - component: {fileID: 2124689748}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -37763,6 +37764,36 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2124689739}
   m_CullTransparentMesh: 0
+--- !u!114 &2124689748
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2124689739}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fea223a7715eba045b6e6efdd173c8b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  musicVolumeSlider: {fileID: 431044448}
+  ambientVolumeSlider: {fileID: 156307502}
+  stingVolumeSlider: {fileID: 324176065}
+  playerVolumeSlider: {fileID: 464755635}
+  voiceVolumeSlider: {fileID: 1446874634}
+  uiVolumeSlider: {fileID: 1288557813}
+  brightnessVolumeSlider: {fileID: 1158500009}
+  musicVolumeLevel: 0
+  ambientVolumeLevel: 0
+  stingVolumeLevel: 0
+  playerVolumeLevel: 0
+  voiceVolumeLevel: 0
+  uiVolumeLevel: 0
+  brightnessVolumeLevel: 0
+  settingMenu: {fileID: 485993919}
+  mainMenu: {fileID: 1066055609}
+  soundMenu: {fileID: 932556268}
+  graphicMenu: {fileID: 1876060263}
 --- !u!1 &2137851236
 GameObject:
   m_ObjectHideFlags: 0

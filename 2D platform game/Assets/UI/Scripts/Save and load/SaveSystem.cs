@@ -5,19 +5,19 @@ using System;
 
 public static class SaveSystem
 {
-    public static void SaveSoundVolume(SoundVolumeLevel soundVolumeLevel)
+    public static void SaveSoundVolume(Settings soundVolumeLevel)
     {
         string path = GetPath();
         BinaryFormatter formatter = new BinaryFormatter();
         FileStream stream = new FileStream(path, FileMode.Create);
 
-        SoundVolumeLevelData data = new SoundVolumeLevelData(soundVolumeLevel);
+        SettingsData data = new SettingsData(soundVolumeLevel);
 
         formatter.Serialize(stream, data);
         stream.Close();
     }
 
-    public static SoundVolumeLevelData LoadSoundVolume()
+    public static SettingsData LoadSoundVolume()
     {
         string path = GetPath();
         if(File.Exists(path))
@@ -25,14 +25,13 @@ public static class SaveSystem
             BinaryFormatter formatter = new BinaryFormatter();
             FileStream stream = new FileStream(path, FileMode.Open);
 
-            SoundVolumeLevelData data = formatter.Deserialize(stream) as SoundVolumeLevelData;
+            SettingsData data = formatter.Deserialize(stream) as SettingsData;
             stream.Close();
 
             return data;
         }
         else
         {
-            //Debug.Log("Save file not found in" + path);
             return null;
         }
     }

@@ -1016,7 +1016,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1393307237603208723, guid: 16527896f2b742d4cbdf2d50e917e6cd, type: 3}
   m_PrefabInstance: {fileID: 1393307237057620695}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1375620449
+--- !u!114 &1375620442
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1029,10 +1029,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   musicVolumeSlider: {fileID: 1073589986}
+  ambientVolumeSlider: {fileID: 645501029}
+  stingVolumeSlider: {fileID: 821239730}
+  playerVolumeSlider: {fileID: 1864167901}
+  voiceVolumeSlider: {fileID: 289539460}
+  uiVolumeSlider: {fileID: 693704863}
+  brightnessVolumeSlider: {fileID: 1189594366}
   musicVolumeLevel: 0
+  ambientVolumeLevel: 0
+  stingVolumeLevel: 0
+  playerVolumeLevel: 0
+  voiceVolumeLevel: 0
+  uiVolumeLevel: 0
+  brightnessVolumeLevel: 0
   settingMenu: {fileID: 1024619943}
   mainMenu: {fileID: 1324531233}
   soundMenu: {fileID: 1567992724}
+  graphicMenu: {fileID: 2140100176}
 --- !u!1 &1407023725 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1393307236189704378, guid: 16527896f2b742d4cbdf2d50e917e6cd, type: 3}
