@@ -638,6 +638,7 @@ public class MenuManager : MonoBehaviour
                     if(Input.GetKeyDown(KeyCode.Return) && postProcessingEnabled && canSetPostProcessingEffects)
                     {
                         SetPostProcessing(false);
+                        //PauseMenuManager.
                     }
                     else if(Input.GetKeyDown(KeyCode.Return) && !postProcessingEnabled && canSetPostProcessingEffects)
                     {

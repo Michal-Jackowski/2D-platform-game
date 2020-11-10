@@ -29,3 +29,4 @@
 	[-] Przeniesie pracy do Trello
 	[-] Start Level Design
 	[-] Dodanie Game Design Document do projektu w języku angielskim
+	[-] Pierwszy release na GitHubie

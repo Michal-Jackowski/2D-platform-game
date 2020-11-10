@@ -16,11 +16,10 @@ public class Settings : MonoBehaviour
     public Slider uiVolumeSlider;
 
 
-    [Header("Graphic Menu Objects")]
+    [Header("Graphics Menu Objects")]
     public Slider brightnessVolumeSlider;
-    public GameObject isFullScreenToggleCheckmark;
 
-    
+
     [Header("Sound Menu Sliders Volume Level")]
     public float musicVolumeLevel;
     public float ambientVolumeLevel;
@@ -30,10 +29,9 @@ public class Settings : MonoBehaviour
     public float uiVolumeLevel;
 
 
-    [Header("Graphic Menu Objects Level")]
+    [Header("Graphics Menu Objects Level")]
     public float brightnessVolumeLevel;
     public bool isFullScreen;
-    public bool isPostProcessingOn;
 
 
     [Header("Menu Objects")]
@@ -50,6 +48,7 @@ public class Settings : MonoBehaviour
     void Start()
     {
         LoadPlayerSettings();
+        LoadPlayerGraphicsSettings();
     }
     
     void Update()
@@ -81,11 +80,10 @@ public class Settings : MonoBehaviour
 
     public void SavePlayerSettings()
     {
-        SetVolumeLevel();
-        SaveSystem.SaveSoundVolume(this);
+        GetVolumeLevel();
         SetVolumeLevelSlider();
-        //GetGraphicsSettings();
-        //SetGraphicsSettings();
+        GetGraphicsSettings();
+        SaveSystem.SaveSoundVolume(this);
     }
 
     public void LoadPlayerSettings()
@@ -93,16 +91,14 @@ public class Settings : MonoBehaviour
         try
         {
             SettingsData data = SaveSystem.LoadSoundVolume();
-            brightnessVolumeLevel = data.brightnessVolumeLevel;
             musicVolumeLevel = data.musicVolumeLevel;
             ambientVolumeLevel = data.ambientVolumeLevel;
             stingVolumeLevel = data.stingVolumeLevel;
             playerVolumeLevel = data.playerVolumeLevel;
             voiceVolumeLevel = data.voiceVolumeLevel;
             uiVolumeLevel = data.uiVolumeLevel;
-            //Screen.fullScreen = data.isFullScreen;
+            brightnessVolumeLevel = data.brightnessVolumeLevel;
             SetVolumeLevelSlider();
-            //SetGraphicsSettings();
         }
         catch (NullReferenceException)
         {
@@ -110,7 +106,20 @@ public class Settings : MonoBehaviour
         }
     }
 
-    public void SetVolumeLevel()
+    public void LoadPlayerGraphicsSettings()
+    {
+        try
+        {
+            SettingsData data = SaveSystem.LoadSoundVolume();
+            isFullScreen = data.isFullScreen;
+        }
+        catch (NullReferenceException)
+        {
+            Debug.Log("Defualt graphics settings loaded");
+        }
+    }
+
+    public void GetVolumeLevel()
     {
         musicVolumeLevel = musicVolumeSlider.value; 
         ambientVolumeLevel = ambientVolumeSlider.value;
@@ -132,14 +141,8 @@ public class Settings : MonoBehaviour
         brightnessVolumeSlider.value = brightnessVolumeLevel;
     }
 
-    //Load/Save fullscreen state to fix
-/*     public void GetGraphicsSettings()
+    public void GetGraphicsSettings()
     {
         isFullScreen = Screen.fullScreen;
     }
-
-    public void SetGraphicsSettings()
-    {
-        Screen.fullScreen = isFullScreen;
-    } */
 }

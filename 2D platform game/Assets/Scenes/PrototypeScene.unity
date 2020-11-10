@@ -37790,6 +37790,7 @@ MonoBehaviour:
   voiceVolumeLevel: 0
   uiVolumeLevel: 0
   brightnessVolumeLevel: 0
+  isFullScreen: 0
   settingMenu: {fileID: 485993919}
   mainMenu: {fileID: 1066055609}
   soundMenu: {fileID: 932556268}

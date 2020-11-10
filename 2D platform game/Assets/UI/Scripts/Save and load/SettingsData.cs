@@ -13,7 +13,6 @@ public class SettingsData
     public float uiVolumeLevel;
     public float brightnessVolumeLevel;
     public bool isFullScreen;
-    public bool isPostProcessingOn;
 
 
     public SettingsData(Settings settings)
@@ -25,7 +24,6 @@ public class SettingsData
         voiceVolumeLevel = settings.voiceVolumeLevel;
         uiVolumeLevel = settings.uiVolumeLevel;
         brightnessVolumeLevel = settings.brightnessVolumeLevel;
-        //isFullScreen = settings.isFullScreen;
-        //isPostProcessingOn = settings.isPostProcessingOn;
+        isFullScreen = settings.isFullScreen;
     }
 }
