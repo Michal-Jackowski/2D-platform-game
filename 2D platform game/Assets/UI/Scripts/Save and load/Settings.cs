@@ -45,10 +45,10 @@ public class Settings : MonoBehaviour
     bool canSave = true;
     bool canLoad = true;
 
+
     void Start()
     {
         LoadPlayerSettings();
-        LoadPlayerGraphicsSettings();
     }
     
     void Update()
@@ -57,24 +57,28 @@ public class Settings : MonoBehaviour
         {
             canSave = true;
             canLoad = true;
+            Debug.Log("MainMenu normal");
         }
         else if (settingMenu.activeSelf == true && canSave)
         {
             SavePlayerSettings();
             canSave = false;
             canLoad = true;
+            Debug.Log("SettingsMenu normal");
         }
         else if (soundMenu.activeSelf == true && canLoad)
         {
             LoadPlayerSettings();
             canLoad = false;
             canSave = true;
+            Debug.Log("SoundMenu normal");
         }
         else if (graphicMenu.activeSelf == true && canLoad)
         {
             LoadPlayerSettings();
             canLoad = false;
             canSave = true;
+            Debug.Log("GraphicsMenu normal");
         }
     }
 
@@ -98,24 +102,12 @@ public class Settings : MonoBehaviour
             voiceVolumeLevel = data.voiceVolumeLevel;
             uiVolumeLevel = data.uiVolumeLevel;
             brightnessVolumeLevel = data.brightnessVolumeLevel;
+            isFullScreen = data.isFullScreen;
             SetVolumeLevelSlider();
         }
         catch (NullReferenceException)
         {
             Debug.Log("Defualt save loaded");
-        }
-    }
-
-    public void LoadPlayerGraphicsSettings()
-    {
-        try
-        {
-            SettingsData data = SaveSystem.LoadSoundVolume();
-            isFullScreen = data.isFullScreen;
-        }
-        catch (NullReferenceException)
-        {
-            Debug.Log("Defualt graphics settings loaded");
         }
     }
 
@@ -140,7 +132,6 @@ public class Settings : MonoBehaviour
         uiVolumeSlider.value = uiVolumeLevel;
         brightnessVolumeSlider.value = brightnessVolumeLevel;
     }
-
     public void GetGraphicsSettings()
     {
         isFullScreen = Screen.fullScreen;

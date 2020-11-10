@@ -12,6 +12,7 @@ public class SettingsMenu : MonoBehaviour
     public AudioMixer audioMixer;
     Resolution[] resolutions;
     public TMP_Dropdown ResolutionDropdown;
+    public GameObject fullScreenCheckmark;
 
     private void Start()
     {
@@ -84,6 +85,18 @@ public class SettingsMenu : MonoBehaviour
 
     public void SetFullScreen (bool isFullScreen)
     {
+        fullScreenCheckmark.SetActive(isFullScreen);
         Screen.fullScreen = isFullScreen;
+        Debug.Log("isFullScreen = " + isFullScreen);
+        
+        //To fix
+        if(isFullScreen)
+        {
+            PlayerPrefs.SetInt("isFullScreen", 1);
+        }
+        else
+        {
+            PlayerPrefs.SetInt("isFullScreen", 0);
+        }
     }
 }

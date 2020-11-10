@@ -1401,6 +1401,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1393307236475014290, guid: 16527896f2b742d4cbdf2d50e917e6cd, type: 3}
+      propertyPath: m_Interactable
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1393307236475014290, guid: 16527896f2b742d4cbdf2d50e917e6cd, type: 3}
+      propertyPath: m_IsOn
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1393307236489015085, guid: 16527896f2b742d4cbdf2d50e917e6cd, type: 3}
       propertyPath: m_AnchorMax.x
       value: 1
