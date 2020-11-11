@@ -85,18 +85,6 @@ public class SettingsMenu : MonoBehaviour
 
     public void SetFullScreen (bool isFullScreen)
     {
-        fullScreenCheckmark.SetActive(isFullScreen);
         Screen.fullScreen = isFullScreen;
-        Debug.Log("isFullScreen = " + isFullScreen);
-        
-        //To fix
-        if(isFullScreen)
-        {
-            PlayerPrefs.SetInt("isFullScreen", 1);
-        }
-        else
-        {
-            PlayerPrefs.SetInt("isFullScreen", 0);
-        }
     }
 }

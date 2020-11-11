@@ -311,16 +311,6 @@ public class PauseMenuManagerNew : MonoBehaviour
             LoadPlayerPositionLevelFour();
             PlayerPrefs.SetInt("loadLevelFourPlayerPosition", 0);
         }
-
-        //Loading isFullState save
-        if(PlayerPrefs.GetInt("isFullScreen") == 1)
-        {
-            fullScreenCheckmark.SetActive(true);    
-        }
-        else if(PlayerPrefs.GetInt("isFullScreen") == 0)
-        {
-            fullScreenCheckmark.SetActive(false);
-        }
     }
 
     void Update()

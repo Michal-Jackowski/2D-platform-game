@@ -1,32 +1,34 @@
-[-] Poprawa całego pauseMenu
-	[-] Restart poziomu przywraca domyślne ustawienia graficzne/muzyczne co jest błędem
-	[-] Niewidoczne Powered by Unity w PauseMenu
-	[-] Build uruchamia się w wersji okienkowej a powinien w fullScreen
-	[-] Nowy dzwięk pod wejście do pauseMenu
-	[-] Nowy przycisk w MainMenu Resume
-	[-] Próba zmiany brightness w ustawieniach wyłącza fader
-	[-] W pełni działający SaveLoadSystem
-	[-] Działający CheckpointSystem
-	[-] Animowane tło w MainMenu, ale tylko wtedy gdy będzie gotowa finalna scena gry
-	[-] Możliwość zainstalowania gry na komputerze czyli instalator gry
-	[-] Testy UI
+[-] Fix PauseMenu
+	[-] Saving/loading graphics and music settings (postProcessing, resolutions, quality left)
+	[+] Invisible Image "Powered by Unity" in PauseMenu
+	[+] Updating all packages
+	[+] Update project version
+	[+] Build is running default in fullScreen
+	[-] Entering to PauseMenu need new sound
+	[-] New button "Resume" in MainMenu
+	[-] Turn off fader when changing brightness level
+	[-] Full working SaveLoadSystem
+	[-] Full working CheckpointSystem
+	[-] Animated background in MainMenu, but after finishing final scene in game
+	[-] Game instalator implemented
+	[-] A lot of UI tests
 
-[-] Scena prototypowa
-	[-] Dodanie efektu kurzu podczas biegania
-	[-] Dodanie warunków pogodowych tj. deszcz oraz mgła
-	[-] Dodanie wszystkich podstawowych dzwięków
-	[-] Uśmiercenie bohatera jeżeli znajduję się w powietrzu powyżej 7.5 sekund
-	[-] Dodanie wysokości skoku w zależności od stopnia wciśniętego przycisku
-	[-] Przejrzenie zeszytu w poszukiwaniu funkcjonalności
-	[-] Podpisanie pułapek na prototypowej scenie
-	[-] Problem z pagórkami
-	[-] Nowa animacja śmierci bohatera + nowa zasłona śmierci bohatera
-	[-] Wykorzystanie w dużym stopniu 2D Physics (pułapki do prototype scene)
+[-] PrototypeScene
+	[-] Dust effect when player is running
+	[-] Atmosferic effects for example rain and fog
+	[-] Adding all basic sounds
+	[-] Killing player when he is longer then 7.5 seconds in air
+	[-] Adds the jump height depending on the degree of the button pressed
+	[-] Reviewing the notebook in search of functionality
+	[-] Signing traps on the prototype stage
+	[-] Problem with sliding from downhill
+	[-] New fader for player death
+	[-] Large extend 2D Physics for traps
 
-[-] Ogólne zadania
-	[-] Przygotowanie prefabów
-	[-] Posprzątanie kodu
-	[-] Przeniesie pracy do Trello
+[-] General tasks
+	[-] Preparing prefabs
+	[-] Refactoring
+	[-] Moving tasks to Trello
 	[-] Start Level Design
-	[-] Dodanie Game Design Document do projektu w języku angielskim
-	[-] Pierwszy release na GitHubie
+	[-] Adding Game Design Document to project after translating to english
+	[-] First release on GitHub
