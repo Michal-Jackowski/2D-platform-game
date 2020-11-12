@@ -378,6 +378,7 @@ public class PauseMenuManagerNew : MonoBehaviour
                 {
                     SetDefaultColorForText();
                     SetHightlightColor(startNewGameButtonText);
+                    LoadLevel();
 
                     //Navigation was changed
                     pauseMenuInitialNavigationPosition = false;
@@ -1301,6 +1302,12 @@ public class PauseMenuManagerNew : MonoBehaviour
             {
                 Time.timeScale = 1f;
                 PlayerPrefs.SetInt("loadLevelFourPlayerPosition", 1);
+                SceneManager.LoadScene("PrototypeScene");
+            }
+            else if(currentSelected.name == "StartNewGameButton")
+            {
+                Time.timeScale = 1f;
+                PlayerPrefs.SetInt("loadLevelThreePlayerPosition", 1);
                 SceneManager.LoadScene("PrototypeScene");
             }
         }

@@ -1,9 +1,10 @@
 [-] Fix PauseMenu
 	[-] Saving/loading graphics and music settings (postProcessing, resolutions, quality left)
+	[+] Start New Game blink need to be removed
 	[+] Invisible Image "Powered by Unity" in PauseMenu
 	[+] Updating all packages
 	[+] Update project version
-	[+] Build is running default in fullScreen
+	[-] Build is running default in fullScreen (random behavior)
 	[-] Entering to PauseMenu need new sound
 	[-] New button "Resume" in MainMenu
 	[-] Turn off fader when changing brightness level

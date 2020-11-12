@@ -77,12 +77,12 @@ public class PauseMenu : MonoBehaviour
         Application.Quit();
     }
 
-    public void StartNewGame()
+/*     public void StartNewGame()
     {
         //to avoid menuPause restart see by player
         pauseMenuUI.SetActive(false);
-        Time.timeScale = 1f;
         GameIsPaused = false;
+        Time.timeScale = 1f;
         SceneManager.LoadScene("PrototypeScene");
-    }
+    } */
 }
