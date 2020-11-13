@@ -54,7 +54,7 @@ public class Settings : MonoBehaviour
     {
         LoadPlayerSettings();
         SetCorrectToggleState();
-        //SetPostProcessingManager();
+        SetPostProcessingManager();
     }
     
     void Update()
@@ -139,18 +139,21 @@ public class Settings : MonoBehaviour
     public void GetGraphicsSettings()
     {
         isFullScreen = Screen.fullScreen;
-        //isPostProcessingManagerOn = PostProcessingToggle.GetComponent<UnityEngine.UI.Toggle>().isOn;
+        isPostProcessingManagerOn = PostProcessingToggle.GetComponent<UnityEngine.UI.Toggle>().isOn;
     }
 
     public void SetCorrectToggleState()
     {
-        GetGraphicsSettings();
         fullScreenToggle.GetComponent<UnityEngine.UI.Toggle>().isOn = isFullScreen;
-        //PostProcessingToggle.GetComponent<UnityEngine.UI.Toggle>().isOn = isPostProcessingManagerOn;
+        PostProcessingToggle.GetComponent<UnityEngine.UI.Toggle>().isOn = isPostProcessingManagerOn;
     }
 
     public void SetPostProcessingManager()
     {
         PostProcessingManager.SetActive(isPostProcessingManagerOn);
+        if(!isPostProcessingManagerOn)
+        {
+            PauseMenuManagerNew.postProcessingEnabled = false;
+        }
     }
 }

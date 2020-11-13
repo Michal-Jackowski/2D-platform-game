@@ -1,10 +1,11 @@
 [-] Fix PauseMenu
-	[-] Saving/loading graphics and music settings (postProcessing, resolutions, quality left)
 	[+] Start New Game blink need to be removed
 	[+] Invisible Image "Powered by Unity" in PauseMenu
 	[+] Updating all packages
 	[+] Update project version
-	[-] Build is running default in fullScreen (random behavior)
+	[-] Unity Logo on start isn't visible (Unity Bug or problem with SaveLoadSystem)
+	[-] Build should run default in fullScreen and postProcessing on but Unity behavior is random (Unity Bug or problem with SaveLoadSystem)
+	[-] Saving/loading graphics and music settings (resolutions, quality)
 	[-] Entering to PauseMenu need new sound
 	[-] New button "Resume" in MainMenu
 	[-] Turn off fader when changing brightness level
@@ -12,6 +13,7 @@
 	[-] Full working CheckpointSystem
 	[-] Animated background in MainMenu, but after finishing final scene in game
 	[-] Game instalator implemented
+	[-] Make font in MainMenu and PauseMenu a little bit smaller
 	[-] A lot of UI tests
 
 [-] PrototypeScene

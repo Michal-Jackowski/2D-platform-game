@@ -190,7 +190,7 @@ public class PauseMenuManagerNew : MonoBehaviour
 
 
     //Post Processing
-    bool postProcessingEnabled = true;
+    static public bool postProcessingEnabled = true;
 
 
     //Slider

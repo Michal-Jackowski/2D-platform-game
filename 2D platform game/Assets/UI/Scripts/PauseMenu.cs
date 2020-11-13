@@ -76,13 +76,4 @@ public class PauseMenu : MonoBehaviour
         Debug.Log("Quiting...");
         Application.Quit();
     }
-
-/*     public void StartNewGame()
-    {
-        //to avoid menuPause restart see by player
-        pauseMenuUI.SetActive(false);
-        GameIsPaused = false;
-        Time.timeScale = 1f;
-        SceneManager.LoadScene("PrototypeScene");
-    } */
 }
