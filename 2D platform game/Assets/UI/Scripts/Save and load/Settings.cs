@@ -44,6 +44,7 @@ public class Settings : MonoBehaviour
     //Variables used to save and load
     bool canSave = true;
     bool canLoad = true;
+    bool defaultSettings;
     public bool isPostProcessingManagerOn;
     public GameObject fullScreenToggle;
     public GameObject PostProcessingToggle;
@@ -52,6 +53,7 @@ public class Settings : MonoBehaviour
 
     void Start()
     {
+        defaultSettings = false;
         LoadPlayerSettings();
         SetCorrectToggleState();
         SetPostProcessingManager();
@@ -97,20 +99,21 @@ public class Settings : MonoBehaviour
         try
         {
             SettingsData data = SaveSystem.LoadSoundVolume();
+            isFullScreen = data.isFullScreen;
+            isPostProcessingManagerOn = data.isPostProcessingManagerOn;
+            brightnessVolumeLevel = data.brightnessVolumeLevel;
             musicVolumeLevel = data.musicVolumeLevel;
             ambientVolumeLevel = data.ambientVolumeLevel;
             stingVolumeLevel = data.stingVolumeLevel;
             playerVolumeLevel = data.playerVolumeLevel;
             voiceVolumeLevel = data.voiceVolumeLevel;
             uiVolumeLevel = data.uiVolumeLevel;
-            brightnessVolumeLevel = data.brightnessVolumeLevel;
-            isFullScreen = data.isFullScreen;
-            isPostProcessingManagerOn = data.isPostProcessingManagerOn;
             SetVolumeLevelSlider();
         }
         catch (NullReferenceException)
         {
-            Debug.Log("Defualt save loaded");
+            Debug.Log("Default save loaded");
+            defaultSettings = true;
         }
     }
 
@@ -144,16 +147,23 @@ public class Settings : MonoBehaviour
 
     public void SetCorrectToggleState()
     {
-        fullScreenToggle.GetComponent<UnityEngine.UI.Toggle>().isOn = isFullScreen;
-        PostProcessingToggle.GetComponent<UnityEngine.UI.Toggle>().isOn = isPostProcessingManagerOn;
+        if(!defaultSettings)
+        {
+            fullScreenToggle.GetComponent<UnityEngine.UI.Toggle>().isOn = isFullScreen;
+            PostProcessingToggle.GetComponent<UnityEngine.UI.Toggle>().isOn = isPostProcessingManagerOn;
+        }
     }
 
     public void SetPostProcessingManager()
     {
-        PostProcessingManager.SetActive(isPostProcessingManagerOn);
-        if(!isPostProcessingManagerOn)
+        if(!defaultSettings)
         {
-            PauseMenuManagerNew.postProcessingEnabled = false;
+            PostProcessingManager.SetActive(isPostProcessingManagerOn);
+            if(!isPostProcessingManagerOn)
+            {
+                PauseMenuManagerNew.postProcessingEnabled = false;
+                MenuManager.postProcessingEnabled = false;
+            }
         }
     }
 }

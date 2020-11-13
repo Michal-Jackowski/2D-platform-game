@@ -27,8 +27,7 @@ public GameObject introMenu;
             if (volume.profile.TryGetSettings<Bloom>(out bloom))
             {
                 //default value
-                bloom.intensity.value = 0.8f; 
-                //postProcessingManager.SetActive(false);
+                bloom.intensity.value = 0.8f;
                 return;
             }
         }

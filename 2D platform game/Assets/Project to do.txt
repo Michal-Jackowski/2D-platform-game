@@ -3,8 +3,8 @@
 	[+] Invisible Image "Powered by Unity" in PauseMenu
 	[+] Updating all packages
 	[+] Update project version
-	[-] Unity Logo on start isn't visible (Unity Bug or problem with SaveLoadSystem)
-	[-] Build should run default in fullScreen and postProcessing on but Unity behavior is random (Unity Bug or problem with SaveLoadSystem)
+	[+] Build should run default in fullScreen and postProcessing on but Unity behavior is random (problem with SaveLoadSystem)
+	[-] Unity Logo on start isn't visible (problem with first loaded scene)
 	[-] Saving/loading graphics and music settings (resolutions, quality)
 	[-] Entering to PauseMenu need new sound
 	[-] New button "Resume" in MainMenu

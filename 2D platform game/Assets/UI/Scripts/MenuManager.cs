@@ -189,7 +189,7 @@ public class MenuManager : MonoBehaviour
 
 
     //Post Processing
-    bool postProcessingEnabled = true;
+    public static bool postProcessingEnabled = true;
 
 
     //Slider

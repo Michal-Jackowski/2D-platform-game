@@ -12,7 +12,6 @@ public class SettingsMenu : MonoBehaviour
     public AudioMixer audioMixer;
     Resolution[] resolutions;
     public TMP_Dropdown ResolutionDropdown;
-    public GameObject fullScreenCheckmark;
 
     private void Start()
     {
@@ -29,17 +28,14 @@ public class SettingsMenu : MonoBehaviour
             string Option = resolutions[i].width + " x " + resolutions[i].height;
             options.Add(Option);
 
-            if(resolutions[i].width == Screen.currentResolution.width &&
-                resolutions[i].height == Screen.currentResolution.height)
+            if(resolutions[i].width == Screen.currentResolution.width && resolutions[i].height == Screen.currentResolution.height)
             {
                 CurrentResolutionIndex = i;
             }
         }
-
         ResolutionDropdown.AddOptions(options);
         ResolutionDropdown.value = CurrentResolutionIndex;
         ResolutionDropdown.RefreshShownValue();
-
     }
 
     public void SetResolution(int ResolutionIndex)
