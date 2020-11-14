@@ -4,7 +4,7 @@
 	[+] Updating all packages
 	[+] Update project version
 	[+] Build should run default in fullScreen and postProcessing on but Unity behavior is random (problem with SaveLoadSystem)
-	[-] Unity Logo on start isn't visible (problem with first loaded scene)
+	[+] Unity Logo on start isn't visible (problem with first loaded scene)
 	[-] Saving/loading graphics and music settings (resolutions, quality)
 	[-] Entering to PauseMenu need new sound
 	[-] New button "Resume" in MainMenu
@@ -17,6 +17,7 @@
 	[-] A lot of UI tests
 
 [-] PrototypeScene
+	[-] Change camera distance from player
 	[-] Dust effect when player is running
 	[-] Atmosferic effects for example rain and fog
 	[-] Adding all basic sounds
