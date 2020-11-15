@@ -18,6 +18,8 @@ public class Settings : MonoBehaviour
 
     [Header("Graphics Menu Objects")]
     public Slider brightnessVolumeSlider;
+    public TMPro.TMP_Dropdown qualityDropdown;
+    public TMPro.TMP_Dropdown resolutionDropdown;
 
 
     [Header("Sound Menu Sliders Volume Level")]
@@ -32,6 +34,8 @@ public class Settings : MonoBehaviour
     [Header("Graphics Menu Objects Level")]
     public float brightnessVolumeLevel;
     public bool isFullScreen;
+    public int qualityIndex;
+    public int resolutionIndex;
 
 
     [Header("Menu Objects")]
@@ -57,6 +61,7 @@ public class Settings : MonoBehaviour
         LoadPlayerSettings();
         SetCorrectToggleState();
         SetPostProcessingManager();
+        SetCorrectDropdown();
     }
     
     void Update()
@@ -101,6 +106,8 @@ public class Settings : MonoBehaviour
             SettingsData data = SaveSystem.LoadSoundVolume();
             isFullScreen = data.isFullScreen;
             isPostProcessingManagerOn = data.isPostProcessingManagerOn;
+            qualityIndex = data.qualityIndex;
+            resolutionIndex = data.resolutionIndex;
             brightnessVolumeLevel = data.brightnessVolumeLevel;
             musicVolumeLevel = data.musicVolumeLevel;
             ambientVolumeLevel = data.ambientVolumeLevel;
@@ -143,6 +150,8 @@ public class Settings : MonoBehaviour
     {
         isFullScreen = Screen.fullScreen;
         isPostProcessingManagerOn = PostProcessingToggle.GetComponent<UnityEngine.UI.Toggle>().isOn;
+        qualityIndex = QualitySettings.GetQualityLevel();
+        resolutionIndex = resolutionDropdown.value;
     }
 
     public void SetCorrectToggleState()
@@ -164,6 +173,15 @@ public class Settings : MonoBehaviour
                 PauseMenuManagerNew.postProcessingEnabled = false;
                 MenuManager.postProcessingEnabled = false;
             }
+        }
+    }
+
+    public void SetCorrectDropdown()
+    {
+        if(!defaultSettings)
+        {
+            qualityDropdown.value = qualityIndex;
+            resolutionDropdown.value = resolutionIndex;
         }
     }
 }

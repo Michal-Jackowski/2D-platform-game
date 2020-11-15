@@ -1,23 +1,26 @@
 [-] Fix PauseMenu
-	[+] Start New Game blink need to be removed
-	[+] Invisible Image "Powered by Unity" in PauseMenu
-	[+] Updating all packages
-	[+] Update project version
-	[+] Build should run default in fullScreen and postProcessing on but Unity behavior is random (problem with SaveLoadSystem)
-	[+] Unity Logo on start isn't visible (problem with first loaded scene)
-	[-] Saving/loading graphics and music settings (resolutions, quality)
-	[-] Entering to PauseMenu need new sound
-	[-] New button "Resume" in MainMenu
-	[-] Turn off fader when changing brightness level
-	[-] Full working SaveLoadSystem
+		[+] Start New Game blink need to be removed
+		[+] Invisible Image "Powered by Unity" in PauseMenu
+		[+] Updating all packages
+		[+] Update project version
+		[+] Build should run default in fullScreen and postProcessing on but Unity behavior is random (problem with SaveLoadSystem)
+		[+] Unity Logo on start isn't visible (problem with first loaded scene)
+		[+] Saving/loading graphics and music settings
+		[+] Entering to PauseMenu need new sound
+		[+] New button "Resume" in MainMenu
+		[+] Turn off fader when changing brightness level
+		[+] Full working SaveLoadSystem
 	[-] Full working CheckpointSystem
 	[-] Animated background in MainMenu, but after finishing final scene in game
 	[-] Game instalator implemented
 	[-] Make font in MainMenu and PauseMenu a little bit smaller
+	[-] Proper scaling for different resolutions
+	[-] Text in the same place on different menu scenes
 	[-] A lot of UI tests
 
 [-] PrototypeScene
 	[-] Change camera distance from player
+	[-] Little rocks which can be moved when player is moving
 	[-] Dust effect when player is running
 	[-] Atmosferic effects for example rain and fog
 	[-] Adding all basic sounds

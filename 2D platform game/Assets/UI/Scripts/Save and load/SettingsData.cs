@@ -14,6 +14,8 @@ public class SettingsData
     public float brightnessVolumeLevel;
     public bool isFullScreen;
     public bool isPostProcessingManagerOn;
+    public int qualityIndex;
+    public int resolutionIndex;
 
 
     public SettingsData(Settings settings)
@@ -27,5 +29,7 @@ public class SettingsData
         brightnessVolumeLevel = settings.brightnessVolumeLevel;
         isFullScreen = settings.isFullScreen;
         isPostProcessingManagerOn = settings.isPostProcessingManagerOn;
+        qualityIndex = settings.qualityIndex;
+        resolutionIndex = settings.resolutionIndex;
     }
 }

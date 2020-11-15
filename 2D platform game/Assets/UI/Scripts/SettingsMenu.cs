@@ -13,6 +13,7 @@ public class SettingsMenu : MonoBehaviour
     Resolution[] resolutions;
     public TMP_Dropdown ResolutionDropdown;
 
+    
     private void Start()
     {
         //Get resolutions

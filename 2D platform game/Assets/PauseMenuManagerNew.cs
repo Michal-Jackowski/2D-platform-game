@@ -198,6 +198,7 @@ public class PauseMenuManagerNew : MonoBehaviour
     public Image sliderBrigtnessBackgroundImage;
     public Image sliderBrigtnessFillAreaImage;
     public Image sliderBrigtnessHandleImage;
+    public Image grayFader;
 
 
     [Header("FullScreenToggle Objects")]
@@ -285,6 +286,8 @@ public class PauseMenuManagerNew : MonoBehaviour
         lastselect = new GameObject();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+
+        //testing
         
         if(PlayerPrefs.GetInt("loadLevelPrototypePlayerPosition") == 1)
         {
@@ -588,6 +591,7 @@ public class PauseMenuManagerNew : MonoBehaviour
             
                 if(currentSelected.name == "QualityDropdown")
                 {
+                    grayFader.enabled = true;
                     if(Input.GetKeyDown(KeyCode.Return) && !graphicOptionsSelected)
                     {
                         AudioManager.PlaySelectMenuNavigationAudio();
@@ -613,6 +617,7 @@ public class PauseMenuManagerNew : MonoBehaviour
                 }
                 else if(currentSelected.name == "ResolutionDropdown")
                 {
+                    grayFader.enabled = true;
                     if(Input.GetKeyDown(KeyCode.Return) && !graphicOptionsSelected)
                     {
                         AudioManager.PlaySelectMenuNavigationAudio();
@@ -638,6 +643,7 @@ public class PauseMenuManagerNew : MonoBehaviour
                 }
                 else if(currentSelected.name == "FullScreenToggle")
                 {
+                    grayFader.enabled = true;
                     if(Input.GetKeyDown(KeyCode.Return) && !graphicOptionsSelected)
                     {
                         AudioManager.PlaySelectMenuNavigationAudio();
@@ -663,6 +669,7 @@ public class PauseMenuManagerNew : MonoBehaviour
                 }
                 else if(currentSelected.name == "PostProcessingToggle")
                 {
+                    grayFader.enabled = true;
                     if(Input.GetKeyDown(KeyCode.Return) && !graphicOptionsSelected && canSetPostProcessingEffects)
                     {
                         AudioManager.PlaySelectMenuNavigationAudio();
@@ -697,6 +704,7 @@ public class PauseMenuManagerNew : MonoBehaviour
                 }
                 else if(currentSelected.name == "BrightnessVolumeSlider")
                 {
+                    grayFader.enabled = false;
                     sliderBrightnessExtremeValueLeftPlayedOnce = CheckExtremeLeftPosition(brightnessSlider, sliderBrightnessExtremeValueLeftPlayedOnce);
                     sliderBrightnessExtremeValueRightPlayedOnce = CheckExtremeRightPosition(brightnessSlider, sliderBrightnessExtremeValueRightPlayedOnce);
                     
@@ -1307,7 +1315,7 @@ public class PauseMenuManagerNew : MonoBehaviour
             else if(currentSelected.name == "StartNewGameButton")
             {
                 Time.timeScale = 1f;
-                PlayerPrefs.SetInt("loadLevelThreePlayerPosition", 1);
+                PlayerPrefs.SetInt("loadLevelPrototypePlayerPosition", 1);
                 SceneManager.LoadScene("PrototypeScene");
             }
         }
