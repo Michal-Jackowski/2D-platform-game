@@ -10,13 +10,14 @@
 		[+] New button "Resume" in MainMenu
 		[+] Turn off fader when changing brightness level
 		[+] Full working SaveLoadSystem
-	[-] Full working CheckpointSystem
-	[-] Animated background in MainMenu, but after finishing final scene in game
-	[-] Game instalator implemented
+		[+] Full working CheckpointSystem
+	[-] Animated background in MainMenu
+		[+] Game instalator implemented
 	[-] Make font in MainMenu and PauseMenu a little bit smaller
 	[-] Proper scaling for different resolutions
 	[-] Text in the same place on different menu scenes
 	[-] A lot of UI tests
+	[-] Loading default settings fullScreen Toggle is unchecked in MainMenu
 
 [-] PrototypeScene
 	[-] Change camera distance from player

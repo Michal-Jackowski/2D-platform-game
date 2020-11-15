@@ -2647,8 +2647,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 430023201}
-        m_TargetAssemblyTypeName: MenuController, Assembly-CSharp
-        m_MethodName: PlayGame
+        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
+        m_MethodName: ResumeGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3079,6 +3079,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1393307236189704378, guid: 16527896f2b742d4cbdf2d50e917e6cd, type: 3}
+      propertyPath: m_Name
+      value: SettingsButtonNoCheckpoint
+      objectReference: {fileID: 0}
     - target: {fileID: 1393307236190438074, guid: 16527896f2b742d4cbdf2d50e917e6cd, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -3207,6 +3211,10 @@ PrefabInstance:
       propertyPath: m_AnchorMin.x
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1393307237011168017, guid: 16527896f2b742d4cbdf2d50e917e6cd, type: 3}
+      propertyPath: m_Name
+      value: LoadChapterButtonNoCheckpoint
+      objectReference: {fileID: 0}
     - target: {fileID: 1393307237080723385, guid: 16527896f2b742d4cbdf2d50e917e6cd, type: 3}
       propertyPath: m_AnchorMax.x
       value: 1
@@ -3227,6 +3235,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 430023201}
+    - target: {fileID: 1393307237157328429, guid: 16527896f2b742d4cbdf2d50e917e6cd, type: 3}
+      propertyPath: m_Name
+      value: PlayButtonNoCheckpoint
+      objectReference: {fileID: 0}
     - target: {fileID: 1393307237305216851, guid: 16527896f2b742d4cbdf2d50e917e6cd, type: 3}
       propertyPath: m_Value
       value: 0
@@ -3411,6 +3423,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1393307237710295081, guid: 16527896f2b742d4cbdf2d50e917e6cd, type: 3}
+      propertyPath: m_Name
+      value: ExitButtonNoCheckpoint
+      objectReference: {fileID: 0}
     - target: {fileID: 1393307237720392732, guid: 16527896f2b742d4cbdf2d50e917e6cd, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -3529,6 +3545,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1407023725}
     - target: {fileID: 5413524614465187664, guid: 883e931572d76a44c9dcdbd80c4fb31c, type: 3}
+      propertyPath: exitButtonMMWRO
+      value: 
+      objectReference: {fileID: 2054443737}
+    - target: {fileID: 5413524614465187664, guid: 883e931572d76a44c9dcdbd80c4fb31c, type: 3}
       propertyPath: levelThreeImage
       value: 
       objectReference: {fileID: 1789121749}
@@ -3536,6 +3556,10 @@ PrefabInstance:
       propertyPath: loadChapterMenu
       value: 
       objectReference: {fileID: 1048661766}
+    - target: {fileID: 5413524614465187664, guid: 883e931572d76a44c9dcdbd80c4fb31c, type: 3}
+      propertyPath: playButtonMMWRO
+      value: 
+      objectReference: {fileID: 1757939186}
     - target: {fileID: 5413524614465187664, guid: 883e931572d76a44c9dcdbd80c4fb31c, type: 3}
       propertyPath: qualityDropdown
       value: 
@@ -3568,6 +3592,10 @@ PrefabInstance:
       propertyPath: musicVolumeSlider
       value: 
       objectReference: {fileID: 1073589984}
+    - target: {fileID: 5413524614465187664, guid: 883e931572d76a44c9dcdbd80c4fb31c, type: 3}
+      propertyPath: resumeButtonMMWRO
+      value: 
+      objectReference: {fileID: 1996289635}
     - target: {fileID: 5413524614465187664, guid: 883e931572d76a44c9dcdbd80c4fb31c, type: 3}
       propertyPath: stingVolumeSlider
       value: 
@@ -3605,6 +3633,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 645501027}
     - target: {fileID: 5413524614465187664, guid: 883e931572d76a44c9dcdbd80c4fb31c, type: 3}
+      propertyPath: exitButtonMMWROText
+      value: 
+      objectReference: {fileID: 819537287}
+    - target: {fileID: 5413524614465187664, guid: 883e931572d76a44c9dcdbd80c4fb31c, type: 3}
+      propertyPath: playButtonMMWROText
+      value: 
+      objectReference: {fileID: 1780010977}
+    - target: {fileID: 5413524614465187664, guid: 883e931572d76a44c9dcdbd80c4fb31c, type: 3}
       propertyPath: prototypeLevelImage
       value: 
       objectReference: {fileID: 590084434}
@@ -3612,6 +3648,10 @@ PrefabInstance:
       propertyPath: qualityDropdownText
       value: 
       objectReference: {fileID: 1990025245}
+    - target: {fileID: 5413524614465187664, guid: 883e931572d76a44c9dcdbd80c4fb31c, type: 3}
+      propertyPath: settingsButtonMMWRO
+      value: 
+      objectReference: {fileID: 2109684809}
     - target: {fileID: 5413524614465187664, guid: 883e931572d76a44c9dcdbd80c4fb31c, type: 3}
       propertyPath: PostProcessingToggle
       value: 
@@ -3637,6 +3677,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 572585022}
     - target: {fileID: 5413524614465187664, guid: 883e931572d76a44c9dcdbd80c4fb31c, type: 3}
+      propertyPath: resumeButtonMMWROText
+      value: 
+      objectReference: {fileID: 667924312}
+    - target: {fileID: 5413524614465187664, guid: 883e931572d76a44c9dcdbd80c4fb31c, type: 3}
       propertyPath: stingVolumeSliderText
       value: 
       objectReference: {fileID: 99117034}
@@ -3648,6 +3692,10 @@ PrefabInstance:
       propertyPath: BrightnessVolumeSlider
       value: 
       objectReference: {fileID: 1189594364}
+    - target: {fileID: 5413524614465187664, guid: 883e931572d76a44c9dcdbd80c4fb31c, type: 3}
+      propertyPath: loadChapterButtonMMWRO
+      value: 
+      objectReference: {fileID: 469087268}
     - target: {fileID: 5413524614465187664, guid: 883e931572d76a44c9dcdbd80c4fb31c, type: 3}
       propertyPath: playerVolumeSliderText
       value: 
@@ -3669,9 +3717,21 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1159435261}
     - target: {fileID: 5413524614465187664, guid: 883e931572d76a44c9dcdbd80c4fb31c, type: 3}
+      propertyPath: settingsButtonMMWROText
+      value: 
+      objectReference: {fileID: 1572396291}
+    - target: {fileID: 5413524614465187664, guid: 883e931572d76a44c9dcdbd80c4fb31c, type: 3}
+      propertyPath: MainMenuWithResumeOption
+      value: 
+      objectReference: {fileID: 67693894}
+    - target: {fileID: 5413524614465187664, guid: 883e931572d76a44c9dcdbd80c4fb31c, type: 3}
       propertyPath: sliderUIVolumeHandleImage
       value: 
       objectReference: {fileID: 870540686}
+    - target: {fileID: 5413524614465187664, guid: 883e931572d76a44c9dcdbd80c4fb31c, type: 3}
+      propertyPath: loadChapterButtonMMWROText
+      value: 
+      objectReference: {fileID: 249757322}
     - target: {fileID: 5413524614465187664, guid: 883e931572d76a44c9dcdbd80c4fb31c, type: 3}
       propertyPath: musicVolumeSliderReference
       value: 
@@ -3784,6 +3844,10 @@ PrefabInstance:
       propertyPath: postProcessingToggleBackgroundImage
       value: 
       objectReference: {fileID: 971173194}
+    - target: {fileID: 5413524614465187664, guid: 883e931572d76a44c9dcdbd80c4fb31c, type: 3}
+      propertyPath: MainMenuWithResumeOptionFirstSelectedButton
+      value: 
+      objectReference: {fileID: 1996289635}
     - target: {fileID: 5413524614465187665, guid: 883e931572d76a44c9dcdbd80c4fb31c, type: 3}
       propertyPath: m_Name
       value: Menu Manager

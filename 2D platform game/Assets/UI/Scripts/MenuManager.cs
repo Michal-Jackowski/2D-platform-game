@@ -17,6 +17,7 @@ public class MenuManager : MonoBehaviour
     public GameObject loadChapterMenu;
     public GameObject controlsMenu;
     public GameObject creditsMenu;
+    public GameObject MainMenuWithResumeOption;
     
 
     [Header("Menu First Selected Objects")]
@@ -25,6 +26,7 @@ public class MenuManager : MonoBehaviour
     public GameObject graphicMenuFirstSelectedButton;
     public GameObject soundMenuFirstSelectedButton;
     public GameObject loadChapterMenuFirstSelectedButton;
+    public GameObject MainMenuWithResumeOptionFirstSelectedButton;
 
 
     [Header("Main Menu Buttons")]
@@ -32,6 +34,14 @@ public class MenuManager : MonoBehaviour
     public GameObject loadChapterButton;
     public GameObject settingsButton;
     public GameObject exitButton;
+
+
+    [Header("Main Menu With Resume Option Buttons")]
+    public GameObject resumeButtonMMWRO;
+    public GameObject playButtonMMWRO;
+    public GameObject loadChapterButtonMMWRO;
+    public GameObject settingsButtonMMWRO;
+    public GameObject exitButtonMMWRO;
 
 
     [Header("Setting Menu Buttons")]
@@ -70,6 +80,14 @@ public class MenuManager : MonoBehaviour
     public TextMeshProUGUI loadChapterButtonText;
     public TextMeshProUGUI settingsButtonText;
     public TextMeshProUGUI exitButtonText;
+
+
+    [Header("Main Menu With Resume Option Buttons Text")]
+    public TextMeshProUGUI resumeButtonMMWROText;
+    public TextMeshProUGUI playButtonMMWROText;
+    public TextMeshProUGUI loadChapterButtonMMWROText;
+    public TextMeshProUGUI settingsButtonMMWROText;
+    public TextMeshProUGUI exitButtonMMWROText;
 
     
     [Header("Settings Menu Buttons Text")]
@@ -131,11 +149,19 @@ public class MenuManager : MonoBehaviour
     bool soundMenuInitialNavigationPosition = true;
 
 
-    //Checking If We Played Sound Once In Main Menu
+    //Checking If We Played Sound Once In Main Menu/Main Menu with resume option
     bool playButtonPlayedOnce = false;
     bool loadChapterButtonPlayedOnce = false;
     bool settingsButtonPlayedOnce = false;
     bool exitButtonPlayedOnce = false;
+
+
+    //Checking If We Played Sound Once In Main Menu with resume option
+    bool resumeButtonPlayedOnceMMWRO = false;
+    bool startNewGamePlayedOnceMMWRO = false;
+    bool loadChapterButtonPlayedOnceMMWRO = false;
+    bool settingsButtonPlayedOnceMMWRO = false;
+    bool exitButtonPlayedOnceMMWRO = false;
 
 
     //Checking If We Played Sound Once In Load Chapter Menu
@@ -271,10 +297,6 @@ public class MenuManager : MonoBehaviour
     public Image sliderUIVolumeHandleImage;
 
 
-    [Header("Player Position")]
-    public Vector3 position;
-
-
     [Header("Camera Damping")]
     public GameObject playerFollowCam;
 
@@ -293,7 +315,7 @@ public class MenuManager : MonoBehaviour
             DisableMouse();
             ChangeIntroScene();
             
-            if (mainMenu.activeSelf == true)
+            if (mainMenu.activeSelf == true || MainMenuWithResumeOption.activeSelf == true)
             {
                 allowSelectSound = true;
                 backFromSelect = false;
@@ -302,7 +324,14 @@ public class MenuManager : MonoBehaviour
                 {
                     if(loadChapterMenuBegin)
                     {
-                        EventSystem.current.GetComponent<EventSystem>().firstSelectedGameObject = loadChapterButton;
+                        if(MainMenuWithResumeOption.activeSelf == true)
+                        {
+                            EventSystem.current.GetComponent<EventSystem>().firstSelectedGameObject = loadChapterButtonMMWRO;
+                        }
+                        else
+                        {
+                            EventSystem.current.GetComponent<EventSystem>().firstSelectedGameObject = loadChapterButton;
+                        }
                         EventSystem.current.SetSelectedGameObject(EventSystem.current.GetComponent<EventSystem>().firstSelectedGameObject);
                         backFromLoadChapter = true;
                         loadChapterMenuBegin = false;
@@ -310,7 +339,14 @@ public class MenuManager : MonoBehaviour
                     }
                     else
                     {
-                        EventSystem.current.GetComponent<EventSystem>().firstSelectedGameObject = settingsButton;
+                        if(MainMenuWithResumeOption.activeSelf == true)
+                        {
+                            EventSystem.current.GetComponent<EventSystem>().firstSelectedGameObject = settingsButtonMMWRO;
+                        }
+                        else
+                        {
+                            EventSystem.current.GetComponent<EventSystem>().firstSelectedGameObject = settingsButton;
+                        }
                         EventSystem.current.SetSelectedGameObject(EventSystem.current.GetComponent<EventSystem>().firstSelectedGameObject);
                         backFromSettings = true;
                         //Debug.Log("loadChapterMenuBegin ELSE");
@@ -331,7 +367,100 @@ public class MenuManager : MonoBehaviour
                     //Debug.Log("else if (mainMenuBegin)");
                 }
 
-                if(currentSelected.name == "PlayButton")
+                // Main Menu With Resume Option remembers checkpoints
+                if(currentSelected.name == "ResumeButton")
+                {
+                    SetDefaultColorForText();
+                    SetHightlightColor(resumeButtonMMWROText);
+                    
+                    //Play only when you changed navigation in menu
+                    if(!maimMenuInitialNavigationPosition && !resumeButtonPlayedOnceMMWRO) 
+                    {
+                        AudioManager.PlayUpDownMenuNavigationAudio();
+                        resumeButtonPlayedOnceMMWRO = true;
+                    }
+                    startNewGamePlayedOnceMMWRO = false;
+                    loadChapterButtonPlayedOnceMMWRO = false;
+                    settingsButtonPlayedOnceMMWRO = false;
+                    exitButtonPlayedOnceMMWRO = false;
+                }
+                else if(currentSelected.name == "PlayButton")
+                {
+                    SetDefaultColorForText();
+                    SetHightlightColor(playButtonMMWROText);
+                    
+                    //Navigation was changed
+                    maimMenuInitialNavigationPosition = false;
+
+                    //Play only when you changed navigation in menu
+                    if(!startNewGamePlayedOnceMMWRO) 
+                    {
+                        AudioManager.PlayUpDownMenuNavigationAudio();
+                        startNewGamePlayedOnceMMWRO = true;
+                    }
+                    resumeButtonPlayedOnceMMWRO = false;
+                    loadChapterButtonPlayedOnceMMWRO = false;
+                    settingsButtonPlayedOnceMMWRO = false;
+                    exitButtonPlayedOnceMMWRO = false;
+                }
+                else if(currentSelected.name == "LoadChapterButton")
+                {
+                    SetDefaultColorForText();
+                    SetHightlightColor(loadChapterButtonMMWROText);
+
+                    //Navigation was changed
+                    maimMenuInitialNavigationPosition = false;
+                    //Play audio only once
+                    if(!loadChapterButtonPlayedOnceMMWRO)
+                    {
+                        AudioManager.PlayUpDownMenuNavigationAudio();
+                        loadChapterButtonPlayedOnceMMWRO = true;
+                    }
+                    resumeButtonPlayedOnceMMWRO = false;
+                    startNewGamePlayedOnceMMWRO = false;
+                    settingsButtonPlayedOnceMMWRO = false;
+                    exitButtonPlayedOnceMMWRO = false;
+                }
+                else if(currentSelected.name == "SettingsButton")
+                {
+                    SetDefaultColorForText();
+                    SetHightlightColor(settingsButtonMMWROText);
+
+                    //Navigation was changed
+                    maimMenuInitialNavigationPosition = false;
+                    //Play audio only once
+                    if(!settingsButtonPlayedOnceMMWRO)
+                    {
+                        AudioManager.PlayUpDownMenuNavigationAudio();  
+                        settingsButtonPlayedOnceMMWRO = true;
+                    }
+                    resumeButtonPlayedOnceMMWRO = false;
+                    startNewGamePlayedOnceMMWRO = false;
+                    loadChapterButtonPlayedOnceMMWRO = false;
+                    exitButtonPlayedOnceMMWRO = false;
+                    //Debug.Log("else if(currentSelected.name == SettingsButton");
+                }
+                else if(currentSelected.name == "ExitButton")
+                {
+                    SetDefaultColorForText();
+                    SetHightlightColor(exitButtonMMWROText);
+
+                    //Navigation was changed
+                    maimMenuInitialNavigationPosition = false;
+                    //Play audio only once
+                    if(!exitButtonPlayedOnceMMWRO)
+                    {
+                        AudioManager.PlayUpDownMenuNavigationAudio();  
+                        exitButtonPlayedOnceMMWRO = true;
+                    }
+                    resumeButtonPlayedOnceMMWRO = false;
+                    startNewGamePlayedOnceMMWRO = false;
+                    loadChapterButtonPlayedOnceMMWRO = false;
+                    settingsButtonPlayedOnceMMWRO = false;
+                }
+
+                // Primary Main Menu used when there is no saved checkpoint
+                else if(currentSelected.name == "PlayButtonNoCheckpoint")
                 {
                     SetDefaultColorForText();
                     SetHightlightColor(playButtonText);
@@ -346,7 +475,7 @@ public class MenuManager : MonoBehaviour
                     settingsButtonPlayedOnce = false;
                     exitButtonPlayedOnce = false;
                 }
-                else if(currentSelected.name == "LoadChapterButton")
+                else if(currentSelected.name == "LoadChapterButtonNoCheckpoint")
                 {
                     SetDefaultColorForText();
                     SetHightlightColor(loadChapterButtonText);
@@ -363,7 +492,7 @@ public class MenuManager : MonoBehaviour
                     settingsButtonPlayedOnce = false;
                     exitButtonPlayedOnce = false;
                 }
-                else if(currentSelected.name == "SettingsButton")
+                else if(currentSelected.name == "SettingsButtonNoCheckpoint")
                 {
                     SetDefaultColorForText();
                     SetHightlightColor(settingsButtonText);
@@ -381,7 +510,7 @@ public class MenuManager : MonoBehaviour
                     exitButtonPlayedOnce = false;  
                     //Debug.Log("else if(currentSelected.name == SettingsButton");
                 }
-                else if(currentSelected.name == "ExitButton")
+                else if(currentSelected.name == "ExitButtonNoCheckpoint")
                 {
                     SetDefaultColorForText();
                     SetHightlightColor(exitButtonText);
@@ -1064,6 +1193,10 @@ public class MenuManager : MonoBehaviour
         {
             EventSystem.current.GetComponent<EventSystem>().firstSelectedGameObject = mainMenuFirstSelectedButton;
         }
+        else if(MainMenuWithResumeOption.activeSelf)
+        {
+            EventSystem.current.GetComponent<EventSystem>().firstSelectedGameObject = MainMenuWithResumeOptionFirstSelectedButton;
+        }
         else if (settingMenu.activeSelf)
         {
             EventSystem.current.GetComponent<EventSystem>().firstSelectedGameObject = settingMenuFirstSelectedButton;
@@ -1099,6 +1232,14 @@ public class MenuManager : MonoBehaviour
             loadChapterButtonText.color = new Color32(100, 100, 100, 255);
             settingsButtonText.color = new Color32(100, 100, 100, 255);
             exitButtonText.color = new Color32(100, 100, 100, 255);
+        }
+        else if(MainMenuWithResumeOption.activeSelf)
+        {
+            resumeButtonMMWROText.color = new Color32(100, 100, 100, 255);
+            playButtonMMWROText.color = new Color32(100, 100, 100, 255);
+            loadChapterButtonMMWROText.color = new Color32(100, 100, 100, 255);
+            settingsButtonMMWROText.color = new Color32(100, 100, 100, 255);
+            exitButtonMMWROText.color = new Color32(100, 100, 100, 255);
         }
         else if(settingMenu.activeSelf)
         {
@@ -1150,11 +1291,15 @@ public class MenuManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             //Main Menu
-            if (settingMenu.activeSelf == true)
+            if (settingMenu.activeSelf == true && PlayerPrefs.GetInt("ActualProgresInGame")>0)
+            {
+                MainMenuWithResumeOption.SetActive(true);
+                settingMenu.SetActive(false);
+            }
+            else if (settingMenu.activeSelf == true)
             {
                 mainMenu.SetActive(true);
                 settingMenu.SetActive(false);
-                AudioManager.PlayBackFromMenuNavigationAudio();
             }
 
             //Settings Options
@@ -1162,34 +1307,35 @@ public class MenuManager : MonoBehaviour
             {
                 settingMenu.SetActive(true);
                 controlsMenu.SetActive(false);
-                AudioManager.PlayBackFromMenuNavigationAudio();
             }
-            if (graphicMenu.activeSelf == true)
+            else if (graphicMenu.activeSelf == true)
             {
                 settingMenu.SetActive(true);
                 graphicMenu.SetActive(false);
-                AudioManager.PlayBackFromMenuNavigationAudio();
             }
-            if (soundMenu.activeSelf == true)
+            else if (soundMenu.activeSelf == true)
             {
                 settingMenu.SetActive(true);
                 soundMenu.SetActive(false);
-                AudioManager.PlayBackFromMenuNavigationAudio();
             }
-            if (creditsMenu.activeSelf == true)
+            else if (creditsMenu.activeSelf == true)
             {
                 settingMenu.SetActive(true);
                 creditsMenu.SetActive(false);
-                AudioManager.PlayBackFromMenuNavigationAudio();
             }
-            
-            //LoadChapterMenuScenes
-            if (loadChapterMenu.activeSelf == true)
+
+            //Load Chapter Menu Scenes
+            if (loadChapterMenu.activeSelf == true && PlayerPrefs.GetInt("ActualProgresInGame")>0)
+            {
+                MainMenuWithResumeOption.SetActive(true);
+                loadChapterMenu.SetActive(false);
+            }
+            else if(loadChapterMenu.activeSelf == true)
             {
                 mainMenu.SetActive(true);
                 loadChapterMenu.SetActive(false);
-                AudioManager.PlayBackFromMenuNavigationAudio();
             }
+            AudioManager.PlayBackFromMenuNavigationAudio();
         }
     }
 
@@ -1217,7 +1363,16 @@ public class MenuManager : MonoBehaviour
                 }
                 else
                 {
-                    mainMenu.SetActive(true);
+                    // No checkpoint or game is finished or game is never started
+                    if(PlayerPrefs.GetInt("ActualProgresInGame")==0)
+                    {
+                        mainMenu.SetActive(true);
+                    }
+                    // There is some checkpoint
+                    else if(PlayerPrefs.GetInt("ActualProgresInGame")>0)
+                    {
+                        MainMenuWithResumeOption.SetActive(true);
+                    }
                     introScene.SetActive(false);
                     AudioManager.PlaySelectMenuNavigationAudio();
                 }
@@ -1226,6 +1381,30 @@ public class MenuManager : MonoBehaviour
         else
         {
             return;
+        }
+    }
+
+    public void ResumeGame()
+    {
+        if(PlayerPrefs.GetInt("ActualProgresInGame")==0)
+        {
+            SelectLevel(0);       
+        }
+        else if(PlayerPrefs.GetInt("ActualProgresInGame")==1)
+        {
+            SelectLevel(1);       
+        }
+        else if(PlayerPrefs.GetInt("ActualProgresInGame")==2)
+        {
+            SelectLevel(2);       
+        }
+        else if(PlayerPrefs.GetInt("ActualProgresInGame")==3)
+        {
+            SelectLevel(3);       
+        }
+        else if(PlayerPrefs.GetInt("ActualProgresInGame")==4)
+        {
+            SelectLevel(4);       
         }
     }
 
@@ -1241,37 +1420,57 @@ public class MenuManager : MonoBehaviour
         Application.Quit();
     }
 
-    void LoadLevel()
+    public void LoadLevel()
     {
         if (Input.GetKeyDown("return"))
         {
             currentSelectedLevel = EventSystem.current.currentSelectedGameObject;
             if(currentSelectedLevel.name == "PrototypeLevel")
             {
-                PlayerPrefs.SetInt("loadLevelPrototypePlayerPosition", 1);
-                SceneManager.LoadScene("PrototypeScene");
+                SelectLevel(0);
             }
             else if(currentSelectedLevel.name == "LevelOne")
             {
-                PlayerPrefs.SetInt("loadLevelOnePlayerPosition", 1);
-                SceneManager.LoadScene("PrototypeScene");
+                SelectLevel(1);
             }
             else if(currentSelectedLevel.name == "LevelTwo")
             {
-                PlayerPrefs.SetInt("loadLevelTwoPlayerPosition", 1);
-                SceneManager.LoadScene("PrototypeScene");
+                SelectLevel(2);
             }
             else if(currentSelectedLevel.name == "LevelThree")
             {
-                PlayerPrefs.SetInt("loadLevelThreePlayerPosition", 1);
-                SceneManager.LoadScene("PrototypeScene");
+                SelectLevel(3);
             }
             else if(currentSelectedLevel.name == "LevelFour")
             {
-                PlayerPrefs.SetInt("loadLevelFourPlayerPosition", 1);
-                SceneManager.LoadScene("PrototypeScene");
+                SelectLevel(4);
             }
         }
+    }
+
+    void SelectLevel(int level)
+    {
+        if(level==0)
+        {
+            PlayerPrefs.SetInt("loadLevelPrototypePlayerPosition", 1);
+        }
+        else if(level==1)
+        {
+            PlayerPrefs.SetInt("loadLevelOnePlayerPosition", 1);
+        }
+        else if(level==2)
+        {
+            PlayerPrefs.SetInt("loadLevelTwoPlayerPosition", 1);
+        }
+        else if(level==3)
+        {
+            PlayerPrefs.SetInt("loadLevelThreePlayerPosition", 1);
+        }
+        else if(level==4)
+        {
+            PlayerPrefs.SetInt("loadLevelFourPlayerPosition", 1);
+        }
+        SceneManager.LoadScene("PrototypeScene");
     }
 
     public void SetPostProcessing (bool isTurnedOn)
