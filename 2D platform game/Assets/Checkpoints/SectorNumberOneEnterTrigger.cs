@@ -8,7 +8,7 @@ public class SectorNumberOneEnterTrigger : MonoBehaviour
     {
         if(collision.CompareTag("Player"))
         {
-            Debug.Log("Sector one passed!");
+            //Debug.Log("Sector one passed!");
             // Number is equal to one of the sectors
             PlayerPrefs.SetInt("ActualProgresInGame", 1);
             ComparingTheHighestLevelAchieved.SetHighestLevel();
