@@ -19,14 +19,14 @@
 		[+] Stronger fader in PauseMenu
 		[+] Loading default settings fullScreen Toggle is unchecked in MainMenu
 	[-] Animated background in MainMenu (need a little bit scene from final game)
-	[-] Add images to LoadChapter Menu
+	[-] Add images to LoadChapter Menu (after all game scenes will be completed)
 
 [-] PrototypeScene
 	[-] Change camera distance from player
 	[-] Little rocks which can be moved when player is moving
 	[-] Dust effect when player is running
 	[-] Atmosferic effects for example rain and fog
-	[+] Adding all basic sounds
+		[+] Adding all basic sounds
 	[-] Killing player when he is longer then 7.5 seconds in air
 	[-] Adds the jump height depending on the degree of the button pressed
 	[-] Reviewing the notebook in search of functionality

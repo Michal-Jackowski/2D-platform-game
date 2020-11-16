@@ -1283,36 +1283,42 @@ public class PauseMenuManagerNew : MonoBehaviour
             if(currentSelectedLevel.name == "PrototypeLevel")
             {
                 Time.timeScale = 1f;
+                PlayerPrefs.SetInt("TheHighestLevelReachedByThePlayer", 0);
                 PlayerPrefs.SetInt("loadLevelPrototypePlayerPosition", 1);
                 SceneManager.LoadScene("PrototypeScene");
             }
             else if(currentSelectedLevel.name == "LevelOne")
             {
                 Time.timeScale = 1f;
+                PlayerPrefs.SetInt("TheHighestLevelReachedByThePlayer", 1);
                 PlayerPrefs.SetInt("loadLevelOnePlayerPosition", 1);
                 SceneManager.LoadScene("PrototypeScene");
             }
             else if(currentSelectedLevel.name == "LevelTwo")
             {
                 Time.timeScale = 1f;
+                PlayerPrefs.SetInt("TheHighestLevelReachedByThePlayer", 2);
                 PlayerPrefs.SetInt("loadLevelTwoPlayerPosition", 1);
                 SceneManager.LoadScene("PrototypeScene");
             }
             else if(currentSelectedLevel.name == "LevelThree")
             {
                 Time.timeScale = 1f;
+                PlayerPrefs.SetInt("TheHighestLevelReachedByThePlayer", 3);
                 PlayerPrefs.SetInt("loadLevelThreePlayerPosition", 1);
                 SceneManager.LoadScene("PrototypeScene");
             }
             else if(currentSelectedLevel.name == "LevelFour")
             {
                 Time.timeScale = 1f;
+                PlayerPrefs.SetInt("TheHighestLevelReachedByThePlayer", 4);
                 PlayerPrefs.SetInt("loadLevelFourPlayerPosition", 1);
                 SceneManager.LoadScene("PrototypeScene");
             }
             else if(currentSelected.name == "StartNewGameButton")
             {
                 Time.timeScale = 1f;
+                PlayerPrefs.SetInt("TheHighestLevelReachedByThePlayer", 0);
                 PlayerPrefs.SetInt("loadLevelPrototypePlayerPosition", 1);
                 SceneManager.LoadScene("PrototypeScene");
             }
