@@ -287,8 +287,6 @@ public class PauseMenuManagerNew : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
-        //testing
-        
         if(PlayerPrefs.GetInt("loadLevelPrototypePlayerPosition") == 1)
         {
             LoadPlayerPositionPrototypeLevel();
@@ -1521,27 +1519,27 @@ public class PauseMenuManagerNew : MonoBehaviour
         currentSelected = pauseMenuFirstSelectedButton;
     }
 
-    public void LoadPlayerPositionPrototypeLevel()
+    static public void LoadPlayerPositionPrototypeLevel()
     {
         GameObject.Find("Robbie").transform.position = new Vector3(-2.0f, 0.0f, 0.0f);
     }
     
-    public void LoadPlayerPositionLevelOne()
+    static public void LoadPlayerPositionLevelOne()
     {
         GameObject.Find("Robbie").transform.position = new Vector3(31.0f, -1.0f, 0.0f);
     }
     
-    public void LoadPlayerPositionLevelTwo()
+    static public void LoadPlayerPositionLevelTwo()
     {
         GameObject.Find("Robbie").transform.position = new Vector3(95.0f, -2.0f, 0.0f);
     }
 
-    public void LoadPlayerPositionLevelThree()
+    static public void LoadPlayerPositionLevelThree()
     {
         GameObject.Find("Robbie").transform.position = new Vector3(151.0f, 0.0f, 0.0f);
     }
 
-    public void LoadPlayerPositionLevelFour()
+    static public void LoadPlayerPositionLevelFour()
     {
         GameObject.Find("Robbie").transform.position = new Vector3(210.0f, -2.0f, 0.0f);
     }

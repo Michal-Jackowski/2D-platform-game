@@ -11,6 +11,7 @@ public class SectorNumberThreeEnterTrigger : MonoBehaviour
             Debug.Log("Sector three passed!");
             // Number is equal to one of the sectors
             PlayerPrefs.SetInt("ActualProgresInGame", 3);
+            ComparingTheHighestLevelAchieved.SetHighestLevel();
         }
     }
 }

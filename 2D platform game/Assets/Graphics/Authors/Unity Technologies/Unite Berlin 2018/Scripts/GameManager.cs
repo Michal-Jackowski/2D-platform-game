@@ -163,5 +163,25 @@ public class GameManager : MonoBehaviour
 
 		//Reload the current scene
 		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); 
+		if(PlayerPrefs.GetInt("TheHighestLevelReachedByThePlayer") == 0)
+		{
+			PlayerPrefs.SetInt("loadLevelPrototypePlayerPosition", 1);
+		}
+		else if(PlayerPrefs.GetInt("TheHighestLevelReachedByThePlayer") == 1)
+		{
+			PlayerPrefs.SetInt("loadLevelOnePlayerPosition", 1);
+		}
+		else if(PlayerPrefs.GetInt("TheHighestLevelReachedByThePlayer") == 2)
+		{
+			PlayerPrefs.SetInt("loadLevelTwoPlayerPosition", 1);
+		}
+		else if(PlayerPrefs.GetInt("TheHighestLevelReachedByThePlayer") == 3)
+		{
+			PlayerPrefs.SetInt("loadLevelThreePlayerPosition", 1);
+		}
+		else if(PlayerPrefs.GetInt("TheHighestLevelReachedByThePlayer") == 4)
+		{
+			PlayerPrefs.SetInt("loadLevelFourPlayerPosition", 1);
+		}
 	}
 }

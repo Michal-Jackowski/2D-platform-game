@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
 using System;
+using UnityEngine.SceneManagement;
 
 public class Settings : MonoBehaviour
 {
@@ -41,6 +42,7 @@ public class Settings : MonoBehaviour
     [Header("Menu Objects")]
     public GameObject settingMenu;
     public GameObject mainMenu;
+    public GameObject mainMenuWithResumeOption;
     public GameObject soundMenu;
     public GameObject graphicMenu;
 
@@ -66,10 +68,23 @@ public class Settings : MonoBehaviour
     
     void Update()
     {
+        Scene currentScene = SceneManager.GetActiveScene ();
+        
         if (mainMenu.activeSelf == true)
         {
+            SavePlayerSettings();
             canSave = true;
             canLoad = true;
+        }
+        // Used only in Main Menu
+        if (currentScene.buildIndex == 1) 
+        {
+            if (mainMenuWithResumeOption.activeSelf == true)
+            {
+                SavePlayerSettings();
+                canSave = true;
+                canLoad = true;
+            }
         }
         else if (settingMenu.activeSelf == true && canSave)
         {
@@ -121,6 +136,8 @@ public class Settings : MonoBehaviour
         {
             Debug.Log("Default save loaded");
             defaultSettings = true;
+            PlayerPrefs.SetInt("ActualProgresInGame", 0);
+            PlayerPrefs.SetInt("TheHighestLevelReachedByThePlayer", 0);
         }
     }
 
@@ -148,7 +165,7 @@ public class Settings : MonoBehaviour
 
     public void GetGraphicsSettings()
     {
-        isFullScreen = Screen.fullScreen;
+        isFullScreen = fullScreenToggle.GetComponent<UnityEngine.UI.Toggle>().isOn;
         isPostProcessingManagerOn = PostProcessingToggle.GetComponent<UnityEngine.UI.Toggle>().isOn;
         qualityIndex = QualitySettings.GetQualityLevel();
         resolutionIndex = resolutionDropdown.value;
