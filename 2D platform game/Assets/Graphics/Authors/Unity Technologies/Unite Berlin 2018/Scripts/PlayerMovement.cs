@@ -88,7 +88,7 @@ public class PlayerMovement : MonoBehaviour
 
 	void PhysicsCheck()
 	{
-		//Debug.Log(rigidBody.velocity.y);
+		//Dead from a fall
 		if (rigidBody.velocity.y < -26)
 		{
 			isAlive = false;

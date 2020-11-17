@@ -18,19 +18,25 @@
 		[+] A lot of UI tests
 		[+] Stronger fader in PauseMenu
 		[+] Loading default settings fullScreen Toggle is unchecked in MainMenu
+	[-] Inscrease font size when button selected
 	[-] Animated background in MainMenu (need a little bit scene from final game)
 	[-] Add images to LoadChapter Menu (after all game scenes will be completed)
 
 [-] PrototypeScene
 		[+] Change camera distance from player
+	[-] Camera moving follow improvement (tracked object offset cinemachine)
+	[-] Little jumps (to consider)
 	[-] Dust effect when player is running
 	[-] Atmosferic effects for example rain and fog
 		[+] Adding all basic sounds
 	[-] Killing player when he is longer then 7.5 seconds in air
-	[-] Reviewing the notebook in search of functionality
+	[-] Death collider around level
+		[+] Reviewing the notebook in search of functionality
 	[-] Signing traps on the prototype stage
 	[-] Problem with sliding from downhill
 	[-] New fader for player death
+	[-] Start new game and End game fader instead animations
+	[-] Some backgrounds animations
 	[-] Large extend 2D Physics for traps
 	[-] Using mechanisms from Unite Berlin 2018
 
