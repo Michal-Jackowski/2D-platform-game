@@ -24,8 +24,7 @@
 
 [-] PrototypeScene
 		[+] Change camera distance from player
-	[-] Camera moving follow improvement (tracked object offset cinemachine)
-	[-] Little jumps (to consider)
+		[+] Camera moving follow improvement (tracked object offset cinemachine)
 	[-] Dust effect when player is running
 	[-] Atmosferic effects for example rain and fog
 		[+] Adding all basic sounds
@@ -38,6 +37,12 @@
 	[-] Start new game and End game fader instead animations
 	[-] Some backgrounds animations
 	[-] Large extend 2D Physics for traps
+	[-] Pickable objects
+	[-] Secret level
+	[-] Paralax effect
+	[-] How water is made in Unity? (to consider)
+	[-] Character is black with white eyes
+	[-] Black eyes when player dies
 	[-] Using mechanisms from Unite Berlin 2018
 
 [-] General tasks
