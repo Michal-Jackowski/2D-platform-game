@@ -25,7 +25,7 @@
 [-] PrototypeScene
 		[+] Change camera distance from player
 		[+] Camera moving follow improvement (tracked object offset cinemachine)
-	[-] Dust effect when player is running
+		[+] Dust effect when player is running
 	[-] Atmosferic effects for example rain and fog
 		[+] Adding all basic sounds
 	[-] Killing player when he is longer then 7.5 seconds in air

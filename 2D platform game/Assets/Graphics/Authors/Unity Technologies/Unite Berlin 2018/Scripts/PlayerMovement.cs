@@ -54,6 +54,13 @@ public class PlayerMovement : MonoBehaviour
 	const float smallAmount = .05f;			//A small amount used for hanging position
 	bool isAlive = true;
 
+
+	//Foot Steep Effect using Particle System
+	public ParticleSystem footsteps;
+    private ParticleSystem.EmissionModule footEmission;
+	public ParticleSystem impactEffect;
+	private bool wasOnGround;
+
 	void Start ()
 	{
 		//Get a reference to the required components
@@ -74,6 +81,9 @@ public class PlayerMovement : MonoBehaviour
 		//Calculate crouching collider size and offset
 		colliderCrouchSize = new Vector2(bodyCollider.size.x, bodyCollider.size.y / 2f);
 		colliderCrouchOffset = new Vector2(bodyCollider.offset.x, bodyCollider.offset.y / 2f);
+
+		//Particle System
+		footEmission = footsteps.emission;
 	}
 
 	void FixedUpdate()
@@ -152,6 +162,26 @@ public class PlayerMovement : MonoBehaviour
 			//...finally, set isHanging to true
 			isHanging = true;
 		}
+
+		//If the player is on the ground and moving left or right
+		if(Input.GetAxisRaw("Horizontal") != 0 && isOnGround)
+		{
+			footEmission.rateOverTime = 35f;
+		}
+		else
+		{
+			footEmission.rateOverTime = 0f;
+		}
+
+		//Show impact effect
+		if(!wasOnGround && isOnGround)
+		{
+			impactEffect.gameObject.SetActive(true);
+			impactEffect.Stop();
+			impactEffect.transform.position = footsteps.transform.position;
+			impactEffect.Play();
+		}
+		wasOnGround = isOnGround;
 	}
 
 	void GroundMovement()
