@@ -45,8 +45,8 @@ public class PauseMenuManagerNew : MonoBehaviour
     public GameObject qualityDropdown;
     public GameObject resolutionDropdown;
     public GameObject fullScreenToggle;
-    public GameObject PostProcessingToggle;
-    public GameObject BrightnessVolumeSlider;
+    public GameObject postProcessingToggle;
+    public GameObject brightnessVolumeSlider;
 
 
     [Header("Sound Menu Objects")]
@@ -55,6 +55,7 @@ public class PauseMenuManagerNew : MonoBehaviour
     public GameObject stingVolumeSlider;
     public GameObject voiceVolumeSlider;
     public GameObject playerVolumeSlider;
+    public GameObject uiVolumeSlider;
 
 
     [Header("Load Chapter Menu Images")]
@@ -363,6 +364,10 @@ public class PauseMenuManagerNew : MonoBehaviour
                 {
                     SetDefaultColorForText();
                     SetHightlightColor(resumeButtonText);
+                    //Setting default button size
+                    SetDefaultButtonSize();
+                    //Button is selected so we can enlarge size
+                    EnlargeSizeOfButton(resumeButton);
                     
                     //Play only when you changed navigation in menu
                     if(!pauseMenuInitialNavigationPosition && !resumeButtonPlayedOnce) 
@@ -380,6 +385,10 @@ public class PauseMenuManagerNew : MonoBehaviour
                     SetDefaultColorForText();
                     SetHightlightColor(startNewGameButtonText);
                     LoadLevel();
+                    //Setting default button size
+                    SetDefaultButtonSize();
+                    //Button is selected so we can enlarge size
+                    EnlargeSizeOfButton(startNewGameButton);
 
                     //Navigation was changed
                     pauseMenuInitialNavigationPosition = false;
@@ -398,6 +407,10 @@ public class PauseMenuManagerNew : MonoBehaviour
                 {
                     SetDefaultColorForText();
                     SetHightlightColor(loadChapterButtonText);
+                    //Setting default button size
+                    SetDefaultButtonSize();
+                    //Button is selected so we can enlarge size
+                    EnlargeSizeOfButton(loadChapterButton);
 
                     //Navigation was changed
                     pauseMenuInitialNavigationPosition = false;
@@ -416,6 +429,10 @@ public class PauseMenuManagerNew : MonoBehaviour
                 {
                     SetDefaultColorForText();
                     SetHightlightColor(settingsButtonText);
+                    //Setting default button size
+                    SetDefaultButtonSize();
+                    //Button is selected so we can enlarge size
+                    EnlargeSizeOfButton(settingsButton);
 
                     //Navigation was changed
                     pauseMenuInitialNavigationPosition = false;
@@ -434,6 +451,10 @@ public class PauseMenuManagerNew : MonoBehaviour
                 {
                     SetDefaultColorForText();
                     SetHightlightColor(exitButtonText);
+                    //Setting default button size
+                    SetDefaultButtonSize();
+                    //Button is selected so we can enlarge size
+                    EnlargeSizeOfButton(exitButton);
 
                     //Navigation was changed
                     pauseMenuInitialNavigationPosition = false;
@@ -497,6 +518,10 @@ public class PauseMenuManagerNew : MonoBehaviour
                 {
                     SetDefaultColorForText();
                     SetHightlightColor(controlsButtonText);
+                    //Setting default button size
+                    SetDefaultButtonSize();
+                    //Button is selected so we can enlarge size
+                    EnlargeSizeOfButton(controlsButton);
 
                     //Play only when you changed navigation in menu
                     if(!settingsMenuInitialNavigationPosition && !controlsButtonPlayedOnce) 
@@ -512,6 +537,10 @@ public class PauseMenuManagerNew : MonoBehaviour
                 {
                     SetDefaultColorForText();
                     SetHightlightColor(graphicButtonText);
+                    //Setting default button size
+                    SetDefaultButtonSize();
+                    //Button is selected so we can enlarge size
+                    EnlargeSizeOfButton(graphicButton);
 
                     settingsMenuInitialNavigationPosition = false;
                     if(!settingsMenuInitialNavigationPosition && !graphicButtonPlayedOnce) 
@@ -527,6 +556,10 @@ public class PauseMenuManagerNew : MonoBehaviour
                 {
                     SetDefaultColorForText();
                     SetHightlightColor(soundButtonText);
+                    //Setting default button size
+                    SetDefaultButtonSize();
+                    //Button is selected so we can enlarge size
+                    EnlargeSizeOfButton(soundButton);
 
                     settingsMenuInitialNavigationPosition = false;
                     if(!settingsMenuInitialNavigationPosition && !soundButtonPlayedOnce) 
@@ -542,6 +575,10 @@ public class PauseMenuManagerNew : MonoBehaviour
                 {
                     SetDefaultColorForText();
                     SetHightlightColor(creditsButtonText);
+                    //Setting default button size
+                    SetDefaultButtonSize();
+                    //Button is selected so we can enlarge size
+                    EnlargeSizeOfButton(creditsButton);
 
                     settingsMenuInitialNavigationPosition = false;
                     if(!settingsMenuInitialNavigationPosition && !creditsButtonPlayedOnce) 
@@ -601,6 +638,10 @@ public class PauseMenuManagerNew : MonoBehaviour
                     SetDefaultColorForToggle();
                     SetDefaultColorForDropdown();
                     ChangeQualityDropdownColor();
+                    //Setting default button size
+                    SetDefaultButtonSize();
+                    //Button is selected so we can enlarge size
+                    EnlargeSizeOfButton(qualityDropdown);
 
                     //Play only when you changed navigation in menu
                     if(!graphicMenuInitialNavigationPosition && !qualityDropdownPlayedOnce) 
@@ -627,6 +668,10 @@ public class PauseMenuManagerNew : MonoBehaviour
                     SetDefaultColorForToggle();
                     SetDefaultColorForDropdown();
                     ChangeResolutionDropdownColor();
+                    //Setting default button size
+                    SetDefaultButtonSize();
+                    //Button is selected so we can enlarge size
+                    EnlargeSizeOfButton(resolutionDropdown);
 
                     graphicMenuInitialNavigationPosition = false;
                     if(!graphicMenuInitialNavigationPosition && !resolutionDropdownPlayedOnce) 
@@ -653,6 +698,10 @@ public class PauseMenuManagerNew : MonoBehaviour
                     SetDefaultColorForToggle();
                     ChangeFullScreenToggleColor();
                     SetDefaultColorForDropdown();
+                    //Setting default button size
+                    SetDefaultButtonSize();
+                    //Button is selected so we can enlarge size
+                    EnlargeSizeOfButton(fullScreenToggle);
 
                     graphicMenuInitialNavigationPosition = false;
                     if(!graphicMenuInitialNavigationPosition && !fullScreenTogglePlayedOnce) 
@@ -679,6 +728,10 @@ public class PauseMenuManagerNew : MonoBehaviour
                     SetDefaultColorForToggle();
                     ChangePostProcessingToggleColor();
                     SetDefaultColorForDropdown();
+                    //Setting default button size
+                    SetDefaultButtonSize();
+                    //Button is selected so we can enlarge size
+                    EnlargeSizeOfButton(postProcessingToggle);
 
                     graphicMenuInitialNavigationPosition = false;
                     if(!graphicMenuInitialNavigationPosition && !PostProcessingTogglePlayedOnce) 
@@ -725,6 +778,10 @@ public class PauseMenuManagerNew : MonoBehaviour
                     ChangeBrightnessSliderColor();
                     SetDefaultColorForToggle();
                     SetDefaultColorForDropdown();
+                    //Setting default button size
+                    SetDefaultButtonSize();
+                    //Button is selected so we can enlarge size
+                    EnlargeSizeOfButton(brightnessVolumeSlider);
 
                     graphicMenuInitialNavigationPosition = false;
                     if(!graphicMenuInitialNavigationPosition && !BrightnessVolumeSliderPlayedOnce) 
@@ -792,6 +849,11 @@ public class PauseMenuManagerNew : MonoBehaviour
                     SetHightlightColor(musicVolumeSliderText);
                     SetDefaultColorForSlider();
                     ChangeMusicVolumeSliderColor();
+                    SetDefaultColorForDropdown();
+                    //Setting default button size
+                    SetDefaultButtonSize();
+                    //Button is selected so we can enlarge size
+                    EnlargeSizeOfButton(musicVolumeSlider);
 
                     //Play only when you changed navigation in menu
                     if(!soundMenuInitialNavigationPosition && !musicVolumeSliderPlayedOnce) 
@@ -823,6 +885,10 @@ public class PauseMenuManagerNew : MonoBehaviour
                     SetHightlightColor(ambientVolumeSliderText);
                     SetDefaultColorForSlider();
                     ChangeAmbientVolumeSliderColor();
+                    //Setting default button size
+                    SetDefaultButtonSize();
+                    //Button is selected so we can enlarge size
+                    EnlargeSizeOfButton(ambientVolumeSlider);
 
                     soundMenuInitialNavigationPosition = false;
                     if(!soundMenuInitialNavigationPosition && !ambientVolumeSliderPlayedOnce) 
@@ -854,6 +920,10 @@ public class PauseMenuManagerNew : MonoBehaviour
                     SetHightlightColor(stingVolumeSliderText);
                     SetDefaultColorForSlider();
                     ChangeStingVolumeSliderColor();
+                    //Setting default button size
+                    SetDefaultButtonSize();
+                    //Button is selected so we can enlarge size
+                    EnlargeSizeOfButton(stingVolumeSlider);
 
                     soundMenuInitialNavigationPosition = false;
                     if(!soundMenuInitialNavigationPosition && !stingVolumeSliderPlayedOnce) 
@@ -885,6 +955,10 @@ public class PauseMenuManagerNew : MonoBehaviour
                     SetHightlightColor(voiceVolumeSliderText);
                     SetDefaultColorForSlider();
                     ChangeVoiceVolumeSliderColor();
+                    //Setting default button size
+                    SetDefaultButtonSize();
+                    //Button is selected so we can enlarge size
+                    EnlargeSizeOfButton(voiceVolumeSlider);
 
                     soundMenuInitialNavigationPosition = false;
                     if(!soundMenuInitialNavigationPosition && !voiceVolumeSliderPlayedOnce) 
@@ -916,6 +990,10 @@ public class PauseMenuManagerNew : MonoBehaviour
                     SetHightlightColor(playerVolumeSliderText);
                     SetDefaultColorForSlider();
                     ChangePlayerVolumeSliderColor();
+                    //Setting default button size
+                    SetDefaultButtonSize();
+                    //Button is selected so we can enlarge size
+                    EnlargeSizeOfButton(playerVolumeSlider);
 
                     soundMenuInitialNavigationPosition = false;
                     if(!soundMenuInitialNavigationPosition && !playerVolumeSliderPlayedOnce) 
@@ -947,6 +1025,10 @@ public class PauseMenuManagerNew : MonoBehaviour
                     SetHightlightColor(UIVolumeSliderText);
                     SetDefaultColorForSlider();
                     ChangeUIVolumeSliderColor();
+                    //Setting default button size
+                    SetDefaultButtonSize();
+                    //Button is selected so we can enlarge size
+                    EnlargeSizeOfButton(uiVolumeSlider);
 
                     soundMenuInitialNavigationPosition = false;
                     if(!soundMenuInitialNavigationPosition && !UIVolumeSliderPlayedOnce) 
@@ -1562,5 +1644,46 @@ public class PauseMenuManagerNew : MonoBehaviour
         playerFollowCam.GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineFramingTransposer>().m_XDamping = 1;
         playerFollowCam.GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineFramingTransposer>().m_YDamping = 1;
         playerFollowCam.GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineFramingTransposer>().m_ZDamping = 1;
+    }
+
+    public void EnlargeSizeOfButton(GameObject Button)
+    {
+        Button.transform.localScale = new Vector3(1.15f, 1.15f, 1.15f);
+    }
+
+    public void SetDefaultButtonSize()
+    {
+        if(pauseMenu.activeSelf == true)
+        {
+            resumeButton.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
+            startNewGameButton.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
+            loadChapterButton.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
+            settingsButton.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
+            exitButton.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
+        }
+        else if(settingMenu.activeSelf == true)
+        {
+            controlsButton.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
+            graphicButton.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
+            soundButton.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
+            creditsButton.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
+        }
+        else if(graphicMenu.activeSelf == true)
+        {
+            qualityDropdown.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
+            resolutionDropdown.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
+            fullScreenToggle.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
+            postProcessingToggle.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
+            brightnessVolumeSlider.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
+        }
+        else if(soundMenu.activeSelf == true)
+        {
+            musicVolumeSlider.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
+            ambientVolumeSlider.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
+            stingVolumeSlider.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
+            voiceVolumeSlider.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
+            playerVolumeSlider.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
+            uiVolumeSlider.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
+        }
     }
 }

@@ -18,7 +18,8 @@
 		[+] A lot of UI tests
 		[+] Stronger fader in PauseMenu
 		[+] Loading default settings fullScreen Toggle is unchecked in MainMenu
-	[-] Inscrease font size when button selected (all PauseMenu and fix problem with scaling in sound menu)
+		[+] Inscrease font size when button selected (all PauseMenu and fix problem with scaling in sound menu)
+	[-] Information about controls using sprite
 	[-] Animated background in MainMenu (need a little bit scene from final game)
 	[-] Add images to LoadChapter Menu (after all game scenes will be completed)
 
@@ -27,6 +28,7 @@
 		[+] Camera moving follow improvement (tracked object offset cinemachine)
 		[+] Dust effect when player is running
 		[+] 3x more FPS (Probably layout problem)
+	[-] Particle splash effect to improve
 	[-] Atmosferic effects for example rain and fog (rain left)
 		[+] Adding all basic sounds
 	[-] Killing player when he is longer then 7.5 seconds in air

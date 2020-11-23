@@ -336,7 +336,6 @@ public class MenuManager : MonoBehaviour
                         EventSystem.current.SetSelectedGameObject(EventSystem.current.GetComponent<EventSystem>().firstSelectedGameObject);
                         backFromLoadChapter = true;
                         loadChapterMenuBegin = false;
-                        //Debug.Log("if(settingMenuBegin)");
                     }
                     else
                     {
@@ -350,7 +349,6 @@ public class MenuManager : MonoBehaviour
                         }
                         EventSystem.current.SetSelectedGameObject(EventSystem.current.GetComponent<EventSystem>().firstSelectedGameObject);
                         backFromSettings = true;
-                        //Debug.Log("loadChapterMenuBegin ELSE");
                     }
                     settingMenuBegin = false;
                     mainMenuBegin = true;
@@ -360,12 +358,10 @@ public class MenuManager : MonoBehaviour
                 {
                     SetNewSelectedGameObject();
                     mainMenuBegin = true;
-                    //Debug.Log("if (!mainMenuBegin && !backFromSettings)");
                 }
                 else if (mainMenuBegin)
                 {
                     currentSelected = EventSystem.current.currentSelectedGameObject;
-                    //Debug.Log("else if (mainMenuBegin)");
                 }
 
                 // Main Menu With Resume Option remembers checkpoints
