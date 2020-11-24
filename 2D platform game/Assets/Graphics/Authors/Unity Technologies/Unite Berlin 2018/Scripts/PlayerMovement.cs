@@ -58,8 +58,8 @@ public class PlayerMovement : MonoBehaviour
 	//Foot Steep Effect using Particle System
 	public ParticleSystem footsteps;
     private ParticleSystem.EmissionModule footEmission;
-	public ParticleSystem impactEffect;
-	private bool wasOnGround;
+	//public ParticleSystem impactEffect;
+	//private bool wasOnGround;
 
 	void Start ()
 	{
@@ -174,14 +174,14 @@ public class PlayerMovement : MonoBehaviour
 		}
 
 		//Show impact effect
-		if(!wasOnGround && isOnGround)
+/* 		if(!wasOnGround && isOnGround)
 		{
 			impactEffect.gameObject.SetActive(true);
 			impactEffect.Stop();
 			impactEffect.transform.position = footsteps.transform.position;
 			impactEffect.Play();
 		}
-		wasOnGround = isOnGround;
+		wasOnGround = isOnGround; */
 	}
 
 	void GroundMovement()
