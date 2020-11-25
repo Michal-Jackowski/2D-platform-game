@@ -30,8 +30,7 @@
 		[+] 3x more FPS (Probably layout problem) 
 		[+] Atmosferic effects for example rain and fog
 		[+] Adding all basic sounds
-	[-] Killing player when he is longer then 7.5 seconds in air
-	[-] Death collider around level
+		[+] Killing player when he is longer then 4.5 seconds in air
 		[+] Reviewing the notebook in search of functionality
 	[-] Signing traps on the prototype stage
 	[-] Problem with sliding from downhill

@@ -58,8 +58,12 @@ public class PlayerMovement : MonoBehaviour
 	//Foot Steep Effect using Particle System
 	public ParticleSystem footsteps;
     private ParticleSystem.EmissionModule footEmission;
-	//public ParticleSystem impactEffect;
-	//private bool wasOnGround;
+
+
+	//Time used to check how long player is in the air
+	private float timer = 0.0f;
+	//To prevent any blocked in air player situation
+	private float maximalTimeInAir = 4.5f;
 
 	void Start ()
 	{
@@ -115,9 +119,10 @@ public class PlayerMovement : MonoBehaviour
 		if (leftCheck || rightCheck)
 		{
 			isOnGround = true;
+			timer = 0.0f;
 		}
 
-		if (isOnGround && !isAlive)
+		if((isOnGround || timer>=maximalTimeInAir) && !isAlive)
 		{
 			//Disable player game object
 			gameObject.SetActive(false);
@@ -127,6 +132,7 @@ public class PlayerMovement : MonoBehaviour
 			GameManager.PlayerDied();
 			AudioManager.PlayDeathAudio();
 			isAlive = true;
+			timer = 0.0f;
 		}
 
 		//Cast the ray to check above the player's head
@@ -172,22 +178,15 @@ public class PlayerMovement : MonoBehaviour
 		{
 			footEmission.rateOverTime = 0f;
 		}
-
-		//Show impact effect
-/* 		if(!wasOnGround && isOnGround)
-		{
-			impactEffect.gameObject.SetActive(true);
-			impactEffect.Stop();
-			impactEffect.transform.position = footsteps.transform.position;
-			impactEffect.Play();
-		}
-		wasOnGround = isOnGround; */
 	}
 
 	void GroundMovement()
 	{
 		if (isHanging)
+		{
+			timer = 0.0f;
 			return;
+		}
 
 		//Handle crouching input. If holding the crouch button but not crouching, crouch
 		if (input.crouchHeld && !isCrouching && isOnGround)
@@ -276,7 +275,7 @@ public class PlayerMovement : MonoBehaviour
 			//...and the jump button is held, apply an incremental force to the rigidbody...
 			//if (input.jumpHeld)
 				//rigidBody.AddForce(new Vector2(0f, jumpHoldForce), ForceMode2D.Impulse);
-
+			
 			//...and if jump time is past, set isJumping to false
 			if (jumpTime <= Time.time)
 				isJumping = false;
@@ -285,6 +284,18 @@ public class PlayerMovement : MonoBehaviour
 		//If player is falling to fast, reduce the Y velocity to the max
 		if (rigidBody.velocity.y < maxFallSpeed)
 			rigidBody.velocity = new Vector2(rigidBody.velocity.x, maxFallSpeed);
+
+		//record time when player is in the air
+		if(!isHanging)
+		{
+			timer += Time.deltaTime;
+		}
+		
+		//Killing player when he is longer than 4.5 seconds in the air
+		if(timer>=maximalTimeInAir)
+		{
+			isAlive = false;
+		}
 	}
 
 	void FlipCharacterDirection()
