@@ -64,6 +64,10 @@ public class PlayerMovement : MonoBehaviour
 	private float timer = 0.0f;
 	//To prevent any blocked in air player situation
 	private float maximalTimeInAir = 4.5f;
+	//Trying avoid sliding from hills
+	public PhysicsMaterial2D asphaltMaterial;
+	public PhysicsMaterial2D defaultMaterial;
+
 
 	void Start ()
 	{
@@ -102,6 +106,31 @@ public class PlayerMovement : MonoBehaviour
 
 	void PhysicsCheck()
 	{
+		//Sliding or idle
+		if(!Input.anyKeyDown && !Input.anyKey)
+		{
+			if(this.transform.hasChanged && isOnGround && !isHanging) 
+			{ 
+				rigidBody.sharedMaterial = asphaltMaterial;
+			}
+		}
+		//Trying avoid slide when crouch
+		else if(isCrouching && this.transform.hasChanged)
+		{
+			if(Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow))
+			{
+				rigidBody.sharedMaterial = defaultMaterial;
+			}
+			else
+			{
+				rigidBody.sharedMaterial = asphaltMaterial;
+			}
+		}
+		else
+		{
+			rigidBody.sharedMaterial = defaultMaterial;
+		}
+		
 		//Dead from a fall
 		if (rigidBody.velocity.y < -26)
 		{

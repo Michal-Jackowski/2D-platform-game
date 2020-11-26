@@ -32,8 +32,7 @@
 		[+] Adding all basic sounds
 		[+] Killing player when he is longer then 4.5 seconds in air
 		[+] Reviewing the notebook in search of functionality
-	[-] Signing traps on the prototype stage
-	[-] Problem with sliding from downhill
+		[+] Problem with sliding from downhill
 	[-] New fader for player death
 	[-] Start new game and End game fader instead animations
 	[-] Some backgrounds animations
