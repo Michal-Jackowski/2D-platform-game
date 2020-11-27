@@ -40,7 +40,7 @@
 	[-] Pickable objects
 	[-] Secret level
 	[-] Paralax effect
-	[-] How water is made in Unity? (to consider)
+	[-] Water shader
 	[-] Character is black with white eyes
 	[-] Black eyes when player dies
 	[-] Using mechanisms from Unite Berlin 2018

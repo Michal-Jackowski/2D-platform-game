@@ -7948,6 +7948,8 @@ MonoBehaviour:
   isCrouching: 0
   isHeadBlocked: 0
   footsteps: {fileID: 1785042756}
+  asphaltMaterial: {fileID: 6200000, guid: 0e639f9e701222c4e845a2925697b951, type: 2}
+  defaultMaterial: {fileID: 6200000, guid: 124d724cffbd7714b9e959172eddc78c, type: 2}
 --- !u!61 &1078777251
 BoxCollider2D:
   m_ObjectHideFlags: 0
