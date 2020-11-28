@@ -52,3 +52,4 @@
 	[-] Start Level Design
 	[-] Adding Game Design Document to project after translating to english
 	[-] First release on GitHub
+	[-] Build first level (one of four)
