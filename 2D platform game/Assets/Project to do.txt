@@ -34,7 +34,7 @@
 		[+] Reviewing the notebook in search of functionality
 		[+] Problem with sliding from downhill
 	[-] New fader for player death
-	[-] Start new game and End game fader instead animations
+	[-] Start new game and end game fader instead animations
 	[-] Some backgrounds animations
 	[-] Large extend 2D Physics for traps
 	[-] Pickable objects
