@@ -36,13 +36,13 @@
 	[-] New fader for player death
 	[-] Start new game and end game fader instead animations
 	[-] Some backgrounds animations
-	[-] Large extend 2D Physics for traps
 	[-] Pickable objects
 	[-] Secret level
 	[-] Paralax effect
 	[-] Water shader
 	[-] Character is black with white eyes
 	[-] Black eyes when player dies
+	[-] Large extend 2D Physics for traps
 	[-] Using mechanisms from Unite Berlin 2018
 
 [-] General tasks
