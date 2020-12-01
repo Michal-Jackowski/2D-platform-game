@@ -33,7 +33,7 @@
 		[+] Killing player when he is longer then 4.5 seconds in air
 		[+] Reviewing the notebook in search of functionality
 		[+] Problem with sliding from downhill
-	[-] New fader for player death
+		[+] New fader for player death
 	[-] Start new game and end game fader instead animations
 	[-] Some backgrounds animations
 	[-] Pickable objects
