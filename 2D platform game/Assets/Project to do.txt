@@ -49,6 +49,7 @@
 	[-] Preparing prefabs
 	[-] Refactoring
 	[-] Moving tasks to Trello
+	[-] Find scenes from games to recreate
 	[-] Start Level Design
 	[-] Adding Game Design Document to project after translating to english
 	[-] First release on GitHub
