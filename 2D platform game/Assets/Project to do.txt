@@ -55,3 +55,4 @@
 	[-] Adding Game Design Document to project after translating to english
 	[-] First release on GitHub
 	[-] Build first level (one of four)
+	[-] Deadline 31.XII.20
