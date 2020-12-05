@@ -42,7 +42,6 @@
 	[-] Water shader
 	[-] Water as trap using water shader
 	[-] Character is black with white eyes
-	[-] Black eyes when player dies
 	[-] Large extend 2D Physics for traps
 	[-] Using mechanisms from Unite Berlin 2018
 
