@@ -40,6 +40,7 @@
 	[-] Secret level
 	[-] Paralax effect
 	[-] Water shader
+	[-] Change camera distance in contact with trigger but slowly
 	[-] Water as trap using water shader
 	[-] Character is black with white eyes
 	[-] Large extend 2D Physics for traps
