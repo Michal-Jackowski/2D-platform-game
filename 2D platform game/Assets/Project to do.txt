@@ -53,6 +53,7 @@
 	[-] Find scenes from games to recreate
 	[-] Start Level Design
 	[-] Adding Game Design Document to project after translating to english
-	[-] First release on GitHub
 	[-] Build first level (one of four)
+	[-] Build other levels
+	[-] First release on GitHub
 	[-] Deadline 31.XII.20
