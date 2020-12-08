@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
 	int numberOfDeaths;							//Number of times player has died
 	float totalGameTime;						//Length of the total game time
 	bool isGameOver;							//Is the game currently over?
+	public GameObject blackFader;				//To cover cover visibility restart scene
 
 
 	void Awake()
@@ -135,7 +136,21 @@ public class GameManager : MonoBehaviour
 			current.sceneFader.FadeSceneOut();
 
 		//Invoke the RestartScene() method after a delay
+		GameManager.current.SetFader(true);
 		current.Invoke("RestartScene", current.deathSequenceDuration);
+	}
+
+	public void SetFader(bool active)
+	{
+		blackFader.SetActive(active);
+	}
+
+	public static void RunIntroFader()
+	{
+		if(current.sceneFader != null)
+			current.sceneFader.IntroFadeSceneIn();
+
+		current.sceneFader.DefaultFadeScene();
 	}
 
 	public static void PlayerWon()

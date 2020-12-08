@@ -7,6 +7,8 @@ public class SceneFader : MonoBehaviour
 {
 	Animator anim;		//Reference to the Animator component
 	int fadeParamID;    //The ID of the animator parameter that fades the image
+	int introFadeParamID;	//The ID of the animator parameter that fades the image
+	int defaultFadeParamID;		//The ID of the animator parameter that fades the image
 
 	void Start()
 	{
@@ -15,6 +17,8 @@ public class SceneFader : MonoBehaviour
 
 		//Get the integer hash of the "Fade" parameter.
 		fadeParamID = Animator.StringToHash("Fade");
+		introFadeParamID = Animator.StringToHash("IntroFade");
+		defaultFadeParamID = Animator.StringToHash("DefaultFade");
 
 		//Register this Scene Fader with the Game Manager
 		GameManager.RegisterSceneFader(this);
@@ -24,5 +28,17 @@ public class SceneFader : MonoBehaviour
 	{
 		//Play the animation that fades the UI
 		anim.SetTrigger(fadeParamID);
+	}
+
+	public void IntroFadeSceneIn()
+	{
+		//Play the animation that fades the UI
+		anim.SetTrigger(introFadeParamID);
+	}
+
+	public void DefaultFadeScene()
+	{
+		//Play the animation that fades the UI
+		anim.SetTrigger(defaultFadeParamID);
 	}
 }
