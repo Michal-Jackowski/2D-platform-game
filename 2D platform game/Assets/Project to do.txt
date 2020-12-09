@@ -34,26 +34,19 @@
 		[+] Reviewing the notebook in search of functionality
 		[+] Problem with sliding from downhill
 		[+] New fader for player death
-	[-] Start new game and end game fader instead animations
-	[-] Some backgrounds animations
 	[-] Pickable objects
 	[-] Secret level
 	[-] Paralax effect
-	[-] Water shader
 	[-] Change camera distance in contact with trigger but slowly
-	[-] Water as trap using water shader
-	[-] Character is black with white eyes
 	[-] Large extend 2D Physics for traps
 	[-] Using mechanisms from Unite Berlin 2018
 
 [-] General tasks
 	[-] Preparing prefabs
-	[-] Refactoring
 	[-] Moving tasks to Trello
 	[-] Find scenes from games to recreate
 	[-] Start Level Design
 	[-] Adding Game Design Document to project after translating to english
-	[-] Build first level (one of four)
-	[-] Build other levels
+	[-] Build four levels
 	[-] First release on GitHub
 	[-] Deadline 31.XII.20

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -16,6 +17,7 @@ public class PauseMenu : MonoBehaviour
     public GameObject LoadChapterMenuUI;
     public static bool canBackToGame = true;
     public GameObject inputScript;
+    public Image faderImage;
 
 
     void Update()

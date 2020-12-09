@@ -281,9 +281,6 @@ public class PauseMenuManagerNew : MonoBehaviour
     [Header("Load/Save")]
     public GameObject fullScreenCheckmark;
 
-    [Header("Fader")]
-    public GameObject blackFader;				//To cover cover visibility restart scene
-
 
     void Start()
     {
@@ -293,8 +290,6 @@ public class PauseMenuManagerNew : MonoBehaviour
 
         if(PlayerPrefs.GetInt("loadLevelPrototypePlayerPosition") == 1)
         {
-            GameManager.RunIntroFader();
-            SetFader(false);
             LoadPlayerPositionPrototypeLevel();
             PlayerPrefs.SetInt("loadLevelPrototypePlayerPosition", 0);
         }
@@ -1691,9 +1686,4 @@ public class PauseMenuManagerNew : MonoBehaviour
             uiVolumeSlider.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
         }
     }
-
-    public void SetFader(bool active)
-	{
-		blackFader.SetActive(active);
-	}
 }
