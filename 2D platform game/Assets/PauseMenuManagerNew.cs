@@ -290,6 +290,7 @@ public class PauseMenuManagerNew : MonoBehaviour
 
         if(PlayerPrefs.GetInt("loadLevelPrototypePlayerPosition") == 1)
         {
+            //intro fader
             LoadPlayerPositionPrototypeLevel();
             PlayerPrefs.SetInt("loadLevelPrototypePlayerPosition", 0);
         }

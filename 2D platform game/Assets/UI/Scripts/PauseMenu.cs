@@ -18,10 +18,12 @@ public class PauseMenu : MonoBehaviour
     public static bool canBackToGame = true;
     public GameObject inputScript;
     public Image faderImage;
+    private static float alphaLevel;
 
 
     void Update()
     {
+        //GetAlphaColor();
         if(Input.GetKeyDown(KeyCode.Escape))
         {
             if(GameIsPaused && pauseMenuUI.activeSelf)
@@ -55,6 +57,7 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 1f;
         GameIsPaused = false;
         inputScript.GetComponent<PlayerInput>().enabled = true;
+        TurnOnAlphaColor();
     }
 
     void Pause()
@@ -65,6 +68,8 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 0f;
         GameIsPaused = true;
         inputScript.GetComponent<PlayerInput>().enabled = false;
+        GetAlphaColor();
+        TurnOffAlphaColor();
     }
 
     public void LoadMenu()
@@ -77,5 +82,25 @@ public class PauseMenu : MonoBehaviour
     {
         Debug.Log("Quiting...");
         Application.Quit();
+    }
+
+    private void GetAlphaColor()
+    {
+        var temporary = faderImage.color;
+        alphaLevel = temporary.a;
+    }
+
+    private void TurnOffAlphaColor()
+    {
+        var temporary = faderImage.color;
+        temporary.a = 0f;
+        faderImage.color = temporary;
+    }
+
+    private void TurnOnAlphaColor()
+    {
+        var temporary = faderImage.color;
+        temporary.a = alphaLevel;
+        faderImage.color = temporary;
     }
 }

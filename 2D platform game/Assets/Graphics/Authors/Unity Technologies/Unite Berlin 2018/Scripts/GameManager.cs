@@ -23,7 +23,6 @@ public class GameManager : MonoBehaviour
 	float totalGameTime;						//Length of the total game time
 	bool isGameOver;							//Is the game currently over?
 
-
 	void Awake()
 	{
 		//If a Game Manager exists and this isn't it...
@@ -132,8 +131,9 @@ public class GameManager : MonoBehaviour
 
 		//If we have a scene fader, tell it to fade the scene out
 		if(current.sceneFader != null)
+		{
 			current.sceneFader.FadeSceneOut();
-
+		}
 		//Invoke the RestartScene() method after a delay
 		current.Invoke("RestartScene", current.deathSequenceDuration);
 	}
@@ -154,7 +154,7 @@ public class GameManager : MonoBehaviour
 	}
 
 	void RestartScene()
-	{
+	{	
 		//Clear the current list of orbs
 		orbs.Clear();
 

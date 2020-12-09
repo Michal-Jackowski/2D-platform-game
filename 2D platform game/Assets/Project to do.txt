@@ -34,6 +34,10 @@
 		[+] Reviewing the notebook in search of functionality
 		[+] Problem with sliding from downhill
 		[+] New fader for player death
+		[+] Death player fader bug during opening pause menu
+	[-] Intro/Outro game fader
+	[-] Wind sound to correct
+	[-] Water shader as trap
 	[-] Pickable objects
 	[-] Secret level
 	[-] Paralax effect
