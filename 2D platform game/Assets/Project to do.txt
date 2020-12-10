@@ -38,8 +38,7 @@
 	[-] Intro/Outro game fader
 	[-] Wind sound to correct
 	[-] Water shader as trap
-	[-] Pickable objects
-	[-] Secret level
+	[-] Pickable objects unlocking secret level
 	[-] Paralax effect
 	[-] Change camera distance in contact with trigger but slowly
 	[-] Large extend 2D Physics for traps
