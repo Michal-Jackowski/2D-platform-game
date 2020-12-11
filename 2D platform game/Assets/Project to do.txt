@@ -40,7 +40,7 @@
 	[-] Water shader as trap
 	[-] Pickable objects unlocking secret level
 	[-] Paralax effect
-	[-] Change camera distance in contact with trigger but slowly
+	[-] Change camera distance in contact with trigger
 	[-] Large extend 2D Physics for traps
 	[-] Using mechanisms from Unite Berlin 2018
 
