@@ -290,7 +290,6 @@ public class PauseMenuManagerNew : MonoBehaviour
 
         if(PlayerPrefs.GetInt("loadLevelPrototypePlayerPosition") == 1)
         {
-            //intro fader
             LoadPlayerPositionPrototypeLevel();
             PlayerPrefs.SetInt("loadLevelPrototypePlayerPosition", 0);
         }
@@ -1369,6 +1368,8 @@ public class PauseMenuManagerNew : MonoBehaviour
                 PlayerPrefs.SetInt("TheHighestLevelReachedByThePlayer", 0);
                 PlayerPrefs.SetInt("loadLevelPrototypePlayerPosition", 1);
                 SceneManager.LoadScene("PrototypeScene");
+                GameManager.RunIntroFader();
+                Debug.Log("Intro fader started...");
             }
             else if(currentSelectedLevel.name == "LevelOne")
             {

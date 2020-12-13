@@ -23,7 +23,6 @@ public class PauseMenu : MonoBehaviour
 
     void Update()
     {
-        //GetAlphaColor();
         if(Input.GetKeyDown(KeyCode.Escape))
         {
             if(GameIsPaused && pauseMenuUI.activeSelf)

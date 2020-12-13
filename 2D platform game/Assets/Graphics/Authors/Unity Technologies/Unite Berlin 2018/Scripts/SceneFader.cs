@@ -28,7 +28,7 @@ public class SceneFader : MonoBehaviour
 		anim.SetTrigger(fadeParamID);
 	}
 
-	public void FadeSceneOutAndIntroFade()
+	public void IntroFade()
 	{
 		//Play the animation that fades the UI
 		anim.SetTrigger(fadeIntroParamID);
