@@ -36,7 +36,7 @@
 		[+] New fader for player death
 		[+] Death player fader bug during opening pause menu
 	[-] Intro/Outro game fader
-	[-] Wind sound to correct
+		[+] Wind sound to correct
 	[-] Water shader as trap
 	[-] Pickable objects unlocking secret level
 	[-] Paralax effect

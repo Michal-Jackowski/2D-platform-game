@@ -959,7 +959,7 @@ PrefabInstance:
     - target: {fileID: 114568543676866764, guid: 78a1eecdd4dc0cc48b8432057628c528, type: 3}
       propertyPath: ambientClip
       value: 
-      objectReference: {fileID: 8300000, guid: eada7d54979248c4aa9e47df324ade25, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 114568543676866764, guid: 78a1eecdd4dc0cc48b8432057628c528, type: 3}
       propertyPath: playerGroup
       value: 
@@ -2509,7 +2509,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1393307236871262628, guid: 16527896f2b742d4cbdf2d50e917e6cd, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.58489895
+      value: -0.5849085
       objectReference: {fileID: 0}
     - target: {fileID: 1393307236879732235, guid: 16527896f2b742d4cbdf2d50e917e6cd, type: 3}
       propertyPath: m_AnchoredPosition.x

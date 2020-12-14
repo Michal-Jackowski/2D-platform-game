@@ -134,6 +134,10 @@ public class GameManager : MonoBehaviour
 		{
 			current.sceneFader.FadeSceneOut();
 		}
+		else
+		{
+			Debug.Log("FadeSceneOut no reference...");
+		}
 		//Invoke the RestartScene() method after a delay
 		current.Invoke("RestartScene", current.deathSequenceDuration);
 	}
@@ -152,6 +156,10 @@ public class GameManager : MonoBehaviour
 		if(current.sceneFader != null)
 		{
 			current.sceneFader.IntroFade();
+		}
+		else
+		{
+			Debug.Log("RunIntroFader no reference...");
 		}
 	}
 
