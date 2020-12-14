@@ -34,15 +34,16 @@
 		[+] Reviewing the notebook in search of functionality
 		[+] Problem with sliding from downhill
 		[+] New fader for player death
+//-----------------------------------------------------------------------------------------------------------------------------//
 		[+] Death player fader bug during opening pause menu
-	[-] Intro/Outro game fader
 		[+] Wind sound to correct
-	[-] Water shader as trap
+		[+] Grayscale effect
 	[-] Pickable objects unlocking secret level
-	[-] Paralax effect
+	[-] Using mechanisms from Unite Berlin 2018
+	[-] Paralax effect (Perspective camera and layers with offset)
 	[-] Change camera distance in contact with trigger
 	[-] Large extend 2D Physics for traps
-	[-] Using mechanisms from Unite Berlin 2018
+	[-] Controls menu (correct image with ctrl key)
 
 [-] General tasks
 	[-] Preparing prefabs

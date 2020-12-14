@@ -142,27 +142,6 @@ public class GameManager : MonoBehaviour
 		current.Invoke("RestartScene", current.deathSequenceDuration);
 	}
 
-	public static void RunIntroFader()
-	{
-		//If there is no current Game Manager, exit
-		if (current == null)
-			return;
-
-		//Increment the number of player deaths and tell the UIManager
-		//current.numberOfDeaths++;
-		//UIManager.UpdateDeathUI(current.numberOfDeaths);
-
-		//If we have a scene fader, tell it to fade the scene out
-		if(current.sceneFader != null)
-		{
-			current.sceneFader.IntroFade();
-		}
-		else
-		{
-			Debug.Log("RunIntroFader no reference...");
-		}
-	}
-
 	public static void PlayerWon()
 	{
 		//If there is no current Game Manager, exit
