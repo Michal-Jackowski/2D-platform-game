@@ -2,16 +2,36 @@
 // Game Manager know
 
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class WinZone : MonoBehaviour
 {
 	int playerLayer;    //The layer the player game object is on
-
+	public GameObject endCreditsMenu;
+	private float timeElapsed;
+	private float delayBeforeLoading = 10f;
+	private bool loadAfterEndOfGame = false;
 
 	void Start()
 	{
 		//Get the integer representation of the "Player" layer
 		playerLayer = LayerMask.NameToLayer("Player");
+	}
+
+	void Update()
+	{
+		//Load start menu after showing credits after 10 seconds
+		if(loadAfterEndOfGame)
+		{
+			timeElapsed += Time.deltaTime;
+
+			if(timeElapsed >= delayBeforeLoading)
+			{
+				endCreditsMenu.SetActive(false);
+				loadAfterEndOfGame = false;
+				SceneManager.LoadScene("StartMenu");
+			}
+		}
 	}
 
 	void OnTriggerEnter2D(Collider2D collision)
@@ -24,5 +44,7 @@ public class WinZone : MonoBehaviour
 		//won
 		Debug.Log("Player Won!");
 		GameManager.PlayerWon();
+		endCreditsMenu.SetActive(true);
+		loadAfterEndOfGame = true;
 	}
 }

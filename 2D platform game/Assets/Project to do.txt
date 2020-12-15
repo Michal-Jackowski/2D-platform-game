@@ -38,7 +38,13 @@
 		[+] Death player fader bug during opening pause menu
 		[+] Wind sound to correct
 		[+] Grayscale effect
-	[-] Pickable objects unlocking secret level
+		[+] Lights
+		[+] Camera shake
+		[+] Footsteps are too quiet
+	[-] Collect orb sound to fix
+	[-] Collect orb effect to change
+	[-] After win zone open credits (bug with mainMenu)
+		[+] Pickable objects unlocking secret level
 	[-] Using mechanisms from Unite Berlin 2018
 	[-] Paralax effect (Perspective camera and layers with offset)
 	[-] Change camera distance in contact with trigger
