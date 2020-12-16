@@ -1,4 +1,4 @@
-[-] Fix PauseMenu
+	[+] Fix PauseMenu
 		[+] Start New Game blink need to be removed
 		[+] Invisible Image "Powered by Unity" in PauseMenu
 		[+] Updating all packages
@@ -20,9 +20,6 @@
 		[+] Loading default settings fullScreen Toggle is unchecked in MainMenu
 		[+] Inscrease font size when button selected (all PauseMenu and fix problem with scaling in sound menu)
 		[+] Information about controls using sprite
-	[-] Animated background in MainMenu (need a little bit scene from final game)
-	[-] Add images to LoadChapter Menu (after all game scenes will be completed)
-	[-] Add assets authors to the credits (after all game scenes will be completed)
 
 [-] PrototypeScene
 		[+] Change camera distance from player
@@ -35,30 +32,32 @@
 		[+] Reviewing the notebook in search of functionality
 		[+] Problem with sliding from downhill
 		[+] New fader for player death
-//-----------------------------------------------------------------------------------------------------------------------------//
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------------//
 		[+] Death player fader bug during opening pause menu
 		[+] Wind sound to correct
 		[+] Grayscale effect
 		[+] Lights
 		[+] Camera shake
 		[+] Footsteps are too quiet
-	[-] Collect orb sound to fix (missing sound when another orb is collected, need new sound)
-	[-] Collect orb effect to change (change particle system values)
+		[+] Collect orb sound to fix (missing sound when another orb is collected, need new sound)
+		[+] Collect orb effect to change (change particle system values)
 		[+] After win zone open credits (bug with mainMenu, no IntroMenu but startMenu, stop camera follow after end of game)
 		[+] Pickable objects unlocking secret level
-	[-] Using mechanisms from Unite Berlin 2018
-	[-] Paralax effect (Perspective camera and layers with offset)
-	[-] Change camera distance in contact with trigger
-	[-] Large extend 2D Physics for traps
 	[-] Controls menu (correct image with ctrl key)
+	[-] Change camera distance in contact with trigger
+	[-] Using mechanisms from Unite Berlin 2018
+	[-] Large extend 2D Physics for traps
 
-[-] General tasks
+[-] Level Design, testing and end of project
 	[-] Preparing prefabs
-	[-] Moving tasks to Trello
 	[-] Find scenes from games to recreate
 	[-] Start Level Design
+	[-] Paralax effect (Perspective camera and layers with offset during building levels)
 	[-] Adding Game Design Document to project after translating to english
 	[-] Build four levels
+	[-] Animated background in MainMenu (need a little bit scene from final game)
+	[-] Add images to LoadChapter Menu (after all game scenes will be completed)
+	[-] Add assets authors to the credits (after all game scenes will be completed)
 	[-] First release on GitHub
 	[-] Full gameplay on YouTube
 	[-] Deadline 31.XII.20

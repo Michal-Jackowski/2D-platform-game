@@ -29,7 +29,7 @@ public class Orb : MonoBehaviour
 
 		//The orb has been touched by the Player, so instantiate an explosion prefab
 		//at this location and rotation
-		Instantiate(explosionVFXPrefab, transform.position, transform.rotation);
+		//Instantiate(explosionVFXPrefab, transform.position, transform.rotation);
 		
 		//Tell audio manager to play orb collection audio
 		AudioManager.PlayOrbCollectionAudio();

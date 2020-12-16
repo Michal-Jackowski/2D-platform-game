@@ -1,6 +1,7 @@
 ﻿// This script controls opening the door so that the player can win. Since the door
 // is a part of the level it will need to register itself with the game manager
 
+using System.Collections;
 using UnityEngine;
 
 public class Door : MonoBehaviour
@@ -24,8 +25,16 @@ public class Door : MonoBehaviour
 
 	public void Open()
 	{
-		//Play the animation that opens the door
+		//Coroutine used because collected orb overides opening door sound
+		StartCoroutine(ExecuteAfterTime(0.6f));
+	}
+
+	public IEnumerator ExecuteAfterTime(float time)
+ 	{
+     	yield return new WaitForSeconds(time);
+ 
+     	//Play the animation that opens the door
 		anim.SetTrigger(openParameterID);
 		AudioManager.PlayDoorOpenAudio();
-	}
+ 	}
 }
