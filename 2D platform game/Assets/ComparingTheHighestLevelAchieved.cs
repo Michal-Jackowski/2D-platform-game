@@ -9,8 +9,6 @@ public class ComparingTheHighestLevelAchieved : MonoBehaviour
         if(PlayerPrefs.GetInt("ActualProgresInGame") > PlayerPrefs.GetInt("TheHighestLevelReachedByThePlayer"))
         {
             PlayerPrefs.SetInt("TheHighestLevelReachedByThePlayer", PlayerPrefs.GetInt("ActualProgresInGame"));
-            //Debug.Log("Setting new highest value!");
         }
-        //Debug.Log("Highest value = " + PlayerPrefs.GetInt("TheHighestLevelReachedByThePlayer"));
     }
 }

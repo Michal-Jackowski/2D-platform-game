@@ -22,6 +22,7 @@
 		[+] Information about controls using sprite
 	[-] Animated background in MainMenu (need a little bit scene from final game)
 	[-] Add images to LoadChapter Menu (after all game scenes will be completed)
+	[-] Add assets authors to the credits (after all game scenes will be completed)
 
 [-] PrototypeScene
 		[+] Change camera distance from player
@@ -41,9 +42,9 @@
 		[+] Lights
 		[+] Camera shake
 		[+] Footsteps are too quiet
-	[-] Collect orb sound to fix
-	[-] Collect orb effect to change
-	[-] After win zone open credits (bug with mainMenu)
+	[-] Collect orb sound to fix (missing sound when another orb is collected, need new sound)
+	[-] Collect orb effect to change (change particle system values)
+		[+] After win zone open credits (bug with mainMenu, no IntroMenu but startMenu, stop camera follow after end of game)
 		[+] Pickable objects unlocking secret level
 	[-] Using mechanisms from Unite Berlin 2018
 	[-] Paralax effect (Perspective camera and layers with offset)
@@ -59,4 +60,5 @@
 	[-] Adding Game Design Document to project after translating to english
 	[-] Build four levels
 	[-] First release on GitHub
+	[-] Full gameplay on YouTube
 	[-] Deadline 31.XII.20

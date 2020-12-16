@@ -157,6 +157,16 @@ public class GameManager : MonoBehaviour
 		AudioManager.PlayWonAudio();
 	}
 
+	public static void StartGameAgain()
+	{
+		//If there is no current Game Manager, exit
+		if (current == null)
+			return;
+
+		//The game isn't over
+		current.isGameOver = false;
+	}
+
 	void RestartScene()
 	{	
 		//Clear the current list of orbs

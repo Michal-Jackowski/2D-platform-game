@@ -3,6 +3,7 @@
 
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Cinemachine;
 
 public class WinZone : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class WinZone : MonoBehaviour
 	private float timeElapsed;
 	private float delayBeforeLoading = 10f;
 	private bool loadAfterEndOfGame = false;
+	public CinemachineVirtualCamera virtualCamera;
 
 	void Start()
 	{
@@ -27,8 +29,9 @@ public class WinZone : MonoBehaviour
 
 			if(timeElapsed >= delayBeforeLoading)
 			{
-				endCreditsMenu.SetActive(false);
 				loadAfterEndOfGame = false;
+				PlayerPrefs.SetInt("ActualProgresInGame", 0);
+				PlayerPrefs.SetInt("TheHighestLevelReachedByThePlayer", 0);
 				SceneManager.LoadScene("StartMenu");
 			}
 		}
@@ -46,5 +49,11 @@ public class WinZone : MonoBehaviour
 		GameManager.PlayerWon();
 		endCreditsMenu.SetActive(true);
 		loadAfterEndOfGame = true;
+		DisableCameraFollow();
+	}
+
+	void DisableCameraFollow()
+	{
+		virtualCamera.Follow = null;
 	}
 }

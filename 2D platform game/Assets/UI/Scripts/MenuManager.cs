@@ -1446,6 +1446,12 @@ public class MenuManager : MonoBehaviour
 
     void ChangeIntroScene()
     {
+        if(GameManager.IsGameOver())
+        {
+            introScene.SetActive(false);
+            SelectCorrectMainMenu();
+            GameManager.StartGameAgain();
+        }
         if(introScene.activeSelf)
         {
             if (Input.anyKey)
@@ -1456,24 +1462,35 @@ public class MenuManager : MonoBehaviour
                 }
                 else
                 {
-                    // No checkpoint or game is finished or game is never started
-                    if(PlayerPrefs.GetInt("ActualProgresInGame")==0)
-                    {
-                        mainMenu.SetActive(true);
-                    }
-                    // There is some checkpoint
-                    else if(PlayerPrefs.GetInt("ActualProgresInGame")>0)
-                    {
-                        MainMenuWithResumeOption.SetActive(true);
-                    }
-                    introScene.SetActive(false);
-                    AudioManager.PlaySelectMenuNavigationAudio();
+                    SelectCorrectMainMenu();
                 }
             }
         }
         else
         {
             return;
+        }
+    }
+
+    void SelectCorrectMainMenu()
+    {
+        // No checkpoint or game is finished or game is never started
+        if(PlayerPrefs.GetInt("ActualProgresInGame")==0)
+        {
+            mainMenu.SetActive(true);
+            SetNewSelectedGameObject();
+        }
+        // There is some checkpoint
+        else if(PlayerPrefs.GetInt("ActualProgresInGame")>0)
+        {
+            MainMenuWithResumeOption.SetActive(true);
+            SetNewSelectedGameObject();
+        }
+        introScene.SetActive(false);
+
+        if(!GameManager.IsGameOver())
+        {
+            AudioManager.PlaySelectMenuNavigationAudio();
         }
     }
 
