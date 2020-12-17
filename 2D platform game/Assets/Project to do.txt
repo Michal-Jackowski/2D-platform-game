@@ -43,8 +43,9 @@
 		[+] Collect orb effect to change (change particle system values)
 		[+] After win zone open credits (bug with mainMenu, no IntroMenu but startMenu, stop camera follow after end of game)
 		[+] Pickable objects unlocking secret level
-	[-] Controls menu (correct image with ctrl key)
-	[-] Change camera distance in contact with trigger
+		[+] Controls menu (correct image with ctrl key)
+	[-] Change camera distance in contact with trigger (one trigger missing, fix bug with double jump during contact with trigger)
+	[-] You can skip death fader with esc button
 	[-] Using mechanisms from Unite Berlin 2018
 	[-] Large extend 2D Physics for traps
 
@@ -58,6 +59,7 @@
 	[-] Animated background in MainMenu (need a little bit scene from final game)
 	[-] Add images to LoadChapter Menu (after all game scenes will be completed)
 	[-] Add assets authors to the credits (after all game scenes will be completed)
+	[-] Add version number (v1.00)
 	[-] First release on GitHub
 	[-] Full gameplay on YouTube
 	[-] Deadline 31.XII.20
