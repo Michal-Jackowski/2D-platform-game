@@ -44,9 +44,12 @@
 		[+] After win zone open credits (bug with mainMenu, no IntroMenu but startMenu, stop camera follow after end of game)
 		[+] Pickable objects unlocking secret level
 		[+] Controls menu (correct image with ctrl key)
-	[-] Change camera distance in contact with trigger (one trigger missing, fix bug with double jump during contact with trigger)
-	[-] You can skip death fader with esc button
-	[-] Using mechanisms from Unite Berlin 2018
+		[+] Change camera distance in contact with trigger (one trigger missing, fix bug with double jump during contact with trigger)
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------------//
+	[-] Death player fader bug during opening pause menu still exists
+	[-] Start new game bug with orbs
+	[-] Grayscale need to be changed
+	[-] Using mechanisms from other Unite Berlin 2018
 	[-] Large extend 2D Physics for traps
 
 [-] Level Design, testing and end of project
