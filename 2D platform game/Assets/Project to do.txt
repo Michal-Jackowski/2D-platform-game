@@ -51,7 +51,7 @@
 	[-] Grayscale need to be changed
 	[-] Stronger vinette effect
 	[-] Fog effect is too strong
-	[-] Using mechanisms from other Unite Berlin 2018
+	[-] Using mechanisms from other tutorials
 	[-] Large extend 2D Physics for traps
 
 [-] Level Design, testing and end of project

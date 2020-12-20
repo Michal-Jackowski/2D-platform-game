@@ -18,7 +18,7 @@ public class PauseMenu : MonoBehaviour
     public static bool canBackToGame = true;
     public GameObject inputScript;
     public Image faderImage;
-    private static float alphaLevel;
+    private float alphaLevel;
 
 
     void Update()
@@ -56,7 +56,9 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 1f;
         GameIsPaused = false;
         inputScript.GetComponent<PlayerInput>().enabled = true;
-        TurnOnAlphaColor();
+        var temporary = faderImage.color;
+        temporary.a = alphaLevel;
+        faderImage.color = temporary;
     }
 
     void Pause()
@@ -67,8 +69,11 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 0f;
         GameIsPaused = true;
         inputScript.GetComponent<PlayerInput>().enabled = false;
-        GetAlphaColor();
-        TurnOffAlphaColor();
+        alphaLevel = GetAlphaColor();
+        var temporary = faderImage.color;
+        temporary.a = 0f;
+        faderImage.color = temporary;
+        Debug.Log("AlphaLevel = " + faderImage.color.a);
     }
 
     public void LoadMenu()
@@ -83,10 +88,13 @@ public class PauseMenu : MonoBehaviour
         Application.Quit();
     }
 
-    private void GetAlphaColor()
+    private float GetAlphaColor()
     {
         var temporary = faderImage.color;
-        alphaLevel = temporary.a;
+        //alphaLevel = temporary.a;
+        //Debug.Log("Getting alpha...");
+        //Debug.Log("Got alpha = " + alphaLevel);
+        return temporary.a;
     }
 
     private void TurnOffAlphaColor()
@@ -94,6 +102,8 @@ public class PauseMenu : MonoBehaviour
         var temporary = faderImage.color;
         temporary.a = 0f;
         faderImage.color = temporary;
+        Debug.Log("Setting alpha off...");
+        Debug.Log("Off alpha = " + alphaLevel);
     }
 
     private void TurnOnAlphaColor()
@@ -101,5 +111,7 @@ public class PauseMenu : MonoBehaviour
         var temporary = faderImage.color;
         temporary.a = alphaLevel;
         faderImage.color = temporary;
+        Debug.Log("Setting alpha on...");
+        Debug.Log("On alpha = " + alphaLevel);
     }
 }
