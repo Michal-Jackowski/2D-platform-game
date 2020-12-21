@@ -64,7 +64,7 @@
 	[-] Animated background in MainMenu (need a little bit scene from final game)
 	[-] Add images to LoadChapter Menu (after all game scenes will be completed)
 	[-] Add assets authors to the credits (after all game scenes will be completed)
-	[-] Add version number (v1.00)
+	[-] Add version number v1.00
 	[-] First release on GitHub
 	[-] Full gameplay on YouTube
 	[-] Deadline 31.XII.20
