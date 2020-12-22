@@ -52,7 +52,7 @@
 	[-] Stronger vinette effect
 	[-] Fog effect is too strong
 	[-] Using mechanisms from other tutorials
-	[-] Large extend 2D Physics for traps
+	[-] Extend 2D Physics for traps
 
 [-] Level Design, testing and end of project
 	[-] Preparing prefabs
