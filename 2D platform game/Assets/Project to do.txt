@@ -65,5 +65,6 @@
 	[-] Add images to LoadChapter Menu (after all game scenes will be completed)
 	[-] Add assets authors to the credits (after all game scenes will be completed)
 	[-] Add version number v1.00
+	[-] Full gameplay on Youtube
 	[-] First release on GitHub
 	[-] Deadline 31.XII.20
