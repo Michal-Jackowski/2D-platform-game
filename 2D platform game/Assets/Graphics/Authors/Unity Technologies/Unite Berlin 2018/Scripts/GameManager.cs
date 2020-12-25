@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
 	int numberOfDeaths;							//Number of times player has died
 	float totalGameTime;						//Length of the total game time
 	bool isGameOver;							//Is the game currently over?
+	static public bool canUsePauseMenu = true;	//Is death player fader is used? If yes, don't allow.
 
 	void Awake()
 	{
@@ -133,6 +134,7 @@ public class GameManager : MonoBehaviour
 		if(current.sceneFader != null)
 		{
 			current.sceneFader.FadeSceneOut();
+			canUsePauseMenu = false;
 		}
 		else
 		{
@@ -197,5 +199,6 @@ public class GameManager : MonoBehaviour
 		{
 			PlayerPrefs.SetInt("loadLevelFourPlayerPosition", 1);
 		}
+		canUsePauseMenu = true;
 	}
 }

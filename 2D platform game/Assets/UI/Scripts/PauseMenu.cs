@@ -37,7 +37,7 @@ public class PauseMenu : MonoBehaviour
                     canBackToGame = true;
                 }
             }
-            else if(!pauseMenuUI.activeSelf && !settingsMenuUI.activeSelf && !controlsMenuUI.activeSelf && !graphicMenuUI.activeSelf && !soundMenuUI.activeSelf && !creditsMenuUI.activeSelf && !LoadChapterMenuUI.activeSelf)
+            else if(!pauseMenuUI.activeSelf && !settingsMenuUI.activeSelf && !controlsMenuUI.activeSelf && !graphicMenuUI.activeSelf && !soundMenuUI.activeSelf && !creditsMenuUI.activeSelf && !LoadChapterMenuUI.activeSelf && GameManager.canUsePauseMenu==true)
             {
                 Pause();
             }
@@ -56,9 +56,6 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 1f;
         GameIsPaused = false;
         inputScript.GetComponent<PlayerInput>().enabled = true;
-        var temporary = faderImage.color;
-        temporary.a = alphaLevel;
-        faderImage.color = temporary;
     }
 
     void Pause()
@@ -69,11 +66,6 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 0f;
         GameIsPaused = true;
         inputScript.GetComponent<PlayerInput>().enabled = false;
-        alphaLevel = GetAlphaColor();
-        var temporary = faderImage.color;
-        temporary.a = 0f;
-        faderImage.color = temporary;
-        Debug.Log("AlphaLevel = " + faderImage.color.a);
     }
 
     public void LoadMenu()
@@ -86,32 +78,5 @@ public class PauseMenu : MonoBehaviour
     {
         Debug.Log("Quiting...");
         Application.Quit();
-    }
-
-    private float GetAlphaColor()
-    {
-        var temporary = faderImage.color;
-        //alphaLevel = temporary.a;
-        //Debug.Log("Getting alpha...");
-        //Debug.Log("Got alpha = " + alphaLevel);
-        return temporary.a;
-    }
-
-    private void TurnOffAlphaColor()
-    {
-        var temporary = faderImage.color;
-        temporary.a = 0f;
-        faderImage.color = temporary;
-        Debug.Log("Setting alpha off...");
-        Debug.Log("Off alpha = " + alphaLevel);
-    }
-
-    private void TurnOnAlphaColor()
-    {
-        var temporary = faderImage.color;
-        temporary.a = alphaLevel;
-        faderImage.color = temporary;
-        Debug.Log("Setting alpha on...");
-        Debug.Log("On alpha = " + alphaLevel);
     }
 }

@@ -46,9 +46,12 @@
 		[+] Controls menu (correct image with ctrl key)
 		[+] Change camera distance in contact with trigger (one trigger missing, fix bug with double jump during contact with trigger)
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------//
-	[-] Death player fader bug during opening pause menu still exists
+		[+] Death player fader bug during opening pause menu still exists
+		[+] Character is black
+	[-] Rain effect to correct
+	[-] Fog effect to correct
 	[-] Start new game bug with orbs
-	[-] Grayscale need to be changed
+		[+] Grayscale need to be changed
 	[-] Stronger vinette effect
 	[-] Fog effect is too strong
 	[-] Using mechanisms from other tutorials
