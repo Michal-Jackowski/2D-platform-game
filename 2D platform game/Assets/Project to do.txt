@@ -70,4 +70,5 @@
 	[-] Add version number v1.00
 	[-] Full gameplay on Youtube
 	[-] First release on GitHub
+	[-] Delete no used assets from Github
 	[-] Deadline 31.XII.20
