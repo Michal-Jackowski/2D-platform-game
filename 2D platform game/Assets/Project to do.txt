@@ -53,7 +53,6 @@
 	[-] Start new game bug with orbs
 		[+] Grayscale need to be changed
 		[+] Stronger vinette effect
-	[-] Fog effect is too strong
 	[-] Using mechanisms from other tutorials
 	[-] Extend 2D Physics for traps
 
