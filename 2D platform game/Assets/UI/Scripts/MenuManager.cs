@@ -1520,8 +1520,8 @@ public class MenuManager : MonoBehaviour
 
     public void PlayGame()
     {
-        //Debug.Log("PLAY GAME!");
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        GameManager.ClearOrbs();
     }
 
     public void QuitGame()

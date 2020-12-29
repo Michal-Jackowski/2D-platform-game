@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour
 	bool isGameOver;							//Is the game currently over?
 	static public bool canUsePauseMenu = true;	//Is death player fader is used? If yes, don't allow.
 
+
 	void Awake()
 	{
 		//If a Game Manager exists and this isn't it...
@@ -142,6 +143,15 @@ public class GameManager : MonoBehaviour
 		}
 		//Invoke the RestartScene() method after a delay
 		current.Invoke("RestartScene", current.deathSequenceDuration);
+	}
+
+	public static void ClearOrbs()
+	{
+		//If there is no current Game Manager, exit
+		if (current == null)
+			return;
+		
+		current.orbs.Clear();
 	}
 
 	public static void PlayerWon()

@@ -48,11 +48,12 @@
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------//
 		[+] Death player fader bug during opening pause menu still exists
 		[+] Character is black
-	[-] Rain effect to correct
-	[-] Fog effect to correct
-	[-] Start new game bug with orbs
+		[+] Rain effect to correct (no collision)
+		[+] Fog effect to correct
+		[+] Start new game bug with orbs
 		[+] Grayscale need to be changed
 		[+] Stronger vinette effect
+	[-] Use camera shake
 	[-] Using mechanisms from other tutorials
 	[-] Extend 2D Physics for traps
 
@@ -60,9 +61,8 @@
 	[-] Preparing prefabs
 	[-] Find scenes from games to recreate
 	[-] Start Level Design
-	[-] Paralax effect (Perspective camera and layers with offset during building levels)
-	[-] Adding Game Design Document to project after translating to english
 	[-] Build four levels
+	[-] Paralax effect (Perspective camera and layers with offset during building levels)
 	[-] Animated background in MainMenu (need a little bit scene from final game)
 	[-] Add images to LoadChapter Menu (after all game scenes will be completed)
 	[-] Add assets authors to the credits (after all game scenes will be completed)
