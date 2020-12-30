@@ -53,8 +53,8 @@
 		[+] Start new game bug with orbs
 		[+] Grayscale need to be changed
 		[+] Stronger vinette effect
-	[-] Use camera shake
-	[-] Using mechanisms from other tutorials
+		[+] Use camera shake
+		[+] Using mechanisms from other tutorials
 	[-] Extend 2D Physics for traps
 
 [-] Level Design, testing and end of project
@@ -67,6 +67,9 @@
 	[-] Add images to LoadChapter Menu (after all game scenes will be completed)
 	[-] Add assets authors to the credits (after all game scenes will be completed)
 	[-] Add version number v1.00
+	[-] Grayscale comprasion
+	[-] Refactoring
+	[-] Optimization
 	[-] Full gameplay on Youtube
 	[-] First release on GitHub
 	[-] Delete no used assets from Github
