@@ -41,6 +41,7 @@ public class AudioManager : MonoBehaviour
 	public AudioClip deathVoiceClip;	//The player death voice
 	public AudioClip orbVoiceClip;		//The player orb collection voice
 	public AudioClip winVoiceClip;		//The player wins voice
+	public AudioClip rockFallClip;		//Falling rock sound effect
 
 	[Header("Mixer Groups")]
 	public AudioMixerGroup ambientGroup;//The ambient mixer group
@@ -249,6 +250,17 @@ public class AudioManager : MonoBehaviour
 		//Set the door open sting clip and tell the source to play
 		current.uiSource.clip = current.selectNavigationClip;
 		current.uiSource.Play();
+	}
+
+	public static void PlayRockFallAudio()
+	{
+		//If there is no current AudioManager, exit
+		if (current == null)
+			return;
+
+		//Set the door open sting clip and tell the source to play
+		current.stingSource.clip = current.rockFallClip;
+		current.stingSource.Play();
 	}
 
 	public static void PlayLeftRightMenuNavigationAudio()

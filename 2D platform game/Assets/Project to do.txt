@@ -21,7 +21,7 @@
 		[+] Inscrease font size when button selected (all PauseMenu and fix problem with scaling in sound menu)
 		[+] Information about controls using sprite
 
-[-] PrototypeScene
+	[+] PrototypeScene
 		[+] Change camera distance from player
 		[+] Camera moving follow improvement (tracked object offset cinemachine)
 		[+] Dust effect when player is running
@@ -55,22 +55,18 @@
 		[+] Stronger vinette effect
 		[+] Use camera shake
 		[+] Using mechanisms from other tutorials
-	[-] Extend 2D Physics for traps
+		[+] Extend 2D Physics for traps
 
 [-] Level Design, testing and end of project
-	[-] Preparing prefabs
-	[-] Find scenes from games to recreate
-	[-] Start Level Design
-	[-] Build four levels
+		[+] Preparing prefabs
+		[+] Find scenes from games to recreate
+		[+] Start Level Design
+	[-] Build five levels
 	[-] Paralax effect (Perspective camera and layers with offset during building levels)
 	[-] Animated background in MainMenu (need a little bit scene from final game)
 	[-] Add images to LoadChapter Menu (after all game scenes will be completed)
 	[-] Add assets authors to the credits (after all game scenes will be completed)
-	[-] Add version number v1.00
-	[-] Grayscale comprasion
-	[-] Refactoring
-	[-] Optimization
-	[-] Full gameplay on Youtube
+	[-] Add version number v1.00 in installation setup
 	[-] First release on GitHub
-	[-] Delete no used assets from Github
+		[+] Delete no used assets from Github
 	[-] Deadline 31.XII.20
