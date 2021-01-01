@@ -69,4 +69,4 @@
 	[-] Add version number v1.00 in installation setup
 	[-] First release on GitHub
 		[+] Delete no used assets from Github
-	[-] Deadline 31.XII.20
+	[-] Deadline 07.I.21
