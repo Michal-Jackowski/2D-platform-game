@@ -19,6 +19,9 @@ public class PauseMenu : MonoBehaviour
     public GameObject inputScript;
     public Image faderImage;
     private float alphaLevel;
+    public GameObject endCreditsMenu;
+    //Used to avoid change speed of game during slow motion scene
+    public GameObject allowPauseMenu;
 
 
     void Update()
@@ -37,7 +40,7 @@ public class PauseMenu : MonoBehaviour
                     canBackToGame = true;
                 }
             }
-            else if(!pauseMenuUI.activeSelf && !settingsMenuUI.activeSelf && !controlsMenuUI.activeSelf && !graphicMenuUI.activeSelf && !soundMenuUI.activeSelf && !creditsMenuUI.activeSelf && !LoadChapterMenuUI.activeSelf && GameManager.canUsePauseMenu==true)
+            else if(!pauseMenuUI.activeSelf && !settingsMenuUI.activeSelf && !controlsMenuUI.activeSelf && !graphicMenuUI.activeSelf && !soundMenuUI.activeSelf && !creditsMenuUI.activeSelf && !LoadChapterMenuUI.activeSelf && GameManager.canUsePauseMenu==true && !endCreditsMenu.activeSelf && allowPauseMenu)
             {
                 Pause();
             }

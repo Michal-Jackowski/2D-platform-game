@@ -1,13 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Cinemachine;
 
-public class StoneActivator : MonoBehaviour
+public class RainActivator : MonoBehaviour
 {
     int playerLayer;    //The layer the player game object is on
-    public GameObject stone;
-    public CinemachineImpulseListener cinemachineImpulseListener;
+    public GameObject rain;
 
     void Start()
     {
@@ -21,8 +19,6 @@ public class StoneActivator : MonoBehaviour
 		if (collision.gameObject.layer != playerLayer)
 			return;
 
-        stone.SetActive(true);
-        cinemachineImpulseListener.enabled = true;
-        AudioManager.PlayRockFallAudio();
+        rain.SetActive(true);
 	}
 }

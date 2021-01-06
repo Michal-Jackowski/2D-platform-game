@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
 
-public class StoneActivator : MonoBehaviour
+public class StoneTurnOffSound : MonoBehaviour
 {
-    int playerLayer;    //The layer the player game object is on
     public GameObject stone;
-    public CinemachineImpulseListener cinemachineImpulseListener;
+    int playerLayer;    //The layer the player game object is on
 
     void Start()
     {
@@ -17,12 +16,8 @@ public class StoneActivator : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
 	{
-		//If the collision wasn't with the player, exit
+        //If the collision wasn't with the player, stop playing audio
 		if (collision.gameObject.layer != playerLayer)
-			return;
-
-        stone.SetActive(true);
-        cinemachineImpulseListener.enabled = true;
-        AudioManager.PlayRockFallAudio();
+			AudioManager.StopRockFallAudio();
 	}
 }

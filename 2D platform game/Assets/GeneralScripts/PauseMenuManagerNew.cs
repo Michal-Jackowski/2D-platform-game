@@ -299,8 +299,8 @@ public class PauseMenuManagerNew : MonoBehaviour
     static public float PlayerPositionLevelThreeY = -27f;
     static public float PlayerPositionLevelThreeZ = 0.0f;
     //To insert
-    static public float PlayerPositionLevelFourX = 0.0f;
-    static public float PlayerPositionLevelFourY = 0.0f;
+    static public float PlayerPositionLevelFourX = 1325f;
+    static public float PlayerPositionLevelFourY = -21f;
     static public float PlayerPositionLevelFourZ = 0.0f;
 
     void Start()

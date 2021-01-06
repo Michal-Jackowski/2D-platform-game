@@ -13,6 +13,8 @@ public class WinZone : MonoBehaviour
 	private float delayBeforeLoading = 10f;
 	private bool loadAfterEndOfGame = false;
 	public CinemachineVirtualCamera virtualCamera;
+	public GameObject player;
+	public TimeManager timeManager;
 
 	void Start()
 	{
@@ -50,6 +52,8 @@ public class WinZone : MonoBehaviour
 		endCreditsMenu.SetActive(true);
 		loadAfterEndOfGame = true;
 		DisableCameraFollow();
+		player.SetActive(false);
+		timeManager.TurnOffSlowMotion();
 	}
 
 	void DisableCameraFollow()

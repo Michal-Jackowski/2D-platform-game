@@ -42,6 +42,8 @@ public class AudioManager : MonoBehaviour
 	public AudioClip orbVoiceClip;		//The player orb collection voice
 	public AudioClip winVoiceClip;		//The player wins voice
 	public AudioClip rockFallClip;		//Falling rock sound effect
+	public AudioClip rockImpactClip;	//Impact rock sound effect
+	public AudioClip rockGroundImpactClip;	//Impact ground rock sound effect
 
 	[Header("Mixer Groups")]
 	public AudioMixerGroup ambientGroup;//The ambient mixer group
@@ -261,6 +263,39 @@ public class AudioManager : MonoBehaviour
 		//Set the door open sting clip and tell the source to play
 		current.stingSource.clip = current.rockFallClip;
 		current.stingSource.Play();
+	}
+
+	public static void PlayRockImpactAudio()
+	{
+		//If there is no current AudioManager, exit
+		if (current == null)
+			return;
+
+		//Set the door open sting clip and tell the source to play
+		current.stingSource.clip = current.rockImpactClip;
+		current.stingSource.Play();
+	}
+
+	public static void PlayGroundRockImpactAudio()
+	{
+		//If there is no current AudioManager, exit
+		if (current == null)
+			return;
+
+		//Set the door open sting clip and tell the source to play
+		current.stingSource.clip = current.rockGroundImpactClip;
+		current.stingSource.Play();
+	}
+
+	public static void StopRockFallAudio()
+	{
+		//If there is no current AudioManager, exit
+		if (current == null)
+			return;
+
+		//Set the door open sting clip and tell the source to play
+		current.stingSource.clip = current.rockFallClip;
+		current.stingSource.Stop();
 	}
 
 	public static void PlayLeftRightMenuNavigationAudio()
