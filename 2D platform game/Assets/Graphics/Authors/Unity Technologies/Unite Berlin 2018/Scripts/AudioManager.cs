@@ -22,6 +22,10 @@ public class AudioManager : MonoBehaviour
 	public AudioClip winStingClip;		//The sting played when the player wins
 	public AudioClip orbStingClip;      //The sting played when an orb is collected
 	public AudioClip doorOpenStingClip; //The sting played when the door opens
+	public AudioClip rockFallClip;		//Falling rock sound effect
+	public AudioClip rockImpactClip;	//Impact rock sound effect
+	public AudioClip rockGroundImpactClip;	//Impact ground rock sound effect
+	public AudioClip pushBoxClip;		//The sting played when player push box
 	
 
 	[Header("UI sounds")]
@@ -41,9 +45,7 @@ public class AudioManager : MonoBehaviour
 	public AudioClip deathVoiceClip;	//The player death voice
 	public AudioClip orbVoiceClip;		//The player orb collection voice
 	public AudioClip winVoiceClip;		//The player wins voice
-	public AudioClip rockFallClip;		//Falling rock sound effect
-	public AudioClip rockImpactClip;	//Impact rock sound effect
-	public AudioClip rockGroundImpactClip;	//Impact ground rock sound effect
+
 
 	[Header("Mixer Groups")]
 	public AudioMixerGroup ambientGroup;//The ambient mixer group
@@ -285,6 +287,29 @@ public class AudioManager : MonoBehaviour
 		//Set the door open sting clip and tell the source to play
 		current.stingSource.clip = current.rockGroundImpactClip;
 		current.stingSource.Play();
+	}
+
+	public static void PlayBoxPushAudio()
+	{
+		//If there is no current AudioManager, exit
+		if (current == null)
+			return;
+
+		//Set the door open sting clip and tell the source to play
+		current.stingSource.clip = current.pushBoxClip;
+		current.stingSource.loop = true;
+		current.stingSource.Play();
+	}
+
+	public static void StopBoxPushAudio()
+	{
+		//If there is no current AudioManager, exit
+		if (current == null)
+			return;
+
+		//Set the door open sting clip and tell the source to play
+		current.stingSource.clip = current.pushBoxClip;
+		current.stingSource.Stop();
 	}
 
 	public static void StopRockFallAudio()
