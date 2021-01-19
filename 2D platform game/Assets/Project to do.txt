@@ -63,7 +63,7 @@
 		[+] Start Level Design
 		[+] New forest footsteps sound effect
 	[-] Build three levels with 5 checkpoints
-	[-] Paralax effect (Perspective camera and layers with offset during building levels)
+		[+] Paralax effect (Perspective camera and layers with offset during building levels)
 	[-] Animated background in MainMenu (need a little bit scene from final game)
 	[-] Add images to LoadChapter Menu (after all game scenes will be completed)
 	[-] Add assets authors to the credits (after all game scenes will be completed)
