@@ -66,10 +66,10 @@
 		[+] Paralax effect (Perspective camera and layers with offset during building levels)
 	[-] More sounds
 	[-] Animated background in MainMenu (need a little bit scene from final game)
-	[-] Add images to LoadChapter Menu (after all game scenes will be completed)
+		[+] Add images to LoadChapter Menu (after all game scenes will be completed)
 	[-] Add assets authors to the credits (after all game scenes will be completed)
 	[-] Add version number alpha v1.00 in installation setup
 	[-] First release on GitHub
-		[+] Delete no used assets from Github
+	[-] Delete all assets from Github
 	[-] Testing
 	[-] Deadline end of january 2021

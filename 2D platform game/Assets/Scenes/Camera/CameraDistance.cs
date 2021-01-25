@@ -19,14 +19,17 @@ public class CameraDistance : MonoBehaviour
 
     void Update()
     {
-        if(canChangeCameraDistance && vcam.GetCinemachineComponent<CinemachineFramingTransposer>().m_CameraDistance<=maxCameraDistance)
+        if(!PauseMenu.GameIsPaused)
         {
-            StartCoroutine(ExecuteAfterTime(0.02f));
-        }
-        else
-        {
-            canChangeCameraDistance = false;
-            cameraDistanceTrigger.enabled = true;
+            if(canChangeCameraDistance && vcam.GetCinemachineComponent<CinemachineFramingTransposer>().m_CameraDistance<=maxCameraDistance)
+            {
+                StartCoroutine(ExecuteAfterTime(0.02f));
+            }
+            else
+            {
+                canChangeCameraDistance = false;
+                cameraDistanceTrigger.enabled = true;
+            }
         }
     }
 

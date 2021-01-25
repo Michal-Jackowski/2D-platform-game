@@ -22,6 +22,8 @@ public class PauseMenu : MonoBehaviour
     public GameObject endCreditsMenu;
     //Used to avoid change speed of game during slow motion scene
     public GameObject allowPauseMenu;
+    //Used to avoid using pause menu during credits
+    public GameObject endCreditsMenuSubtitles;
 
 
     void Update()
@@ -40,7 +42,7 @@ public class PauseMenu : MonoBehaviour
                     canBackToGame = true;
                 }
             }
-            else if(!pauseMenuUI.activeSelf && !settingsMenuUI.activeSelf && !controlsMenuUI.activeSelf && !graphicMenuUI.activeSelf && !soundMenuUI.activeSelf && !creditsMenuUI.activeSelf && !LoadChapterMenuUI.activeSelf && GameManager.canUsePauseMenu==true && !endCreditsMenu.activeSelf && allowPauseMenu)
+            else if(!pauseMenuUI.activeSelf && !settingsMenuUI.activeSelf && !controlsMenuUI.activeSelf && !graphicMenuUI.activeSelf && !soundMenuUI.activeSelf && !creditsMenuUI.activeSelf && !LoadChapterMenuUI.activeSelf && GameManager.canUsePauseMenu==true && !endCreditsMenu.activeSelf && !endCreditsMenuSubtitles.activeSelf && allowPauseMenu && !SlowMotionActivator.isSlowMotionActive)
             {
                 Pause();
             }

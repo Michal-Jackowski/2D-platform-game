@@ -74,6 +74,14 @@ public class MenuManager : MonoBehaviour
     public GameObject levelTwoImage;
     public GameObject levelThreeImage;
     public GameObject levelFourImage;
+    public GameObject levelFiveImage;
+    public GameObject levelSixImage;
+    public GameObject levelSevenImage;
+    public GameObject levelEightImage;
+    public GameObject levelNineImage;
+    public GameObject levelTenImage;
+    public GameObject levelElevenImage;
+    public GameObject levelTwelveImage;
 
     
     [Header("Main Menu Buttons Text")]
@@ -171,6 +179,14 @@ public class MenuManager : MonoBehaviour
     bool levelTwoPlayedOnce = false;
     bool levelThreePlayedOnce = false;
     bool levelFourPlayedOnce = false;
+    bool levelFivePlayedOnce = false;
+    bool levelSixPlayedOnce = false;
+    bool levelSevenPlayedOnce = false;
+    bool levelEightPlayedOnce = false;
+    bool levelNinePlayedOnce = false;
+    bool levelTenPlayedOnce = false;
+    bool levelElevenPlayedOnce = false;
+    bool levelTwelvePlayedOnce = false;
 
 
     //Checking If We Played Sound Once In Settings Menu
@@ -371,8 +387,6 @@ public class MenuManager : MonoBehaviour
                     SetHightlightColor(resumeButtonMMWROText);
                     //Setting default button size
                     SetDefaultButtonSize();
-                    //Button is selected so we can enlarge size
-                    EnlargeSizeOfButton(resumeButtonMMWRO);
                     
                     //Play only when you changed navigation in menu
                     if(!maimMenuInitialNavigationPosition && !resumeButtonPlayedOnceMMWRO) 
@@ -391,8 +405,6 @@ public class MenuManager : MonoBehaviour
                     SetHightlightColor(playButtonMMWROText);
                     //Setting default button size
                     SetDefaultButtonSize();
-                    //Button is selected so we can enlarge size
-                    EnlargeSizeOfButton(playButtonMMWRO);
                     
                     //Navigation was changed
                     maimMenuInitialNavigationPosition = false;
@@ -414,8 +426,6 @@ public class MenuManager : MonoBehaviour
                     SetHightlightColor(loadChapterButtonMMWROText);
                     //Setting default button size
                     SetDefaultButtonSize();
-                    //Button is selected so we can enlarge size
-                    EnlargeSizeOfButton(loadChapterButtonMMWRO);
 
                     //Navigation was changed
                     maimMenuInitialNavigationPosition = false;
@@ -436,8 +446,6 @@ public class MenuManager : MonoBehaviour
                     SetHightlightColor(settingsButtonMMWROText);
                     //Setting default button size
                     SetDefaultButtonSize();
-                    //Button is selected so we can enlarge size
-                    EnlargeSizeOfButton(settingsButtonMMWRO);
 
                     //Navigation was changed
                     maimMenuInitialNavigationPosition = false;
@@ -459,8 +467,6 @@ public class MenuManager : MonoBehaviour
                     SetHightlightColor(exitButtonMMWROText);
                     //Setting default button size
                     SetDefaultButtonSize();
-                    //Button is selected so we can enlarge size
-                    EnlargeSizeOfButton(exitButtonMMWRO);
 
                     //Navigation was changed
                     maimMenuInitialNavigationPosition = false;
@@ -483,8 +489,6 @@ public class MenuManager : MonoBehaviour
                     SetHightlightColor(playButtonText);
                     //Setting default button size
                     SetDefaultButtonSize();
-                    //Button is selected so we can enlarge size
-                    EnlargeSizeOfButton(playButton);
                     
                     //Play only when you changed navigation in menu
                     if(!maimMenuInitialNavigationPosition && !playButtonPlayedOnce) 
@@ -502,8 +506,6 @@ public class MenuManager : MonoBehaviour
                     SetHightlightColor(loadChapterButtonText);
                     //Setting default button size
                     SetDefaultButtonSize();
-                    //Button is selected so we can enlarge size
-                    EnlargeSizeOfButton(loadChapterButton);
 
                     //Navigation was changed
                     maimMenuInitialNavigationPosition = false;
@@ -523,8 +525,6 @@ public class MenuManager : MonoBehaviour
                     SetHightlightColor(settingsButtonText);
                     //Setting default button size
                     SetDefaultButtonSize();
-                    //Button is selected so we can enlarge size
-                    EnlargeSizeOfButton(settingsButton);
 
                     //Navigation was changed
                     maimMenuInitialNavigationPosition = false;
@@ -545,8 +545,6 @@ public class MenuManager : MonoBehaviour
                     SetHightlightColor(exitButtonText);
                     //Setting default button size
                     SetDefaultButtonSize();
-                    //Button is selected so we can enlarge size
-                    EnlargeSizeOfButton(exitButton);
 
                     //Navigation was changed
                     maimMenuInitialNavigationPosition = false;
@@ -609,8 +607,6 @@ public class MenuManager : MonoBehaviour
                     SetHightlightColor(controlsButtonText);
                     //Setting default button size
                     SetDefaultButtonSize();
-                    //Button is selected so we can enlarge size
-                    EnlargeSizeOfButton(controlsButton);
 
                     //Play only when you changed navigation in menu
                     if(!settingsMenuInitialNavigationPosition && !controlsButtonPlayedOnce) 
@@ -628,8 +624,6 @@ public class MenuManager : MonoBehaviour
                     SetHightlightColor(graphicButtonText);
                     //Setting default button size
                     SetDefaultButtonSize();
-                    //Button is selected so we can enlarge size
-                    EnlargeSizeOfButton(graphicButton);
 
                     settingsMenuInitialNavigationPosition = false;
                     if(!settingsMenuInitialNavigationPosition && !graphicButtonPlayedOnce) 
@@ -647,8 +641,6 @@ public class MenuManager : MonoBehaviour
                     SetHightlightColor(soundButtonText);
                     //Setting default button size
                     SetDefaultButtonSize();
-                    //Button is selected so we can enlarge size
-                    EnlargeSizeOfButton(soundButton);
 
                     settingsMenuInitialNavigationPosition = false;
                     if(!settingsMenuInitialNavigationPosition && !soundButtonPlayedOnce) 
@@ -666,8 +658,6 @@ public class MenuManager : MonoBehaviour
                     SetHightlightColor(creditsButtonText);
                     //Setting default button size
                     SetDefaultButtonSize();
-                    //Button is selected so we can enlarge size
-                    EnlargeSizeOfButton(creditsButton);
 
                     settingsMenuInitialNavigationPosition = false;
                     if(!settingsMenuInitialNavigationPosition && !creditsButtonPlayedOnce) 
@@ -728,8 +718,6 @@ public class MenuManager : MonoBehaviour
                     ChangeQualityDropdownColor();
                     //Setting default button size
                     SetDefaultButtonSize();
-                    //Button is selected so we can enlarge size
-                    EnlargeSizeOfButton(qualityDropdown);
 
                     //Play only when you changed navigation in menu
                     if(!graphicMenuInitialNavigationPosition && !qualityDropdownPlayedOnce) 
@@ -757,8 +745,6 @@ public class MenuManager : MonoBehaviour
                     ChangeResolutionDropdownColor();
                     //Setting default button size
                     SetDefaultButtonSize();
-                    //Button is selected so we can enlarge size
-                    EnlargeSizeOfButton(resolutionDropdown);
 
                     graphicMenuInitialNavigationPosition = false;
                     if(!graphicMenuInitialNavigationPosition && !resolutionDropdownPlayedOnce) 
@@ -786,8 +772,6 @@ public class MenuManager : MonoBehaviour
                     SetDefaultColorForDropdown();
                     //Setting default button size
                     SetDefaultButtonSize();
-                    //Button is selected so we can enlarge size
-                    EnlargeSizeOfButton(fullScreenToggle);
 
                     graphicMenuInitialNavigationPosition = false;
                     if(!graphicMenuInitialNavigationPosition && !fullScreenTogglePlayedOnce) 
@@ -815,8 +799,6 @@ public class MenuManager : MonoBehaviour
                     SetDefaultColorForDropdown();
                     //Setting default button size
                     SetDefaultButtonSize();
-                    //Button is selected so we can enlarge size
-                    EnlargeSizeOfButton(postProcessingToggle);
 
                     graphicMenuInitialNavigationPosition = false;
                     if(!graphicMenuInitialNavigationPosition && !PostProcessingTogglePlayedOnce) 
@@ -865,8 +847,6 @@ public class MenuManager : MonoBehaviour
                     SetDefaultColorForDropdown();
                     //Setting default button size
                     SetDefaultButtonSize();
-                    //Button is selected so we can enlarge size
-                    EnlargeSizeOfButton(brightnessVolumeSlider);
 
                     graphicMenuInitialNavigationPosition = false;
                     if(!graphicMenuInitialNavigationPosition && !BrightnessVolumeSliderPlayedOnce) 
@@ -936,8 +916,6 @@ public class MenuManager : MonoBehaviour
                     ChangeMusicVolumeSliderColor();
                     //Setting default button size
                     SetDefaultButtonSize();
-                    //Button is selected so we can enlarge size
-                    EnlargeSizeOfButton(musicVolumeSlider);
 
                     //Play only when you changed navigation in menu
                     if(!soundMenuInitialNavigationPosition && !musicVolumeSliderPlayedOnce) 
@@ -971,8 +949,6 @@ public class MenuManager : MonoBehaviour
                     ChangeAmbientVolumeSliderColor();
                     //Setting default button size
                     SetDefaultButtonSize();
-                    //Button is selected so we can enlarge size
-                    EnlargeSizeOfButton(ambientVolumeSlider);
 
                     soundMenuInitialNavigationPosition = false;
                     if(!soundMenuInitialNavigationPosition && !ambientVolumeSliderPlayedOnce) 
@@ -1006,8 +982,6 @@ public class MenuManager : MonoBehaviour
                     ChangeStingVolumeSliderColor();
                     //Setting default button size
                     SetDefaultButtonSize();
-                    //Button is selected so we can enlarge size
-                    EnlargeSizeOfButton(stingVolumeSlider);
 
                     soundMenuInitialNavigationPosition = false;
                     if(!soundMenuInitialNavigationPosition && !stingVolumeSliderPlayedOnce) 
@@ -1041,8 +1015,6 @@ public class MenuManager : MonoBehaviour
                     ChangeVoiceVolumeSliderColor();
                     //Setting default button size
                     SetDefaultButtonSize();
-                    //Button is selected so we can enlarge size
-                    EnlargeSizeOfButton(voiceVolumeSlider);
 
                     soundMenuInitialNavigationPosition = false;
                     if(!soundMenuInitialNavigationPosition && !voiceVolumeSliderPlayedOnce) 
@@ -1076,8 +1048,6 @@ public class MenuManager : MonoBehaviour
                     ChangePlayerVolumeSliderColor();
                     //Setting default button size
                     SetDefaultButtonSize();
-                    //Button is selected so we can enlarge size
-                    EnlargeSizeOfButton(playerVolumeSlider);
 
                     soundMenuInitialNavigationPosition = false;
                     if(!soundMenuInitialNavigationPosition && !playerVolumeSliderPlayedOnce) 
@@ -1111,8 +1081,6 @@ public class MenuManager : MonoBehaviour
                     ChangeUIVolumeSliderColor();
                     //Setting default button size
                     SetDefaultButtonSize();
-                    //Button is selected so we can enlarge size
-                    EnlargeSizeOfButton(uiVolumeSlider);
 
                     soundMenuInitialNavigationPosition = false;
                     if(!soundMenuInitialNavigationPosition && !UIVolumeSliderPlayedOnce) 
@@ -1172,6 +1140,14 @@ public class MenuManager : MonoBehaviour
                     levelTwoPlayedOnce = false;
                     levelThreePlayedOnce = false;
                     levelFourPlayedOnce = false;
+                    levelFivePlayedOnce = false;
+                    levelSixPlayedOnce = false;
+                    levelSevenPlayedOnce = false;
+                    levelEightPlayedOnce = false;
+                    levelNinePlayedOnce = false;
+                    levelTenPlayedOnce = false;
+                    levelElevenPlayedOnce = false;
+                    levelTwelvePlayedOnce = false;
                 }
                 if(currentSelected.name == "LevelOne" && loadChapterMenuBegin)
                 {
@@ -1190,6 +1166,14 @@ public class MenuManager : MonoBehaviour
                     levelTwoPlayedOnce = false;
                     levelThreePlayedOnce = false;
                     levelFourPlayedOnce = false;
+                    levelFivePlayedOnce = false;
+                    levelSixPlayedOnce = false;
+                    levelSevenPlayedOnce = false;
+                    levelEightPlayedOnce = false;
+                    levelNinePlayedOnce = false;
+                    levelTenPlayedOnce = false;
+                    levelElevenPlayedOnce = false;
+                    levelTwelvePlayedOnce = false;
                 }
                 if(currentSelected.name == "LevelTwo" && loadChapterMenuBegin)
                 {
@@ -1208,6 +1192,14 @@ public class MenuManager : MonoBehaviour
                     levelOnePlayedOnce = false;
                     levelThreePlayedOnce = false;
                     levelFourPlayedOnce = false;
+                    levelFivePlayedOnce = false;
+                    levelSixPlayedOnce = false;
+                    levelSevenPlayedOnce = false;
+                    levelEightPlayedOnce = false;
+                    levelNinePlayedOnce = false;
+                    levelTenPlayedOnce = false;
+                    levelElevenPlayedOnce = false;
+                    levelTwelvePlayedOnce = false;
                 }
                 if(currentSelected.name == "LevelThree" && loadChapterMenuBegin)
                 {
@@ -1226,6 +1218,14 @@ public class MenuManager : MonoBehaviour
                     levelOnePlayedOnce = false;
                     levelTwoPlayedOnce = false;
                     levelFourPlayedOnce = false;
+                    levelFivePlayedOnce = false;
+                    levelSixPlayedOnce = false;
+                    levelSevenPlayedOnce = false;
+                    levelEightPlayedOnce = false;
+                    levelNinePlayedOnce = false;
+                    levelTenPlayedOnce = false;
+                    levelElevenPlayedOnce = false;
+                    levelTwelvePlayedOnce = false;
                 }
                 if(currentSelected.name == "LevelFour" && loadChapterMenuBegin)
                 {
@@ -1244,6 +1244,222 @@ public class MenuManager : MonoBehaviour
                     levelOnePlayedOnce = false;
                     levelTwoPlayedOnce = false;
                     levelThreePlayedOnce = false;
+                    levelFivePlayedOnce = false;
+                    levelSixPlayedOnce = false;
+                    levelSevenPlayedOnce = false;
+                    levelEightPlayedOnce = false;
+                    levelNinePlayedOnce = false;
+                    levelTenPlayedOnce = false;
+                    levelElevenPlayedOnce = false;
+                    levelTwelvePlayedOnce = false;
+                }
+                if(currentSelected.name == "LevelFive" && loadChapterMenuBegin)
+                {
+                    DisableAllImages();
+                    EnableImage(levelFiveImage);
+                    
+                    //Navigation was changed
+                    loadChapterMenuInitialNavigationPosition = false;
+
+                    if(!levelFivePlayedOnce)
+                    {
+                        AudioManager.PlayLeftRightMenuNavigationAudio();
+                        levelFivePlayedOnce = true;
+                    }
+                    prototypeLevelPlayedOnce = false;
+                    levelOnePlayedOnce = false;
+                    levelTwoPlayedOnce = false;
+                    levelThreePlayedOnce = false;
+                    levelFourPlayedOnce = false;
+                    levelSixPlayedOnce = false;
+                    levelSevenPlayedOnce = false;
+                    levelEightPlayedOnce = false;
+                    levelNinePlayedOnce = false;
+                    levelTenPlayedOnce = false;
+                    levelElevenPlayedOnce = false;
+                    levelTwelvePlayedOnce = false;
+                }
+                if(currentSelected.name == "LevelSix" && loadChapterMenuBegin)
+                {
+                    DisableAllImages();
+                    EnableImage(levelSixImage);
+                    
+                    //Navigation was changed
+                    loadChapterMenuInitialNavigationPosition = false;
+
+                    if(!levelSixPlayedOnce)
+                    {
+                        AudioManager.PlayLeftRightMenuNavigationAudio();
+                        levelSixPlayedOnce = true;
+                    }
+                    prototypeLevelPlayedOnce = false;
+                    levelOnePlayedOnce = false;
+                    levelTwoPlayedOnce = false;
+                    levelThreePlayedOnce = false;
+                    levelFourPlayedOnce = false;
+                    levelFivePlayedOnce = false;
+                    levelSevenPlayedOnce = false;
+                    levelEightPlayedOnce = false;
+                    levelNinePlayedOnce = false;
+                    levelTenPlayedOnce = false;
+                    levelElevenPlayedOnce = false;
+                    levelTwelvePlayedOnce = false;
+                }
+                if(currentSelected.name == "LevelSeven" && loadChapterMenuBegin)
+                {
+                    DisableAllImages();
+                    EnableImage(levelSevenImage);
+                    
+                    //Navigation was changed
+                    loadChapterMenuInitialNavigationPosition = false;
+
+                    if(!levelSevenPlayedOnce)
+                    {
+                        AudioManager.PlayLeftRightMenuNavigationAudio();
+                        levelSevenPlayedOnce = true;
+                    }
+                    prototypeLevelPlayedOnce = false;
+                    levelOnePlayedOnce = false;
+                    levelTwoPlayedOnce = false;
+                    levelThreePlayedOnce = false;
+                    levelFourPlayedOnce = false;
+                    levelFivePlayedOnce = false;
+                    levelSixPlayedOnce = false;
+                    levelEightPlayedOnce = false;
+                    levelNinePlayedOnce = false;
+                    levelTenPlayedOnce = false;
+                    levelElevenPlayedOnce = false;
+                    levelTwelvePlayedOnce = false;
+                }
+                if(currentSelected.name == "LevelEight" && loadChapterMenuBegin)
+                {
+                    DisableAllImages();
+                    EnableImage(levelEightImage);
+                    
+                    //Navigation was changed
+                    loadChapterMenuInitialNavigationPosition = false;
+
+                    if(!levelEightPlayedOnce)
+                    {
+                        AudioManager.PlayLeftRightMenuNavigationAudio();
+                        levelEightPlayedOnce = true;
+                    }
+                    prototypeLevelPlayedOnce = false;
+                    levelOnePlayedOnce = false;
+                    levelTwoPlayedOnce = false;
+                    levelThreePlayedOnce = false;
+                    levelFourPlayedOnce = false;
+                    levelFivePlayedOnce = false;
+                    levelSixPlayedOnce = false;
+                    levelSevenPlayedOnce = false;
+                    levelNinePlayedOnce = false;
+                    levelTenPlayedOnce = false;
+                    levelElevenPlayedOnce = false;
+                    levelTwelvePlayedOnce = false;
+                }
+                if(currentSelected.name == "LevelNine" && loadChapterMenuBegin)
+                {
+                    DisableAllImages();
+                    EnableImage(levelNineImage);
+                    
+                    //Navigation was changed
+                    loadChapterMenuInitialNavigationPosition = false;
+
+                    if(!levelNinePlayedOnce)
+                    {
+                        AudioManager.PlayLeftRightMenuNavigationAudio();
+                        levelNinePlayedOnce = true;
+                    }
+                    prototypeLevelPlayedOnce = false;
+                    levelOnePlayedOnce = false;
+                    levelTwoPlayedOnce = false;
+                    levelThreePlayedOnce = false;
+                    levelFourPlayedOnce = false;
+                    levelFivePlayedOnce = false;
+                    levelSixPlayedOnce = false;
+                    levelSevenPlayedOnce = false;
+                    levelEightPlayedOnce = false;
+                    levelTenPlayedOnce = false;
+                    levelElevenPlayedOnce = false;
+                    levelTwelvePlayedOnce = false;
+                }
+                if(currentSelected.name == "LevelTen" && loadChapterMenuBegin)
+                {
+                    DisableAllImages();
+                    EnableImage(levelTenImage);
+                    
+                    //Navigation was changed
+                    loadChapterMenuInitialNavigationPosition = false;
+
+                    if(!levelTenPlayedOnce)
+                    {
+                        AudioManager.PlayLeftRightMenuNavigationAudio();
+                        levelTenPlayedOnce = true;
+                    }
+                    prototypeLevelPlayedOnce = false;
+                    levelOnePlayedOnce = false;
+                    levelTwoPlayedOnce = false;
+                    levelThreePlayedOnce = false;
+                    levelFourPlayedOnce = false;
+                    levelFivePlayedOnce = false;
+                    levelSixPlayedOnce = false;
+                    levelSevenPlayedOnce = false;
+                    levelEightPlayedOnce = false;
+                    levelNinePlayedOnce = false;
+                    levelElevenPlayedOnce = false;
+                    levelTwelvePlayedOnce = false;
+                }
+                if(currentSelected.name == "LevelEleven" && loadChapterMenuBegin)
+                {
+                    DisableAllImages();
+                    EnableImage(levelElevenImage);
+                    
+                    //Navigation was changed
+                    loadChapterMenuInitialNavigationPosition = false;
+
+                    if(!levelElevenPlayedOnce)
+                    {
+                        AudioManager.PlayLeftRightMenuNavigationAudio();
+                        levelElevenPlayedOnce = true;
+                    }
+                    prototypeLevelPlayedOnce = false;
+                    levelOnePlayedOnce = false;
+                    levelTwoPlayedOnce = false;
+                    levelThreePlayedOnce = false;
+                    levelFourPlayedOnce = false;
+                    levelFivePlayedOnce = false;
+                    levelSixPlayedOnce = false;
+                    levelSevenPlayedOnce = false;
+                    levelEightPlayedOnce = false;
+                    levelNinePlayedOnce = false;
+                    levelTenPlayedOnce = false;
+                    levelTwelvePlayedOnce = false;
+                }
+                if(currentSelected.name == "LevelTwelve" && loadChapterMenuBegin)
+                {
+                    DisableAllImages();
+                    EnableImage(levelTwelveImage);
+                    
+                    //Navigation was changed
+                    loadChapterMenuInitialNavigationPosition = false;
+
+                    if(!levelTwelvePlayedOnce)
+                    {
+                        AudioManager.PlayLeftRightMenuNavigationAudio();
+                        levelTwelvePlayedOnce = true;
+                    }
+                    prototypeLevelPlayedOnce = false;
+                    levelOnePlayedOnce = false;
+                    levelTwoPlayedOnce = false;
+                    levelThreePlayedOnce = false;
+                    levelFourPlayedOnce = false;
+                    levelFivePlayedOnce = false;
+                    levelSixPlayedOnce = false;
+                    levelSevenPlayedOnce = false;
+                    levelEightPlayedOnce = false;
+                    levelNinePlayedOnce = false;
+                    levelTenPlayedOnce = false;
+                    levelElevenPlayedOnce = false;
                 }
             }
             else if (controlsMenu.activeSelf)
@@ -1372,6 +1588,14 @@ public class MenuManager : MonoBehaviour
         levelTwoImage.SetActive(false);
         levelThreeImage.SetActive(false);
         levelFourImage.SetActive(false);
+        levelFiveImage.SetActive(false);
+        levelSixImage.SetActive(false);
+        levelSevenImage.SetActive(false);
+        levelEightImage.SetActive(false);
+        levelNineImage.SetActive(false);
+        levelTenImage.SetActive(false);
+        levelElevenImage.SetActive(false);
+        levelTwelveImage.SetActive(false);
     }
 
     void EnableImage(GameObject image)
@@ -1516,6 +1740,38 @@ public class MenuManager : MonoBehaviour
         {
             SelectLevel(4);       
         }
+        else if(PlayerPrefs.GetInt("ActualProgresInGame")==5)
+        {
+            SelectLevel(5);       
+        }
+        else if(PlayerPrefs.GetInt("ActualProgresInGame")==6)
+        {
+            SelectLevel(6);       
+        }
+        else if(PlayerPrefs.GetInt("ActualProgresInGame")==7)
+        {
+            SelectLevel(7);       
+        }
+        else if(PlayerPrefs.GetInt("ActualProgresInGame")==8)
+        {
+            SelectLevel(8);       
+        }
+        else if(PlayerPrefs.GetInt("ActualProgresInGame")==9)
+        {
+            SelectLevel(9);       
+        }
+        else if(PlayerPrefs.GetInt("ActualProgresInGame")==10)
+        {
+            SelectLevel(10);       
+        }
+        else if(PlayerPrefs.GetInt("ActualProgresInGame")==11)
+        {
+            SelectLevel(11);       
+        }
+        else if(PlayerPrefs.GetInt("ActualProgresInGame")==12)
+        {
+            SelectLevel(12);       
+        }
     }
 
     public void PlayGame()
@@ -1555,6 +1811,38 @@ public class MenuManager : MonoBehaviour
             {
                 SelectLevel(4);
             }
+            else if(currentSelectedLevel.name == "LevelFive")
+            {
+                SelectLevel(5);
+            }
+            else if(currentSelectedLevel.name == "LevelSix")
+            {
+                SelectLevel(6);
+            }
+            else if(currentSelectedLevel.name == "LevelSeven")
+            {
+                SelectLevel(7);
+            }
+            else if(currentSelectedLevel.name == "LevelEight")
+            {
+                SelectLevel(8);
+            }
+            else if(currentSelectedLevel.name == "LevelNine")
+            {
+                SelectLevel(9);
+            }
+            else if(currentSelectedLevel.name == "LevelTen")
+            {
+                SelectLevel(10);
+            }
+            else if(currentSelectedLevel.name == "LevelEleven")
+            {
+                SelectLevel(11);
+            }
+            else if(currentSelectedLevel.name == "LevelTwelve")
+            {
+                SelectLevel(12);
+            }
         }
     }
 
@@ -1579,6 +1867,38 @@ public class MenuManager : MonoBehaviour
         else if(level==4)
         {
             PlayerPrefs.SetInt("loadLevelFourPlayerPosition", 1);
+        }
+        else if(level==5)
+        {
+            PlayerPrefs.SetInt("loadLevelFivePlayerPosition", 1);
+        }
+        else if(level==6)
+        {
+            PlayerPrefs.SetInt("loadLevelSixPlayerPosition", 1);
+        }
+        else if(level==7)
+        {
+            PlayerPrefs.SetInt("loadLevelSevenPlayerPosition", 1);
+        }
+        else if(level==8)
+        {
+            PlayerPrefs.SetInt("loadLevelEightPlayerPosition", 1);
+        }
+        else if(level==9)
+        {
+            PlayerPrefs.SetInt("loadLevelNinePlayerPosition", 1);
+        }
+        else if(level==10)
+        {
+            PlayerPrefs.SetInt("loadLevelTenPlayerPosition", 1);
+        }
+        else if(level==11)
+        {
+            PlayerPrefs.SetInt("loadLevelElevenPlayerPosition", 1);
+        }
+        else if(level==12)
+        {
+            PlayerPrefs.SetInt("loadLevelTwelvePlayerPosition", 1);
         }
         SceneManager.LoadScene("PrototypeScene");
     }
@@ -1731,7 +2051,7 @@ public class MenuManager : MonoBehaviour
         return rightExtreme;
     }
 
-    public void LoadPlayerPositionPrototypeLevel()
+/*     public void LoadPlayerPositionPrototypeLevel()
     {
         GameObject.Find("Robbie").transform.position = new Vector3(-2.0f, 0.0f, 0.0f);
     }
@@ -1754,7 +2074,7 @@ public class MenuManager : MonoBehaviour
     public void LoadPlayerPositionLevelFour()
     {
         GameObject.Find("Robbie").transform.position = new Vector3(210.0f, -2.0f, 0.0f);
-    }
+    } */
 
     public void DisableVirtualPlayerCameraDamping()
     {

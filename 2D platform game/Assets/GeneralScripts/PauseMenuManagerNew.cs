@@ -64,6 +64,14 @@ public class PauseMenuManagerNew : MonoBehaviour
     public GameObject levelTwoImage;
     public GameObject levelThreeImage;
     public GameObject levelFourImage;
+    public GameObject levelFiveImage;
+    public GameObject levelSixImage;
+    public GameObject levelSevenImage;
+    public GameObject levelEightImage;
+    public GameObject levelNineImage;
+    public GameObject levelTenImage;
+    public GameObject levelElevenImage;
+    public GameObject levelTwelveImage;
 
     
     [Header("Pause Menu Buttons Text")]
@@ -147,6 +155,14 @@ public class PauseMenuManagerNew : MonoBehaviour
     bool levelTwoPlayedOnce = false;
     bool levelThreePlayedOnce = false;
     bool levelFourPlayedOnce = false;
+    bool levelFivePlayedOnce = false;
+    bool levelSixPlayedOnce = false;
+    bool levelSevenPlayedOnce = false;
+    bool levelEightPlayedOnce = false;
+    bool levelNinePlayedOnce = false;
+    bool levelTenPlayedOnce = false;
+    bool levelElevenPlayedOnce = false;
+    bool levelTwelvePlayedOnce = false;
 
 
     //Checking If We Played Sound Once In Settings Menu
@@ -284,25 +300,57 @@ public class PauseMenuManagerNew : MonoBehaviour
 
     [Header("Player Positions")]
     //SectorNumberZero
-    static public float PlayerPositionPrototypeLevelX = -130.68f;
-    static public float PlayerPositionPrototypeLevelY = -64.271f;
-    static public float PlayerPositionPrototypeLevelZ = 0.0f;
+    static public float PlayerPositionPrototypeLevelX = -138.96f;
+    static public float PlayerPositionPrototypeLevelY = -64.423f;
+    static public float PlayerPositionPrototypeLevelZ = 0f;
     //SectorNumberOne
-    static public float PlayerPositionLevelOneX = 170f;
-    static public float PlayerPositionLevelOneY = -107f;
-    static public float PlayerPositionLevelOneZ = 0.0f;
+    static public float PlayerPositionLevelOneX = 18.42f;
+    static public float PlayerPositionLevelOneY = -75.128f;
+    static public float PlayerPositionLevelOneZ = 0f;
     //SectorNumberTwo
-    static public float PlayerPositionLevelTwoX = 450f;
-    static public float PlayerPositionLevelTwoY = -103f;
-    static public float PlayerPositionLevelTwoZ = 0.0f;
+    static public float PlayerPositionLevelTwoX = 94.56f;
+    static public float PlayerPositionLevelTwoY = -88.524f;
+    static public float PlayerPositionLevelTwoZ = 0f;
     //SectorNumberThree
-    static public float PlayerPositionLevelThreeX = 1014f;
-    static public float PlayerPositionLevelThreeY = -27f;
-    static public float PlayerPositionLevelThreeZ = 0.0f;
+    static public float PlayerPositionLevelThreeX = 179.31f;
+    static public float PlayerPositionLevelThreeY = -110.435f;
+    static public float PlayerPositionLevelThreeZ = 0f;
     //SectorNumberFour
-    static public float PlayerPositionLevelFourX = 1325f;
-    static public float PlayerPositionLevelFourY = -36f;
-    static public float PlayerPositionLevelFourZ = 0.0f;
+    static public float PlayerPositionLevelFourX = 294.48f;
+    static public float PlayerPositionLevelFourY = -102.852f;
+    static public float PlayerPositionLevelFourZ = 0f;
+    //SectorNumberFive
+    static public float PlayerPositionLevelFiveX = 389.02f;
+    static public float PlayerPositionLevelFiveY = -105.121f;
+    static public float PlayerPositionLevelFiveZ = 0f;
+    //SectorNumberSix
+    static public float PlayerPositionLevelSixX = 459.03f;
+    static public float PlayerPositionLevelSixY = -104.485f;
+    static public float PlayerPositionLevelSixZ = 0f;
+    //SectorNumberSeven
+    static public float PlayerPositionLevelSevenX = 693.55f;
+    static public float PlayerPositionLevelSevenY = -104.316f;
+    static public float PlayerPositionLevelSevenZ = 0f;
+    //SectorNumberEight
+    static public float PlayerPositionLevelEightX = 1005.54f;
+    static public float PlayerPositionLevelEightY = -31.626f;
+    static public float PlayerPositionLevelEightZ = 0f;
+    //SectorNumberNine
+    static public float PlayerPositionLevelNineX = 1090.27f;
+    static public float PlayerPositionLevelNineY = -27.243f;
+    static public float PlayerPositionLevelNineZ = 0f;
+    //SectorNumberTen
+    static public float PlayerPositionLevelTenX = 1206.9f;
+    static public float PlayerPositionLevelTenY = -29.172f;
+    static public float PlayerPositionLevelTenZ = 0f;
+    //SectorNumberEleven
+    static public float PlayerPositionLevelElevenX = 1330.48f;
+    static public float PlayerPositionLevelElevenY = -37.21f;
+    static public float PlayerPositionLevelElevenZ = 0f;
+    //SectorNumberTwelve
+    static public float PlayerPositionLevelTwelveX = 1561.24f;
+    static public float PlayerPositionLevelTwelveY = -23.035f;
+    static public float PlayerPositionLevelTwelveZ = 0f;
 
     void Start()
     {
@@ -334,6 +382,46 @@ public class PauseMenuManagerNew : MonoBehaviour
         {
             LoadPlayerPositionLevelFour();
             PlayerPrefs.SetInt("loadLevelFourPlayerPosition", 0);
+        }
+        else if(PlayerPrefs.GetInt("loadLevelFivePlayerPosition") == 1)
+        {
+            LoadPlayerPositionLevelFive();
+            PlayerPrefs.SetInt("loadLevelFivePlayerPosition", 0);
+        }
+        else if(PlayerPrefs.GetInt("loadLevelSixPlayerPosition") == 1)
+        {
+            LoadPlayerPositionLevelSix();
+            PlayerPrefs.SetInt("loadLevelSixPlayerPosition", 0);
+        }
+        else if(PlayerPrefs.GetInt("loadLevelSevenPlayerPosition") == 1)
+        {
+            LoadPlayerPositionLevelSeven();
+            PlayerPrefs.SetInt("loadLevelSevenPlayerPosition", 0);
+        }
+        else if(PlayerPrefs.GetInt("loadLevelEightPlayerPosition") == 1)
+        {
+            LoadPlayerPositionLevelEight();
+            PlayerPrefs.SetInt("loadLevelEightPlayerPosition", 0);
+        }
+        else if(PlayerPrefs.GetInt("loadLevelNinePlayerPosition") == 1)
+        {
+            LoadPlayerPositionLevelNine();
+            PlayerPrefs.SetInt("loadLevelNinePlayerPosition", 0);
+        }
+        else if(PlayerPrefs.GetInt("loadLevelTenPlayerPosition") == 1)
+        {
+            LoadPlayerPositionLevelTen();
+            PlayerPrefs.SetInt("loadLevelTenPlayerPosition", 0);
+        }
+        else if(PlayerPrefs.GetInt("loadLevelElevenPlayerPosition") == 1)
+        {
+            LoadPlayerPositionLevelEleven();
+            PlayerPrefs.SetInt("loadLevelElevenPlayerPosition", 0);
+        }
+        else if(PlayerPrefs.GetInt("loadLevelTwelvePlayerPosition") == 1)
+        {
+            LoadPlayerPositionLevelTwelve();
+            PlayerPrefs.SetInt("loadLevelTwelvePlayerPosition", 0);
         }
     }
 
@@ -388,8 +476,6 @@ public class PauseMenuManagerNew : MonoBehaviour
                     SetHightlightColor(resumeButtonText);
                     //Setting default button size
                     SetDefaultButtonSize();
-                    //Button is selected so we can enlarge size
-                    EnlargeSizeOfButton(resumeButton);
                     
                     //Play only when you changed navigation in menu
                     if(!pauseMenuInitialNavigationPosition && !resumeButtonPlayedOnce) 
@@ -409,8 +495,6 @@ public class PauseMenuManagerNew : MonoBehaviour
                     LoadLevel();
                     //Setting default button size
                     SetDefaultButtonSize();
-                    //Button is selected so we can enlarge size
-                    EnlargeSizeOfButton(startNewGameButton);
 
                     //Navigation was changed
                     pauseMenuInitialNavigationPosition = false;
@@ -431,8 +515,6 @@ public class PauseMenuManagerNew : MonoBehaviour
                     SetHightlightColor(loadChapterButtonText);
                     //Setting default button size
                     SetDefaultButtonSize();
-                    //Button is selected so we can enlarge size
-                    EnlargeSizeOfButton(loadChapterButton);
 
                     //Navigation was changed
                     pauseMenuInitialNavigationPosition = false;
@@ -453,8 +535,6 @@ public class PauseMenuManagerNew : MonoBehaviour
                     SetHightlightColor(settingsButtonText);
                     //Setting default button size
                     SetDefaultButtonSize();
-                    //Button is selected so we can enlarge size
-                    EnlargeSizeOfButton(settingsButton);
 
                     //Navigation was changed
                     pauseMenuInitialNavigationPosition = false;
@@ -475,8 +555,6 @@ public class PauseMenuManagerNew : MonoBehaviour
                     SetHightlightColor(exitButtonText);
                     //Setting default button size
                     SetDefaultButtonSize();
-                    //Button is selected so we can enlarge size
-                    EnlargeSizeOfButton(exitButton);
 
                     //Navigation was changed
                     pauseMenuInitialNavigationPosition = false;
@@ -542,8 +620,6 @@ public class PauseMenuManagerNew : MonoBehaviour
                     SetHightlightColor(controlsButtonText);
                     //Setting default button size
                     SetDefaultButtonSize();
-                    //Button is selected so we can enlarge size
-                    EnlargeSizeOfButton(controlsButton);
 
                     //Play only when you changed navigation in menu
                     if(!settingsMenuInitialNavigationPosition && !controlsButtonPlayedOnce) 
@@ -561,8 +637,6 @@ public class PauseMenuManagerNew : MonoBehaviour
                     SetHightlightColor(graphicButtonText);
                     //Setting default button size
                     SetDefaultButtonSize();
-                    //Button is selected so we can enlarge size
-                    EnlargeSizeOfButton(graphicButton);
 
                     settingsMenuInitialNavigationPosition = false;
                     if(!settingsMenuInitialNavigationPosition && !graphicButtonPlayedOnce) 
@@ -580,8 +654,6 @@ public class PauseMenuManagerNew : MonoBehaviour
                     SetHightlightColor(soundButtonText);
                     //Setting default button size
                     SetDefaultButtonSize();
-                    //Button is selected so we can enlarge size
-                    EnlargeSizeOfButton(soundButton);
 
                     settingsMenuInitialNavigationPosition = false;
                     if(!settingsMenuInitialNavigationPosition && !soundButtonPlayedOnce) 
@@ -599,8 +671,6 @@ public class PauseMenuManagerNew : MonoBehaviour
                     SetHightlightColor(creditsButtonText);
                     //Setting default button size
                     SetDefaultButtonSize();
-                    //Button is selected so we can enlarge size
-                    EnlargeSizeOfButton(creditsButton);
 
                     settingsMenuInitialNavigationPosition = false;
                     if(!settingsMenuInitialNavigationPosition && !creditsButtonPlayedOnce) 
@@ -662,8 +732,6 @@ public class PauseMenuManagerNew : MonoBehaviour
                     ChangeQualityDropdownColor();
                     //Setting default button size
                     SetDefaultButtonSize();
-                    //Button is selected so we can enlarge size
-                    EnlargeSizeOfButton(qualityDropdown);
 
                     //Play only when you changed navigation in menu
                     if(!graphicMenuInitialNavigationPosition && !qualityDropdownPlayedOnce) 
@@ -692,8 +760,6 @@ public class PauseMenuManagerNew : MonoBehaviour
                     ChangeResolutionDropdownColor();
                     //Setting default button size
                     SetDefaultButtonSize();
-                    //Button is selected so we can enlarge size
-                    EnlargeSizeOfButton(resolutionDropdown);
 
                     graphicMenuInitialNavigationPosition = false;
                     if(!graphicMenuInitialNavigationPosition && !resolutionDropdownPlayedOnce) 
@@ -722,8 +788,6 @@ public class PauseMenuManagerNew : MonoBehaviour
                     SetDefaultColorForDropdown();
                     //Setting default button size
                     SetDefaultButtonSize();
-                    //Button is selected so we can enlarge size
-                    EnlargeSizeOfButton(fullScreenToggle);
 
                     graphicMenuInitialNavigationPosition = false;
                     if(!graphicMenuInitialNavigationPosition && !fullScreenTogglePlayedOnce) 
@@ -752,8 +816,6 @@ public class PauseMenuManagerNew : MonoBehaviour
                     SetDefaultColorForDropdown();
                     //Setting default button size
                     SetDefaultButtonSize();
-                    //Button is selected so we can enlarge size
-                    EnlargeSizeOfButton(postProcessingToggle);
 
                     graphicMenuInitialNavigationPosition = false;
                     if(!graphicMenuInitialNavigationPosition && !PostProcessingTogglePlayedOnce) 
@@ -802,8 +864,6 @@ public class PauseMenuManagerNew : MonoBehaviour
                     SetDefaultColorForDropdown();
                     //Setting default button size
                     SetDefaultButtonSize();
-                    //Button is selected so we can enlarge size
-                    EnlargeSizeOfButton(brightnessVolumeSlider);
 
                     graphicMenuInitialNavigationPosition = false;
                     if(!graphicMenuInitialNavigationPosition && !BrightnessVolumeSliderPlayedOnce) 
@@ -874,8 +934,6 @@ public class PauseMenuManagerNew : MonoBehaviour
                     SetDefaultColorForDropdown();
                     //Setting default button size
                     SetDefaultButtonSize();
-                    //Button is selected so we can enlarge size
-                    EnlargeSizeOfButton(musicVolumeSlider);
 
                     //Play only when you changed navigation in menu
                     if(!soundMenuInitialNavigationPosition && !musicVolumeSliderPlayedOnce) 
@@ -909,8 +967,6 @@ public class PauseMenuManagerNew : MonoBehaviour
                     ChangeAmbientVolumeSliderColor();
                     //Setting default button size
                     SetDefaultButtonSize();
-                    //Button is selected so we can enlarge size
-                    EnlargeSizeOfButton(ambientVolumeSlider);
 
                     soundMenuInitialNavigationPosition = false;
                     if(!soundMenuInitialNavigationPosition && !ambientVolumeSliderPlayedOnce) 
@@ -944,8 +1000,6 @@ public class PauseMenuManagerNew : MonoBehaviour
                     ChangeStingVolumeSliderColor();
                     //Setting default button size
                     SetDefaultButtonSize();
-                    //Button is selected so we can enlarge size
-                    EnlargeSizeOfButton(stingVolumeSlider);
 
                     soundMenuInitialNavigationPosition = false;
                     if(!soundMenuInitialNavigationPosition && !stingVolumeSliderPlayedOnce) 
@@ -979,8 +1033,6 @@ public class PauseMenuManagerNew : MonoBehaviour
                     ChangeVoiceVolumeSliderColor();
                     //Setting default button size
                     SetDefaultButtonSize();
-                    //Button is selected so we can enlarge size
-                    EnlargeSizeOfButton(voiceVolumeSlider);
 
                     soundMenuInitialNavigationPosition = false;
                     if(!soundMenuInitialNavigationPosition && !voiceVolumeSliderPlayedOnce) 
@@ -1014,8 +1066,6 @@ public class PauseMenuManagerNew : MonoBehaviour
                     ChangePlayerVolumeSliderColor();
                     //Setting default button size
                     SetDefaultButtonSize();
-                    //Button is selected so we can enlarge size
-                    EnlargeSizeOfButton(playerVolumeSlider);
 
                     soundMenuInitialNavigationPosition = false;
                     if(!soundMenuInitialNavigationPosition && !playerVolumeSliderPlayedOnce) 
@@ -1049,8 +1099,6 @@ public class PauseMenuManagerNew : MonoBehaviour
                     ChangeUIVolumeSliderColor();
                     //Setting default button size
                     SetDefaultButtonSize();
-                    //Button is selected so we can enlarge size
-                    EnlargeSizeOfButton(uiVolumeSlider);
 
                     soundMenuInitialNavigationPosition = false;
                     if(!soundMenuInitialNavigationPosition && !UIVolumeSliderPlayedOnce) 
@@ -1112,6 +1160,14 @@ public class PauseMenuManagerNew : MonoBehaviour
                     levelTwoPlayedOnce = false;
                     levelThreePlayedOnce = false;
                     levelFourPlayedOnce = false;
+                    levelFivePlayedOnce = false;
+                    levelSixPlayedOnce = false;
+                    levelSevenPlayedOnce = false;
+                    levelEightPlayedOnce = false;
+                    levelNinePlayedOnce = false;
+                    levelTenPlayedOnce = false;
+                    levelElevenPlayedOnce = false;
+                    levelTwelvePlayedOnce = false;
                 }
                 if(currentSelected.name == "LevelOne" && loadChapterMenuBegin)
                 {
@@ -1130,6 +1186,14 @@ public class PauseMenuManagerNew : MonoBehaviour
                     levelTwoPlayedOnce = false;
                     levelThreePlayedOnce = false;
                     levelFourPlayedOnce = false;
+                    levelFivePlayedOnce = false;
+                    levelSixPlayedOnce = false;
+                    levelSevenPlayedOnce = false;
+                    levelEightPlayedOnce = false;
+                    levelNinePlayedOnce = false;
+                    levelTenPlayedOnce = false;
+                    levelElevenPlayedOnce = false;
+                    levelTwelvePlayedOnce = false;
                 }
                 if(currentSelected.name == "LevelTwo" && loadChapterMenuBegin)
                 {
@@ -1148,6 +1212,14 @@ public class PauseMenuManagerNew : MonoBehaviour
                     levelOnePlayedOnce = false;
                     levelThreePlayedOnce = false;
                     levelFourPlayedOnce = false;
+                    levelFivePlayedOnce = false;
+                    levelSixPlayedOnce = false;
+                    levelSevenPlayedOnce = false;
+                    levelEightPlayedOnce = false;
+                    levelNinePlayedOnce = false;
+                    levelTenPlayedOnce = false;
+                    levelElevenPlayedOnce = false;
+                    levelTwelvePlayedOnce = false;
                 }
                 if(currentSelected.name == "LevelThree" && loadChapterMenuBegin)
                 {
@@ -1166,6 +1238,14 @@ public class PauseMenuManagerNew : MonoBehaviour
                     levelOnePlayedOnce = false;
                     levelTwoPlayedOnce = false;
                     levelFourPlayedOnce = false;
+                    levelFivePlayedOnce = false;
+                    levelSixPlayedOnce = false;
+                    levelSevenPlayedOnce = false;
+                    levelEightPlayedOnce = false;
+                    levelNinePlayedOnce = false;
+                    levelTenPlayedOnce = false;
+                    levelElevenPlayedOnce = false;
+                    levelTwelvePlayedOnce = false;
                 }
                 if(currentSelected.name == "LevelFour" && loadChapterMenuBegin)
                 {
@@ -1184,6 +1264,222 @@ public class PauseMenuManagerNew : MonoBehaviour
                     levelOnePlayedOnce = false;
                     levelTwoPlayedOnce = false;
                     levelThreePlayedOnce = false;
+                    levelFivePlayedOnce = false;
+                    levelSixPlayedOnce = false;
+                    levelSevenPlayedOnce = false;
+                    levelEightPlayedOnce = false;
+                    levelNinePlayedOnce = false;
+                    levelTenPlayedOnce = false;
+                    levelElevenPlayedOnce = false;
+                    levelTwelvePlayedOnce = false;
+                }
+                if(currentSelected.name == "LevelFive" && loadChapterMenuBegin)
+                {
+                    DisableAllImages();
+                    EnableImage(levelFiveImage);
+                    
+                    //Navigation was changed
+                    loadChapterMenuInitialNavigationPosition = false;
+
+                    if(!levelFivePlayedOnce)
+                    {
+                        AudioManager.PlayLeftRightMenuNavigationAudio();
+                        levelFivePlayedOnce = true;
+                    }
+                    prototypeLevelPlayedOnce = false;
+                    levelOnePlayedOnce = false;
+                    levelTwoPlayedOnce = false;
+                    levelThreePlayedOnce = false;
+                    levelFourPlayedOnce = false;
+                    levelSixPlayedOnce = false;
+                    levelSevenPlayedOnce = false;
+                    levelEightPlayedOnce = false;
+                    levelNinePlayedOnce = false;
+                    levelTenPlayedOnce = false;
+                    levelElevenPlayedOnce = false;
+                    levelTwelvePlayedOnce = false;
+                }
+                if(currentSelected.name == "LevelSix" && loadChapterMenuBegin)
+                {
+                    DisableAllImages();
+                    EnableImage(levelSixImage);
+                    
+                    //Navigation was changed
+                    loadChapterMenuInitialNavigationPosition = false;
+
+                    if(!levelSixPlayedOnce)
+                    {
+                        AudioManager.PlayLeftRightMenuNavigationAudio();
+                        levelSixPlayedOnce = true;
+                    }
+                    prototypeLevelPlayedOnce = false;
+                    levelOnePlayedOnce = false;
+                    levelTwoPlayedOnce = false;
+                    levelThreePlayedOnce = false;
+                    levelFourPlayedOnce = false;
+                    levelFivePlayedOnce = false;
+                    levelSevenPlayedOnce = false;
+                    levelEightPlayedOnce = false;
+                    levelNinePlayedOnce = false;
+                    levelTenPlayedOnce = false;
+                    levelElevenPlayedOnce = false;
+                    levelTwelvePlayedOnce = false;
+                }
+                if(currentSelected.name == "LevelSeven" && loadChapterMenuBegin)
+                {
+                    DisableAllImages();
+                    EnableImage(levelSevenImage);
+                    
+                    //Navigation was changed
+                    loadChapterMenuInitialNavigationPosition = false;
+
+                    if(!levelSevenPlayedOnce)
+                    {
+                        AudioManager.PlayLeftRightMenuNavigationAudio();
+                        levelSevenPlayedOnce = true;
+                    }
+                    prototypeLevelPlayedOnce = false;
+                    levelOnePlayedOnce = false;
+                    levelTwoPlayedOnce = false;
+                    levelThreePlayedOnce = false;
+                    levelFourPlayedOnce = false;
+                    levelFivePlayedOnce = false;
+                    levelSixPlayedOnce = false;
+                    levelEightPlayedOnce = false;
+                    levelNinePlayedOnce = false;
+                    levelTenPlayedOnce = false;
+                    levelElevenPlayedOnce = false;
+                    levelTwelvePlayedOnce = false;
+                }
+                if(currentSelected.name == "LevelEight" && loadChapterMenuBegin)
+                {
+                    DisableAllImages();
+                    EnableImage(levelEightImage);
+                    
+                    //Navigation was changed
+                    loadChapterMenuInitialNavigationPosition = false;
+
+                    if(!levelEightPlayedOnce)
+                    {
+                        AudioManager.PlayLeftRightMenuNavigationAudio();
+                        levelEightPlayedOnce = true;
+                    }
+                    prototypeLevelPlayedOnce = false;
+                    levelOnePlayedOnce = false;
+                    levelTwoPlayedOnce = false;
+                    levelThreePlayedOnce = false;
+                    levelFourPlayedOnce = false;
+                    levelFivePlayedOnce = false;
+                    levelSixPlayedOnce = false;
+                    levelSevenPlayedOnce = false;
+                    levelNinePlayedOnce = false;
+                    levelTenPlayedOnce = false;
+                    levelElevenPlayedOnce = false;
+                    levelTwelvePlayedOnce = false;
+                }
+                if(currentSelected.name == "LevelNine" && loadChapterMenuBegin)
+                {
+                    DisableAllImages();
+                    EnableImage(levelNineImage);
+                    
+                    //Navigation was changed
+                    loadChapterMenuInitialNavigationPosition = false;
+
+                    if(!levelNinePlayedOnce)
+                    {
+                        AudioManager.PlayLeftRightMenuNavigationAudio();
+                        levelNinePlayedOnce = true;
+                    }
+                    prototypeLevelPlayedOnce = false;
+                    levelOnePlayedOnce = false;
+                    levelTwoPlayedOnce = false;
+                    levelThreePlayedOnce = false;
+                    levelFourPlayedOnce = false;
+                    levelFivePlayedOnce = false;
+                    levelSixPlayedOnce = false;
+                    levelSevenPlayedOnce = false;
+                    levelEightPlayedOnce = false;
+                    levelTenPlayedOnce = false;
+                    levelElevenPlayedOnce = false;
+                    levelTwelvePlayedOnce = false;
+                }
+                if(currentSelected.name == "LevelTen" && loadChapterMenuBegin)
+                {
+                    DisableAllImages();
+                    EnableImage(levelTenImage);
+                    
+                    //Navigation was changed
+                    loadChapterMenuInitialNavigationPosition = false;
+
+                    if(!levelTenPlayedOnce)
+                    {
+                        AudioManager.PlayLeftRightMenuNavigationAudio();
+                        levelTenPlayedOnce = true;
+                    }
+                    prototypeLevelPlayedOnce = false;
+                    levelOnePlayedOnce = false;
+                    levelTwoPlayedOnce = false;
+                    levelThreePlayedOnce = false;
+                    levelFourPlayedOnce = false;
+                    levelFivePlayedOnce = false;
+                    levelSixPlayedOnce = false;
+                    levelSevenPlayedOnce = false;
+                    levelEightPlayedOnce = false;
+                    levelNinePlayedOnce = false;
+                    levelElevenPlayedOnce = false;
+                    levelTwelvePlayedOnce = false;
+                }
+                if(currentSelected.name == "LevelEleven" && loadChapterMenuBegin)
+                {
+                    DisableAllImages();
+                    EnableImage(levelElevenImage);
+                    
+                    //Navigation was changed
+                    loadChapterMenuInitialNavigationPosition = false;
+
+                    if(!levelElevenPlayedOnce)
+                    {
+                        AudioManager.PlayLeftRightMenuNavigationAudio();
+                        levelElevenPlayedOnce = true;
+                    }
+                    prototypeLevelPlayedOnce = false;
+                    levelOnePlayedOnce = false;
+                    levelTwoPlayedOnce = false;
+                    levelThreePlayedOnce = false;
+                    levelFourPlayedOnce = false;
+                    levelFivePlayedOnce = false;
+                    levelSixPlayedOnce = false;
+                    levelSevenPlayedOnce = false;
+                    levelEightPlayedOnce = false;
+                    levelNinePlayedOnce = false;
+                    levelTenPlayedOnce = false;
+                    levelTwelvePlayedOnce = false;
+                }
+                if(currentSelected.name == "LevelTwelve" && loadChapterMenuBegin)
+                {
+                    DisableAllImages();
+                    EnableImage(levelTwelveImage);
+                    
+                    //Navigation was changed
+                    loadChapterMenuInitialNavigationPosition = false;
+
+                    if(!levelTwelvePlayedOnce)
+                    {
+                        AudioManager.PlayLeftRightMenuNavigationAudio();
+                        levelTwelvePlayedOnce = true;
+                    }
+                    prototypeLevelPlayedOnce = false;
+                    levelOnePlayedOnce = false;
+                    levelTwoPlayedOnce = false;
+                    levelThreePlayedOnce = false;
+                    levelFourPlayedOnce = false;
+                    levelFivePlayedOnce = false;
+                    levelSixPlayedOnce = false;
+                    levelSevenPlayedOnce = false;
+                    levelEightPlayedOnce = false;
+                    levelNinePlayedOnce = false;
+                    levelTenPlayedOnce = false;
+                    levelElevenPlayedOnce = false;
                 }
             }
             else if (controlsMenu.activeSelf)
@@ -1301,6 +1597,14 @@ public class PauseMenuManagerNew : MonoBehaviour
         levelTwoImage.SetActive(false);
         levelThreeImage.SetActive(false);
         levelFourImage.SetActive(false);
+        levelFiveImage.SetActive(false);
+        levelSixImage.SetActive(false);
+        levelSevenImage.SetActive(false);
+        levelEightImage.SetActive(false);
+        levelNineImage.SetActive(false);
+        levelTenImage.SetActive(false);
+        levelElevenImage.SetActive(false);
+        levelTwelveImage.SetActive(false);
     }
 
     void EnableImage(GameObject image)
@@ -1417,6 +1721,62 @@ public class PauseMenuManagerNew : MonoBehaviour
                 Time.timeScale = 1f;
                 PlayerPrefs.SetInt("TheHighestLevelReachedByThePlayer", 4);
                 PlayerPrefs.SetInt("loadLevelFourPlayerPosition", 1);
+                SceneManager.LoadScene("PrototypeScene");
+            }
+            else if(currentSelectedLevel.name == "LevelFive")
+            {
+                Time.timeScale = 1f;
+                PlayerPrefs.SetInt("TheHighestLevelReachedByThePlayer", 5);
+                PlayerPrefs.SetInt("loadLevelFivePlayerPosition", 1);
+                SceneManager.LoadScene("PrototypeScene");
+            }
+            else if(currentSelectedLevel.name == "LevelSix")
+            {
+                Time.timeScale = 1f;
+                PlayerPrefs.SetInt("TheHighestLevelReachedByThePlayer", 6);
+                PlayerPrefs.SetInt("loadLevelSixPlayerPosition", 1);
+                SceneManager.LoadScene("PrototypeScene");
+            }
+            else if(currentSelectedLevel.name == "LevelSeven")
+            {
+                Time.timeScale = 1f;
+                PlayerPrefs.SetInt("TheHighestLevelReachedByThePlayer", 7);
+                PlayerPrefs.SetInt("loadLevelSevenPlayerPosition", 1);
+                SceneManager.LoadScene("PrototypeScene");
+            }
+            else if(currentSelectedLevel.name == "LevelEight")
+            {
+                Time.timeScale = 1f;
+                PlayerPrefs.SetInt("TheHighestLevelReachedByThePlayer", 8);
+                PlayerPrefs.SetInt("loadLevelEightPlayerPosition", 1);
+                SceneManager.LoadScene("PrototypeScene");
+            }
+            else if(currentSelectedLevel.name == "LevelNine")
+            {
+                Time.timeScale = 1f;
+                PlayerPrefs.SetInt("TheHighestLevelReachedByThePlayer", 9);
+                PlayerPrefs.SetInt("loadLevelNinePlayerPosition", 1);
+                SceneManager.LoadScene("PrototypeScene");
+            }
+            else if(currentSelectedLevel.name == "LevelTen")
+            {
+                Time.timeScale = 1f;
+                PlayerPrefs.SetInt("TheHighestLevelReachedByThePlayer", 10);
+                PlayerPrefs.SetInt("loadLevelTenPlayerPosition", 1);
+                SceneManager.LoadScene("PrototypeScene");
+            }
+            else if(currentSelectedLevel.name == "LevelEleven")
+            {
+                Time.timeScale = 1f;
+                PlayerPrefs.SetInt("TheHighestLevelReachedByThePlayer", 11);
+                PlayerPrefs.SetInt("loadLevelElevenPlayerPosition", 1);
+                SceneManager.LoadScene("PrototypeScene");
+            }
+            else if(currentSelectedLevel.name == "LevelTwelve")
+            {
+                Time.timeScale = 1f;
+                PlayerPrefs.SetInt("TheHighestLevelReachedByThePlayer", 12);
+                PlayerPrefs.SetInt("loadLevelTwelvePlayerPosition", 1);
                 SceneManager.LoadScene("PrototypeScene");
             }
             else if(currentSelected.name == "StartNewGameButton")
@@ -1653,6 +2013,46 @@ public class PauseMenuManagerNew : MonoBehaviour
     static public void LoadPlayerPositionLevelFour()
     {
         GameObject.Find("Robbie").transform.position = new Vector3(PlayerPositionLevelFourX, PlayerPositionLevelFourY, PlayerPositionLevelFourZ);
+    }
+
+    static public void LoadPlayerPositionLevelFive()
+    {
+        GameObject.Find("Robbie").transform.position = new Vector3(PlayerPositionLevelFiveX, PlayerPositionLevelFiveY, PlayerPositionLevelFiveZ);
+    }
+
+    static public void LoadPlayerPositionLevelSix()
+    {
+        GameObject.Find("Robbie").transform.position = new Vector3(PlayerPositionLevelSixX, PlayerPositionLevelSixY, PlayerPositionLevelSixZ);
+    }
+
+    static public void LoadPlayerPositionLevelSeven()
+    {
+        GameObject.Find("Robbie").transform.position = new Vector3(PlayerPositionLevelSevenX, PlayerPositionLevelSevenY, PlayerPositionLevelSevenZ);
+    }
+
+    static public void LoadPlayerPositionLevelEight()
+    {
+        GameObject.Find("Robbie").transform.position = new Vector3(PlayerPositionLevelEightX, PlayerPositionLevelEightY, PlayerPositionLevelEightZ);
+    }
+
+    static public void LoadPlayerPositionLevelNine()
+    {
+        GameObject.Find("Robbie").transform.position = new Vector3(PlayerPositionLevelNineX, PlayerPositionLevelNineY, PlayerPositionLevelNineZ);
+    }
+
+    static public void LoadPlayerPositionLevelTen()
+    {
+        GameObject.Find("Robbie").transform.position = new Vector3(PlayerPositionLevelTenX, PlayerPositionLevelTenY, PlayerPositionLevelTenZ);
+    }
+
+    static public void LoadPlayerPositionLevelEleven()
+    {
+        GameObject.Find("Robbie").transform.position = new Vector3(PlayerPositionLevelElevenX, PlayerPositionLevelElevenY, PlayerPositionLevelElevenZ);
+    }
+
+    static public void LoadPlayerPositionLevelTwelve()
+    {
+        GameObject.Find("Robbie").transform.position = new Vector3(PlayerPositionLevelTwelveX, PlayerPositionLevelTwelveY, PlayerPositionLevelTwelveZ);
     }
 
     public void DisableVirtualPlayerCameraDamping()
