@@ -9,8 +9,10 @@ public class WinZone : MonoBehaviour
 {
 	int playerLayer;    //The layer the player game object is on
 	public GameObject endCreditsMenu;
+	public GameObject endCreditsSubtitlesMenu;
 	private float timeElapsed;
-	private float delayBeforeLoading = 10f;
+	private float delayBeforeLoadingMainMenu = 26.0f;
+	private float delayBeforeLoadingCreditsSubtitles = 6.0f;
 	private bool loadAfterEndOfGame = false;
 	public CinemachineVirtualCamera virtualCamera;
 	public GameObject player;
@@ -29,7 +31,13 @@ public class WinZone : MonoBehaviour
 		{
 			timeElapsed += Time.deltaTime;
 
-			if(timeElapsed >= delayBeforeLoading)
+			if(timeElapsed >= delayBeforeLoadingCreditsSubtitles)
+			{
+				endCreditsMenu.SetActive(false);
+				endCreditsSubtitlesMenu.SetActive(true);
+			}
+			
+			if(AudioManager.CreditsAudioIsStillPlaying()==false)
 			{
 				loadAfterEndOfGame = false;
 				PlayerPrefs.SetInt("ActualProgresInGame", 0);
@@ -50,6 +58,7 @@ public class WinZone : MonoBehaviour
 		Debug.Log("Player Won!");
 		GameManager.PlayerWon();
 		endCreditsMenu.SetActive(true);
+		AudioManager.StartCreditsAudio();
 		loadAfterEndOfGame = true;
 		DisableCameraFollow();
 		player.SetActive(false);

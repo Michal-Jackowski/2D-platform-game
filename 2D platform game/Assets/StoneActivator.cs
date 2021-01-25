@@ -7,6 +7,7 @@ public class StoneActivator : MonoBehaviour
 {
     int playerLayer;    //The layer the player game object is on
     public GameObject stone;
+    public GameObject stoneActivator;
     public CinemachineImpulseListener cinemachineImpulseListener;
 
     void Start()
@@ -22,6 +23,7 @@ public class StoneActivator : MonoBehaviour
 			return;
 
         stone.SetActive(true);
+        stoneActivator.SetActive(false);
         cinemachineImpulseListener.enabled = true;
         AudioManager.PlayRockFallAudio();
 	}

@@ -7,6 +7,7 @@ public class FallingBlockCollision : MonoBehaviour
 	AudioSource audioSource;
 	LayerMask groundMask;
 	int groundLayer;
+	public GameObject stoneLayer;
 
 
 	void Start()
@@ -29,16 +30,20 @@ public class FallingBlockCollision : MonoBehaviour
 		if (collision.gameObject.layer != groundLayer)
 			return;
 
+		stoneLayer.layer = 10;
+		rigidBody.bodyType = RigidbodyType2D.Static;
+		
 		Vector3 pos = rigidBody.position;
 		RaycastHit2D hit;
 
 		hit = Physics2D.Raycast(pos, Vector2.down, 1f, groundMask);
-		pos.y = hit.point.y + .5f;
+		pos.y = hit.point.y + .01f;
 		transform.position = pos;
 
 		box.usedByComposite = true;
 		Destroy(rigidBody);
 
 		audioSource.Play();
+		stoneLayer.transform.position = new Vector3(stoneLayer.transform.position.x, stoneLayer.transform.position.y, -0.5f);
 	}
 }

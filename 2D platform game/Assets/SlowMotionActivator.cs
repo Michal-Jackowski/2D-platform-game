@@ -22,5 +22,7 @@ public class SlowMotionActivator : MonoBehaviour
 
         platform.SetActive(false);
         timeManager.TurnOnSlowMotion();
+        AudioManager.StopMusicAudio();
+        AudioManager.PlayFlatLineAudio();
 	}
 }

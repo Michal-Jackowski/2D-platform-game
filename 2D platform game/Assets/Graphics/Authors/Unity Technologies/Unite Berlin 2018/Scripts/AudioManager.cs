@@ -15,6 +15,7 @@ public class AudioManager : MonoBehaviour
     [Header("Ambient Audio")]
     public AudioClip ambientClip;		//The background ambient sound
     public AudioClip musicClip;			//The background music 
+	public AudioClip creditsClip;		//The credits music
 
 	[Header("Stings")]
 	public AudioClip levelStingClip;	//The sting played when the scene loads
@@ -26,6 +27,7 @@ public class AudioManager : MonoBehaviour
 	public AudioClip rockImpactClip;	//Impact rock sound effect
 	public AudioClip rockGroundImpactClip;	//Impact ground rock sound effect
 	public AudioClip pushBoxClip;		//The sting played when player push box
+	public AudioClip flatLineClip;		//The sting played when game ends
 	
 
 	[Header("UI sounds")]
@@ -113,6 +115,25 @@ public class AudioManager : MonoBehaviour
 		//Play the audio that repeats whenever the level reloads
 		PlaySceneRestartAudio();
     }
+
+	public static void StartCreditsAudio()
+    {
+		//Set the clip for credits audio, and then tell it to play
+        current.ambientSource.clip = current.creditsClip;
+        current.ambientSource.loop = false;
+		StopMusicAudio();
+        current.ambientSource.Play();
+    }
+
+	public static bool CreditsAudioIsStillPlaying()
+	{
+		return current.ambientSource.isPlaying;
+	}
+
+	public static void StopMusicAudio()
+	{
+		current.musicSource.Stop();
+	}
 
 	public static void PlayFootstepAudio()
 	{
@@ -310,6 +331,18 @@ public class AudioManager : MonoBehaviour
 		//Set the door open sting clip and tell the source to play
 		current.stingSource.clip = current.pushBoxClip;
 		current.stingSource.Stop();
+	}
+
+	public static void PlayFlatLineAudio()
+	{
+		//If there is no current AudioManager, exit
+		if (current == null)
+			return;
+
+		//Set the door open sting clip and tell the source to play
+		current.stingSource.clip = current.flatLineClip;
+		current.stingSource.loop = false;
+		current.stingSource.Play();
 	}
 
 	public static void StopRockFallAudio()
