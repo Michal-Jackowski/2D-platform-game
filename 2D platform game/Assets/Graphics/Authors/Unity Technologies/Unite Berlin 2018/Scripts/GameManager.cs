@@ -209,6 +209,38 @@ public class GameManager : MonoBehaviour
 		{
 			PlayerPrefs.SetInt("loadLevelFourPlayerPosition", 1);
 		}
+		else if(PlayerPrefs.GetInt("TheHighestLevelReachedByThePlayer") == 5)
+		{
+			PlayerPrefs.SetInt("loadLevelFivePlayerPosition", 1);
+		}
+		else if(PlayerPrefs.GetInt("TheHighestLevelReachedByThePlayer") == 6)
+		{
+			PlayerPrefs.SetInt("loadLevelSixPlayerPosition", 1);
+		}
+		else if(PlayerPrefs.GetInt("TheHighestLevelReachedByThePlayer") == 7)
+		{
+			PlayerPrefs.SetInt("loadLevelSevenPlayerPosition", 1);
+		}
+		else if(PlayerPrefs.GetInt("TheHighestLevelReachedByThePlayer") == 8)
+		{
+			PlayerPrefs.SetInt("loadLevelEightPlayerPosition", 1);
+		}
+		else if(PlayerPrefs.GetInt("TheHighestLevelReachedByThePlayer") == 9)
+		{
+			PlayerPrefs.SetInt("loadLevelNinePlayerPosition", 1);
+		}
+		else if(PlayerPrefs.GetInt("TheHighestLevelReachedByThePlayer") == 10)
+		{
+			PlayerPrefs.SetInt("loadLevelTenPlayerPosition", 1);
+		}
+		else if(PlayerPrefs.GetInt("TheHighestLevelReachedByThePlayer") == 11)
+		{
+			PlayerPrefs.SetInt("loadLevelElevenPlayerPosition", 1);
+		}
+		else if(PlayerPrefs.GetInt("TheHighestLevelReachedByThePlayer") == 12)
+		{
+			PlayerPrefs.SetInt("loadLevelTwelwePlayerPosition", 1);
+		}
 		canUsePauseMenu = true;
 	}
 }

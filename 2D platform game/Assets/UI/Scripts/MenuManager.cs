@@ -18,6 +18,7 @@ public class MenuManager : MonoBehaviour
     public GameObject controlsMenu;
     public GameObject creditsMenu;
     public GameObject MainMenuWithResumeOption;
+    public GameObject introSceneBackground;
     
 
     [Header("Menu First Selected Objects")]
@@ -1673,6 +1674,7 @@ public class MenuManager : MonoBehaviour
         if(GameManager.IsGameOver())
         {
             introScene.SetActive(false);
+            introSceneBackground.SetActive(false);
             SelectCorrectMainMenu();
             GameManager.StartGameAgain();
         }
@@ -1711,6 +1713,7 @@ public class MenuManager : MonoBehaviour
             SetNewSelectedGameObject();
         }
         introScene.SetActive(false);
+        introSceneBackground.SetActive(false);
 
         if(!GameManager.IsGameOver())
         {
