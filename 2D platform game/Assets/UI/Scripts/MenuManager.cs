@@ -5,6 +5,7 @@ using System;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Cinemachine;
+using System.Collections;
 
 public class MenuManager : MonoBehaviour
 {
@@ -1481,7 +1482,7 @@ public class MenuManager : MonoBehaviour
             else if (creditsMenu.activeSelf)
             {
                 PlayBackSound();
-                
+
                 if(!allowSelectSound)
                 {
                     AudioManager.PlaySelectMenuNavigationAudio();

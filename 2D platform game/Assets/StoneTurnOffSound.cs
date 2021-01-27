@@ -18,6 +18,11 @@ public class StoneTurnOffSound : MonoBehaviour
 	{
         //If the collision wasn't with the player, stop playing audio
 		if (collision.gameObject.layer != playerLayer)
-			AudioManager.StopRockFallAudio();
+        {
+            AudioManager.StopRockFallAudio();
+            AudioManager.StopMusicAudio();
+            AudioManager.StartLevelAudio();
+        }
+			
 	}
 }

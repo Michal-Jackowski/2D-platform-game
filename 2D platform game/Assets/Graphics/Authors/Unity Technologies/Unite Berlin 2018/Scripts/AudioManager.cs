@@ -4,6 +4,7 @@
 
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.SceneManagement;
 
 public class AudioManager : MonoBehaviour
 {
@@ -14,8 +15,10 @@ public class AudioManager : MonoBehaviour
 
     [Header("Ambient Audio")]
     public AudioClip ambientClip;		//The background ambient sound
-    public AudioClip musicClip;			//The background music 
+    public AudioClip[] musicClips;			//The background musics 
 	public AudioClip creditsClip;		//The credits music
+	public AudioClip mainMenuClip;		//The mainMenu music
+	public AudioClip stoneRollingScriptedSceneClip;		//The music used during scripted scene with stone
 
 	[Header("Stings")]
 	public AudioClip levelStingClip;	//The sting played when the scene loads
@@ -28,6 +31,12 @@ public class AudioManager : MonoBehaviour
 	public AudioClip rockGroundImpactClip;	//Impact ground rock sound effect
 	public AudioClip pushBoxClip;		//The sting played when player push box
 	public AudioClip flatLineClip;		//The sting played when game ends
+	public AudioClip secretLevelDiscoveredClip;		//The sting played when player discovers secret level
+	public AudioClip miscBreathClip;		//The sting played when player is in the cave
+	public AudioClip miscShhClip;		//The sting played when player is in the cave
+	public AudioClip caveWindClip1;		//The sting played when player is in the cave
+	public AudioClip caveWindClip2;		//The sting played when player is in the cave
+	public AudioClip deadBodyFoundClip;		//The sting played when player discovers dead body in cave
 	
 
 	[Header("UI sounds")]
@@ -97,24 +106,69 @@ public class AudioManager : MonoBehaviour
 		uiSource.outputAudioMixerGroup	= uiGroup;
 
 		//Being playing the game audio
-        StartLevelAudio();
+		if (CheckActiveScene()=="StartMenu")
+		{
+			StartMainMenuAudio();
+		}
+        else if (CheckActiveScene()=="PrototypeScene")
+		{
+			StartLevelAudio();
+		}
 	}
 
-    void StartLevelAudio()
+    public static void StartLevelAudio()
     {
 		//Set the clip for ambient audio, tell it to loop, and then tell it to play
         current.ambientSource.clip = current.ambientClip;
         current.ambientSource.loop = true;
         current.ambientSource.Play();
 
+		//Pick a random music clip for background
+		int index = Random.Range(0, current.musicClips.Length);
+
 		//Set the clip for music audio, tell it to loop, and then tell it to play
-        current.musicSource.clip = current.musicClip;
+        current.musicSource.clip = current.musicClips[index];
+        current.musicSource.loop = false;
+        current.musicSource.Play();
+
+		//Play the audio that repeats whenever the level reloads
+		PlaySceneRestartAudio();
+    }
+
+	void StartMainMenuAudio()
+    {
+		//Set the clip for mainMenu audio, tell it to loop, and then tell it to play
+        current.musicSource.clip = current.mainMenuClip;
         current.musicSource.loop = true;
         current.musicSource.Play();
 
 		//Play the audio that repeats whenever the level reloads
 		PlaySceneRestartAudio();
     }
+
+	public static void StartStoneRollingScriptedSceneAudio()
+    {
+		//Set the clip for mainMenu audio, tell it to loop, and then tell it to play
+        current.musicSource.clip = current.stoneRollingScriptedSceneClip;
+        current.musicSource.loop = false;
+        current.musicSource.Play();
+    }
+
+	string CheckActiveScene()
+	{
+		Scene currentScene = SceneManager.GetActiveScene ();
+        string sceneName = currentScene.name;
+
+        if (sceneName == "StartMenu") 
+        {
+			return sceneName;
+        }
+		else if (sceneName == "PrototypeScene")
+		{
+			return sceneName;
+		}
+		return "otherScene";
+	}
 
 	public static void StartCreditsAudio()
     {
@@ -288,6 +342,39 @@ public class AudioManager : MonoBehaviour
 		current.stingSource.Play();
 	}
 
+	public static void PlayCaveWind1Audio()
+	{
+		//If there is no current AudioManager, exit
+		if (current == null)
+			return;
+
+		//Set the door open sting clip and tell the source to play
+		current.stingSource.clip = current.caveWindClip1;
+		current.stingSource.Play();
+	}
+
+	public static void PlayCaveWind2Audio()
+	{
+		//If there is no current AudioManager, exit
+		if (current == null)
+			return;
+
+		//Set the door open sting clip and tell the source to play
+		current.stingSource.clip = current.caveWindClip2;
+		current.stingSource.Play();
+	}
+
+	public static void PlayDeadBodyFoundAudio()
+	{
+		//If there is no current AudioManager, exit
+		if (current == null)
+			return;
+
+		//Set the door open sting clip and tell the source to play
+		current.stingSource.clip = current.deadBodyFoundClip;
+		current.stingSource.Play();
+	}
+
 	public static void PlayRockImpactAudio()
 	{
 		//If there is no current AudioManager, exit
@@ -341,6 +428,42 @@ public class AudioManager : MonoBehaviour
 
 		//Set the door open sting clip and tell the source to play
 		current.stingSource.clip = current.flatLineClip;
+		current.stingSource.loop = false;
+		current.stingSource.Play();
+	}
+
+	public static void PlaySecretLevelDiscovered()
+	{
+		//If there is no current AudioManager, exit
+		if (current == null)
+			return;
+
+		//Set the door open sting clip and tell the source to play
+		current.stingSource.clip = current.secretLevelDiscoveredClip;
+		current.stingSource.loop = false;
+		current.stingSource.Play();
+	}
+
+	public static void PlayMiscBreath()
+	{
+		//If there is no current AudioManager, exit
+		if (current == null)
+			return;
+
+		//Set the door open sting clip and tell the source to play
+		current.stingSource.clip = current.miscBreathClip;
+		current.stingSource.loop = false;
+		current.stingSource.Play();
+	}
+
+	public static void PlayMiscShh()
+	{
+		//If there is no current AudioManager, exit
+		if (current == null)
+			return;
+
+		//Set the door open sting clip and tell the source to play
+		current.stingSource.clip = current.miscShhClip;
 		current.stingSource.loop = false;
 		current.stingSource.Play();
 	}

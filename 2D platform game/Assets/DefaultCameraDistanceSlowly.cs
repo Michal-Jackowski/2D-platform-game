@@ -19,7 +19,7 @@ public class DefaultCameraDistanceSlowly : MonoBehaviour
 
     void Update()
     {
-        if(canChangeCameraDistance && vcam.GetCinemachineComponent<CinemachineFramingTransposer>().m_CameraDistance>=minCameraDistance)
+        if(canChangeCameraDistance && vcam.GetCinemachineComponent<CinemachineFramingTransposer>().m_CameraDistance>minCameraDistance)
         {
             StartCoroutine(ExecuteAfterTime(0.02f));
         }

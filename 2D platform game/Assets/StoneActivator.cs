@@ -26,5 +26,6 @@ public class StoneActivator : MonoBehaviour
         stoneActivator.SetActive(false);
         cinemachineImpulseListener.enabled = true;
         AudioManager.PlayRockFallAudio();
+        AudioManager.StartStoneRollingScriptedSceneAudio();
 	}
 }

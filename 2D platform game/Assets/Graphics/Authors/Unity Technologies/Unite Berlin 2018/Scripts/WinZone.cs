@@ -11,12 +11,12 @@ public class WinZone : MonoBehaviour
 	public GameObject endCreditsMenu;
 	public GameObject endCreditsSubtitlesMenu;
 	private float timeElapsed;
-	private float delayBeforeLoadingMainMenu = 26.0f;
 	private float delayBeforeLoadingCreditsSubtitles = 6.0f;
 	private bool loadAfterEndOfGame = false;
 	public CinemachineVirtualCamera virtualCamera;
 	public GameObject player;
 	public TimeManager timeManager;
+	public GameObject rainEffect;
 
 	void Start()
 	{
@@ -57,6 +57,7 @@ public class WinZone : MonoBehaviour
 		//won
 		Debug.Log("Player Won!");
 		GameManager.PlayerWon();
+		rainEffect.SetActive(false);
 		endCreditsMenu.SetActive(true);
 		AudioManager.StartCreditsAudio();
 		loadAfterEndOfGame = true;

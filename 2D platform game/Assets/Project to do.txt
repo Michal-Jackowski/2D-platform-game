@@ -64,12 +64,12 @@
 		[+] New forest footsteps sound effect
 		[+] Build three levels with 5 checkpoints
 		[+] Paralax effect (Perspective camera and layers with offset during building levels)
-	[-] More sounds
+		[+] More sounds
 		[+] Animated background in MainMenu (need a little bit scene from final game)
 		[+] Add images to LoadChapter Menu (after all game scenes will be completed)
-	[-] Add assets authors to the credits (after all game scenes will be completed)
-	[-] Add version number alpha v1.00 in installation setup
-	[-] First release on GitHub
-	[-] Delete all assets from Github
+		[+] Add assets authors to the credits (after all game scenes will be completed)
+		[+] Delete all assets from Github
 	[-] Testing
+	[-] Add version number beta v1.00 in installation setup
+	[-] First release on GitHub
 	[-] Deadline end of january 2021

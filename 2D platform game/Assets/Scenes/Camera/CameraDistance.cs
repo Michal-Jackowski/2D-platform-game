@@ -10,6 +10,7 @@ public class CameraDistance : MonoBehaviour
     public BoxCollider2D cameraDistanceTrigger;
     bool canChangeCameraDistance = false;
     private float maxCameraDistance = 25f;
+    public GameObject cameraDistanceReseter;
 
     void Start()
     {
@@ -19,11 +20,14 @@ public class CameraDistance : MonoBehaviour
 
     void Update()
     {
+        //Bug here
+        Debug.Log(PauseMenu.GameIsPaused);
         if(!PauseMenu.GameIsPaused)
         {
             if(canChangeCameraDistance && vcam.GetCinemachineComponent<CinemachineFramingTransposer>().m_CameraDistance<=maxCameraDistance)
             {
                 StartCoroutine(ExecuteAfterTime(0.02f));
+                cameraDistanceReseter.SetActive(true);
             }
             else
             {
