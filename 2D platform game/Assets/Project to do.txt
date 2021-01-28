@@ -1,0 +1,75 @@
+	[+] Fix PauseMenu
+		[+] Start New Game blink need to be removed
+		[+] Invisible Image "Powered by Unity" in PauseMenu
+		[+] Updating all packages
+		[+] Update project version
+		[+] Build should run default in fullScreen and postProcessing on but Unity behavior is random (problem with SaveLoadSystem)
+		[+] Unity Logo on start isn't visible (problem with first loaded scene)
+		[+] Saving/loading graphics and music settings
+		[+] Entering to PauseMenu need new sound
+		[+] New button "Resume" in MainMenu
+		[+] Turn off fader when changing brightness level
+		[+] Full working SaveLoadSystem
+		[+] Full working CheckpointSystem
+		[+] Game instalator implemented
+		[+] Make font in MainMenu and PauseMenu a little bit smaller
+		[+] Proper scaling for different resolutions
+		[+] Text in the same place on different menu scenes
+		[+] A lot of UI tests
+		[+] Stronger fader in PauseMenu
+		[+] Loading default settings fullScreen Toggle is unchecked in MainMenu
+		[+] Inscrease font size when button selected (all PauseMenu and fix problem with scaling in sound menu)
+		[+] Information about controls using sprite
+
+	[+] PrototypeScene
+		[+] Change camera distance from player
+		[+] Camera moving follow improvement (tracked object offset cinemachine)
+		[+] Dust effect when player is running
+		[+] 3x more FPS (Probably layout problem) 
+		[+] Atmosferic effects for example rain and fog
+		[+] Adding all basic sounds
+		[+] Killing player when he is longer then 4.5 seconds in air
+		[+] Reviewing the notebook in search of functionality
+		[+] Problem with sliding from downhill
+		[+] New fader for player death
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------------//
+		[+] Death player fader bug during opening pause menu
+		[+] Wind sound to correct
+		[+] Grayscale effect
+		[+] Lights
+		[+] Camera shake
+		[+] Footsteps are too quiet
+		[+] Collect orb sound to fix (missing sound when another orb is collected, need new sound)
+		[+] Collect orb effect to change (change particle system values)
+		[+] After win zone open credits (bug with mainMenu, no IntroMenu but startMenu, stop camera follow after end of game)
+		[+] Pickable objects unlocking secret level
+		[+] Controls menu (correct image with ctrl key)
+		[+] Change camera distance in contact with trigger (one trigger missing, fix bug with double jump during contact with trigger)
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------------//
+		[+] Death player fader bug during opening pause menu still exists
+		[+] Character is black
+		[+] Rain effect to correct (no collision)
+		[+] Fog effect to correct
+		[+] Start new game bug with orbs
+		[+] Grayscale need to be changed
+		[+] Stronger vinette effect
+		[+] Use camera shake
+		[+] Using mechanisms from other tutorials
+		[+] Extend 2D Physics for traps
+
+[-] Level Design, testing and end of project
+		[+] Preparing prefabs
+		[+] Find scenes from games to recreate
+		[+] Start Level Design
+		[+] New forest footsteps sound effect
+		[+] Build three levels with 5 checkpoints
+		[+] Paralax effect (Perspective camera and layers with offset during building levels)
+		[+] More sounds
+		[+] Animated background in MainMenu (need a little bit scene from final game)
+		[+] Add images to LoadChapter Menu (after all game scenes will be completed)
+		[+] Add assets authors to the credits (after all game scenes will be completed)
+		[+] Delete all assets from Github
+		[+] Testing
+		[+] Add version number beta v1.00 in installation setup
+		[+] First release on GitHub
+		[+] Deadline end of january 2021 (It is not bugs free, but there is no more time)

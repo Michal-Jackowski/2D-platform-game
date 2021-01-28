@@ -9,7 +9,8 @@
 2D platform game/[Bb]uilds/
 2D platform game/[Ll]ogs/
 2D platform game/[Mm]emoryCaptures/
-2D platform game/[Aa]ssets/
+2D platform game/[Aa]ssets/Audio/
+2D platform game/[Aa]ssets/Graphics/
 
 # Asset meta data should only be ignored when the corresponding asset is also ignored
 !2D platform game/[Aa]ssets/**/*.meta
