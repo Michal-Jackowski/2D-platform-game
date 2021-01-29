@@ -1,0 +1,15 @@
+# spikes autoSpikes, falling stone, player fall from high no sound effects
+# falling stone strange little move
+# no fade in, fade out background sounds
+# collected eggs no saving after player death
+# moving lamp lights left/right with constant value
+# axe no sound effect
+# egg collected sound effect loop problem
+# more ester eggs
+# more misc sound effects
+# rain with different values in time
+# fog with different values in time
+# dead threes level design to correct
+# rain with collision in cave
+# falling blocks larger trigger
+# load chapters need new images
